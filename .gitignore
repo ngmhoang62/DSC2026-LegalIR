@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+env/
+venv/
+dsc_env/
+
+# Data, results, and cache directories
+# Ignore all contents inside directories while preserving directory structure via .gitkeep
+public_test_dataset/*
+!public_test_dataset/.gitkeep
+
+results/*
+!results/.gitkeep
+
+cache/*
+!cache/.gitkeep
+
+# IDE & System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
