@@ -32,13 +32,13 @@ def load_corpus(selected_contexts_dir: str):
 
     return doc_ids, corpus_texts, doc_map
 
-def get_or_build_dense_embeddings(model, corpus_texts, cache_path: str, batch_size: int = 16):
+def get_or_build_dense_embeddings(model, corpus_texts, cache_path: str, batch_size: int = 64):
     if os.path.exists(cache_path):
         print(f"Loading BGE-M3 dense embeddings from cache: {cache_path}", flush=True)
         with open(cache_path, 'rb') as f:
             doc_embeddings = pickle.load(f)
     else:
-        print("Encoding corpus documents with BAAI/bge-m3 on GPU...", flush=True)
+        print("Encoding corpus documents with BAAI/bge-m3 on GPU (max_seq_length=512)...", flush=True)
         doc_embeddings = model.encode(
             corpus_texts,
             batch_size=batch_size,
@@ -76,7 +76,6 @@ def run_evaluations(train_path: str, folds_path: str, doc_ids: list, bm25: BM25O
 
     doc_ids_arr = np.array(doc_ids)
 
-    # Pre-encode all validation questions
     all_val_qids = []
     for val_qids in folds.values():
         all_val_qids.extend(val_qids)
@@ -85,7 +84,7 @@ def run_evaluations(train_path: str, folds_path: str, doc_ids: list, bm25: BM25O
     val_questions = [train_data[qid]['question'] for qid in all_val_qids]
     q_embeddings_all = model.encode(
         val_questions,
-        batch_size=16,
+        batch_size=64,
         show_progress_bar=True,
         normalize_embeddings=True,
         convert_to_numpy=True
@@ -154,7 +153,7 @@ def save_submissions(public_path: str, doc_ids: list, bm25: BM25Okapi, doc_embed
     print("Encoding Public Test questions with BGE-M3...", flush=True)
     q_embeddings = model.encode(
         public_questions,
-        batch_size=16,
+        batch_size=64,
         show_progress_bar=True,
         normalize_embeddings=True,
         convert_to_numpy=True
@@ -236,6 +235,10 @@ if __name__ == "__main__":
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Using device: {device}", flush=True)
     model = SentenceTransformer(model_name, device=device)
+    
+    # Crucial speed fix: Cap max sequence length to 512
+    model.max_seq_length = 512
+    print(f"Set model max_seq_length = {model.max_seq_length}", flush=True)
 
     # Load BM25
     with open(bm25_cache_file, 'rb') as f:
@@ -243,7 +246,7 @@ if __name__ == "__main__":
     bm25 = BM25Okapi(tokenized_corpus)
 
     doc_ids, corpus_texts, doc_map = load_corpus(selected_contexts_dir)
-    doc_embeddings = get_or_build_dense_embeddings(model, corpus_texts, dense_cache_file)
+    doc_embeddings = get_or_build_dense_embeddings(model, corpus_texts, dense_cache_file, batch_size=64)
 
     dense_metrics, hybrid_metrics = run_evaluations(train_file, folds_file, doc_ids, bm25, doc_embeddings, model, top_k=5)
     save_submissions(public_file, doc_ids, bm25, doc_embeddings, model, dense_res_dir, hybrid_res_dir, dense_metrics, hybrid_metrics, top_k=5)
