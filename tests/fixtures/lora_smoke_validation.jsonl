@@ -1,0 +1,1 @@
+{"negative_chunk_id":"n3","negative_doc_id":"dn3","negative_source":"hybrid","negative_text":"Nội dung không quy định về xử phạt.","positive_chunk_id":"p3","positive_doc_id":"dp3","positive_text":"Điều 3. Hành vi vi phạm bị xử phạt theo mức quy định.","qid":"smoke-q3","query":"Hành vi vi phạm bị xử lý thế nào?","sample_weight":1.0,"schema_version":"legalir.exp012b_v3.v1"}
