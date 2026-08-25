@@ -15,6 +15,7 @@ import json
 import os
 import re
 import shutil
+import sys
 import tempfile
 import threading
 from collections import Counter, defaultdict
@@ -31,6 +32,7 @@ DEFAULT_TOKENIZER = "BAAI/bge-reranker-v2-m3"
 DEFAULT_MAX_PASSAGE_TOKENS = 384
 DEFAULT_TOKEN_WINDOW = 352
 DEFAULT_TOKEN_OVERLAP = 32
+FINAL_PREFIX_CAPS = {"Văn bản": 48, "Chương": 32, "Mục": 64, "Điều": 24}
 SOURCE_KINDS = ("chapter", "section", "article", "annex")
 
 
@@ -183,6 +185,14 @@ _ARTICLE_RE = re.compile(
     r"(?mi)^[ \t]*Điều[ \t]+(?P<label>\d+[a-zđ]?)(?:[ \t]*[\.:])?"
     r"(?=[ \t\r\n]|$)(?P<tail>[^\r\n]*)"
 )
+# Some source exports put the article word and its numeric label on adjacent
+# physical lines.  This is deliberately opt-in: accepting it in the default
+# parser would change the established v3 corpus without an isolated ablation.
+_SPLIT_ARTICLE_RE = re.compile(
+    r"(?mi)^[ \t]*Điều[ \t]*(?:\r?\n[ \t]*){1,3}"
+    r"(?P<label>\d+[a-zđ]?)(?:[ \t]*[\.:])?"
+    r"(?=[ \t\r\n]|$)(?P<tail>[^\r\n]*)"
+)
 _CLAUSE_RE = re.compile(r"(?m)^[ \t]*(?P<label>\d+)\.[ \t]+")
 _POINT_RE = re.compile(r"(?mi)^[ \t]*(?P<label>[a-zđ])\)[ \t]+")
 _ANNEX_RE = re.compile(
@@ -233,11 +243,17 @@ def _line_heading(match: re.Match[str], kind: str) -> Marker:
     return Marker(kind, match.start(), match.end(), label, heading)
 
 
-def find_structural_markers(passage: str) -> list[Marker]:
+def find_structural_markers(
+    passage: str, *, allow_split_article_heading: bool = False
+) -> list[Marker]:
     markers: list[Marker] = []
     markers.extend(_line_heading(match, "chapter") for match in _CHAPTER_RE.finditer(passage))
     markers.extend(_line_heading(match, "section") for match in _SECTION_RE.finditer(passage))
     markers.extend(_line_heading(match, "article") for match in _ARTICLE_RE.finditer(passage))
+    if allow_split_article_heading:
+        markers.extend(
+            _line_heading(match, "article") for match in _SPLIT_ARTICLE_RE.finditer(passage)
+        )
     for match in _ANNEX_RE.finditer(passage):
         line = _compact_whitespace(match.group(0))
         # Annex-like prose is common. Requiring an uppercase physical line keeps
@@ -268,8 +284,12 @@ def _extend_heading(passage: str, marker: Marker, boundary: int) -> str:
     return marker.heading_text
 
 
-def build_structural_nodes(doc_id: str, passage: str) -> tuple[list[Node], list[Node]]:
-    markers = find_structural_markers(passage)
+def build_structural_nodes(
+    doc_id: str, passage: str, *, allow_split_article_heading: bool = False
+) -> tuple[list[Node], list[Node]]:
+    markers = find_structural_markers(
+        passage, allow_split_article_heading=allow_split_article_heading
+    )
     root_id = stable_node_id(doc_id, "document", 0, len(passage))
     root = Node(root_id, doc_id, "document", doc_id, None, 0, len(passage), "", passage)
     nodes = [root]
@@ -425,10 +445,10 @@ def _render_prefix(
     tokenizer: TokenizerLike, document_label: str, metadata: dict[str, str]
 ) -> str:
     fields = [
-        ("Văn bản", document_label, 48),
-        ("Chương", metadata.get("chapter", ""), 32),
-        ("Mục", metadata.get("section", ""), 24),
-        ("Điều", metadata.get("article", ""), 64),
+        ("Văn bản", document_label, FINAL_PREFIX_CAPS["Văn bản"]),
+        ("Chương", metadata.get("chapter", ""), FINAL_PREFIX_CAPS["Chương"]),
+        ("Mục", metadata.get("section", ""), FINAL_PREFIX_CAPS["Mục"]),
+        ("Điều", metadata.get("article", ""), FINAL_PREFIX_CAPS["Điều"]),
     ]
     lines = []
     for label, value, budget in fields:
@@ -709,13 +729,15 @@ def parse_document(
     max_tokens: int = DEFAULT_MAX_PASSAGE_TOKENS,
     token_window: int = DEFAULT_TOKEN_WINDOW,
     token_overlap: int = DEFAULT_TOKEN_OVERLAP,
+    allow_split_article_heading: bool = False,
     source_file: str = "",
 ) -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]]]:
     doc_id = str(document["id"])
     passage = str(document.get("passage") or "")
     name = str(document.get("name") or "").strip()
+    retrieval_name = str(document.get("retrieval_name") or "").strip()
     link = str(document.get("link") or "").strip()
-    document_label = name or Path(link).stem or doc_id
+    document_label = retrieval_name or name or Path(link).stem or doc_id
     source_sha256 = hashlib.sha256(passage.encode("utf-8")).hexdigest()
 
     if not passage.strip():
@@ -753,6 +775,7 @@ def parse_document(
             "schema_version": SCHEMA_VERSION,
             "doc_id": doc_id,
             "name": name,
+            "retrieval_name": retrieval_name,
             "link": link,
             "document_label": document_label,
             "source_file": source_file,
@@ -764,7 +787,9 @@ def parse_document(
         }
         return record, [node.as_dict()], [chunk]
 
-    nodes, marker_nodes = build_structural_nodes(doc_id, passage)
+    nodes, marker_nodes = build_structural_nodes(
+        doc_id, passage, allow_split_article_heading=allow_split_article_heading
+    )
     regions = _retrieval_regions(doc_id, passage, nodes, marker_nodes)
     existing_ids = {node.node_id for node in nodes}
     for region in regions:
@@ -802,6 +827,7 @@ def parse_document(
         "schema_version": SCHEMA_VERSION,
         "doc_id": doc_id,
         "name": name,
+        "retrieval_name": retrieval_name,
         "link": link,
         "document_label": document_label,
         "source_file": source_file,
@@ -845,7 +871,9 @@ def build_corpus(
     max_tokens: int = DEFAULT_MAX_PASSAGE_TOKENS,
     token_window: int = DEFAULT_TOKEN_WINDOW,
     token_overlap: int = DEFAULT_TOKEN_OVERLAP,
+    allow_split_article_heading: bool = False,
     workers: int = 1,
+    source_manifest: Path | None = None,
 ) -> dict[str, Any]:
     paths = sorted(contexts_dir.glob("context_*.json"), key=lambda path: path.name)
     if not paths:
@@ -882,6 +910,7 @@ def build_corpus(
             max_tokens=max_tokens,
             token_window=token_window,
             token_overlap=token_overlap,
+            allow_split_article_heading=allow_split_article_heading,
             source_file=path.name,
         )
         return path, record, nodes, chunks
@@ -964,10 +993,13 @@ def build_corpus(
             "max_passage_tokens": max_tokens,
             "token_window": token_window,
             "token_overlap": token_overlap,
-            "heading_policy": "physical_line_start_only",
+            "heading_policy": "physical_line_start_plus_split_article" if allow_split_article_heading else "physical_line_start_only",
+            "allow_split_article_heading": allow_split_article_heading,
+            "prefix_caps": FINAL_PREFIX_CAPS,
         }
         fingerprint_payload = {
             "source_fingerprint": corpus_fingerprint(paths),
+            "source_manifest_sha256": sha256_file(source_manifest) if source_manifest else None,
             "config": config,
             "artifacts": artifact_hashes,
         }
@@ -985,6 +1017,7 @@ def build_corpus(
         manifest = {
             **config,
             "source_fingerprint": fingerprint_payload["source_fingerprint"],
+            "source_manifest_sha256": fingerprint_payload["source_manifest_sha256"],
             "artifact_sha256": artifact_hashes,
             "content_fingerprint": content_fingerprint,
             "counts": {
@@ -1003,6 +1036,10 @@ def build_corpus(
             json.dumps(manifest, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
             encoding="utf-8",
             newline="\n",
+        )
+        (temp_dir / "_SUCCESS.json").write_text(
+            json.dumps({"content_fingerprint": content_fingerprint, "stage": "structural_corpus"}, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8", newline="\n",
         )
 
         if output_dir.exists():
@@ -1029,11 +1066,22 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-passage-tokens", type=int, default=DEFAULT_MAX_PASSAGE_TOKENS)
     parser.add_argument("--token-window", type=int, default=DEFAULT_TOKEN_WINDOW)
     parser.add_argument("--token-overlap", type=int, default=DEFAULT_TOKEN_OVERLAP)
+    parser.add_argument(
+        "--allow-split-article-heading",
+        action="store_true",
+        help="Parse an article heading whose Điều and numeric label occupy adjacent lines.",
+    )
     parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--source-manifest", type=Path)
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    # Windows inherits an ANSI console encoding in some PowerShell sessions.
+    # Generated manifests may contain Vietnamese marker names, so make CLI
+    # progress/final JSON portable rather than depending on the shell code page.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="backslashreplace")
     args = build_arg_parser().parse_args(argv)
     tokenizer = HuggingFaceTokenizerAdapter.load(
         args.tokenizer, allow_download=args.allow_download
@@ -1045,7 +1093,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         max_tokens=args.max_passage_tokens,
         token_window=args.token_window,
         token_overlap=args.token_overlap,
+        allow_split_article_heading=args.allow_split_article_heading,
         workers=args.workers,
+        source_manifest=args.source_manifest,
     )
     print(json.dumps(manifest, ensure_ascii=False, indent=2), flush=True)
     return 0

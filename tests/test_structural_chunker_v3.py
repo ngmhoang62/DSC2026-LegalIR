@@ -102,6 +102,22 @@ class StructuralParserTests(unittest.TestCase):
         self.assertEqual([node["label"] for node in articles], ["1", "1"])
         self.assertEqual(len({node["node_id"] for node in articles}), 2)
 
+    def test_split_article_heading_is_opt_in(self):
+        passage = "Điều\n1. Phạm vi điều chỉnh\nNội dung điều một.\n\nĐiều\n2\nNội dung điều hai."
+        default_record, default_nodes, _ = self.parse(passage)
+        self.assertEqual(default_record["parse_mode"], "fallback")
+        self.assertFalse(any(node["kind"] == "article" for node in default_nodes))
+        record, nodes, chunks = parse_document(
+            {"id": 124, "name": "Luật thử nghiệm", "passage": passage},
+            self.tokenizer,
+            allow_split_article_heading=True,
+        )
+        articles = [node for node in nodes if node["kind"] == "article"]
+        self.assertEqual(record["parse_mode"], "structured")
+        self.assertEqual([node["label"] for node in articles], ["1", "2"])
+        self.assertEqual([node["heading_text"] for node in articles], ["Điều 1. Phạm vi điều chỉnh", "Điều 2"])
+        self.assertTrue(chunks)
+
     def test_long_article_prefers_clauses_then_token_windows(self):
         long_leaf = " ".join(f"từ{i}" for i in range(80))
         passage = (

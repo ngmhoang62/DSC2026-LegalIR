@@ -1,4 +1,6 @@
 sentence-transformers
+sentencepiece
+protobuf
 transformers>=4.51.0
 accelerate
 underthesea
@@ -11,5 +13,6 @@ py_vncorenlp
 pyjnius
 datasets
 peft
+bitsandbytes
 lightgbm
 einops

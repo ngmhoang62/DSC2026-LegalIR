@@ -5,6 +5,8 @@ from __future__ import annotations
 import json
 import re
 import sqlite3
+import time
+import unicodedata
 from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
@@ -27,6 +29,16 @@ BM25_PROFILES = {
     "balanced": (1.0, 1.0, 1.0, 1.0),
     "legal_structure": (1.5, 2.0, 1.25, 1.0),
     "heading_priority": (1.0, 3.0, 1.0, 1.0),
+    # Title is repeated for every chunk in a document, so treat it as a weak
+    # routing hint rather than letting it outrank passage evidence.
+    "title_auxiliary": (0.25, 0.0, 0.0, 1.0),
+}
+FIELD_MODES = {
+    "passage_only": (False, False, False),
+    "passage_hierarchy": (False, True, False),
+    "passage_hierarchy_scope": (False, True, True),
+    "all_fields": (True, True, True),
+    "passage_title_folded": (True, False, False),
 }
 _QUERY_TOKEN = re.compile(r"[\w_]+", flags=re.UNICODE)
 
@@ -37,9 +49,28 @@ def default_segmenter(text: str) -> str:
     return str(word_tokenize(text, format="text")).casefold()
 
 
+def fold_diacritics(text: str) -> str:
+    """Fold Vietnamese accents while retaining FTS-safe underscores and digits."""
+    return "".join(
+        "d" if char.casefold() == "đ" else char
+        for char in unicodedata.normalize("NFD", text.casefold())
+        if not unicodedata.combining(char)
+    )
+
+
 def _segment_text_batch(texts: Sequence[str]) -> list[str]:
     """Process-pool entrypoint; Underthesea is imported once per worker."""
     return [default_segmenter(text) for text in texts]
+
+
+def _prepare_log(output_dir: Path, message: str) -> None:
+    """Emit pre-stage metadata work to terminal and the same durable run log."""
+    stamp = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+    line = f"[{stamp}] PREPARE stage=tokenize-bm25 {message}"
+    print(line, flush=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    with (output_dir / "run.log").open("a", encoding="utf-8", newline="\n", buffering=1) as handle:
+        handle.write(line + "\n")
 
 
 def safe_fts_query(segmented_text: str) -> str:
@@ -50,6 +81,14 @@ def safe_fts_query(segmented_text: str) -> str:
     # deliberate: BM25 should retrieve partial lexical evidence, not hard-gate
     # on all query terms being present.
     return " OR ".join('"' + token.replace('"', '""') + '"' for token in tokens)
+
+
+def title_folded_fts_query(query: str, *, segmenter: Callable[[str], str] = default_segmenter) -> str:
+    """Keep accent-sensitive content matching separate from folded title matching."""
+    segmented = segmenter(query)
+    passage = safe_fts_query(segmented)
+    title = safe_fts_query(fold_diacritics(segmented))
+    return f"(passage_content : ({passage})) OR (document_label : ({title}))"
 
 
 class BM25Searcher:
@@ -176,32 +215,58 @@ def tokenize_v3_fields(
     resume: bool = False,
     shard_size: int = 8192,
     workers: int = 1,
+    field_mode: str = "all_fields",
 ) -> dict[str, Any]:
     if workers < 1:
         raise ValueError("workers must be positive")
+    if field_mode not in FIELD_MODES:
+        raise ValueError(f"Unknown BM25 field mode: {field_mode}")
+    include_label, include_hierarchy, include_scope = FIELD_MODES[field_mode]
     manifest = load_v3_manifest(v3_dir)
-    documents = {row["doc_id"]: row for row in read_jsonl(v3_dir / "documents.jsonl")}
-    scope_ids = {
-        node_id
-        for document in documents.values()
-        for node_id in document.get("scope_node_ids", [])
-    }
-    scope_by_doc: dict[str, list[str]] = defaultdict(list)
-    for node in read_jsonl(v3_dir / "nodes.jsonl"):
-        if node["node_id"] in scope_ids:
-            # The scope article may be long. Heading plus its opening text is
-            # enough for the lexical field; full content remains indexed in
-            # the passage column and is never discarded.
-            scope_by_doc[node["doc_id"]].append(
-                (str(node.get("heading_text", "")) + " " + str(node.get("raw_text", ""))[:1000]).strip()
+    # A passage-only run is deliberately cheap: it must not spend time
+    # reading/segmenting metadata which is not indexed in this ablation.
+    documents: dict[str, dict[str, Any]] = {}
+    segmented_scope: dict[str, str] = {}
+    segmented_labels: dict[str, str] = {}
+    if include_label or include_scope:
+        documents = {row["doc_id"]: row for row in read_jsonl(v3_dir / "documents.jsonl")}
+    if include_scope:
+        _prepare_log(output_dir, "phase=collect-scope-nodes")
+        scope_ids = {
+            node_id
+            for document in documents.values()
+            for node_id in document.get("scope_node_ids", [])
+        }
+        scope_by_doc: dict[str, list[str]] = defaultdict(list)
+        for node in read_jsonl(v3_dir / "nodes.jsonl"):
+            if node["node_id"] in scope_ids:
+                # The scope article may be long. Heading plus its opening text is
+                # enough for the lexical field; full content remains indexed in
+                # the passage column and is never discarded.
+                scope_by_doc[node["doc_id"]].append(
+                    (str(node.get("heading_text", "")) + " " + str(node.get("raw_text", ""))[:1000]).strip()
+                )
+        _prepare_log(output_dir, f"phase=segment-scope-documents total={len(scope_by_doc)}")
+        for position, (doc_id, values) in enumerate(scope_by_doc.items(), start=1):
+            segmented_scope[doc_id] = segmenter(" ".join(values))
+            if position % 128 == 0 or position == len(scope_by_doc):
+                _prepare_log(
+                    output_dir,
+                    f"phase=segment-scope-documents completed={position}/{len(scope_by_doc)}",
+                )
+    if include_label:
+        _prepare_log(output_dir, f"phase=segment-document-labels total={len(documents)}")
+        for position, (doc_id, document) in enumerate(documents.items(), start=1):
+            segmented_labels[doc_id] = (
+                fold_diacritics(segmenter(str(document.get("document_label", ""))))
+                if field_mode == "passage_title_folded"
+                else segmenter(str(document.get("document_label", "")))
             )
-    segmented_scope = {
-        doc_id: segmenter(" ".join(values)) for doc_id, values in scope_by_doc.items()
-    }
-    segmented_labels = {
-        doc_id: segmenter(str(document.get("document_label", "")))
-        for doc_id, document in documents.items()
-    }
+            if position % 256 == 0 or position == len(documents):
+                _prepare_log(
+                    output_dir,
+                    f"phase=segment-document-labels completed={position}/{len(documents)}",
+                )
     segmented_hierarchy: dict[str, str] = {}
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / "bm25_fields.jsonl"
@@ -212,6 +277,7 @@ def tokenize_v3_fields(
             "v3": manifest["content_fingerprint"],
             "segmenter": getattr(segmenter, "__name__", type(segmenter).__name__),
             "shard_size": shard_size,
+            "field_mode": field_mode,
         }
     )
     executor = (
@@ -239,14 +305,17 @@ def tokenize_v3_fields(
                     shard_paths.append(shard_path)
                     count += len(rows)
                     continue
-            extracted = [
-                _extract_fields(
-                    chunk,
-                    str(documents[chunk["doc_id"]].get("document_label", "")),
-                    segmented_scope.get(chunk["doc_id"], ""),
-                )
-                for chunk in rows
-            ]
+            if include_hierarchy:
+                extracted = [
+                    _extract_fields(
+                        chunk,
+                        str(documents.get(chunk["doc_id"], {}).get("document_label", "")),
+                        segmented_scope.get(chunk["doc_id"], ""),
+                    )
+                    for chunk in rows
+                ]
+            else:
+                extracted = [("", "", "", str(chunk.get("raw_text", ""))) for chunk in rows]
             hierarchy_values = [fields[1] for fields in extracted]
             for value in dict.fromkeys(hierarchy_values):
                 if value not in segmented_hierarchy:
@@ -273,9 +342,9 @@ def tokenize_v3_fields(
                         "chunk_id": chunk["chunk_id"],
                         "doc_id": chunk["doc_id"],
                         "parent_node_id": chunk["parent_node_id"],
-                        "document_label": segmented_labels[chunk["doc_id"]],
-                        "hierarchy_text": segmented_hierarchy[fields[1]],
-                        "scope_text": fields[2],
+                        "document_label": segmented_labels.get(chunk["doc_id"], "") if include_label else "",
+                        "hierarchy_text": segmented_hierarchy[fields[1]] if include_hierarchy else "",
+                        "scope_text": fields[2] if include_scope else "",
                         "passage_content": passage_content,
                     }
                     out.write(canonical_json(row) + "\n")
@@ -297,6 +366,7 @@ def tokenize_v3_fields(
                 completed=count,
                 total=manifest["counts"]["chunks"],
                 shard=shard_index,
+                emit_log=True,
             )
         temporary_output = output_path.with_suffix(".jsonl.tmp")
         with temporary_output.open("wb") as output_handle:
@@ -314,6 +384,7 @@ def tokenize_v3_fields(
             config={
                 "segmenter": getattr(segmenter, "__name__", type(segmenter).__name__),
                 "shard_size": shard_size,
+                "field_mode": field_mode,
             },
             files=[output_path],
         )
@@ -381,7 +452,10 @@ def build_fts5_index(
                 )
                 if count % commit_every == 0:
                     connection.commit()
-                    logger.status(stage="build-bm25", state="RUNNING", completed=count, total=None)
+                    logger.status(
+                        stage="build-bm25", state="RUNNING", completed=count, total=expected,
+                        emit_log=True,
+                    )
             connection.commit()
             connection.execute("INSERT INTO passages(passages) VALUES('optimize')")
             connection.commit()
@@ -438,7 +512,11 @@ def search_bm25_document(
         return searcher.search_document(query, str(doc_id), limit=limit)
 
 
-def aggregate_bm25_documents(hits: Iterable[dict[str, Any]], top_docs: int = 100) -> list[dict[str, Any]]:
+def aggregate_bm25_documents(
+    hits: Iterable[dict[str, Any]], top_docs: int = 100, *, strategy: str = "rrf3"
+) -> list[dict[str, Any]]:
+    if strategy not in {"rrf3", "first_passage"}:
+        raise ValueError(f"Unknown BM25 document aggregation strategy: {strategy}")
     by_doc: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for hit in hits:
         by_doc[str(hit["doc_id"])].append(hit)
@@ -450,7 +528,7 @@ def aggregate_bm25_documents(hits: Iterable[dict[str, Any]], top_docs: int = 100
             if hit["parent_node_id"] not in seen_parents:
                 unique.append(hit)
                 seen_parents.add(hit["parent_node_id"])
-            if len(unique) == 3:
+            if len(unique) == (3 if strategy == "rrf3" else 1):
                 break
         reciprocal = sum(1.0 / (60 + item["rank"]) for item in unique)
         scored.append(

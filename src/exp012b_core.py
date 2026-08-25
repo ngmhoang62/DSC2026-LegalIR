@@ -179,11 +179,23 @@ class StageLogger:
         with self.log_path.open("a", encoding="utf-8", newline="\n", buffering=1) as handle:
             handle.write(line + "\n")
 
-    def status(self, **values: Any) -> None:
+    def status(self, *, emit_log: bool = False, **values: Any) -> None:
         atomic_json(
             self.status_path,
             {"schema_version": PIPELINE_SCHEMA, "pid": os.getpid(), **values},
         )
+        if emit_log:
+            completed = values.get("completed")
+            total = values.get("total")
+            progress = f"{completed}/{total}" if total is not None else str(completed)
+            if isinstance(completed, (int, float)) and isinstance(total, (int, float)) and total:
+                progress += f" ({100.0 * completed / total:.1f}%)"
+            extras = " ".join(
+                f"{key}={values[key]}"
+                for key in ("shard", "phase", "pairs", "eta_seconds")
+                if values.get(key) is not None
+            )
+            self.log(f"PROGRESS stage={values.get('stage')} completed={progress}" + (f" {extras}" if extras else ""))
 
     def set_telemetry(self, telemetry: dict[str, Any]) -> None:
         self.telemetry = telemetry

@@ -1,5 +1,11 @@
 # LegalIR
 
+## Working context
+
+Read [AGENTS.md](AGENTS.md) before making project changes. For a fresh Codex
+conversation, copy [HANDOVER_PROMPT.md](HANDOVER_PROMPT.md) and fill in its
+volatile run information.
+
 ## Step 1: Environment Setup
 
 Assuming Python 3.12 is installed:

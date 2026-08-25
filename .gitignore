@@ -20,6 +20,8 @@ results/*
 cache/*
 !cache/.gitkeep
 
+stats/*
+
 # IDE & System files
 .vscode/
 .idea/

@@ -7,12 +7,14 @@ import hashlib
 import itertools
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Iterator, Sequence
 
 from structural_chunker_v3 import (
     DEFAULT_TOKENIZER,
+    FINAL_PREFIX_CAPS,
     HuggingFaceTokenizerAdapter,
     canonical_json,
     sha256_file,
@@ -146,7 +148,8 @@ def audit_cache(
     output_dir: Path,
     tokenizer: Any,
     *,
-    expected_documents: int = 8532,
+    expected_documents: int | None = None,
+    preprocessing_manifest: Path | None = None,
     compare_cache: Path | None = None,
     old_v1_path: Path | None = None,
     old_v2_path: Path | None = None,
@@ -163,7 +166,7 @@ def audit_cache(
     source_paths, duplicate_source_ids = _source_documents(contexts_dir)
     for doc_id in duplicate_source_ids:
         _add_error(hard_errors, "duplicate_source_doc_id", doc_id=doc_id)
-    if len(source_paths) != expected_documents:
+    if expected_documents is not None and len(source_paths) != expected_documents:
         _add_error(
             hard_errors,
             "unexpected_source_document_count",
@@ -183,7 +186,7 @@ def audit_cache(
                 "extra": sorted(set(document_ids) - set(source_paths))[:50],
             },
         )
-    if len(documents) != expected_documents:
+    if expected_documents is not None and len(documents) != expected_documents:
         _add_error(
             hard_errors,
             "unexpected_cache_document_count",
@@ -335,10 +338,24 @@ def audit_cache(
     if next_nodes is not None or next_chunks is not None:
         _add_error(hard_errors, "orphan_jsonl_document_group")
 
+    intentionally_excluded_truth: set[str] = set()
+    if preprocessing_manifest is not None:
+        preprocessed = json.loads(preprocessing_manifest.read_text(encoding="utf-8"))
+        if manifest.get("source_manifest_sha256") != sha256_file(preprocessing_manifest):
+            _add_error(hard_errors, "preprocessing_manifest_fingerprint_mismatch")
+        exclusions_path = preprocessing_manifest.parent / "exclusions.json"
+        exclusions = json.loads(exclusions_path.read_text(encoding="utf-8"))
+        intentionally_excluded_truth = {str(row["doc_id"]) for row in exclusions}
+        if preprocessed.get("retained_context_count") != len(source_paths):
+            _add_error(hard_errors, "processed_source_count_mismatch")
+    caps = manifest.get("prefix_caps")
+    if caps != FINAL_PREFIX_CAPS:
+        _add_error(hard_errors, "prefix_caps_mismatch", detail={"expected": FINAL_PREFIX_CAPS, "actual": caps})
+
     with train_path.open("r", encoding="utf-8") as handle:
         train = json.load(handle)
     truth_docs = {str(doc_id) for item in train.values() for doc_id in item["answer"]}
-    missing_truth = sorted(truth_docs - represented_docs)
+    missing_truth = sorted((truth_docs - represented_docs) - intentionally_excluded_truth)
     if missing_truth:
         _add_error(hard_errors, "ground_truth_documents_not_represented", detail=missing_truth[:100])
 
@@ -383,7 +400,8 @@ def audit_cache(
             "nodes": len(seen_node_ids),
             "chunks": len(seen_chunk_ids),
             "ground_truth_documents": len(truth_docs),
-            "ground_truth_documents_represented": len(truth_docs - set(missing_truth)),
+            "ground_truth_documents_represented": len((truth_docs - intentionally_excluded_truth) - set(missing_truth)),
+            "intentionally_excluded_ground_truth_documents": len(truth_docs & intentionally_excluded_truth),
             "parse_modes": dict(sorted(parse_modes.items())),
             "split_reasons": dict(sorted(split_reasons.items())),
         },
@@ -473,7 +491,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--contexts-dir", type=Path, required=True)
     parser.add_argument("--train-file", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--expected-documents", type=int, default=8532)
+    parser.add_argument("--expected-documents", type=int)
+    parser.add_argument("--preprocessing-manifest", type=Path)
     parser.add_argument("--compare-cache", type=Path)
     parser.add_argument("--old-v1", type=Path)
     parser.add_argument("--old-v2", type=Path)
@@ -483,6 +502,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="backslashreplace")
     args = build_arg_parser().parse_args(argv)
     with (args.cache_dir / "manifest.json").open("r", encoding="utf-8") as handle:
         manifest = json.load(handle)
@@ -497,6 +518,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         args.output_dir,
         tokenizer,
         expected_documents=args.expected_documents,
+        preprocessing_manifest=args.preprocessing_manifest,
         compare_cache=args.compare_cache,
         old_v1_path=args.old_v1,
         old_v2_path=args.old_v2,
