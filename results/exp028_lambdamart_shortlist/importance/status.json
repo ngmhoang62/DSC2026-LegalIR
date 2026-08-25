@@ -1,0 +1,10 @@
+{
+  "completed": 24,
+  "finished_at": 1787497763.287434,
+  "pid": 34568,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "exp028-permutation-importance-finalize",
+  "started_at": 1787497763.2753265,
+  "state": "COMPLETE",
+  "total": 24
+}

@@ -1,0 +1,8 @@
+{
+  "model": "gte",
+  "peak_vram_bytes": 1532399616,
+  "queries": 64,
+  "schema_version": "legalir.exp030_legal_evidence_routing.v1",
+  "scores": "D:\\Study\\DSC2026\\LegalIR\\results\\exp031_model_specific_validation\\heldout\\fold_3\\gte\\title_base\\scores.jsonl",
+  "seconds": 158.0302456000354
+}

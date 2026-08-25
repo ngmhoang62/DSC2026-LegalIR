@@ -1,0 +1,249 @@
+{
+  "chunk_count_per_document_percentiles": {
+    "0": 1,
+    "100": 3981,
+    "25": 12,
+    "50": 26,
+    "75": 47,
+    "90": 86,
+    "95": 123,
+    "99": 242
+  },
+  "counts": {
+    "chunks": 343347,
+    "documents": 8507,
+    "empty_document_labels": 0,
+    "fallback_documents": 1219,
+    "queries": 7000,
+    "queries_with_legal_identifier": 46,
+    "scope_documents": 5556,
+    "structured_documents": 7288,
+    "unique_segmented_query_tokens": 4690
+  },
+  "e5_retrieval_text_token_percentiles": {
+    "0": 31,
+    "100": 508,
+    "25": 180,
+    "50": 330,
+    "75": 490,
+    "90": 504,
+    "95": 507,
+    "99": 508
+  },
+  "name_provenance": {
+    "derived_from_link_final_path_segment": 1100,
+    "supplied": 7407
+  },
+  "planned_baseline": {
+    "aggregation": "deferred; first measure chunk-level candidate coverage",
+    "field_mode": "passage_only",
+    "retriever": "SQLite FTS5 BM25",
+    "segmenter": "underthesea",
+    "unit": "structural_chunk"
+  },
+  "preprocessing_fingerprint": "3b7ba47dcfd382f6d670824490777ff98f7f44144a888add664fc1aac6fe5263",
+  "query_token_frequency_top50": [
+    [
+      "?",
+      6878
+    ],
+    [
+      "được",
+      2383
+    ],
+    [
+      "có",
+      2216
+    ],
+    [
+      ",",
+      1537
+    ],
+    [
+      "không",
+      1526
+    ],
+    [
+      "như_thế_nào",
+      1425
+    ],
+    [
+      "nào",
+      1377
+    ],
+    [
+      "của",
+      1374
+    ],
+    [
+      "gì",
+      1194
+    ],
+    [
+      "trong",
+      1061
+    ],
+    [
+      "những",
+      1060
+    ],
+    [
+      "người",
+      998
+    ],
+    [
+      "là",
+      982
+    ],
+    [
+      "quy_định",
+      960
+    ],
+    [
+      "và",
+      940
+    ],
+    [
+      "thực_hiện",
+      808
+    ],
+    [
+      "phải",
+      755
+    ],
+    [
+      "thì",
+      734
+    ],
+    [
+      "các",
+      702
+    ],
+    [
+      "khi",
+      679
+    ],
+    [
+      "về",
+      612
+    ],
+    [
+      "cấp",
+      610
+    ],
+    [
+      "đối_với",
+      558
+    ],
+    [
+      "bị",
+      556
+    ],
+    [
+      "theo",
+      550
+    ],
+    [
+      "cho",
+      518
+    ],
+    [
+      "việc",
+      494
+    ],
+    [
+      "để",
+      454
+    ],
+    [
+      "tổ_chức",
+      447
+    ],
+    [
+      "hồ_sơ",
+      446
+    ],
+    [
+      "việt_nam",
+      413
+    ],
+    [
+      "cơ_quan",
+      403
+    ],
+    [
+      "tại",
+      394
+    ],
+    [
+      "sử_dụng",
+      392
+    ],
+    [
+      "trách_nhiệm",
+      383
+    ],
+    [
+      "hay",
+      382
+    ],
+    [
+      "cần",
+      381
+    ],
+    [
+      "hoạt_động",
+      380
+    ],
+    [
+      "lao_động",
+      360
+    ],
+    [
+      "quyền",
+      351
+    ],
+    [
+      "đăng_ký",
+      350
+    ],
+    [
+      "ra",
+      350
+    ],
+    [
+      "trường_hợp",
+      348
+    ],
+    [
+      "bao_nhiêu",
+      341
+    ],
+    [
+      "điều_kiện",
+      339
+    ],
+    [
+      "doanh_nghiệp",
+      322
+    ],
+    [
+      "thủ_tục",
+      316
+    ],
+    [
+      "nhà_nước",
+      310
+    ],
+    [
+      "thế_nào",
+      264
+    ],
+    [
+      "xây_dựng",
+      262
+    ]
+  ],
+  "schema_version": "legalir.exp021_sparse_audit.v1",
+  "structural_fingerprint": "9743fe70ec4092aca28a9855d0236bdedef41d8a458e39d750062b9ef85a37bc"
+}

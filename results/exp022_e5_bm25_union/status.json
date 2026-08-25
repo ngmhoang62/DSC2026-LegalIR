@@ -1,0 +1,10 @@
+{
+  "completed": 7000,
+  "finished_at": 1787462347.913741,
+  "pid": 29620,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "e5-bm25-union-audit",
+  "started_at": 1787462333.5034142,
+  "state": "COMPLETE",
+  "total": 7000
+}

@@ -1,0 +1,17 @@
+{
+  "artifact_sha256": {
+    "REPORT.json": "eb6b3942b93e9f97ee1f0d532b071d5d417015dbe19d4bc44e5d083b8d618802"
+  },
+  "config": {
+    "reranker": "not_run"
+  },
+  "content_fingerprint": "01d85eed60a7b4acf5135c077fc9888f08842173d310f2f2d528cfc452f27e26",
+  "inputs": {
+    "ablation_sha256": "462e7b3e6146c0aa162b1ca8eff00f8768810e93e30cfae7e347b59ab3b1ffbb",
+    "audit_sha256": "c106ccfe5469f14ab701690b1aa7089fabc48d8e788f6ababd6c449e5fe9733a",
+    "importance_sha256": "6d0166e81a95b98b97b2424a296fec6984cba1e92efd9a5a1405f61bf87d4990",
+    "oof_sha256": "078875b1481d1245eff093c9efcc2246637db9951e2db54c84399e16b37487d3"
+  },
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "exp028-report"
+}

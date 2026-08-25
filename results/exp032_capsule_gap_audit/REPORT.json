@@ -1,0 +1,201 @@
+{
+  "auxiliary_truncation": {
+    "answer_marker_after_512_rate": 0.1619047619047619,
+    "examples": [
+      {
+        "doc_id": "275995",
+        "full_tokens": 942,
+        "kind": "applicability",
+        "prefix_tokens": 630,
+        "qid": "10218",
+        "scope_entries": 1
+      },
+      {
+        "doc_id": "17545",
+        "full_tokens": 1625,
+        "kind": "applicability",
+        "prefix_tokens": 1161,
+        "qid": "10330",
+        "scope_entries": 6
+      },
+      {
+        "doc_id": "39845",
+        "full_tokens": 831,
+        "kind": "applicability",
+        "prefix_tokens": 605,
+        "qid": "114182",
+        "scope_entries": 1
+      },
+      {
+        "doc_id": "43018",
+        "full_tokens": 902,
+        "kind": "applicability",
+        "prefix_tokens": 515,
+        "qid": "115468",
+        "scope_entries": 2
+      },
+      {
+        "doc_id": "279981",
+        "full_tokens": 716,
+        "kind": "applicability",
+        "prefix_tokens": 673,
+        "qid": "133468",
+        "scope_entries": 1
+      },
+      {
+        "doc_id": "84570",
+        "full_tokens": 1206,
+        "kind": "applicability",
+        "prefix_tokens": 967,
+        "qid": "133888",
+        "scope_entries": 2
+      },
+      {
+        "doc_id": "199066",
+        "full_tokens": 846,
+        "kind": "applicability",
+        "prefix_tokens": 624,
+        "qid": "160378",
+        "scope_entries": 1
+      },
+      {
+        "doc_id": "50885",
+        "full_tokens": 967,
+        "kind": "applicability",
+        "prefix_tokens": 762,
+        "qid": "49548",
+        "scope_entries": 2
+      },
+      {
+        "doc_id": "181088",
+        "full_tokens": 2381,
+        "kind": "applicability",
+        "prefix_tokens": 1935,
+        "qid": "53516",
+        "scope_entries": 7
+      },
+      {
+        "doc_id": "50885",
+        "full_tokens": 950,
+        "kind": "applicability",
+        "prefix_tokens": 761,
+        "qid": "64898",
+        "scope_entries": 2
+      },
+      {
+        "doc_id": "231881",
+        "full_tokens": 833,
+        "kind": "applicability",
+        "prefix_tokens": 612,
+        "qid": "690",
+        "scope_entries": 1
+      },
+      {
+        "doc_id": "274422",
+        "full_tokens": 1022,
+        "kind": "applicability",
+        "prefix_tokens": 752,
+        "qid": "73766",
+        "scope_entries": 2
+      }
+    ],
+    "gold_auxiliary_views": 420,
+    "truncated_over_512_rate": 0.5880952380952381
+  },
+  "coverage": {
+    "gold": {
+      "aux": 0.9317507418397626,
+      "bm25": 0.002967359050445104,
+      "documents": 337,
+      "ev1": 0.0,
+      "ev2": 1.0,
+      "mean_selected_views": 1.9317507418397626,
+      "path_all": 1.0,
+      "path_any": 1.0,
+      "relations": 0.456973293768546,
+      "scope": 0.7863501483679525,
+      "title": 0.8160237388724035
+    },
+    "negative": {
+      "aux": 0.9275678895894356,
+      "bm25": 0.06294990815667974,
+      "documents": 20143,
+      "ev1": 0.02482251898922703,
+      "ev2": 0.975177481010773,
+      "mean_selected_views": 1.9532840192622747,
+      "path_all": 1.0,
+      "path_any": 1.0,
+      "relations": 0.6280097304274438,
+      "scope": 0.6935411805590032,
+      "title": 0.8376110807724768
+    }
+  },
+  "evidence_lexical_relevance": {
+    "gold": {
+      "mean": 0.31490596062920806,
+      "median": 0.3168472137525358
+    },
+    "negative": {
+      "mean": 0.2533961964039341,
+      "median": 0.2549019607843137
+    }
+  },
+  "implementation_findings": {
+    "aggregation": "candidate-level max over a variable number of views",
+    "in_document_selection": "upstream E5/BM25 evidence is reused; no second-stage search across every chunk of the shortlisted document",
+    "passage_supervision": "document labels supervise capsules without answer-passage labels",
+    "typed_scope_is_not_optional_when_present": "select_views returns base plus the sole applicability auxiliary even without an explicit scope signal"
+  },
+  "label_fingerprint": "9bdf9593b61fe3423d1f1a819ac9fb3e8d7225e6003da0afb840c1f5853fd4c9",
+  "query_signals": {
+    "explicit_scope": 11,
+    "explicit_subject": 19,
+    "queries": 320
+  },
+  "schema_version": "legalir.exp032_capsule_gap_audit.v1",
+  "source_results_sha256": "c620715b8d06e4a37994181386157cc52a0acac46cfd10b69c6df60e4a348866",
+  "token_lengths": {
+    "gold_applicability_full": {
+      "max": 2381,
+      "n": 265,
+      "p50": 604,
+      "p90": 964,
+      "p99": 1596
+    },
+    "gold_applicability_prefix": {
+      "max": 1935,
+      "n": 265,
+      "p50": 389,
+      "p90": 740,
+      "p99": 1161
+    },
+    "gold_base_full": {
+      "max": 1252,
+      "n": 337,
+      "p50": 644,
+      "p90": 968,
+      "p99": 1082
+    },
+    "gold_base_prefix": {
+      "max": 400,
+      "n": 337,
+      "p50": 172,
+      "p90": 250,
+      "p99": 319
+    },
+    "gold_relations_full": {
+      "max": 882,
+      "n": 155,
+      "p50": 447,
+      "p90": 659,
+      "p99": 774
+    },
+    "gold_relations_prefix": {
+      "max": 419,
+      "n": 155,
+      "p50": 218,
+      "p90": 292,
+      "p99": 379
+    }
+  }
+}

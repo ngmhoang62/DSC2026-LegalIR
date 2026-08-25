@@ -8,15 +8,40 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from exp033_in_document_evidence_routing import (
-    MARKERS, _audit_token_lengths, explicit_scope_spans, protected_residual, reciprocal_hybrid,
-    render_capsule_v2, select_evidence, select_mmr_evidence,
+    MARKERS, _audit_token_lengths, _bm25_primary_fallback, explicit_scope_spans, protected_residual, reciprocal_hybrid,
+    render_capsule_v2, select_evidence, select_mmr_evidence, truncate_query_for_pair,
     strict_scope_heading_kind,
 )
 
 
 class Tokenizer:
-    def __call__(self, query, document, **kwargs):
-        return {"input_ids": [0] * (len(query.split()) + len(document.split()) + 3)}
+    def __init__(self):
+        self.vocab = {}
+        self.reverse = {}
+
+    def _ids(self, text):
+        values = []
+        for token in text.split():
+            if token not in self.vocab:
+                value = len(self.vocab) + 10
+                self.vocab[token] = value
+                self.reverse[value] = token
+            values.append(self.vocab[token])
+        return values
+
+    def __call__(self, query, document=None, **kwargs):
+        ids = self._ids(query)
+        if document is not None:
+            ids += self._ids(document)
+            if kwargs.get("add_special_tokens", True):
+                ids += [0, 1, 2]
+        return {"input_ids": ids}
+
+    def decode(self, ids, **kwargs):
+        return " ".join(self.reverse[value] for value in ids if value in self.reverse)
+
+    def num_special_tokens_to_add(self, pair=False):
+        return 3 if pair else 2
 
 
 class Exp033Tests(unittest.TestCase):
@@ -29,6 +54,15 @@ class Exp033Tests(unittest.TestCase):
         self.assertEqual(_audit_token_lengths(tokenizer, ["long scope"]), [546])
         self.assertFalse(tokenizer.kwargs["verbose"])
         self.assertFalse(tokenizer.kwargs["truncation"])
+
+    def test_bm25_zero_hit_gets_explicit_dense_primary_fallback(self):
+        selected, used = _bm25_primary_fallback([], {"chunk_id": "dense-a", "score": .7})
+        self.assertTrue(used)
+        self.assertEqual(selected[0]["chunk_id"], "dense-a")
+        self.assertEqual(selected[0]["fallback_reason"], "bm25_zero_lexical_hit")
+        untouched, used = _bm25_primary_fallback([{"chunk_id": "sparse-a", "score": 3.}], {"chunk_id": "dense-a"})
+        self.assertFalse(used)
+        self.assertEqual(untouched[0]["chunk_id"], "sparse-a")
 
     def test_scope_heading_is_strict_and_body_wrap_is_not_a_heading(self):
         self.assertEqual(strict_scope_heading_kind("Điều 1. Phạm vi điều chỉnh"), "scope_of_regulation")
@@ -91,6 +125,17 @@ class Exp033Tests(unittest.TestCase):
         self.assertIn("[BẰNG CHỨNG CHÍNH]", rendered["text"])
         self.assertIn("Điều 2.", rendered["text"])
         self.assertTrue(set(marker for marker in MARKERS if marker in rendered["text"]))
+        self.assertGreaterEqual(rendered["allocated_token_shares"]["primary"], .55)
+        self.assertLessEqual(rendered["allocated_token_shares"]["identity_path_cap"], .20)
+        self.assertLessEqual(rendered["allocated_token_shares"]["scope_cap"], .15)
+
+    def test_query_head_tail_policy_uses_96_plus_32_tokens(self):
+        tokenizer = Tokenizer()
+        result = truncate_query_for_pair(tokenizer, " ".join(f"t{index}" for index in range(140)))
+        self.assertTrue(result["truncated"])
+        self.assertEqual(result["used_tokens"], 128)
+        self.assertIn("t0", result["text"])
+        self.assertIn("t139", result["text"])
 
     def test_protected_residual_has_fallback_and_exact_top_five(self):
         original = [str(value) for value in range(64)]

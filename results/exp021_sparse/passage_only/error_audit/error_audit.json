@@ -1,0 +1,887 @@
+{
+  "first_gold_rank_buckets": {
+    "1": 3499,
+    "11-20": 433,
+    "2-5": 2154,
+    "21-50": 196,
+    "51-100": 56,
+    "6-10": 539,
+    ">100": 123
+  },
+  "queries": 7000,
+  "slices": {
+    "gold_parse_mode": {
+      "fallback": {
+        "queries": 402,
+        "recall@1": 0.012437810945273632,
+        "recall@10": 0.27860696517412936,
+        "recall@100": 0.9054726368159204,
+        "recall@20": 0.6990049751243781,
+        "recall@5": 0.10945273631840796,
+        "recall@50": 0.8706467661691543
+      },
+      "missing": {
+        "queries": 13,
+        "recall@1": 0.0,
+        "recall@10": 0.0,
+        "recall@100": 0.0,
+        "recall@20": 0.0,
+        "recall@5": 0.0,
+        "recall@50": 0.0
+      },
+      "structured": {
+        "queries": 7222,
+        "recall@1": 0.4837995015231238,
+        "recall@10": 0.8817502076986984,
+        "recall@100": 0.9724453060094157,
+        "recall@20": 0.9297978399335364,
+        "recall@5": 0.8044862918859041,
+        "recall@50": 0.959706452506231
+      }
+    },
+    "gold_scope": {
+      "has_scope": {
+        "queries": 6516,
+        "recall@1": 0.4980049109883364,
+        "recall@10": 0.8919582565991406,
+        "recall@100": 0.9742173112338858,
+        "recall@20": 0.9366175567833026,
+        "recall@5": 0.8182934315531001,
+        "recall@50": 0.9630141190914672
+      },
+      "no_scope": {
+        "queries": 1121,
+        "recall@1": 0.22658340767172166,
+        "recall@10": 0.5958965209634255,
+        "recall@100": 0.9268510258697591,
+        "recall@20": 0.7966101694915254,
+        "recall@5": 0.4656556645851918,
+        "recall@50": 0.8974130240856378
+      }
+    },
+    "legal_identifier": {
+      "no": {
+        "queries": 6954,
+        "recall@1": 0.480970185025405,
+        "recall@10": 0.8693317994439651,
+        "recall@100": 0.9763277729843735,
+        "recall@20": 0.9333477135461605,
+        "recall@5": 0.7894017831463905,
+        "recall@50": 0.9656336880452497
+      },
+      "yes": {
+        "queries": 46,
+        "recall@1": 0.2028985507246377,
+        "recall@10": 0.7028985507246377,
+        "recall@100": 0.9239130434782609,
+        "recall@20": 0.8297101449275361,
+        "recall@5": 0.605072463768116,
+        "recall@50": 0.8731884057971014
+      }
+    },
+    "query_tokens": {
+      "1-5": {
+        "queries": 112,
+        "recall@1": 0.25892857142857145,
+        "recall@10": 0.7723214285714286,
+        "recall@100": 0.9508928571428571,
+        "recall@20": 0.8303571428571429,
+        "recall@5": 0.6651785714285714,
+        "recall@50": 0.8973214285714286
+      },
+      "11-20": {
+        "queries": 4665,
+        "recall@1": 0.4952483029653448,
+        "recall@10": 0.8741693461950697,
+        "recall@100": 0.9791997141836369,
+        "recall@20": 0.9379242586638086,
+        "recall@5": 0.7962665237584852,
+        "recall@50": 0.9693319042515184
+      },
+      "21-35": {
+        "queries": 621,
+        "recall@1": 0.5049651100375738,
+        "recall@10": 0.8760064412238325,
+        "recall@100": 0.9836285560923242,
+        "recall@20": 0.9490069779924853,
+        "recall@5": 0.7898550724637681,
+        "recall@50": 0.9774557165861514
+      },
+      "36+": {
+        "queries": 1,
+        "recall@1": 0.0,
+        "recall@10": 0.0,
+        "recall@100": 0.0,
+        "recall@20": 0.0,
+        "recall@5": 0.0,
+        "recall@50": 0.0
+      },
+      "6-10": {
+        "queries": 1601,
+        "recall@1": 0.43790339371226317,
+        "recall@10": 0.855194669997918,
+        "recall@100": 0.9660108265667291,
+        "recall@20": 0.9187486987299605,
+        "recall@5": 0.773110555902561,
+        "recall@50": 0.952998126171143
+      }
+    }
+  },
+  "top50_miss_examples": [
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "145175"
+      ],
+      "qid": "100436",
+      "query": "Khi nào áp dụng quy định mới tại Nghị định 33/2023/NĐ-CP?",
+      "top5": [
+        "106202",
+        "39522",
+        "92296",
+        "125635",
+        "186332"
+      ]
+    },
+    {
+      "first_gold_rank": 73,
+      "gold_doc_ids": [
+        "36358"
+      ],
+      "qid": "10098",
+      "query": "Bảo hiểm sức khỏe là gì? ",
+      "top5": [
+        "151060",
+        "43840",
+        "133938",
+        "134528",
+        "178057"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "281912"
+      ],
+      "qid": "101872",
+      "query": "Danh sách các địa điểm thi tại Hà Nội",
+      "top5": [
+        "58182",
+        "199946",
+        "177389",
+        "151060",
+        "247318"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "136014"
+      ],
+      "qid": "101938",
+      "query": "Chi Cục trưởng thuộc Bộ có quyền hạn cụ thể là gì?",
+      "top5": [
+        "195962",
+        "6721",
+        "228159",
+        "304336",
+        "234863"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "176929"
+      ],
+      "qid": "102682",
+      "query": "Xin nghỉ nhưng công ty không đồng ý thì xử lý thế nào?",
+      "top5": [
+        "208105",
+        "103901",
+        "74494",
+        "68961",
+        "31301"
+      ]
+    },
+    {
+      "first_gold_rank": 57,
+      "gold_doc_ids": [
+        "245154"
+      ],
+      "qid": "103008",
+      "query": "Có bị xử lí hình sự hay không theo quy định pháp luật về ghi âm cuộc gọi?",
+      "top5": [
+        "61180",
+        "230077",
+        "115962",
+        "285475",
+        "99981"
+      ]
+    },
+    {
+      "first_gold_rank": 98,
+      "gold_doc_ids": [
+        "17545"
+      ],
+      "qid": "10330",
+      "query": "Thủ tục xử lý hành vi gây rối trật tự tại trụ sở tiếp công dân, trụ sở ủy ban nhân dân như thế nào?",
+      "top5": [
+        "189674",
+        "125833",
+        "3327",
+        "300123",
+        "207913"
+      ]
+    },
+    {
+      "first_gold_rank": 75,
+      "gold_doc_ids": [
+        "81598"
+      ],
+      "qid": "104238",
+      "query": "Uống rượu bia gây tai nạn giao thông chết người bồi thường cho người bị tai nạn như thế nào?",
+      "top5": [
+        "177432",
+        "286745",
+        "4123",
+        "235672",
+        "155417"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "131125"
+      ],
+      "qid": "105316",
+      "query": "Hàm lượng chất khoáng trong bột ăn dặm đảm bảo cung cấp đủ cho trẻ em từ 06 đến 36 tháng tuổi là bao nhiêu?",
+      "top5": [
+        "159477",
+        "258616",
+        "283590",
+        "199759",
+        "121603"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "113741",
+        "305455"
+      ],
+      "qid": "107146",
+      "query": "Pháp luật Việt Nam quy định như thế nào?",
+      "top5": [
+        "29516",
+        "118434",
+        "177925",
+        "98045",
+        "31301"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "296375"
+      ],
+      "qid": "109316",
+      "query": "Thời gian cách ly Covid-19 hiện nay là bao nhiêu ngày?",
+      "top5": [
+        "20457",
+        "228530",
+        "230411",
+        "283590",
+        "225729"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "81598"
+      ],
+      "qid": "110718",
+      "query": "Trách nhiệm thanh toán khoản vay thế chấp khi người vay qua đời?",
+      "top5": [
+        "38655",
+        "207772",
+        "5259",
+        "273648",
+        "250691"
+      ]
+    },
+    {
+      "first_gold_rank": 59,
+      "gold_doc_ids": [
+        "102478"
+      ],
+      "qid": "111188",
+      "query": "Mức phí cho việc thực hiện thủ tục thay đổi họ là bao nhiêu?",
+      "top5": [
+        "20457",
+        "17396",
+        "165017",
+        "202936",
+        "215897"
+      ]
+    },
+    {
+      "first_gold_rank": 100,
+      "gold_doc_ids": [
+        "285041"
+      ],
+      "qid": "112884",
+      "query": "Đóng bảo hiểm xã hội bắt buộc bao nhiêu và trách nhiệm đóng bảo hiểm xã hội như thế nào?",
+      "top5": [
+        "164447",
+        "237840",
+        "23402",
+        "170066",
+        "2309"
+      ]
+    },
+    {
+      "first_gold_rank": 96,
+      "gold_doc_ids": [
+        "183668"
+      ],
+      "qid": "113068",
+      "query": "Yêu cầu về điều kiện cơ sở vật chất, thiết bị được quy định như thế nào?",
+      "top5": [
+        "179847",
+        "242240",
+        "298932",
+        "256762",
+        "98663"
+      ]
+    },
+    {
+      "first_gold_rank": 84,
+      "gold_doc_ids": [
+        "189230"
+      ],
+      "qid": "115886",
+      "query": "Yêu cầu ghi vào Sổ hộ tịch việc ly hôn thực hiện ở nước ngoài bằng những hình thức nào?",
+      "top5": [
+        "270799",
+        "249204",
+        "272362",
+        "157168",
+        "60283"
+      ]
+    },
+    {
+      "first_gold_rank": 73,
+      "gold_doc_ids": [
+        "74494"
+      ],
+      "qid": "116298",
+      "query": "Viên chức là gì?",
+      "top5": [
+        "116035",
+        "104321",
+        "20457",
+        "37163",
+        "177925"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "293986"
+      ],
+      "qid": "116846",
+      "query": "Viết tắt tên bị cáo trong văn bản của Tòa án nhân dân được pháp luật quy định như thế nào?",
+      "top5": [
+        "102434",
+        "177925",
+        "194863",
+        "110894",
+        "231956"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "33669"
+      ],
+      "qid": "117450",
+      "query": "Khi sử dụng đất trồng lúa để xây dựng nhà mồ cho cả dòng họ thì cần lưu ý những vấn đề gì?",
+      "top5": [
+        "105604",
+        "95134",
+        "128335",
+        "305455",
+        "184038"
+      ]
+    },
+    {
+      "first_gold_rank": 74,
+      "gold_doc_ids": [
+        "199066"
+      ],
+      "qid": "117728",
+      "query": "Viên chức được phân loại dựa trên những căn cứ phân loại nào?",
+      "top5": [
+        "164915",
+        "73685",
+        "122336",
+        "214899",
+        "65262"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "262254",
+        "280768"
+      ],
+      "qid": "118820",
+      "query": "Điều kiện, tiêu chuẩn chung về văn bằng công chức Văn phòng Quốc hội năm 2023 là gì?",
+      "top5": [
+        "163533",
+        "299073",
+        "58662",
+        "128674",
+        "244962"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "268683"
+      ],
+      "qid": "119502",
+      "query": "Tôm sú giống mắc bệnh đầu vàng ở tôm thì sẽ có những triệu chứng lâm sàng như thế nào?",
+      "top5": [
+        "177440",
+        "291854",
+        "51046",
+        "225360",
+        "266777"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "180968"
+      ],
+      "qid": "12238",
+      "query": "Tạm hoãn thi ielts và nhiều chứng chỉ quốc tế?",
+      "top5": [
+        "52666",
+        "77650",
+        "217080",
+        "133819",
+        "17545"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "131769"
+      ],
+      "qid": "123690",
+      "query": "Giải quyết kiến nghị trong đấu thầu được quy định như thế nào?",
+      "top5": [
+        "195377",
+        "201681",
+        "106872",
+        "192378",
+        "118434"
+      ]
+    },
+    {
+      "first_gold_rank": 53,
+      "gold_doc_ids": [
+        "199914"
+      ],
+      "qid": "123938",
+      "query": "Giãn thời gian thực hiện đối với quy định yêu cầu xếp hạng tín nhiệm bắt buộc?",
+      "top5": [
+        "278115",
+        "143746",
+        "208001",
+        "234489",
+        "103215"
+      ]
+    },
+    {
+      "first_gold_rank": 67,
+      "gold_doc_ids": [
+        "194094",
+        "20981"
+      ],
+      "qid": "124938",
+      "query": "Đảng đoàn Quốc hội có những quyền hạn gì?",
+      "top5": [
+        "51753",
+        "92692",
+        "14825",
+        "135923",
+        "162426"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "136960"
+      ],
+      "qid": "125318",
+      "query": "Đối với Ủy ban kiểm tra Đoàn Thanh niên Cộng sản Hồ Chí Minh cấp trên có các quyền hạn gì?",
+      "top5": [
+        "158833",
+        "33313",
+        "15992",
+        "95253",
+        "105341"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "254937"
+      ],
+      "qid": "127798",
+      "query": "Bài tập cơ tay, cơ chân được hướng dẫn như thế nào?",
+      "top5": [
+        "224085",
+        "132545",
+        "101613",
+        "110023",
+        "272883"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "41395",
+        "43443"
+      ],
+      "qid": "129132",
+      "query": "Mức lương cụ thể của công chức bổ nhiệm vào ngạch kiểm ngư viên được tính thế nào?",
+      "top5": [
+        "15331",
+        "14681",
+        "263293",
+        "81060",
+        "299073"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "254937"
+      ],
+      "qid": "130058",
+      "query": "Nguyên nhân khó thở sau mắc COVID-19 là gì? Kiểm soát khó thở sau mắc COVID-19 như thế nào?",
+      "top5": [
+        "164827",
+        "280171",
+        "44451",
+        "93677",
+        "296375"
+      ]
+    },
+    {
+      "first_gold_rank": 60,
+      "gold_doc_ids": [
+        "139064"
+      ],
+      "qid": "130144",
+      "query": "Quy định về đối tượng, tiêu chuẩn xét tặng giải thưởng",
+      "top5": [
+        "259174",
+        "55857",
+        "43858",
+        "126454",
+        "271154"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "11284"
+      ],
+      "qid": "130796",
+      "query": "Hồ sơ nhập học lớp 10 gồm có những giấy tờ gì?",
+      "top5": [
+        "104102",
+        "65567",
+        "102008",
+        "134200",
+        "144363"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "162178"
+      ],
+      "qid": "13128",
+      "query": "Cơ quan có thẩm quyền tiếp nhận phản ánh ý kiến như thế nào?",
+      "top5": [
+        "31689",
+        "106015",
+        "180514",
+        "202998",
+        "76831"
+      ]
+    },
+    {
+      "first_gold_rank": 79,
+      "gold_doc_ids": [
+        "105608"
+      ],
+      "qid": "131798",
+      "query": "Khám sức khỏe định kỳ cho nhân viên tiếp xúc trực tiếp với thực phẩm được pháp luật quy định như thế nào?",
+      "top5": [
+        "158296",
+        "138380",
+        "112804",
+        "293039",
+        "274746"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "81598"
+      ],
+      "qid": "133878",
+      "query": "Không có căn cước công dân để làm thủ tục sang tên đất đúng hạn thì có phải bồi thường hay không?",
+      "top5": [
+        "163224",
+        "178955",
+        "232659",
+        "81147",
+        "160745"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "193708"
+      ],
+      "qid": "134012",
+      "query": "Phạt nguội là gì?",
+      "top5": [
+        "299563",
+        "63930",
+        "231363",
+        "211305",
+        "99335"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "131890"
+      ],
+      "qid": "13426",
+      "query": "Máu gà dùng cho việc chẩn đoán bệnh viêm phế quản truyền nhiễm cần được bảo quản ở nhiệt độ bao nhiêu?",
+      "top5": [
+        "177613",
+        "35378",
+        "303613",
+        "184275",
+        "239885"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "26667"
+      ],
+      "qid": "134558",
+      "query": "Lãi suất cho vay của ngân hàng được quy định như thế nào? Ngân hàng có bị khống chế mức lãi suất cho vay hay không?",
+      "top5": [
+        "274362",
+        "225241",
+        "182181",
+        "283963",
+        "22282"
+      ]
+    },
+    {
+      "first_gold_rank": 76,
+      "gold_doc_ids": [
+        "75885"
+      ],
+      "qid": "134762",
+      "query": "Bảo vệ trong đơn vị sự nghiệp công lập có được ký hợp đồng làm việc không?",
+      "top5": [
+        "199066",
+        "196732",
+        "93859",
+        "103901",
+        "74494"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "170733"
+      ],
+      "qid": "135814",
+      "query": "Viện trưởng Viện Nghiên cứu lập pháp cần phải đảm bảo tiêu chuẩn về sức khỏe, độ tuổi bổ nhiệm thế nào?",
+      "top5": [
+        "70398",
+        "260763",
+        "257927",
+        "122574",
+        "128794"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "98892"
+      ],
+      "qid": "141264",
+      "query": "Người cố ý gây thương tích cho người khác trong trạng thái tinh thần kích động mạnh chưa đến mức truy cứu trách nhiệm hình sự bị xử phạt vi phạm hành chính như thế nào?",
+      "top5": [
+        "245154",
+        "186220",
+        "48429",
+        "24778",
+        "110305"
+      ]
+    },
+    {
+      "first_gold_rank": 65,
+      "gold_doc_ids": [
+        "156728"
+      ],
+      "qid": "144890",
+      "query": "Bộ Xây dựng có trách nhiệm như thế nào theo Chỉ thị 13/CT-TTg?",
+      "top5": [
+        "170096",
+        "162235",
+        "207032",
+        "301290",
+        "199056"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "222904"
+      ],
+      "qid": "145036",
+      "query": "Sách báo đã mua, photo lại có vi phạm không?",
+      "top5": [
+        "93883",
+        "168163",
+        "105483",
+        "213188",
+        "48223"
+      ]
+    },
+    {
+      "first_gold_rank": 75,
+      "gold_doc_ids": [
+        "125504"
+      ],
+      "qid": "145468",
+      "query": "Thuốc thử dùng chẩn đoán bệnh Perkinsus Marinus ở nhuyễn thể hai mảnh nhỏ có những loại nào cần được điều chế?",
+      "top5": [
+        "299372",
+        "130066",
+        "77897",
+        "184275",
+        "270912"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "147934"
+      ],
+      "qid": "148506",
+      "query": "Bảo đảm thuốc, vật tư y tế và việc cán bộ y tế thôi việc, bỏ việc tại các cơ sở y tế công lập?",
+      "top5": [
+        "229347",
+        "144653",
+        "123538",
+        "201681",
+        "177137"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "153413",
+        "88309"
+      ],
+      "qid": "149690",
+      "query": "Người dân vứt xác heo bị dịch tả lợn Châu Phi ra môi trường xung quanh có bị xử lý vi phạm hành chính không? ",
+      "top5": [
+        "18428",
+        "81400",
+        "204946",
+        "17545",
+        "289519"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "255906"
+      ],
+      "qid": "151476",
+      "query": "Liên đoàn Luật sư có trách nhiệm gì khi phát sinh các vấn đề liên quan đến việc tập sự hành nghề luật sư?",
+      "top5": [
+        "52090",
+        "130568",
+        "296204",
+        "225673",
+        "195609"
+      ]
+    },
+    {
+      "first_gold_rank": 87,
+      "gold_doc_ids": [
+        "56852"
+      ],
+      "qid": "151910",
+      "query": "Hạn chót nộp hồ sơ dự tuyển là khi nào? Nộp hồ sơ dự tuyển tại đâu?",
+      "top5": [
+        "69489",
+        "58182",
+        "215901",
+        "43779",
+        "72531"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "261626"
+      ],
+      "qid": "152476",
+      "query": "Xuất khẩu hàng hóa sầu riêng ri 6 sang Hàn Quốc có được hưởng ưu đãi thuế quan hay không?",
+      "top5": [
+        "177910",
+        "103184",
+        "236422",
+        "200953",
+        "4809"
+      ]
+    },
+    {
+      "first_gold_rank": null,
+      "gold_doc_ids": [
+        "189230"
+      ],
+      "qid": "155408",
+      "query": "Thời hạn giải quyết thủ tục đăng ký nhận cha mẹ con bằng hình thức online là trong bao lâu?",
+      "top5": [
+        "98802",
+        "221147",
+        "277700",
+        "218610",
+        "296890"
+      ]
+    }
+  ]
+}

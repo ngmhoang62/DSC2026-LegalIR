@@ -1,0 +1,52 @@
+{
+  "agent_spotcheck_candidates": "D:\\Study\\DSC2026\\LegalIR\\results\\exp033_in_document_evidence_routing\\scope-audit\\AGENT_SPOTCHECK_CANDIDATES_30.jsonl",
+  "disagreements": 0,
+  "fingerprint": "05f58caf2a60646ef6ec3a0eccac897cd45253def988c2c46283af015220ac4c",
+  "metrics": {
+    "boundary_accuracy": 1.0,
+    "class_precision": {
+      "applicable_subjects": 1.0,
+      "combined": 1.0,
+      "scope_of_regulation": 1.0
+    },
+    "confusion": {
+      "applicable_subjects": {
+        "applicable_subjects": 49,
+        "combined": 0,
+        "none": 0,
+        "scope_of_regulation": 0
+      },
+      "combined": {
+        "applicable_subjects": 0,
+        "combined": 80,
+        "none": 0,
+        "scope_of_regulation": 0
+      },
+      "none": {
+        "applicable_subjects": 0,
+        "combined": 0,
+        "none": 43,
+        "scope_of_regulation": 0
+      },
+      "scope_of_regulation": {
+        "applicable_subjects": 0,
+        "combined": 0,
+        "none": 0,
+        "scope_of_regulation": 28
+      }
+    },
+    "micro_precision": 1.0,
+    "recall": {
+      "applicable_subjects": 1.0,
+      "combined": 1.0,
+      "scope_of_regulation": 1.0
+    },
+    "stratified_weighted_recall": 1.0
+  },
+  "records": 200,
+  "repaired_parser_gate": true,
+  "schema_version": "legalir.exp033_in_document_evidence_routing.v1",
+  "source_exact_failure_examples": [],
+  "source_exact_failures": 0,
+  "status": "WAITING_AGENT_SPOTCHECK"
+}

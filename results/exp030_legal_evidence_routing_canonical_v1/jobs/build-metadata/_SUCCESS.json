@@ -1,0 +1,24 @@
+{
+  "fingerprint": "7fafa285a5456667c176d7d06ea4d55830d18ea713b82ab91416a4a06f7f4cd0",
+  "finished_at": 1787561776.9179316,
+  "payload": {
+    "accented_labels": 0,
+    "documents": 8507,
+    "documents_with_typed_scope": 4590,
+    "header_relations": 32130,
+    "schema_version": "legalir.exp030_legal_evidence_routing.v1",
+    "scope_counts": {
+      "applicable_subjects": 2672,
+      "combined": 1221,
+      "rejected_legacy_scope": 6672,
+      "scope_of_regulation": 3362
+    },
+    "status": "PASS",
+    "title_status": {
+      "MISSING": 1643,
+      "VERIFIED": 6864
+    },
+    "v3_fingerprint": "9743fe70ec4092aca28a9855d0236bdedef41d8a458e39d750062b9ef85a37bc",
+    "verified_title_exact_spans": 6864
+  }
+}

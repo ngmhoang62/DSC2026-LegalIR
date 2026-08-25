@@ -1,0 +1,54 @@
+{
+  "finished_at": 1787481719.9314642,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "exp028-input-audit",
+  "telemetry": {
+    "candidates": 1050000,
+    "columns": [
+      "candidate_rank",
+      "e5_rank",
+      "e5_score",
+      "e5_recip",
+      "bm25_rank",
+      "bm25_recip",
+      "has_e5",
+      "has_bm25",
+      "rank_gap",
+      "bm25_passage_min",
+      "bm25_passage_mean",
+      "bm25_passage_count",
+      "e5_margin",
+      "e5_relative",
+      "passage_length",
+      "parse_fallback",
+      "scope_nodes",
+      "label_tokens",
+      "query_tokens",
+      "e5_evidence_count",
+      "e5_evidence_parent_count",
+      "e5_evidence_max",
+      "e5_evidence_mean",
+      "e5_evidence_spread"
+    ],
+    "inputs": {
+      "candidates_sha256": "b86bfbca5837bd4c8d295fd9943e6469580a5aba601efa22c4ab285325d50435",
+      "exclusions_sha256": "d10aef3d891746cd9f874b32e9cb20940cb4fef0928c0fe239fdb7ca16337616",
+      "features_manifest_sha256": "1a89e17f6e3ab058781dee62cd04dcf9fb13046622984b46e4578a556994d5b9",
+      "folds_sha256": "cce10d34c23ea0d9eb51cbe9533ff8bed9761db06f09023c0e3d6f26552d9c00",
+      "preprocessing_manifest_sha256": "e09dda31496a4adfb86e1ab6816afcc82e791e012c2e55c5f1afc99493944b60",
+      "sidecar_sha256": "d56d12c8a13debd9c3fb892be95ecee47fbaa988ede71e1072d8849ab8c1b7e6",
+      "train_sha256": "c39cde9e74977e350f1456e7d487aafe67d2bcbaa4fa26fcabd557fe635635b7",
+      "v3_manifest_sha256": "d572b3d07d7bf741c077c0d92f139f0d6bf23691ad7fc4bbe1b542c08809aeec"
+    },
+    "queries": 7000,
+    "retained_label_impact": {
+      "affected_queries": 13,
+      "excluded_document_ids": 25,
+      "removed_gold_occurrences": 13
+    },
+    "schema_version": "legalir.exp028_lambdamart_shortlist.v1",
+    "status": "PASS",
+    "v3_fingerprint": "9743fe70ec4092aca28a9855d0236bdedef41d8a458e39d750062b9ef85a37bc"
+  },
+  "v3_fingerprint": "9743fe70ec4092aca28a9855d0236bdedef41d8a458e39d750062b9ef85a37bc"
+}

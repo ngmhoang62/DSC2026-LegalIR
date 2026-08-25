@@ -1,0 +1,412 @@
+{
+  "bm25_beyond_e5_150": [
+    {
+      "bm25_rank": 1,
+      "document_label": "TCVN 12594 2018 ISO 21103 2014 Du lich mao hiem Thong tin cho nguoi tham gia 918497",
+      "e5_rank": null,
+      "gold_doc_id": "55551",
+      "legal_identifier": false,
+      "parse_mode": "fallback",
+      "qid": "25724",
+      "query": "Mục đích cung cấp thông tin trong quá trình thực hiện hoạt động phải đảm bảo những gì?"
+    },
+    {
+      "bm25_rank": 4,
+      "document_label": "Nghi dinh 23 2015 ND CP cap chung thuc ban sao tu ban chinh chung thuc chu ky 266857",
+      "e5_rank": null,
+      "gold_doc_id": "259656",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "144970",
+      "query": "Giấy ủy quyền vay vốn có thời hạn 10 năm đã được chứng thực thì được lưu trữ trong thời gian 10 năm hay chỉ 2 năm?"
+    },
+    {
+      "bm25_rank": 4,
+      "document_label": "Cong van 5731 TCHQ TXNK 2022 thuc hien Thong tu 31 2022 TT BTC 548158",
+      "e5_rank": null,
+      "gold_doc_id": "106258",
+      "legal_identifier": true,
+      "parse_mode": "fallback",
+      "qid": "7332",
+      "query": "Bộ Tài chính hướng dẫn thực hiện Thông tư 31/2022/TT-BTC như thế nào? "
+    },
+    {
+      "bm25_rank": 5,
+      "document_label": "Nghi dinh 32 2019 ND CP dau thau cung cap san pham dich vu cong su dung ngan sach nha nuoc 361768",
+      "e5_rank": null,
+      "gold_doc_id": "150719",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "60226",
+      "query": "Cơ quan nào có thẩm quyền giao nhiệm vụ thực hiện xuất bản phẩm sử dụng ngân sách nhà nước?"
+    },
+    {
+      "bm25_rank": 6,
+      "document_label": "Thong tu 96 2021 TT BTC he thong mau bieu su dung trong cong tac quyet toan 495766",
+      "e5_rank": null,
+      "gold_doc_id": "185842",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "24598",
+      "query": "Mẫu chi tiết tài sản dài hạn (tài sản cố định) mới tăng năm 2022?"
+    },
+    {
+      "bm25_rank": 8,
+      "document_label": "Cong van 3699 TCHQ TXNK 2022 thue gia tri gia tang thiet bi dien tu gia dung nhap khau 529300",
+      "e5_rank": null,
+      "gold_doc_id": "214057",
+      "legal_identifier": false,
+      "parse_mode": "fallback",
+      "qid": "37826",
+      "query": "Thiết bị điện tử gia dụng bao gồm những thiết bị nào? "
+    },
+    {
+      "bm25_rank": 9,
+      "document_label": "Cong van 7262 NHNN TT 2022 ung dung du lieu dan cu trong hoat dong ngan hang 536222",
+      "e5_rank": null,
+      "gold_doc_id": "159830",
+      "legal_identifier": false,
+      "parse_mode": "fallback",
+      "qid": "116230",
+      "query": "Trường hợp khách hàng sử dụng thiết bị khác với thiết bị đăng ký thì Tổ chức tín dụng có giải pháp gì?"
+    },
+    {
+      "bm25_rank": 10,
+      "document_label": "Nghi quyet 18 NQ TW 2022 hoan thien the che su dung dat tao dong luc phat trien thu nhap cao 518813",
+      "e5_rank": null,
+      "gold_doc_id": "266221",
+      "legal_identifier": false,
+      "parse_mode": "fallback",
+      "qid": "87534",
+      "query": "Quy định về đổi mới, tăng cường, công tác thanh tra, kiểm tra; siết chặt kỷ luật phòng, chống tham nhũng như thế nào?"
+    }
+  ],
+  "bm25_only_gold": [
+    {
+      "bm25_rank": 1,
+      "document_label": "TCVN 12594 2018 ISO 21103 2014 Du lich mao hiem Thong tin cho nguoi tham gia 918497",
+      "e5_rank": null,
+      "gold_doc_id": "55551",
+      "legal_identifier": false,
+      "parse_mode": "fallback",
+      "qid": "25724",
+      "query": "Mục đích cung cấp thông tin trong quá trình thực hiện hoạt động phải đảm bảo những gì?"
+    },
+    {
+      "bm25_rank": 1,
+      "document_label": "Thong tu 47 2022 TT BTC huong dan xay dung du toan ngan sach va ke hoach tai chinh 2023 524554",
+      "e5_rank": null,
+      "gold_doc_id": "162235",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "61940",
+      "query": "Chống thất thu đối với doanh nghiệp, cá nhân kinh doanh trong lĩnh vực thương mại, dịch vụ, nhất là chống thất thu thuế trong kinh doanh, chuyển nhượng bất động sản?"
+    },
+    {
+      "bm25_rank": 4,
+      "document_label": "Nghi dinh 23 2015 ND CP cap chung thuc ban sao tu ban chinh chung thuc chu ky 266857",
+      "e5_rank": null,
+      "gold_doc_id": "259656",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "144970",
+      "query": "Giấy ủy quyền vay vốn có thời hạn 10 năm đã được chứng thực thì được lưu trữ trong thời gian 10 năm hay chỉ 2 năm?"
+    },
+    {
+      "bm25_rank": 4,
+      "document_label": "nghi dinh 204 2004 nd cp che do tien luong doi voi can bo cong chuc vien chuc luc luong vu trang 52629",
+      "e5_rank": null,
+      "gold_doc_id": "166505",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "49114",
+      "query": "Đối tượng nào được hưởng chế độ phụ cấp ưu đãi nghề khi hoạt động biểu diễn nghệ thuật trong quân đội?"
+    },
+    {
+      "bm25_rank": 4,
+      "document_label": "Cong van 5731 TCHQ TXNK 2022 thuc hien Thong tu 31 2022 TT BTC 548158",
+      "e5_rank": null,
+      "gold_doc_id": "106258",
+      "legal_identifier": true,
+      "parse_mode": "fallback",
+      "qid": "7332",
+      "query": "Bộ Tài chính hướng dẫn thực hiện Thông tư 31/2022/TT-BTC như thế nào? "
+    },
+    {
+      "bm25_rank": 5,
+      "document_label": "Luat kham benh chua benh nam 2009 98714",
+      "e5_rank": null,
+      "gold_doc_id": "234757",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "43762",
+      "query": "Việc chẩn đoán bệnh viêm phổi ở trẻ em có dựa trên kết quả kiểm tra cận lâm sàng không?"
+    },
+    {
+      "bm25_rank": 5,
+      "document_label": "Nghi dinh 32 2019 ND CP dau thau cung cap san pham dich vu cong su dung ngan sach nha nuoc 361768",
+      "e5_rank": null,
+      "gold_doc_id": "150719",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "60226",
+      "query": "Cơ quan nào có thẩm quyền giao nhiệm vụ thực hiện xuất bản phẩm sử dụng ngân sách nhà nước?"
+    },
+    {
+      "bm25_rank": 6,
+      "document_label": "Thong tu 96 2021 TT BTC he thong mau bieu su dung trong cong tac quyet toan 495766",
+      "e5_rank": null,
+      "gold_doc_id": "185842",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "24598",
+      "query": "Mẫu chi tiết tài sản dài hạn (tài sản cố định) mới tăng năm 2022?"
+    }
+  ],
+  "both_gold": [
+    {
+      "bm25_rank": 2,
+      "document_label": "Thong tu 148 2018 TT BQP quy dinh tuyen chon va goi cong dan nhap ngu 396402",
+      "e5_rank": 1,
+      "gold_doc_id": "297709",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100126",
+      "query": "Tiêu chuẩn tuyển quân đối với công dân tham gia nghĩa vụ quân sự"
+    },
+    {
+      "bm25_rank": 1,
+      "document_label": "Quyet dinh 1244 QD BKHCN 2019 Quy che xet chon ton vinh Doanh nghiep doi moi cong nghe tieu bieu 436",
+      "e5_rank": 1,
+      "gold_doc_id": "77697",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100138",
+      "query": "Để được tham gia xét chọn danh hiệu Doanh nghiệp đổi mới công nghệ tiêu biểu, doanh nghiệp phải đáp ứng những điều kiện nào?"
+    },
+    {
+      "bm25_rank": 2,
+      "document_label": "Thong tu 01 2017 TT BLDTBXH tieu chuan dao duc nghe nghiep nguoi lam cong tac xa hoi 338878",
+      "e5_rank": 1,
+      "gold_doc_id": "195363",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100140",
+      "query": "Nghề công tác xã hội được hiểu như thế nào?"
+    },
+    {
+      "bm25_rank": 1,
+      "document_label": "Thong tu 133 2018 TT BTC huong dan lap Bao cao tai chinh nha nuoc 383300",
+      "e5_rank": 2,
+      "gold_doc_id": "42598",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100152",
+      "query": "Trình tự lập báo cáo tình hình tài chính nhà nước được thực hiện như thế nào?"
+    },
+    {
+      "bm25_rank": 1,
+      "document_label": "Quyet dinh 5732 QD BYT 2017 ky thuat Ngoai khoa chuyen khoa Phau thuat Tim mach Long nguc 370398",
+      "e5_rank": 1,
+      "gold_doc_id": "202376",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100158",
+      "query": "Phẫu thuật mở ngực nhỏ tạo dính màng phổi xong thì người bệnh sẽ được theo dõi ra sao?"
+    },
+    {
+      "bm25_rank": 1,
+      "document_label": "Thong tu lien tich 42 2013 TTLT BGDDT BLDTBXH BTC chinh sach giao duc nguoi khuyet tat 220707",
+      "e5_rank": 1,
+      "gold_doc_id": "245971",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100160",
+      "query": "Gia đình người khuyết tật được hưởng học bổng phải chuẩn bị những hồ sơ gì khi theo học tại cơ sở giáo dục công lập?"
+    },
+    {
+      "bm25_rank": 1,
+      "document_label": "Thong tu 09 2016 TT BVHTTDL to chuc thi lien hoan van nghe quan chung 328074",
+      "e5_rank": 1,
+      "gold_doc_id": "169119",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100176",
+      "query": "Chương trình liên hoan văn nghệ quần chúng được tổ chức ở bao nhiêu cấp?"
+    },
+    {
+      "bm25_rank": 1,
+      "document_label": "Thong tu 35 2017 TT BQP tieu chuan du dieu kien bay thu tuc cap giay phep thiet ke san xuat tau bay",
+      "e5_rank": 1,
+      "gold_doc_id": "276613",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100242",
+      "query": "Hồ sơ đề nghị cấp giấy phép cho cơ sở sản xuất phương tiện bay siêu nhẹ gồm những gì? "
+    }
+  ],
+  "e5_only_gold": [
+    {
+      "bm25_rank": null,
+      "document_label": "TCVN 8710 10 2015 chuan doan benh do Perkinsus Marinus nhuyen the hai manh nho 915370",
+      "e5_rank": 1,
+      "gold_doc_id": "125504",
+      "legal_identifier": false,
+      "parse_mode": "fallback",
+      "qid": "145468",
+      "query": "Thuốc thử dùng chẩn đoán bệnh Perkinsus Marinus ở nhuyễn thể hai mảnh nhỏ có những loại nào cần được điều chế?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Nghi dinh 90 2017 ND CP quy dinh xu phat vi pham hanh chinh trong linh vuc thu y 336190",
+      "e5_rank": 1,
+      "gold_doc_id": "88309",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "149690",
+      "query": "Người dân vứt xác heo bị dịch tả lợn Châu Phi ra môi trường xung quanh có bị xử lý vi phạm hành chính không? "
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Nghi dinh 100 2019 ND CP xu phat vi pham hanh chinh linh vuc giao thong duong bo va duong sat 426369",
+      "e5_rank": 1,
+      "gold_doc_id": "50885",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "155776",
+      "query": "Các lỗi phạt nguội thường hay bị phạt đối với xe máy gồm những lỗi nào?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Luat tin nguong ton giao 2016 322934",
+      "e5_rank": 1,
+      "gold_doc_id": "44802",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "162854",
+      "query": "Khái niệm về sư trụ trì chùa được hiểu như thế nào? Điều kiện để trở thành sư trụ trì là gì?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Nghi dinh 86 2021 ND CP cong dan Viet Nam ra nuoc ngoai hoc tap giang day nghien cuu khoa hoc 489274",
+      "e5_rank": 1,
+      "gold_doc_id": "14929",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "163230",
+      "query": "Du học sinh đủ điều kiện được cấp bằng cần làm hồ sơ gì để được tiếp nhận về nước?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Luat dau gia tai san 2016 280115",
+      "e5_rank": 1,
+      "gold_doc_id": "125793",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "22720",
+      "query": "Trường hợp Ngân hàng bán đấu giá tài sản thế chấp để thu hồi nợ, thì bên thế chấp (chủ tài sản) có được đăng ký mua tài sản đó không?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Quy dinh 214 QD TW 2020 tieu chuan chuc danh can bo thuoc dien Ban Chap hanh Trung uong 433545",
+      "e5_rank": 1,
+      "gold_doc_id": "170733",
+      "legal_identifier": false,
+      "parse_mode": "fallback",
+      "qid": "22952",
+      "query": "Để trở thành Chủ tịch nước thì ứng viên phải đảm bảo những tiêu chuẩn nào?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Nghi dinh 88 2019 ND CP xu phat vi pham hanh chinh trong linh vuc tien te va ngan hang 428666",
+      "e5_rank": 1,
+      "gold_doc_id": "105483",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "4040",
+      "query": "Trường hợp thực hiện hợp đồng trong đó có ghi giá hợp đồng và thanh toán bằng ngoại hối (USD) thì bị xử phạt như thế nào?"
+    }
+  ],
+  "neither_gold": [
+    {
+      "bm25_rank": null,
+      "document_label": "Thong tu 02 2017 TT BQP hoat dong huan luyen an toan ve sinh lao dong 337143",
+      "e5_rank": null,
+      "gold_doc_id": "116851",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "100522",
+      "query": "Nhân viên chuyên môn kỹ thuật rà phá bom mìn phải đáp ứng đầy đủ các yêu cầu gì?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Luat vien chuc 2010 115271",
+      "e5_rank": null,
+      "gold_doc_id": "74494",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "101324",
+      "query": "Xét thăng hạng chức danh nghề nghiệp từ Lưu trữ viên trung cấp lên Lưu trữ viên cần đáp ứng những điều kiện gì? "
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Thong tu 12 2022 TT BNV vi tri viec lam cong chuc lanh dao nghiep vu chuyen mon dung chung 550261",
+      "e5_rank": null,
+      "gold_doc_id": "136014",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "101938",
+      "query": "Chi Cục trưởng thuộc Bộ có quyền hạn cụ thể là gì?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Nghi dinh 38 2019 ND CP muc luong co so doi voi can bo cong chuc vien chuc va luc luong vu trang 403",
+      "e5_rank": null,
+      "gold_doc_id": "43443",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "102004",
+      "query": "Mức thưởng cho Đảng viên được trao tặng huy hiệu Đảng hiện nay?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Hien phap nam 2013 215627",
+      "e5_rank": null,
+      "gold_doc_id": "96450",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "102220",
+      "query": "Cha mẹ có hành vi bạo hành con trai của mình được hiểu như thế nào?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Nghi dinh 24 2018 ND CP giai quyet khieu nai to cao trong linh vuc lao dong 359065",
+      "e5_rank": null,
+      "gold_doc_id": "176929",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "102682",
+      "query": "Xin nghỉ nhưng công ty không đồng ý thì xử lý thế nào?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Chi thi 17 CT TTg 2017 tang cuong quan ly nha nuoc chan chinh hoat dong quang cao 348756",
+      "e5_rank": null,
+      "gold_doc_id": "42184",
+      "legal_identifier": false,
+      "parse_mode": "fallback",
+      "qid": "102718",
+      "query": "Những nội dung nào liên quan công tác hậu kiểm về an toàn thực phẩm năm 2023?"
+    },
+    {
+      "bm25_rank": null,
+      "document_label": "Thong tu 18 2022 TT BLDTBXH bai bo van ban quy pham phap luat 531025",
+      "e5_rank": null,
+      "gold_doc_id": "56310",
+      "legal_identifier": false,
+      "parse_mode": "structured",
+      "qid": "102928",
+      "query": "Chính sách hỗ trợ đào tạo nghề nghiệp đối với người chấp hành án phạt tù là gì?"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "bm25_incremental_over_e5_150_gold_occurrences": {
+    "by_query_pattern": {
+      "legal_identifier": 1,
+      "no_legal_identifier": 25
+    },
+    "total": 26
+  },
+  "candidate_occurrences": {
+    "bm25_novel_appended": {
+      "max": 50,
+      "mean": 49.957142857142856,
+      "min": 18,
+      "p50": 50.0,
+      "p90": 50.0,
+      "total": 349700
+    },
+    "bm25_only": {
+      "max": 49,
+      "mean": 20.864714285714285,
+      "min": 0,
+      "p50": 20.0,
+      "p90": 32.100000000000364,
+      "total": 146053
+    },
+    "both": {
+      "max": 50,
+      "mean": 29.135285714285715,
+      "min": 1,
+      "p50": 30.0,
+      "p90": 40.0,
+      "total": 203947
+    },
+    "e5_only": {
+      "max": 99,
+      "mean": 70.86471428571429,
+      "min": 50,
+      "p50": 70.0,
+      "p90": 82.10000000000036,
+      "total": 496053
+    },
+    "filled_union": {
+      "max": 150,
+      "mean": 150.0,
+      "min": 150,
+      "p50": 150.0,
+      "p90": 150.0,
+      "total": 1050000
+    },
+    "raw_top50_union": {
+      "max": 149,
+      "mean": 120.86471428571429,
+      "min": 100,
+      "p50": 120.0,
+      "p90": 132.10000000000036,
+      "total": 846053
+    }
+  },
+  "inputs": {
+    "code_sha256": "99fc3b3482b6ba1bc4696eb934c032bc79e38c2f400ccb32a820651903e989e0",
+    "dense_candidates_sha256": "dce4a38bae5b14ad37acd73a821b1c04897356fd010da01be1f123ccea3619a4",
+    "folds_sha256": "cce10d34c23ea0d9eb51cbe9533ff8bed9761db06f09023c0e3d6f26552d9c00",
+    "preprocessing_exclusions_sha256": "d10aef3d891746cd9f874b32e9cb20940cb4fef0928c0fe239fdb7ca16337616",
+    "sparse_evidence_manifest_sha256": "8559d96c1a448fbc6f7f5d2584764f26f3f1e94e36218b26311a9067d3bfd9c2",
+    "sparse_tuning_report_sha256": "fc41b943fb866e13ef1e9f490d21fd5e95f3d3eccabf61d7be4f8dd9483d3410"
+  },
+  "policy": {
+    "bm25_novel_append_max": 50,
+    "bm25_raw_overlap_depth": 50,
+    "dense_backfill": "E5 ranks 101-150",
+    "e5_anchor": 100,
+    "max_union": 150,
+    "ranking": "e5 anchor, novel bm25 in rank order, dense tail fallback"
+  },
+  "queries": 7000,
+  "recall": {
+    "all_gold": {
+      "bm25@50": 0.965895238095238,
+      "e5@100": 0.9839666666666667,
+      "filled_union=150": 0.9889595238095238,
+      "raw_top50_union<=150": 0.9877333333333334
+    },
+    "retained_gold": {
+      "bm25@50": 0.9675585443792626,
+      "e5@100": 0.9856584156054753,
+      "filled_union=150": 0.9906591310154051,
+      "raw_top50_union<=150": 0.9894310106357609
+    }
+  },
+  "retained_gold_occurrences": {
+    "bm25_only_gold": 34,
+    "both_gold": 7251,
+    "e5_only_gold": 203,
+    "neither_gold": 136
+  },
+  "retained_gold_outcomes_by_query_pattern": {
+    "legal_identifier": {
+      "bm25_only_gold": 1,
+      "both_gold": 50,
+      "e5_only_gold": 5,
+      "neither_gold": 4
+    },
+    "no_legal_identifier": {
+      "bm25_only_gold": 33,
+      "both_gold": 7201,
+      "e5_only_gold": 198,
+      "neither_gold": 132
+    }
+  },
+  "samples_path": "samples.json",
+  "schema_version": "legalir.exp022_e5_bm25_union_audit.v1",
+  "status": "PASS",
+  "union_candidates_sha256": "b86bfbca5837bd4c8d295fd9943e6469580a5aba601efa22c4ab285325d50435"
+}

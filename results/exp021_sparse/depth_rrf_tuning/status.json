@@ -1,0 +1,10 @@
+{
+  "completed": 7000,
+  "finished_at": 1787460080.4655411,
+  "pid": 15676,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "tune-depth-rrf-oof",
+  "started_at": 1787459794.5701444,
+  "state": "COMPLETE",
+  "total": 7000
+}

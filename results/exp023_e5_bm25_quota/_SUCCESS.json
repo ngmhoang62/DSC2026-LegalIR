@@ -1,0 +1,10 @@
+{
+  "finished_at": 1787467287.3507679,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "e5-bm25-quota-ablation",
+  "telemetry": {
+    "queries": 7000,
+    "retained_recall@150": 0.9903371965469546
+  },
+  "v3_fingerprint": null
+}

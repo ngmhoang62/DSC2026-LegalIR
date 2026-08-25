@@ -1,0 +1,15 @@
+{
+  "fingerprint": "914130c6ea61fd9002840c3dd9de7924b9fe819bb8e28385f81deb2c30eb5c6b",
+  "finished_at": 1787649541.6309683,
+  "result": {
+    "model": "gte",
+    "peak_vram_bytes": 1532399616,
+    "queries": 64,
+    "schema_version": "legalir.exp030_legal_evidence_routing.v1",
+    "scores": "D:\\Study\\DSC2026\\LegalIR\\results\\exp031_model_specific_validation\\heldout\\fold_1\\gte\\unaccented_base\\scores.jsonl",
+    "seconds": 206.9523364000488
+  },
+  "schema_version": "legalir.exp031_model_specific_validation.v1",
+  "started_at": 1787649324.8898284,
+  "state": "SUCCESS"
+}

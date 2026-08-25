@@ -1,0 +1,10 @@
+{
+  "finished_at": 1787413358.0241904,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "e5-dense-train-oof",
+  "telemetry": {
+    "queries": 7000,
+    "runtime_seconds": 217.731
+  },
+  "v3_fingerprint": "9743fe70ec4092aca28a9855d0236bdedef41d8a458e39d750062b9ef85a37bc"
+}

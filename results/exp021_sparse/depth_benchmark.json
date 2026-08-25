@@ -1,0 +1,33 @@
+{
+  "database": "cache\\exp021_sparse\\passage_hierarchy\\fts5\\bm25_v3.sqlite",
+  "results": {
+    "1024": {
+      "elapsed_seconds": 69.73059619998094,
+      "linear_extrapolation_7000_seconds": 3813.3919796864575,
+      "mean_returned_passages": 1024.0,
+      "mean_unique_documents_in_passage_pool": 341.71875,
+      "sample_queries": 128,
+      "seconds_per_query_wall": 0.5447702828123511,
+      "workers": 3
+    },
+    "2048": {
+      "elapsed_seconds": 73.50494070001878,
+      "linear_extrapolation_7000_seconds": 4019.801444532277,
+      "mean_returned_passages": 2048.0,
+      "mean_unique_documents_in_passage_pool": 646.3515625,
+      "sample_queries": 128,
+      "seconds_per_query_wall": 0.5742573492188967,
+      "workers": 3
+    },
+    "4096": {
+      "elapsed_seconds": 72.7141632999992,
+      "linear_extrapolation_7000_seconds": 3976.5558054687062,
+      "mean_returned_passages": 4096.0,
+      "mean_unique_documents_in_passage_pool": 1193.4765625,
+      "sample_queries": 128,
+      "seconds_per_query_wall": 0.5680794007812437,
+      "workers": 3
+    }
+  },
+  "sample_size": 128
+}

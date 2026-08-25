@@ -17,6 +17,42 @@ public_test_dataset/*
 results/*
 !results/.gitkeep
 
+# Retrieval / candidate generation
+!results/exp021_e5_dense_candidates/
+!results/exp021_e5_dense_candidates/**
+
+!results/exp021_sparse/
+!results/exp021_sparse/**
+
+!results/exp022_e5_bm25_union/
+!results/exp022_e5_bm25_union/**
+
+!results/exp023_e5_bm25_quota/
+!results/exp023_e5_bm25_quota/**
+
+# Pre-ranker
+!results/exp028_lambdamart_shortlist/
+!results/exp028_lambdamart_shortlist/**
+
+# Reranking diagnostics / current trajectory
+!results/exp030_legal_evidence_routing_canonical_v1/
+!results/exp030_legal_evidence_routing_canonical_v1/**
+
+!results/exp031_capsule_diagnostics/
+!results/exp031_capsule_diagnostics/**
+
+!results/exp031_model_specific_validation/
+!results/exp031_model_specific_validation/**
+
+!results/exp032_capsule_gap_audit/
+!results/exp032_capsule_gap_audit/**
+
+!results/exp033_in_document_evidence_routing/
+!results/exp033_in_document_evidence_routing/**
+
+# Re-ignore logs inside unignored result folders
+results/**/*.log
+
 cache/*
 !cache/.gitkeep
 

@@ -1,0 +1,136 @@
+{
+  "artifacts": {
+    "oof_candidates": "train_oof_candidates.jsonl",
+    "remaining_misses": "remaining_misses.jsonl",
+    "report": "REPORT.md"
+  },
+  "bm25_novel_actual": {
+    "max": 50,
+    "mean": 41.97342857142857,
+    "min": 18
+  },
+  "cap": 150,
+  "fold_metrics": {
+    "fold_0": {
+      "quota": [
+        100,
+        50
+      ],
+      "retained_mrr@150": 0.7355758976308054,
+      "retained_recall@150": 0.9896280400572246
+    },
+    "fold_1": {
+      "quota": [
+        120,
+        30
+      ],
+      "retained_mrr@150": 0.722624933270906,
+      "retained_recall@150": 0.9912249283667621
+    },
+    "fold_2": {
+      "quota": [
+        100,
+        50
+      ],
+      "retained_mrr@150": 0.7273763672987247,
+      "retained_recall@150": 0.9908863473909936
+    },
+    "fold_3": {
+      "quota": [
+        100,
+        50
+      ],
+      "retained_mrr@150": 0.7319936939824758,
+      "retained_recall@150": 0.990052418394091
+    },
+    "fold_4": {
+      "quota": [
+        120,
+        30
+      ],
+      "retained_mrr@150": 0.7230023147620358,
+      "retained_recall@150": 0.9898950131233597
+    }
+  },
+  "inputs": {
+    "code_sha256": "0beb3dc06448ef71ad30a877934ee42b61f0c817c547232b09bf31c89363d063",
+    "dense_candidates_sha256": "dce4a38bae5b14ad37acd73a821b1c04897356fd010da01be1f123ccea3619a4",
+    "dense_manifest_sha256": "cc18d7b02c63dc49ad2918379591fc7770b9802531bd0f9e9f97f2589c5b9eb7",
+    "folds_sha256": "cce10d34c23ea0d9eb51cbe9533ff8bed9761db06f09023c0e3d6f26552d9c00",
+    "sparse_evidence_manifest_sha256": "8559d96c1a448fbc6f7f5d2584764f26f3f1e94e36218b26311a9067d3bfd9c2",
+    "sparse_report_sha256": "fc41b943fb866e13ef1e9f490d21fd5e95f3d3eccabf61d7be4f8dd9483d3410"
+  },
+  "oof": {
+    "retained_mrr@150": 0.7281173932163421,
+    "retained_recall@150": 0.9903371965469546
+  },
+  "quota_grid": [
+    [
+      50,
+      100
+    ],
+    [
+      70,
+      80
+    ],
+    [
+      100,
+      50
+    ],
+    [
+      120,
+      30
+    ]
+  ],
+  "recommended_default": {
+    "bm25_novel_max": 50,
+    "e5_anchor": 100,
+    "policy": "E5 anchor, append novel BM25, then E5/BM25 deterministic backfill to exactly 150 unique parent IDs",
+    "rationale": "modal nested-OOF quota selection; fixed policy for the next pre-reranker stage"
+  },
+  "remaining_miss_definition": {
+    "both_model_miss": "Gold parent absent from E5 stored Top-150 and the selected BM25 ranking list; source-list bounded handoff, not proof of unretrievability.",
+    "budget_allocation_miss": "Gold parent present in at least one inspected source ranking but absent after the fixed 150-document quota/allocation."
+  },
+  "remaining_retained_gold": {
+    "by_query_pattern": {
+      "legal_identifier": {
+        "budget_allocation_miss": 3
+      },
+      "no_legal_identifier": {
+        "both_model_miss": 86,
+        "budget_allocation_miss": 37
+      }
+    },
+    "by_type": {
+      "both_model_miss": 86,
+      "budget_allocation_miss": 40
+    },
+    "total": 126
+  },
+  "schema_version": "legalir.exp023_e5_bm25_quota_ablation.v1",
+  "selected_by_fold": {
+    "fold_0": {
+      "bm25_novel_max": 50,
+      "e5_anchor": 100
+    },
+    "fold_1": {
+      "bm25_novel_max": 30,
+      "e5_anchor": 120
+    },
+    "fold_2": {
+      "bm25_novel_max": 50,
+      "e5_anchor": 100
+    },
+    "fold_3": {
+      "bm25_novel_max": 50,
+      "e5_anchor": 100
+    },
+    "fold_4": {
+      "bm25_novel_max": 30,
+      "e5_anchor": 120
+    }
+  },
+  "selection": "nested five-fold, maximize retained Recall@150; tie-break MRR@150 then fixed grid order",
+  "status": "PASS"
+}

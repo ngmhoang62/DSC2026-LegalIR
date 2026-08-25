@@ -1,0 +1,13 @@
+{
+  "completed": 16,
+  "eta_seconds": null,
+  "phase": "phase-c",
+  "phase_completion_percent": 16,
+  "queries": 527,
+  "reason": "user_requested_stop",
+  "schema_version": "legalir.exp033_in_document_evidence_routing.v1",
+  "state": "STOPPED_BY_USER",
+  "total": 100,
+  "total_queries": 7000,
+  "updated_at": 1787680611.0810015
+}

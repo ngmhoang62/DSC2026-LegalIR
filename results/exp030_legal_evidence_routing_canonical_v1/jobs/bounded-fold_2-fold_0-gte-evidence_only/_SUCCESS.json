@@ -1,0 +1,12 @@
+{
+  "fingerprint": "e07dd3912b26526ec59968796c7a270b3596b5f207d9c36e2970443804d5c381",
+  "finished_at": 1787601363.3350372,
+  "payload": {
+    "model": "gte",
+    "peak_vram_bytes": 1532399616,
+    "queries": 64,
+    "schema_version": "legalir.exp030_legal_evidence_routing.v1",
+    "scores": "D:\\Study\\DSC2026\\LegalIR\\results\\exp030_legal_evidence_routing_canonical_v1\\bounded_screen\\fold_2\\fold_0\\gte\\evidence_only\\scores.jsonl",
+    "seconds": 148.30985700001474
+  }
+}

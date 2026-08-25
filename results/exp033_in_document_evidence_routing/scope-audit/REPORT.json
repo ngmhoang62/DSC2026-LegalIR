@@ -1,0 +1,71 @@
+{
+  "agent_spotcheck": {
+    "agreement": 30,
+    "passed": true,
+    "required": 27,
+    "total": 30
+  },
+  "annotations": 200,
+  "fingerprint": "6d146c8078ea4c67325a5887ce3230c243260e30044e72f2305127cfb118ebdc",
+  "known_node_regressions": {
+    "100139_wrapped_prose_false_positive_rejected": true,
+    "163254_reference_only_rejected": true,
+    "234704_no_declarative_keyword_rejected": true,
+    "275852_combined_content_retained": true,
+    "275852_missed_span_source_exact_and_not_raw_copy": true
+  },
+  "metrics": {
+    "boundary_accuracy": 1.0,
+    "class_precision": {
+      "applicable_subjects": 1.0,
+      "combined": 1.0,
+      "scope_of_regulation": 1.0
+    },
+    "confusion": {
+      "applicable_subjects": {
+        "applicable_subjects": 49,
+        "combined": 0,
+        "none": 0,
+        "scope_of_regulation": 0
+      },
+      "combined": {
+        "applicable_subjects": 0,
+        "combined": 80,
+        "none": 0,
+        "scope_of_regulation": 0
+      },
+      "none": {
+        "applicable_subjects": 0,
+        "combined": 0,
+        "none": 43,
+        "scope_of_regulation": 0
+      },
+      "scope_of_regulation": {
+        "applicable_subjects": 0,
+        "combined": 0,
+        "none": 0,
+        "scope_of_regulation": 28
+      }
+    },
+    "micro_precision": 1.0,
+    "recall": {
+      "applicable_subjects": 1.0,
+      "combined": 1.0,
+      "scope_of_regulation": 1.0
+    },
+    "stratified_weighted_recall": 1.0
+  },
+  "phase": "A",
+  "phase_b_started_by_this_finalize": false,
+  "phase_completion_percent": 100,
+  "re_audit_disagreements": 0,
+  "repaired_parser_gate": true,
+  "schema_version": "legalir.exp033_in_document_evidence_routing.v1",
+  "scope_sidecar": {
+    "fingerprint": "53f9c73416fed082771c5b298931eb8b481c01f3eb459223527fa3302045b14f",
+    "spans": 11820
+  },
+  "source_exact_failures": 0,
+  "status": "PASS_PHASE_A",
+  "structural_v3_rebuilt": false
+}

@@ -1,0 +1,8 @@
+{
+  "boundary_incomplete": 20,
+  "fingerprint": "88baa5fa2c34f2eba91db4bbd9730a4fbd22eaecc5d626e003397694e6806e38",
+  "label_overrides": 45,
+  "records": 200,
+  "schema_version": "legalir.exp033_in_document_evidence_routing.v1",
+  "status": "AGENT_REVIEWED"
+}

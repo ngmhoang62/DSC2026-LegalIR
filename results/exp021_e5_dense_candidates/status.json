@@ -1,0 +1,10 @@
+{
+  "completed": 7000,
+  "finished_at": 1787413358.0241904,
+  "pid": 35244,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "e5-dense-train-oof",
+  "started_at": 1787413137.9609447,
+  "state": "COMPLETE",
+  "total": 7000
+}

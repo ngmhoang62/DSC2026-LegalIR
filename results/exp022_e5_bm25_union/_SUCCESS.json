@@ -1,0 +1,10 @@
+{
+  "finished_at": 1787462347.913741,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "e5-bm25-union-audit",
+  "telemetry": {
+    "queries": 7000,
+    "union_mean": 150.0
+  },
+  "v3_fingerprint": null
+}

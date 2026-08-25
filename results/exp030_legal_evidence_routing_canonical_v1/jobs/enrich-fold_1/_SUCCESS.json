@@ -1,0 +1,16 @@
+{
+  "fingerprint": "2dd15d1e4ff3d2c5920ba427d672d69ab60b04d207b1d21ad2d0c7eab52078b0",
+  "finished_at": 1787566765.6318328,
+  "payload": {
+    "candidate_membership_preserved": true,
+    "documents_with_official_title": 372494,
+    "documents_with_typed_scope": 303998,
+    "evidence": 884562,
+    "evidence_with_parent": 884562,
+    "evidence_with_structural_path": 884562,
+    "pairs": 448000,
+    "queries": 7000,
+    "schema_version": "legalir.exp030_legal_evidence_routing.v1",
+    "status": "PASS"
+  }
+}

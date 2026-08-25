@@ -1,0 +1,179 @@
+{
+  "artifact_sha256": {
+    "ablation_predictions.jsonl": "20207bfef9a4f4a44b19e2455a43a355673fef68366bdb30432355665e48d1c0",
+    "oof_predictions.jsonl": "ca31bf8d0a89b0f74f83e4d051bd46c5ccf5801068527f84ed7ceb83a2f5213f",
+    "oof_report.json": "078875b1481d1245eff093c9efcc2246637db9951e2db54c84399e16b37487d3"
+  },
+  "config": {
+    "feature_sets": [
+      "retrieval",
+      "retrieval+provenance",
+      "retrieval+provenance+metadata",
+      "all"
+    ],
+    "floor": 0.985,
+    "k_grid": [
+      16,
+      24,
+      32,
+      50,
+      64,
+      80,
+      100
+    ],
+    "parameter_grid": [
+      {
+        "min_child_samples": 20,
+        "n_estimators": 250,
+        "num_leaves": 15,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 250,
+        "num_leaves": 15,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 500,
+        "num_leaves": 15,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 500,
+        "num_leaves": 15,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 250,
+        "num_leaves": 15,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 250,
+        "num_leaves": 15,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 500,
+        "num_leaves": 15,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 500,
+        "num_leaves": 15,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 250,
+        "num_leaves": 31,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 250,
+        "num_leaves": 31,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 500,
+        "num_leaves": 31,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 500,
+        "num_leaves": 31,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 250,
+        "num_leaves": 31,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 250,
+        "num_leaves": 31,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 500,
+        "num_leaves": 31,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 500,
+        "num_leaves": 31,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 250,
+        "num_leaves": 63,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 250,
+        "num_leaves": 63,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 500,
+        "num_leaves": 63,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 20,
+        "n_estimators": 500,
+        "num_leaves": 63,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 250,
+        "num_leaves": 63,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 250,
+        "num_leaves": 63,
+        "reg_lambda": 2.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 500,
+        "num_leaves": 63,
+        "reg_lambda": 0.0
+      },
+      {
+        "min_child_samples": 50,
+        "n_estimators": 500,
+        "num_leaves": 63,
+        "reg_lambda": 2.0
+      }
+    ]
+  },
+  "content_fingerprint": "5dfd66139dc6a1daa118054e430d25095352d039991d46eb3f307b55ca718c2f",
+  "inputs": {
+    "features_manifest_sha256": "1a89e17f6e3ab058781dee62cd04dcf9fb13046622984b46e4578a556994d5b9",
+    "folds_sha256": "cce10d34c23ea0d9eb51cbe9533ff8bed9761db06f09023c0e3d6f26552d9c00",
+    "train_sha256": "c39cde9e74977e350f1456e7d487aafe67d2bcbaa4fa26fcabd557fe635635b7"
+  },
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "exp028-nested-oof"
+}

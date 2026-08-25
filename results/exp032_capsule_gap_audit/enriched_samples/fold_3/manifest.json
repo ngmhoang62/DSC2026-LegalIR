@@ -1,0 +1,30 @@
+{
+  "artifact_sha256": {
+    "capsule_audit.json": "c986869cc7fe2b93d3b7672b76ecff6c38691801834a67f920c021de385207a9",
+    "capsules.index.sqlite": "f2778ea119e32931e9896c8132d5a32cea19be013189075d7e35d805f695798e",
+    "capsules.jsonl": "1f93111f5b7f6623f5d3d83bec89d362cd58f22bbbf825e4efa74712e5280fbb"
+  },
+  "config": {
+    "frozen_candidates": false,
+    "k": 64,
+    "markers": [
+      "[VĂN BẢN]",
+      "[TÊN CHÍNH THỨC]",
+      "[TÊN CHUẨN HÓA]",
+      "[PHẠM VI ĐIỀU CHỈNH]",
+      "[ĐỐI TƯỢNG ÁP DỤNG]",
+      "[VỊ TRÍ TRONG VĂN BẢN]",
+      "[BẰNG CHỨNG TRẢ LỜI]",
+      "[QUAN HỆ PHÁP LÝ]"
+    ],
+    "max_queries": null
+  },
+  "content_fingerprint": "9af6027c0084eafb27bf14f496acfaecd27f00961dc14ecc827b5be3463fde99",
+  "inputs": {
+    "capsules_sha256": "c2d6f64404ea3f64cfa5885777c43aa6e5400d8b1a625e544e39595b179e80d1",
+    "metadata_manifest_sha256": "67dd76dcc59dd147c6ec6fd666eaf166d3969ba076337a2ce207b06efe7278a8",
+    "v3_manifest_sha256": "d572b3d07d7bf741c077c0d92f139f0d6bf23691ad7fc4bbe1b542c08809aeec"
+  },
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "exp030-enrich-capsules"
+}

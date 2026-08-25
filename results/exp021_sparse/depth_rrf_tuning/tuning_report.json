@@ -1,0 +1,324 @@
+{
+  "candidate_budget_oof_recall": {
+    "recall@100": 0.9765428571428569,
+    "recall@120": 0.9786023809523807,
+    "recall@150": 0.9805261904761904,
+    "recall@180": 0.9829833333333333,
+    "recall@30": 0.9530809523809521,
+    "recall@50": 0.9658952380952377,
+    "recall@80": 0.9736095238095235
+  },
+  "candidate_document_curve_note": "Each R@K uses its own nested-OFF selection; choose deployment K from the dense-union budget, not by maximizing monotonic R@K.",
+  "evidence_fingerprint": "1088eea666c1d481925c3ec16b899a99c17bb477291b614275268e6598a66645",
+  "grid": {
+    "candidate_document_ks": [
+      30,
+      50,
+      80,
+      100,
+      120,
+      150,
+      180
+    ],
+    "depths": [
+      1024,
+      2048,
+      4096
+    ],
+    "fusion_rrf_k": [
+      32,
+      64,
+      128
+    ],
+    "head_cutoffs": [
+      16,
+      32,
+      64
+    ],
+    "parent_rrf_k": [
+      32,
+      64,
+      128
+    ]
+  },
+  "modal_configuration": {
+    "depth": 1024,
+    "fusion_rrf_k": 32,
+    "head_cutoff": 16,
+    "parent_rrf_k": 32
+  },
+  "oof_rankings_sha256": "bc59c3aefb1a34f5ca7b64185fb74909eae80ee0c5e9a02b65b29496a5795a93",
+  "oof_recall_curve": {
+    "recall@1": 0.507607142857143,
+    "recall@10": 0.9001595238095231,
+    "recall@100": 0.9767404761904761,
+    "recall@120": 0.9784547619047618,
+    "recall@150": 0.9810976190476189,
+    "recall@16": 0.9262904761904756,
+    "recall@180": 0.9833880952380952,
+    "recall@30": 0.9533428571428568,
+    "recall@5": 0.835135714285714,
+    "recall@50": 0.9657523809523805,
+    "recall@80": 0.974133333333333
+  },
+  "schema_version": "legalir.exp021_sparse_depth_tune.v1",
+  "selected_by_candidate_budget": {
+    "100": {
+      "fold_0": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      },
+      "fold_1": {
+        "depth": 4096,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 64,
+        "parent_rrf_k": 128
+      },
+      "fold_2": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      },
+      "fold_3": {
+        "depth": 4096,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 64
+      },
+      "fold_4": {
+        "depth": 4096,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 64
+      }
+    },
+    "120": {
+      "fold_0": {
+        "depth": 4096,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      },
+      "fold_1": {
+        "depth": 4096,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 64
+      },
+      "fold_2": {
+        "depth": 4096,
+        "fusion_rrf_k": 128,
+        "head_cutoff": 16,
+        "parent_rrf_k": 32
+      },
+      "fold_3": {
+        "depth": 4096,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 64
+      },
+      "fold_4": {
+        "depth": 2048,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 64
+      }
+    },
+    "150": {
+      "fold_0": {
+        "depth": 4096,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      },
+      "fold_1": {
+        "depth": 1024,
+        "fusion_rrf_k": 128,
+        "head_cutoff": 16,
+        "parent_rrf_k": 32
+      },
+      "fold_2": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      },
+      "fold_3": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      },
+      "fold_4": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 32
+      }
+    },
+    "180": {
+      "fold_0": {
+        "depth": 4096,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 64
+      },
+      "fold_1": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      },
+      "fold_2": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 64
+      },
+      "fold_3": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      },
+      "fold_4": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 128
+      }
+    },
+    "30": {
+      "fold_0": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 32,
+        "parent_rrf_k": 128
+      },
+      "fold_1": {
+        "depth": 1024,
+        "fusion_rrf_k": 128,
+        "head_cutoff": 16,
+        "parent_rrf_k": 32
+      },
+      "fold_2": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 32,
+        "parent_rrf_k": 128
+      },
+      "fold_3": {
+        "depth": 1024,
+        "fusion_rrf_k": 64,
+        "head_cutoff": 32,
+        "parent_rrf_k": 128
+      },
+      "fold_4": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 32,
+        "parent_rrf_k": 128
+      }
+    },
+    "50": {
+      "fold_0": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 32,
+        "parent_rrf_k": 64
+      },
+      "fold_1": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 32,
+        "parent_rrf_k": 128
+      },
+      "fold_2": {
+        "depth": 2048,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 64
+      },
+      "fold_3": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 32,
+        "parent_rrf_k": 128
+      },
+      "fold_4": {
+        "depth": 2048,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 64,
+        "parent_rrf_k": 128
+      }
+    },
+    "80": {
+      "fold_0": {
+        "depth": 2048,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 64,
+        "parent_rrf_k": 128
+      },
+      "fold_1": {
+        "depth": 1024,
+        "fusion_rrf_k": 128,
+        "head_cutoff": 16,
+        "parent_rrf_k": 32
+      },
+      "fold_2": {
+        "depth": 2048,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 64,
+        "parent_rrf_k": 128
+      },
+      "fold_3": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 32
+      },
+      "fold_4": {
+        "depth": 1024,
+        "fusion_rrf_k": 32,
+        "head_cutoff": 16,
+        "parent_rrf_k": 32
+      }
+    }
+  },
+  "selected_by_fold": {
+    "fold_0": {
+      "depth": 1024,
+      "fusion_rrf_k": 32,
+      "head_cutoff": 16,
+      "parent_rrf_k": 32
+    },
+    "fold_1": {
+      "depth": 1024,
+      "fusion_rrf_k": 128,
+      "head_cutoff": 16,
+      "parent_rrf_k": 32
+    },
+    "fold_2": {
+      "depth": 1024,
+      "fusion_rrf_k": 32,
+      "head_cutoff": 16,
+      "parent_rrf_k": 32
+    },
+    "fold_3": {
+      "depth": 1024,
+      "fusion_rrf_k": 32,
+      "head_cutoff": 16,
+      "parent_rrf_k": 32
+    },
+    "fold_4": {
+      "depth": 1024,
+      "fusion_rrf_k": 32,
+      "head_cutoff": 16,
+      "parent_rrf_k": 32
+    }
+  },
+  "status": "PASS"
+}

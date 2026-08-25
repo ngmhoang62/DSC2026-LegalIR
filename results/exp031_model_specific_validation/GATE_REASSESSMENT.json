@@ -1,0 +1,31 @@
+{
+  "models": {
+    "bge_m3": {
+      "completed_outer_folds": 5,
+      "intervention_folds": 3,
+      "mean_delta_precision@5": -0.0012500000000000011,
+      "mean_delta_recall@5": -0.0046875,
+      "neutral_baseline_folds": 2,
+      "passed": false,
+      "positive_intervention_folds": 0,
+      "required_positive_intervention_folds": 2,
+      "worst_outer_delta_recall@5": -0.0234375
+    },
+    "gte": {
+      "completed_outer_folds": 5,
+      "intervention_folds": 5,
+      "mean_delta_precision@5": 3.4694469519536144e-19,
+      "mean_delta_recall@5": -0.0015625,
+      "neutral_baseline_folds": 0,
+      "passed": false,
+      "positive_intervention_folds": 2,
+      "required_positive_intervention_folds": 4,
+      "worst_outer_delta_recall@5": -0.03125
+    }
+  },
+  "note": "Baseline-selected folds are neutral; reassessment does not alter scores or model selection.",
+  "schema_version": "legalir.exp031_gate_reassessment.v1",
+  "source_report": "D:\\Study\\DSC2026\\LegalIR\\results\\exp031_model_specific_validation\\REPORT.json",
+  "source_report_sha256": "c620715b8d06e4a37994181386157cc52a0acac46cfd10b69c6df60e4a348866",
+  "status": "REJECTED"
+}

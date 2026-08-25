@@ -1,0 +1,12 @@
+{
+  "candidate_membership_preserved": true,
+  "documents_with_official_title": 3406,
+  "documents_with_typed_scope": 2963,
+  "evidence": 8105,
+  "evidence_with_parent": 8105,
+  "evidence_with_structural_path": 8105,
+  "pairs": 4096,
+  "queries": 64,
+  "schema_version": "legalir.exp030_legal_evidence_routing.v1",
+  "status": "PASS"
+}

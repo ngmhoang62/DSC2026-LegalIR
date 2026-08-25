@@ -1,0 +1,16 @@
+{
+  "artifact_sha256": {
+    "importance_report.json": "6d0166e81a95b98b97b2424a296fec6984cba1e92efd9a5a1405f61bf87d4990"
+  },
+  "config": {
+    "permutation_scope": "within_query",
+    "seed": 2028
+  },
+  "content_fingerprint": "9faf5d7abc67843ad5d5fd016bd5fd614f464fc2b8497acb3e27e1ea6bf187dc",
+  "inputs": {
+    "feature_manifest_sha256": "1a89e17f6e3ab058781dee62cd04dcf9fb13046622984b46e4578a556994d5b9",
+    "oof_report_sha256": "078875b1481d1245eff093c9efcc2246637db9951e2db54c84399e16b37487d3"
+  },
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "exp028-importance"
+}

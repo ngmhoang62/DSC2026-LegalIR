@@ -1,0 +1,150 @@
+{
+  "aggregation_curves_retained": {
+    "logsumexp": {
+      "100": 0.9786783993895168,
+      "120": 0.9798707492726666,
+      "150": 0.9820455954595317,
+      "20": 0.9550102542089948,
+      "32": 0.9647636762531597,
+      "50": 0.9710354366385272,
+      "80": 0.9769017980636239
+    },
+    "max": {
+      "100": 0.9855034101206657,
+      "120": 0.9872680879477272,
+      "150": 0.9885439023226976,
+      "20": 0.9572208708923542,
+      "32": 0.9695259216864593,
+      "50": 0.9785639338007344,
+      "80": 0.9839295082749081
+    },
+    "top2_mean": {
+      "100": 0.9856584156054754,
+      "120": 0.987041541469929,
+      "150": 0.9892831592502505,
+      "20": 0.960387752182,
+      "32": 0.9709090475509131,
+      "50": 0.9784685458100825,
+      "80": 0.9840964372585491
+    },
+    "top4_mean": {
+      "100": 0.9852291696475415,
+      "120": 0.9869461534792769,
+      "150": 0.9883769733390567,
+      "20": 0.9579553584203746,
+      "32": 0.9706944245719463,
+      "50": 0.9780392998521484,
+      "80": 0.9834048743263224
+    }
+  },
+  "code_sha256": "d804ec486abe4a558d5534d63a3c6659f000bb7516c73f6c7e53efbc31ad0a87",
+  "config": {
+    "aggregations": [
+      "max",
+      "top2_mean",
+      "top4_mean",
+      "logsumexp"
+    ],
+    "chunk_depth": 4096,
+    "curve_ks": [
+      20,
+      32,
+      50,
+      80,
+      100,
+      120,
+      150
+    ],
+    "dimension": 1024,
+    "max_candidates": 150,
+    "score_dtype": "float32"
+  },
+  "corpus_fingerprint": "9743fe70ec4092aca28a9855d0236bdedef41d8a458e39d750062b9ef85a37bc",
+  "e5_cache_fingerprint": "b3b4ba811051cb43c822c1e3ed5096e177ab7f3aa0862bf9b6b0c0d127c1d22c",
+  "evidence": {
+    "documents": 1050000,
+    "max_chunks_per_document": 4,
+    "mean_chunks_per_document": 3.6244095238095237
+  },
+  "exp014_reference": {
+    "candidate_recall_curve": {
+      "precision@5": 0.17811428571428575,
+      "recall@10": 0.9315285714285714,
+      "recall@120": 0.9893404761904762,
+      "recall@150": 0.9899357142857141,
+      "recall@180": 0.9902214285714285,
+      "recall@20": 0.9570642857142857,
+      "recall@24": 0.9620166666666666,
+      "recall@25": 0.9624928571428571,
+      "recall@30": 0.9667476190476191,
+      "recall@32": 0.9685333333333334,
+      "recall@5": 0.8361952380952381,
+      "recall@50": 0.9802952380952381
+    },
+    "caveat": "Different structural corpus and hybrid candidate channels; candidate-stage reference only.",
+    "pool_size": {
+      "max": 175,
+      "mean": 138.7242857142857,
+      "min": 102
+    }
+  },
+  "fold_metrics": {
+    "fold_0": {
+      "retained_mrr@150": 0.7355521200924942,
+      "retained_recall@150": 0.9864091559370529
+    },
+    "fold_1": {
+      "retained_mrr@150": 0.7226193650316183,
+      "retained_recall@150": 0.9902698185291309
+    },
+    "fold_2": {
+      "retained_mrr@150": 0.727370874435838,
+      "retained_recall@150": 0.9911246128186801
+    },
+    "fold_3": {
+      "retained_mrr@150": 0.7319912941377484,
+      "retained_recall@150": 0.9902311174648559
+    },
+    "fold_4": {
+      "retained_mrr@150": 0.7229886394032183,
+      "retained_recall@150": 0.9883798616082082
+    }
+  },
+  "oof": {
+    "all_gold_candidate_recall_curve": {
+      "100": 0.9839666666666668,
+      "120": 0.985347619047619,
+      "150": 0.9875857142857143,
+      "20": 0.958735714285714,
+      "32": 0.9692404761904759,
+      "50": 0.9767880952380952,
+      "80": 0.9824071428571428
+    },
+    "retained_candidate_recall_curve": {
+      "100": 0.9856584156054754,
+      "120": 0.987041541469929,
+      "150": 0.9892831592502505,
+      "20": 0.960387752182,
+      "32": 0.9709090475509131,
+      "50": 0.9784685458100825,
+      "80": 0.9840964372585491
+    }
+  },
+  "query_fingerprint": "e7d027056ec4b47111cb3b5dd5a6b685e5cb15f6d8e697c3c7ac60b4e7d5e940",
+  "runtime_seconds": 217.731,
+  "schema_version": "legalir.exp021_e5_dense_candidates.v1",
+  "selected_aggregation_by_fold": {
+    "fold_0": "top2_mean",
+    "fold_1": "top2_mean",
+    "fold_2": "top2_mean",
+    "fold_3": "top2_mean",
+    "fold_4": "top2_mean"
+  },
+  "status": "PASS",
+  "unavoidable_exclusions": {
+    "excluded_corpus_documents": 25,
+    "gold_id_occurrences": 13,
+    "queries_with_removed_gold": 13,
+    "unique_gold_document_ids": 7
+  }
+}

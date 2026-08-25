@@ -1,0 +1,49 @@
+{
+  "accented_document_labels": 0,
+  "accented_queries": 7000,
+  "candidate_pairs": 1050000,
+  "canonical_label_accounting": {
+    "affected_queries": 13,
+    "canonicalized_duplicate_occurrences": 2,
+    "dropped_empty_occurrences": 11,
+    "evaluable_queries": 6991,
+    "label_fingerprint": "9bdf9593b61fe3423d1f1a819ac9fb3e8d7225e6003da0afb840c1f5853fd4c9",
+    "non_evaluable_qids": [
+      "13426",
+      "163826",
+      "17708",
+      "28410",
+      "39790",
+      "49334",
+      "5728",
+      "60066",
+      "93066"
+    ],
+    "non_evaluable_queries": 9,
+    "policy": "canonical_duplicate_alias_drop_empty_passage_v1",
+    "queries": 7000
+  },
+  "documents": 8507,
+  "documents_with_legacy_scope": 5556,
+  "gold_count_distribution": {
+    "0": 9,
+    "1": 6440,
+    "2": 483,
+    "3": 53,
+    "4": 14,
+    "5": 1
+  },
+  "inputs": {
+    "candidates_sha256": "b86bfbca5837bd4c8d295fd9943e6469580a5aba601efa22c4ab285325d50435",
+    "exclusions_sha256": "d10aef3d891746cd9f874b32e9cb20940cb4fef0928c0fe239fdb7ca16337616",
+    "folds_sha256": "cce10d34c23ea0d9eb51cbe9533ff8bed9761db06f09023c0e3d6f26552d9c00",
+    "preprocessing_manifest_sha256": "e09dda31496a4adfb86e1ab6816afcc82e791e012c2e55c5f1afc99493944b60",
+    "train_label_impact_sha256": "34fbb04e60deee967c125d9db2ed633b87156f0771b5fcaaf2d3b81851b4e4fd",
+    "train_sha256": "c39cde9e74977e350f1456e7d487aafe67d2bcbaa4fa26fcabd557fe635635b7",
+    "v3_manifest_sha256": "d572b3d07d7bf741c077c0d92f139f0d6bf23691ad7fc4bbe1b542c08809aeec"
+  },
+  "legacy_scope_nodes": 13927,
+  "queries": 7000,
+  "schema_version": "legalir.exp030_legal_evidence_routing.v1",
+  "status": "PASS"
+}

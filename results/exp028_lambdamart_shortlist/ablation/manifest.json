@@ -1,0 +1,15 @@
+{
+  "artifact_sha256": {
+    "ablation_report.json": "462e7b3e6146c0aa162b1ca8eff00f8768810e93e30cfae7e347b59ab3b1ffbb"
+  },
+  "config": {
+    "floor": 0.985
+  },
+  "content_fingerprint": "9070b4dc93890edcd5b3210fc7801061c1f94ffe1cffb930c440549f4bbf9e0d",
+  "inputs": {
+    "ablation_predictions_sha256": "20207bfef9a4f4a44b19e2455a43a355673fef68366bdb30432355665e48d1c0",
+    "oof_report_sha256": "078875b1481d1245eff093c9efcc2246637db9951e2db54c84399e16b37487d3"
+  },
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "exp028-ablation"
+}

@@ -1,0 +1,26 @@
+{
+  "document_labels": {
+    "nonempty": 8507,
+    "with_vietnamese_diacritic": 20,
+    "without_vietnamese_diacritic": 8487
+  },
+  "documents": 8507,
+  "gold_title_token_overlap": {
+    "mean_overlap_tokens": 0.1118835257082896,
+    "missing_gold_pairs": 13,
+    "pair_coverage": 0.0978488982161595,
+    "pairs_with_any_overlap": 746,
+    "present_gold_pairs": 7624,
+    "queries_with_any_gold_overlap": 726,
+    "query_coverage": 0.10371428571428572
+  },
+  "gold_title_token_overlap_after_diacritic_folding": {
+    "mean_overlap_tokens": 0.9893756558237146,
+    "pair_coverage": 0.5578436516264428,
+    "pairs_with_any_overlap": 4253,
+    "queries_with_any_gold_overlap": 4040,
+    "query_coverage": 0.5771428571428572
+  },
+  "queries": 7000,
+  "queries_with_vietnamese_diacritic": 7000
+}

@@ -1,0 +1,39 @@
+{
+  "canonical_label_policy": "canonical_duplicate_alias_drop_empty_passage_v1",
+  "canonical_labels": {
+    "affected_queries": 13,
+    "canonicalized_duplicate_occurrences": 2,
+    "dropped_empty_occurrences": 11,
+    "evaluable_queries": 6991,
+    "fingerprint": "9bdf9593b61fe3423d1f1a819ac9fb3e8d7225e6003da0afb840c1f5853fd4c9",
+    "label_fingerprint": "9bdf9593b61fe3423d1f1a819ac9fb3e8d7225e6003da0afb840c1f5853fd4c9",
+    "non_evaluable_qids": [
+      "13426",
+      "163826",
+      "17708",
+      "28410",
+      "39790",
+      "49334",
+      "5728",
+      "60066",
+      "93066"
+    ],
+    "non_evaluable_queries": 9,
+    "policy": "canonical_duplicate_alias_drop_empty_passage_v1",
+    "queries": 7000
+  },
+  "fingerprint": "642911b1b3ca12a464c316415a2a3d21fee8b60e587e95ca346f6fd6f7776754",
+  "immutable_pool": {
+    "parents_per_query": 150,
+    "queries": 7000,
+    "sha256": "b86bfbca5837bd4c8d295fd9943e6469580a5aba601efa22c4ab285325d50435"
+  },
+  "inputs": {
+    "e5": "b3b4ba811051cb43c822c1e3ed5096e177ab7f3aa0862bf9b6b0c0d127c1d22c",
+    "features": "4c8b53a2e78447e65538a56acf7c91f1be816cebdca93aab2c4d26b292afd62b",
+    "preprocessing": "3b7ba47dcfd382f6d670824490777ff98f7f44144a888add664fc1aac6fe5263",
+    "v3": "9743fe70ec4092aca28a9855d0236bdedef41d8a458e39d750062b9ef85a37bc"
+  },
+  "schema_version": "legalir.exp033_in_document_evidence_routing.v1",
+  "status": "PASS"
+}

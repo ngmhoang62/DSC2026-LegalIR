@@ -50,6 +50,11 @@ MARKERS = (
 SCOPE_KINDS = ("scope_of_regulation", "applicable_subjects", "combined")
 RAW_SCOPE = re.compile(r"\b(phạm vi (điều chỉnh|áp dụng)|đối tượng áp dụng)\b", re.I)
 SENTENCE_END = re.compile(r"[.!?;:]\s|\n\s*\n")
+CAPSULE_MODEL_ID = "BAAI/bge-reranker-v2-m3"
+CAPSULE_MAX_LENGTH = 512
+QUERY_TOKEN_LIMIT = 128
+QUERY_HEAD_TOKENS = 96
+QUERY_TAIL_TOKENS = 32
 
 # Decisions from the EXP-033 agent review of the deterministic 200-row sample.
 # Entries omitted here were read as correctly classified by the parser.  Index
@@ -949,12 +954,32 @@ def _select_ranked_nonredundant(
 
 
 def _compact_selected(rows: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
-    return [{
+    compact = [{
         "chunk_id": str(row["chunk_id"]),
         "score": float(row.get("score", 0.0)),
         "evidence_rank": int(row.get("evidence_rank", rank)),
         "redundancy": float(row.get("redundancy", 0.0)),
     } for rank, row in enumerate(rows, start=1)]
+    for source, target in zip(rows, compact):
+        for key in ("score_channel", "fallback_reason"):
+            if key in source:
+                target[key] = source[key]
+    return compact
+
+
+def _bm25_primary_fallback(
+    sparse_selected: Sequence[Mapping[str, Any]], dense_primary: Mapping[str, Any],
+) -> tuple[list[dict[str, Any]], bool]:
+    """Guarantee a primary only for the observed zero-lexical-hit class."""
+    if sparse_selected:
+        return [dict(row) for row in sparse_selected], False
+    return [dict(
+        dense_primary,
+        evidence_rank=1,
+        redundancy=0.0,
+        score_channel="e5_fallback",
+        fallback_reason="bm25_zero_lexical_hit",
+    )], True
 
 
 def _clause_neighbors(chunks: Sequence[Mapping[str, Any]], selected_ids: Iterable[str]) -> dict[str, list[str]]:
@@ -1179,7 +1204,9 @@ def score_selectors_v2(paths: Mapping[str, Path]) -> dict[str, Any]:
                 mmr_085 = select_mmr_evidence(chunks, dense_scores, vectors, lambda_value=.85)
                 sparse_raw = searcher.search_document(question, doc_id, limit=8)
                 sparse_ranked = [dict(row, score=-float(row["score"])) for row in sparse_raw]
-                bm25_top2 = _select_ranked_nonredundant(sparse_ranked, embedding_row, embeddings)
+                bm25_top2, _ = _bm25_primary_fallback(
+                    _select_ranked_nonredundant(sparse_ranked, embedding_row, embeddings), e5_top1[0],
+                )
                 hybrids = {}
                 for weight in (.25, .50, .75):
                     hybrid_ranked = reciprocal_hybrid(dense_ranked, sparse_ranked, dense_weight=weight)
@@ -1227,12 +1254,20 @@ def score_selectors_v2(paths: Mapping[str, Path]) -> dict[str, Any]:
     malformed_pairs = 0
     redundancy_violations = 0
     scope_overflow = 0
+    bm25_zero_hit_fallbacks = 0
     pair_count = 0
+    labels, label_stats = canonical_answers(
+        paths["train"], paths["preprocessing"] / "exclusions.json", paths["preprocessing"] / "train_label_impact.jsonl",
+    )
+    evaluable_qids = {qid for qid, answers in labels.items() if answers}
+    non_evaluable_qids = sorted(set(oof_rows) - evaluable_qids)
+    if label_stats["evaluable_queries"] != 6991 or label_stats["non_evaluable_queries"] != 9 or len(non_evaluable_qids) != 9:
+        raise ValueError(f"canonical Phase-B accounting changed: {label_stats}")
     output_jsonl = output / "selector_pairs.jsonl"
     legacy_iter = _jsonl(legacy)
 
     def consolidated() -> Iterator[dict[str, Any]]:
-        nonlocal upstream_mismatches, malformed_pairs, redundancy_violations, scope_overflow, pair_count
+        nonlocal upstream_mismatches, malformed_pairs, redundancy_violations, scope_overflow, bm25_zero_hit_fallbacks, pair_count
         for qid in sorted(oof_rows):
             shard_payload = _json(shards_dir / f"{qid}.json")
             old = next(legacy_iter)
@@ -1242,6 +1277,10 @@ def score_selectors_v2(paths: Mapping[str, Path]) -> dict[str, Any]:
             for pair in shard_payload["pairs"]:
                 pair_count += 1
                 selectors = pair["selectors"]
+                if not selectors.get("in_parent_bm25_top2"):
+                    fallback, used = _bm25_primary_fallback([], selectors["current_upstream_e5_top2"][0])
+                    selectors["in_parent_bm25_top2"] = _compact_selected(fallback)
+                    bm25_zero_hit_fallbacks += int(used)
                 if set(selectors) != selector_names or str(pair["doc_id"]) not in old_by_doc:
                     malformed_pairs += 1
                 old_ids = [str(row["chunk_id"]) for row in old_by_doc[str(pair["doc_id"])]["evidence"]]
@@ -1255,7 +1294,7 @@ def score_selectors_v2(paths: Mapping[str, Path]) -> dict[str, Any]:
                         redundancy_violations += 1
                 if isinstance(pair.get("scope_candidate"), list):
                     scope_overflow += 1
-                yield {"schema_version": SCHEMA, "qid": qid, **pair}
+                yield {"schema_version": SCHEMA, "qid": qid, "evaluation_eligible": qid in evaluable_qids, **pair}
         try:
             next(legacy_iter)
             raise ValueError("legacy upstream contains extra queries")
@@ -1269,14 +1308,21 @@ def score_selectors_v2(paths: Mapping[str, Path]) -> dict[str, Any]:
         "schema_version": SCHEMA, "status": "PASS_PHASE_B" if gate else "FAILED_PHASE_B",
         "phase": "B", "phase_completion_percent": 100 if gate else 95,
         "fingerprint": fingerprint, "config_fingerprint": config_fingerprint,
-        "queries": 7000, "parents_per_query": K64, "pairs": pair_count,
+        "processed_queries": 7000, "evaluable_queries": 6991, "non_evaluable_queries": 9,
+        "non_evaluable_qids": non_evaluable_qids,
+        "processed_pairs": pair_count, "evaluable_pairs": 6991 * K64,
+        "parents_per_query": K64,
         "selectors": sorted(selector_names), "selector_count": len(selector_names),
         "upstream_exact_mismatches": upstream_mismatches, "malformed_pairs": malformed_pairs,
         "secondary_redundancy_violations": redundancy_violations, "scope_candidate_overflow": scope_overflow,
+        "bm25_zero_hit_e5_primary_fallbacks": bm25_zero_hit_fallbacks,
         "scope_policy": "one_best_direct_e5_score_pending_inner_fold_threshold",
         "same_parent_lexical_method": "BM25Searcher.search_document",
         "clause_expansion": "same_parent_immediate_chunk_neighbors_recorded",
-        "labels_used": False, "corpus_chunks_reencoded": 0,
+        "labels_used_for_selection": False,
+        "canonical_labels_used_only_for_evaluation_eligibility": True,
+        "canonical_label_fingerprint": label_stats["label_fingerprint"],
+        "corpus_chunks_reencoded": 0,
         "resumed_query_shards": reused, "fresh_query_shards": 7000 - reused,
         "elapsed_seconds": round(time.time() - started, 3),
     }
@@ -1286,6 +1332,9 @@ def score_selectors_v2(paths: Mapping[str, Path]) -> dict[str, Any]:
         "selector_pairs_sha256": _sha256(output_jsonl), "config_fingerprint": config_fingerprint,
     })
     if gate:
+        failed_marker = output / "_FAILED.json"
+        if failed_marker.exists():
+            failed_marker.unlink()
         _success(output, stage="score-selectors-v2", fingerprint=fingerprint, phase="B")
         _state(paths["results"], "phase-b", "SUCCESS", completed=100, total=100, eta_seconds=0, phase_completion_percent=100)
     else:
@@ -1317,35 +1366,472 @@ def _boundaries(text: str, limit: int) -> str:
     return text[:(options[-1] if options else limit)].strip()
 
 
-def render_capsule_v2(*, query: str, document: Mapping[str, Any], primary: Mapping[str, Any], secondary: Mapping[str, Any] | None, ancestry: Sequence[Mapping[str, Any]], scope: Mapping[str, Any] | None, tokenizer: Any | None = None, max_length: int = 512) -> dict[str, Any]:
-    """One representation/document.  If a tokenizer is supplied, enforce pair length."""
-    title = extract_official_title(str(document.get("raw_text", "")), str(document.get("document_label", "")))
-    identity = title["display_text"] if title.get("status") == "VERIFIED" else str(document.get("document_label", ""))
-    path = format_structural_path(ancestry)
-    optional = ""
+def _token_ids(tokenizer: Any, text: str) -> list[int]:
+    return list(tokenizer(text, add_special_tokens=False, truncation=False)["input_ids"])
+
+
+def truncate_query_for_pair(tokenizer: Any, query: str) -> dict[str, Any]:
+    """Apply the registered head-96/tail-32 query policy using actual tokens."""
+    ids = _token_ids(tokenizer, query)
+    if len(ids) <= QUERY_TOKEN_LIMIT:
+        return {"text": query.strip(), "original_tokens": len(ids), "used_tokens": len(ids), "truncated": False}
+    kept = ids[:QUERY_HEAD_TOKENS] + ids[-QUERY_TAIL_TOKENS:]
+    text = tokenizer.decode(kept, skip_special_tokens=True, clean_up_tokenization_spaces=False).strip()
+    used = len(_token_ids(tokenizer, text))
+    if used > QUERY_TOKEN_LIMIT:
+        raise AssertionError("head-tail query reconstruction exceeds 128 tokens")
+    return {"text": text, "original_tokens": len(ids), "used_tokens": used, "truncated": True}
+
+
+def _truncate_at_legal_boundary(tokenizer: Any, text: str, budget: int, *, required: bool = False) -> tuple[str, int, bool]:
+    """Return a token-bounded prefix ending at a sentence/clause/line boundary."""
+    clean = str(text).strip()
+    if budget <= 0 or not clean:
+        if required:
+            raise ValueError("required capsule section has no token budget")
+        return "", 0, bool(clean)
+    ids = _token_ids(tokenizer, clean)
+    if len(ids) <= budget:
+        return clean, len(ids), False
+    decoded = tokenizer.decode(ids[:budget], skip_special_tokens=True, clean_up_tokenization_spaces=False).strip()
+    # Use decode only to estimate the source character window.  The emitted
+    # prefix is sliced from the original source and must end at a legal source
+    # boundary; tokenizer-normalized decoded text is never emitted as evidence.
+    source_window = clean[:min(len(clean), max(len(decoded) + 32, int(len(clean) * budget / len(ids)) + 32))]
+    boundaries = [match.end() for match in re.finditer(r"(?:[.!?;:]|\r?\n+)\s*", source_window)]
+    prefix = ""
+    used = 0
+    while boundaries:
+        prefix = clean[:boundaries.pop()].strip()
+        used = len(_token_ids(tokenizer, prefix))
+        if used <= budget:
+            break
+        prefix = ""
+    if not prefix:
+        if required:
+            raise ValueError("required evidence has no sentence/clause boundary inside its budget")
+        return "", 0, True
+    if required and not prefix:
+        raise ValueError("primary evidence vanished at a legal boundary")
+    return prefix, used, True
+
+
+def render_capsule_v2(*, query: str, document: Mapping[str, Any], primary: Mapping[str, Any], secondary: Mapping[str, Any] | None, ancestry: Sequence[Mapping[str, Any]], scope: Mapping[str, Any] | None, tokenizer: Any | None = None, max_length: int = CAPSULE_MAX_LENGTH) -> dict[str, Any]:
+    """Render exactly one answer-first representation with an actual pair budget."""
+    if tokenizer is None:
+        raise ValueError("Capsule v2 requires the actual downstream tokenizer")
+    query_audit = truncate_query_for_pair(tokenizer, query)
+    rendered_query = str(query_audit["text"])
+    special_tokens = int(tokenizer.num_special_tokens_to_add(pair=True))
+    document_allowance = max_length - int(query_audit["used_tokens"]) - special_tokens
+    if document_allowance < 64:
+        raise ValueError("query leaves insufficient document allowance")
+
+    title = document.get("official_title") or extract_official_title(
+        str(document.get("raw_text", "")), str(document.get("document_label", ""))
+    )
+    title_verified = isinstance(title, Mapping) and title.get("status") == "VERIFIED"
+    identity = str(title.get("display_text")) if title_verified else str(document.get("document_label", ""))
+    path = str(document.get("structural_path") or format_structural_path(ancestry)).strip()
+
+    # Section budgets include their Vietnamese markers.  Primary gets 60%,
+    # above the 55% floor; identity+path and applicability remain below caps.
+    safety_allowance = max(1, document_allowance - 8)
+    primary_budget = max(1, int(math.floor(safety_allowance * .60)))
+    identity_path_budget = max(1, int(math.floor(safety_allowance * .20)))
+    scope_budget = max(0, int(math.floor(safety_allowance * .15))) if scope else 0
+    secondary_budget = max(0, safety_allowance - primary_budget - identity_path_budget - scope_budget)
+
+    def section(marker: str, value: str, budget: int, *, required: bool = False) -> tuple[str, int, bool]:
+        marker_tokens = len(_token_ids(tokenizer, marker + "\n"))
+        content, _, cut = _truncate_at_legal_boundary(tokenizer, value, budget - marker_tokens, required=required)
+        rendered = f"{marker}\n{content}" if content else ""
+        return rendered, len(_token_ids(tokenizer, rendered)) if rendered else 0, cut
+
+    primary_section, primary_used, primary_cut = section(
+        "[BẰNG CHỨNG CHÍNH]", str(primary.get("raw_text", "")), primary_budget, required=True
+    )
+    location_value = path
+    location, location_used, location_cut = section(
+        "[VỊ TRÍ PHÁP LÝ]", location_value, identity_path_budget
+    )
+    secondary_section, secondary_used, secondary_cut = section(
+        "[BẰNG CHỨNG BỔ SUNG]", str(secondary.get("raw_text", "")) if secondary else "", secondary_budget
+    )
+    scope_section = ""
+    scope_used = 0
+    scope_cut = False
     if scope:
-        marker = "[PHẠM VI LIÊN QUAN]" if scope["kind"] == "scope_of_regulation" else "[ĐỐI TƯỢNG LIÊN QUAN]"
-        optional = f"\n{marker}\n{_boundaries(str(scope['raw_text']), 600)}"
-    text = f"[BẰNG CHỨNG CHÍNH]\n{_boundaries(str(primary['raw_text']), 2600)}\n[VỊ TRÍ PHÁP LÝ]\n{path}\n[VĂN BẢN]\n{identity}{optional}"
-    if secondary:
-        text += f"\n[BẰNG CHỨNG BỔ SUNG]\n{_boundaries(str(secondary['raw_text']), 900)}"
-    truncated = False
-    pair_tokens = None
-    if tokenizer is not None:
-        def length(value: str) -> int:
-            return len(tokenizer(query, value, add_special_tokens=True, truncation=False)["input_ids"])
-        while length(text) > max_length:
-            truncated = True
-            target = max(256, len(text) - max(16, (length(text) - max_length) * 4))
-            text = _boundaries(text, target)
-            if target <= 256 and length(text) > max_length:
-                raise ValueError("answer-first capsule cannot satisfy actual tokenizer budget")
-        pair_tokens = length(text)
-        if pair_tokens > max_length:
-            raise AssertionError("pair budget violated")
-    if "[BẰNG CHỨNG CHÍNH]" not in text or not str(primary["raw_text"]).strip()[:12] in text:
+        marker = "[PHẠM VI LIÊN QUAN]" if scope.get("kind") in {"scope_of_regulation", "combined"} else "[ĐỐI TƯỢNG LIÊN QUAN]"
+        scope_section, scope_used, scope_cut = section(marker, str(scope.get("raw_text", "")), scope_budget)
+    identity_marker, identity_marker_used, identity_marker_cut = section(
+        "[VĂN BẢN]", identity, max(1, identity_path_budget - location_used)
+    )
+    # Do not duplicate the identity when it already consumed the location cap.
+    if not identity_marker:
+        identity_marker_used = 0
+
+    parts = [value for value in (primary_section, location, secondary_section, scope_section, identity_marker) if value]
+    text = "\n".join(parts)
+    pair_tokens = len(tokenizer(rendered_query, text, add_special_tokens=True, truncation=False)["input_ids"])
+    if pair_tokens > max_length:
+        raise AssertionError(f"pair budget violated: {pair_tokens}>{max_length}")
+    if not text.startswith("[BẰNG CHỨNG CHÍNH]"):
+        raise AssertionError("capsule is not answer-first")
+    primary_content = primary_section.split("\n", 1)[1].strip()
+    if not primary_content or primary_content not in text:
         raise AssertionError("primary evidence disappeared while rendering")
-    return {"schema_version": SCHEMA, "text": text, "primary_chunk_id": primary["chunk_id"], "secondary_chunk_id": secondary["chunk_id"] if secondary else None, "pair_tokens": pair_tokens, "truncated": truncated, "one_view": True}
+    emitted_markers = [
+        marker for marker, value in (
+            ("[BẰNG CHỨNG CHÍNH]", primary_section), ("[VỊ TRÍ PHÁP LÝ]", location),
+            ("[BẰNG CHỨNG BỔ SUNG]", secondary_section),
+            ("[PHẠM VI LIÊN QUAN]" if scope and scope.get("kind") in {"scope_of_regulation", "combined"} else "[ĐỐI TƯỢNG LIÊN QUAN]", scope_section),
+            ("[VĂN BẢN]", identity_marker),
+        ) if value
+    ]
+    if any(marker not in MARKERS for marker in emitted_markers):
+        raise AssertionError("renderer emitted a non-Vietnamese or unregistered marker")
+    return {
+        "schema_version": SCHEMA, "query_text": rendered_query, "text": text,
+        "primary_chunk_id": primary["chunk_id"],
+        "secondary_chunk_id": secondary["chunk_id"] if secondary else None,
+        "pair_tokens": pair_tokens, "document_allowance": document_allowance,
+        "query_original_tokens": query_audit["original_tokens"],
+        "query_used_tokens": query_audit["used_tokens"], "query_truncated": query_audit["truncated"],
+        "allocated_token_shares": {"primary": .60, "identity_path_cap": .20, "scope_cap": .15, "secondary_remainder": round(secondary_budget / safety_allowance, 6)},
+        "section_tokens": {"primary": primary_used, "identity_path": location_used + identity_marker_used, "scope": scope_used, "secondary": secondary_used},
+        "truncated_sections": {"primary": primary_cut, "identity_path": location_cut or identity_marker_cut, "scope": scope_cut, "secondary": secondary_cut},
+        "title_status": "VERIFIED" if title_verified else "FALLBACK_NORMALIZED_LABEL",
+        "truncated": any((primary_cut, location_cut, identity_marker_cut, scope_cut, secondary_cut)),
+        "one_view": True, "answer_first": True,
+    }
+
+
+def _ensure_capsule_content_index(paths: Mapping[str, Path], output: Path) -> tuple[Path, dict[str, Any]]:
+    """Materialize source-exact Structural-v3 chunks for random capsule access."""
+    index_path = output / "content_index.sqlite"
+    index_manifest = output / "content_index_manifest.json"
+    source_manifest = _manifest_ok(paths["v3"], key="content_fingerprint")
+    fingerprint = _hash({
+        "source_v3": source_manifest["content_fingerprint"],
+        "source_sha256": source_manifest["artifact_sha256"]["chunks.jsonl"],
+        "projection": "source_exact_chunk_raw_text_and_document_label_v2",
+    })
+    if index_path.exists() and index_manifest.exists():
+        manifest = _json(index_manifest)
+        if manifest.get("fingerprint") == fingerprint and manifest.get("chunks") == 343347:
+            with sqlite3.connect(index_path) as connection:
+                count = int(connection.execute("SELECT COUNT(*) FROM chunks").fetchone()[0])
+            if count == 343347:
+                return index_path, manifest
+    tmp = index_path.with_suffix(".sqlite.tmp")
+    if tmp.exists():
+        tmp.unlink()
+    output.mkdir(parents=True, exist_ok=True)
+    connection = sqlite3.connect(tmp)
+    try:
+        connection.execute("PRAGMA journal_mode=OFF")
+        connection.execute("PRAGMA synchronous=OFF")
+        connection.execute("CREATE TABLE documents (doc_id TEXT PRIMARY KEY, document_label TEXT NOT NULL) WITHOUT ROWID")
+        connection.execute("CREATE TABLE chunks (chunk_id TEXT PRIMARY KEY, doc_id TEXT NOT NULL, parent_node_id TEXT, raw_text TEXT NOT NULL) WITHOUT ROWID")
+        connection.executemany(
+            "INSERT INTO documents VALUES (?, ?)",
+            ((str(row["doc_id"]), str(row.get("document_label", row["doc_id"]))) for row in _jsonl(paths["v3"] / "documents.jsonl")),
+        )
+        batch: list[tuple[str, str, str | None, str]] = []
+        for row in _jsonl(paths["v3"] / "chunks.jsonl"):
+            batch.append((str(row["chunk_id"]), str(row["doc_id"]), row.get("parent_node_id"), str(row["raw_text"])))
+            if len(batch) >= 2000:
+                connection.executemany("INSERT INTO chunks VALUES (?, ?, ?, ?)", batch)
+                batch.clear()
+        if batch:
+            connection.executemany("INSERT INTO chunks VALUES (?, ?, ?, ?)", batch)
+        chunks = int(connection.execute("SELECT COUNT(*) FROM chunks").fetchone()[0])
+        documents = int(connection.execute("SELECT COUNT(*) FROM documents").fetchone()[0])
+        connection.commit()
+    finally:
+        connection.close()
+    if chunks != 343347:
+        tmp.unlink(missing_ok=True)
+        raise ValueError(f"capsule content projection has {chunks}/343347 chunks")
+    tmp.replace(index_path)
+    manifest = {
+        "schema_version": SCHEMA, "stage": "capsule-content-index", "fingerprint": fingerprint,
+        "source_v3_fingerprint": source_manifest["content_fingerprint"],
+        "chunks": chunks, "documents": documents,
+    }
+    _write_json(index_manifest, manifest)
+    return index_path, manifest
+
+
+def _verified_title_metadata(paths: Mapping[str, Path]) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    """Reuse only the source-verified title inventory, never old capsule views."""
+    metadata_dir = ROOT / "cache" / "exp030_legal_evidence_routing_canonical_v1" / "metadata"
+    manifest = _json(metadata_dir / "manifest.json")
+    if manifest["inputs"]["v3_manifest_sha256"] != _sha256(paths["v3"] / "manifest.json"):
+        raise ValueError("verified-title inventory is not bound to current Structural-v3")
+    rows = {str(row["doc_id"]): row for row in _jsonl(metadata_dir / "document_metadata.jsonl")}
+    if len(rows) != 8507:
+        raise ValueError(f"verified-title inventory changed: {len(rows)}")
+    return rows, manifest
+
+
+def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODEL_ID) -> dict[str, Any]:
+    """Build resumable one-view Capsule v2 records for all Phase-B selectors."""
+    from transformers import AutoTokenizer
+
+    phase_b = paths["cache"] / "in-document-selector-v2"
+    phase_b_report = _json(phase_b / "REPORT.json")
+    phase_b_success = _json(phase_b / "_SUCCESS.json")
+    if phase_b_report.get("status") != "PASS_PHASE_B" or phase_b_report.get("phase_completion_percent") != 100:
+        raise RuntimeError("Phase C requires verified PASS_PHASE_B at 100%")
+    if phase_b_success.get("fingerprint") != phase_b_report.get("fingerprint"):
+        raise ValueError("Phase-B success/report fingerprint mismatch")
+    selector_path = phase_b / "selector_pairs.jsonl"
+    if _sha256(selector_path) != _json(phase_b / "manifest.json")["selector_pairs_sha256"]:
+        raise ValueError("Phase-B selector artifact hash mismatch")
+
+    output = paths["cache"] / "capsules-v2"
+    output.mkdir(parents=True, exist_ok=True)
+    (output / "_FAILED.json").unlink(missing_ok=True)
+    _state(paths["results"], "phase-c", "BUILDING_CONTENT_INDEX", completed=0, total=100, eta_seconds=None, phase_completion_percent=0)
+    content_index, content_manifest = _ensure_capsule_content_index(paths, output)
+    _state(paths["results"], "phase-c", "LOADING_TOKENIZER", completed=10, total=100, eta_seconds=None, phase_completion_percent=10)
+    tokenizer = AutoTokenizer.from_pretrained(model_id, local_files_only=True, use_fast=True)
+    if int(tokenizer.num_special_tokens_to_add(pair=True)) <= 0:
+        raise ValueError("BGE tokenizer does not expose pair special tokens")
+    titles, title_manifest = _verified_title_metadata(paths)
+    train = _json(paths["train"])
+    scopes: dict[str, dict[str, Any]] = {}
+    for row in _jsonl(paths["cache"] / "scope-sidecar-v2" / "scope_spans.jsonl"):
+        scope_id = _hash({key: row[key] for key in ("doc_id", "node_id", "kind", "source_start", "source_end")})
+        scopes[scope_id] = row
+    encoded_scope_ids = {str(row["scope_id"]) for row in _jsonl(paths["cache"] / "scope-embeddings-v2" / "scope_ids.jsonl")}
+    if set(scopes) != encoded_scope_ids:
+        raise ValueError("scope sidecar/source-exact span join does not match encoded scope IDs")
+    selector_names = tuple(phase_b_report["selectors"])
+    config_fingerprint = _hash({
+        "phase_b": phase_b_report["fingerprint"], "selector_sha256": _sha256(selector_path),
+        "content_index": content_manifest["fingerprint"], "title_metadata": title_manifest["content_fingerprint"],
+        "scope_sidecar": _json(paths["cache"] / "scope-sidecar-v2" / "manifest.json")["fingerprint"],
+        "model_id": model_id, "max_length": CAPSULE_MAX_LENGTH,
+        "query_policy": [QUERY_TOKEN_LIMIT, QUERY_HEAD_TOKENS, QUERY_TAIL_TOKENS],
+        "renderer_source_sha256": _sha256(Path(__file__)), "selectors": selector_names,
+    })
+    shards_dir = output / "query_shards"
+    shards_dir.mkdir(parents=True, exist_ok=True)
+    connection = sqlite3.connect(f"file:{content_index.as_posix()}?mode=ro", uri=True)
+    node_index = ROOT / "cache" / "exp030_legal_evidence_routing_canonical_v1" / "metadata" / "node_index.sqlite"
+    node_connection = sqlite3.connect(f"file:{node_index.as_posix()}?mode=ro", uri=True)
+
+    @lru_cache(maxsize=100000)
+    def chunk(chunk_id: str) -> dict[str, Any]:
+        row = connection.execute(
+            "SELECT doc_id, parent_node_id, raw_text FROM chunks WHERE chunk_id=?", (chunk_id,)
+        ).fetchone()
+        if row is None:
+            raise KeyError(f"capsule chunk missing from frozen projection: {chunk_id}")
+        return {"chunk_id": chunk_id, "doc_id": str(row[0]), "parent_node_id": row[1], "raw_text": row[2]}
+
+    @lru_cache(maxsize=100000)
+    def structural_path(parent_node_id: str | None) -> str:
+        ancestry: list[dict[str, Any]] = []
+        node_id = parent_node_id
+        seen: set[str] = set()
+        while node_id and node_id not in seen:
+            seen.add(node_id)
+            row = node_connection.execute(
+                "SELECT parent_id, kind, heading_text FROM nodes WHERE node_id=?", (node_id,)
+            ).fetchone()
+            if row is None:
+                break
+            ancestry.append({"kind": row[1], "heading_text": row[2] or ""})
+            node_id = row[0]
+        return format_structural_path(list(reversed(ancestry)))
+
+    @lru_cache(maxsize=10000)
+    def document_label(doc_id: str) -> str:
+        row = connection.execute("SELECT document_label FROM documents WHERE doc_id=?", (doc_id,)).fetchone()
+        return str(row[0]) if row else str(doc_id)
+
+    total_queries = int(phase_b_report["processed_queries"])
+    processed_queries = processed_pairs = unique_capsules = query_truncations = 0
+    max_pair_tokens = max_query_tokens = scope_shadow_audits = scope_shadow_fit = 0
+    title_statuses: Counter[str] = Counter()
+    reused = 0
+    started = time.time()
+
+    def flush_query(qid: str, pairs: list[dict[str, Any]]) -> None:
+        nonlocal processed_queries, processed_pairs, unique_capsules, query_truncations
+        nonlocal max_pair_tokens, max_query_tokens, scope_shadow_audits, scope_shadow_fit, reused
+        shard = shards_dir / f"{qid}.json"
+        if shard.exists():
+            old = _json(shard)
+            if old.get("config_fingerprint") == config_fingerprint and len(old.get("pairs", [])) == K64:
+                audit = old["audit"]
+                processed_queries += 1; processed_pairs += K64; reused += 1
+                unique_capsules += int(audit["unique_capsules"])
+                query_truncations += int(audit["query_truncated"])
+                max_pair_tokens = max(max_pair_tokens, int(audit["max_pair_tokens"]))
+                max_query_tokens = max(max_query_tokens, int(audit["query_original_tokens"]))
+                scope_shadow_audits += int(audit["scope_shadow_audits"])
+                scope_shadow_fit += int(audit["scope_shadow_fit"])
+                title_statuses.update(audit["title_statuses"])
+                return
+        query = str(train[qid]["question"])
+        query_info = truncate_query_for_pair(tokenizer, query)
+        rendered_pairs: list[dict[str, Any]] = []
+        shard_unique = shard_max = shard_scope = shard_scope_fit = 0
+        shard_titles: Counter[str] = Counter()
+        for pair in pairs:
+            doc_id = str(pair["doc_id"])
+            title_row = titles.get(doc_id, {})
+            document = {
+                "document_label": document_label(doc_id),
+                "official_title": title_row.get("official_title", {"status": "MISSING"}),
+            }
+            scope_candidate = pair.get("scope_candidate")
+            scope = scopes.get(str(scope_candidate.get("scope_id"))) if scope_candidate else None
+            representations: list[dict[str, Any]] = []
+            key_to_id: dict[tuple[str, ...], str] = {}
+            selector_capsule_ids: dict[str, str] = {}
+            for selector in selector_names:
+                selected = pair["selectors"][selector]
+                ids = tuple(str(item["chunk_id"]) for item in selected)
+                if ids not in key_to_id:
+                    primary = chunk(ids[0])
+                    secondary = chunk(ids[1]) if len(ids) > 1 else None
+                    document["structural_path"] = structural_path(primary.get("parent_node_id"))
+                    try:
+                        capsule = render_capsule_v2(
+                            query=query, document=document, primary=primary, secondary=secondary,
+                            ancestry=(), scope=None, tokenizer=tokenizer, max_length=CAPSULE_MAX_LENGTH,
+                        )
+                    except Exception as exc:
+                        raise type(exc)(f"qid={qid} doc_id={doc_id} selector={selector} chunks={ids}: {exc}") from exc
+                    capsule.pop("query_text", None)
+                    capsule_id = f"c{len(representations)}"
+                    capsule["capsule_id"] = capsule_id
+                    capsule["scope_materialization"] = "DEFERRED_TO_INNER_FOLD_THRESHOLD"
+                    if scope:
+                        try:
+                            shadow = render_capsule_v2(
+                                query=query, document=document, primary=primary, secondary=secondary,
+                                ancestry=(), scope=scope, tokenizer=tokenizer, max_length=CAPSULE_MAX_LENGTH,
+                            )
+                        except Exception as exc:
+                            raise type(exc)(f"scope-shadow qid={qid} doc_id={doc_id} selector={selector} chunks={ids}: {exc}") from exc
+                        shadow_marker = "[PHẠM VI LIÊN QUAN]" if scope.get("kind") in {"scope_of_regulation", "combined"} else "[ĐỐI TƯỢNG LIÊN QUAN]"
+                        fit = shadow_marker in shadow["text"]
+                        capsule["scope_shadow_audit"] = {
+                            "scope_id": scope_candidate["scope_id"], "score": scope_candidate["score"],
+                            "kind": scope["kind"], "pair_tokens": shadow["pair_tokens"],
+                            "fits": fit, "text_sha256": hashlib.sha256(shadow["text"].encode("utf-8")).hexdigest(),
+                        }
+                        shard_scope += 1
+                        shard_scope_fit += int(fit)
+                    key_to_id[ids] = capsule_id
+                    representations.append(capsule)
+                    shard_unique += 1
+                    shard_max = max(shard_max, int(capsule["pair_tokens"]))
+                    shard_titles[capsule["title_status"]] += 1
+                selector_capsule_ids[selector] = key_to_id[ids]
+            rendered_pairs.append({
+                "doc_id": doc_id, "lambdamart_rank": pair["lambdamart_rank"],
+                "evaluation_eligible": bool(pair["evaluation_eligible"]),
+                "selector_capsule_ids": selector_capsule_ids, "representations": representations,
+                "scope_candidate": scope_candidate,
+                "active_views_per_selector": 1, "aggregation_policy": "NEVER_MAX_VIEWS",
+            })
+        audit = {
+            "unique_capsules": shard_unique, "query_truncated": int(query_info["truncated"]),
+            "query_original_tokens": query_info["original_tokens"], "max_pair_tokens": shard_max,
+            "scope_shadow_audits": shard_scope, "scope_shadow_fit": shard_scope_fit,
+            "title_statuses": dict(shard_titles),
+        }
+        _write_json(shard, {
+            "schema_version": SCHEMA, "qid": qid, "query_text": query_info["text"],
+            "config_fingerprint": config_fingerprint, "pairs": rendered_pairs, "audit": audit,
+        })
+        processed_queries += 1; processed_pairs += len(rendered_pairs)
+        unique_capsules += shard_unique; query_truncations += int(query_info["truncated"])
+        max_pair_tokens = max(max_pair_tokens, shard_max); max_query_tokens = max(max_query_tokens, int(query_info["original_tokens"]))
+        scope_shadow_audits += shard_scope; scope_shadow_fit += shard_scope_fit; title_statuses.update(shard_titles)
+
+    try:
+        current_qid: str | None = None
+        current_pairs: list[dict[str, Any]] = []
+        for row in _jsonl(selector_path):
+            qid = str(row["qid"])
+            if current_qid is not None and qid != current_qid:
+                if len(current_pairs) != K64:
+                    raise ValueError(f"Phase-B query has {len(current_pairs)}/64 pairs: {current_qid}")
+                flush_query(current_qid, current_pairs)
+                if processed_queries % 25 == 0:
+                    elapsed = time.time() - started
+                    eta = elapsed / processed_queries * (total_queries - processed_queries) if processed_queries else None
+                    percent = 10 + int(85 * processed_queries / total_queries)
+                    _state(paths["results"], "phase-c", "RUNNING", completed=percent, total=100, eta_seconds=eta, phase_completion_percent=percent, queries=processed_queries, total_queries=total_queries)
+                current_pairs = []
+            current_qid = qid
+            current_pairs.append(row)
+        if current_qid is not None:
+            if len(current_pairs) != K64:
+                raise ValueError(f"Phase-B query has {len(current_pairs)}/64 pairs: {current_qid}")
+            flush_query(current_qid, current_pairs)
+    finally:
+        connection.close()
+        node_connection.close()
+
+    if processed_queries != 7000 or processed_pairs != 448000:
+        raise ValueError(f"capsule coverage mismatch queries={processed_queries} pairs={processed_pairs}")
+    _state(paths["results"], "phase-c", "CONSOLIDATING", completed=95, total=100, eta_seconds=None, phase_completion_percent=95)
+    output_jsonl = output / "capsules.jsonl"
+
+    def consolidated() -> Iterator[dict[str, Any]]:
+        for qid in sorted(str(value) for value in train):
+            shard = shards_dir / f"{qid}.json"
+            if shard.exists():
+                payload = _json(shard)
+                for pair in payload["pairs"]:
+                    yield {"schema_version": SCHEMA, "qid": qid, "query_text": payload["query_text"], **pair}
+
+    written = _write_jsonl(output_jsonl, consolidated())
+    if written != 448000:
+        raise ValueError(f"capsule consolidation wrote {written}/448000 pairs")
+    fingerprint = _hash({"config": config_fingerprint, "capsules_sha256": _sha256(output_jsonl), "pairs": written})
+    report = {
+        "schema_version": SCHEMA, "status": "PASS_PHASE_C", "phase": "C", "phase_completion_percent": 100,
+        "fingerprint": fingerprint, "config_fingerprint": config_fingerprint,
+        "processed_queries": processed_queries, "evaluable_queries": phase_b_report["evaluable_queries"],
+        "non_evaluable_queries": phase_b_report["non_evaluable_queries"], "processed_pairs": written,
+        "selector_count": len(selector_names), "selectors": list(selector_names),
+        "unique_capsules": unique_capsules, "active_views_per_selector_document": 1,
+        "variable_view_max_used": False, "scope_materialization": "deferred_to_inner_fold_threshold",
+        "scope_shadow_audits": scope_shadow_audits, "scope_shadow_fit": scope_shadow_fit,
+        "scope_shadow_omitted_unfit": scope_shadow_audits - scope_shadow_fit,
+        "query_truncations": query_truncations, "max_query_original_tokens": max_query_tokens,
+        "max_pair_tokens": max_pair_tokens, "pair_budget": CAPSULE_MAX_LENGTH,
+        "title_statuses": dict(title_statuses), "resumed_query_shards": reused,
+        "fresh_query_shards": total_queries - reused, "elapsed_seconds": round(time.time() - started, 3),
+    }
+    gate = max_pair_tokens <= CAPSULE_MAX_LENGTH and scope_shadow_fit == scope_shadow_audits
+    if not gate:
+        report["status"] = "FAILED_PHASE_C"
+        report["phase_completion_percent"] = 95
+    _write_json(output / "REPORT.json", report)
+    _write_json(output / "manifest.json", {
+        "schema_version": SCHEMA, "stage": "build-capsules-v2", "fingerprint": fingerprint,
+        "config_fingerprint": config_fingerprint, "capsules_sha256": _sha256(output_jsonl),
+    })
+    if gate:
+        (output / "_FAILED.json").unlink(missing_ok=True)
+        _success(output, stage="build-capsules-v2", fingerprint=fingerprint, phase="C")
+        _state(paths["results"], "phase-c", "SUCCESS", completed=100, total=100, eta_seconds=0, phase_completion_percent=100)
+    else:
+        _write_json(output / "_FAILED.json", report)
+        _state(paths["results"], "phase-c", "FAILED", completed=95, total=100, eta_seconds=0, phase_completion_percent=95)
+    return report
 
 
 def protected_residual(original: Sequence[str], evidence_scores: Mapping[str, float], anchor_scores: Mapping[str, float], *, alpha: float, window: int, tau: float) -> list[str]:
@@ -1486,6 +1972,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--features", type=Path, default=ROOT / "cache" / "exp027_lambdamart_shortlist" / "features")
     parser.add_argument("--exp028-oof", type=Path, default=ROOT / "results" / "exp028_lambdamart_shortlist" / "oof" / "oof_predictions.jsonl")
     parser.add_argument("--bm25-db", type=Path, default=ROOT / "cache" / "exp021_sparse" / "passage_hierarchy" / "fts5" / "bm25_v3.sqlite")
+    parser.add_argument("--capsule-model-id", default=CAPSULE_MODEL_ID)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--local-only", action="store_true")
     args = parser.parse_args(argv)
@@ -1502,11 +1989,19 @@ def main(argv: Sequence[str] | None = None) -> int:
         "encode-scope-sidecar": lambda: encode_scope_sidecar(paths, device=args.device),
         "score-in-document": lambda: score_in_document(paths),
         "score-selectors-v2": lambda: score_selectors_v2(paths),
-        "build-capsules-v2": lambda: (_ for _ in ()).throw(RuntimeError("build-capsules-v2 requires fold-isolated EXP-033 selector output")),
+        "build-capsules-v2": lambda: build_capsules_v2(paths, model_id=args.capsule_model_id),
         "screen-evidence": lambda: screen_evidence(paths), "preflight-bge": lambda: preflight_bge(paths, device=args.device, local_only=args.local_only),
         "train-bge": lambda: train_bge(paths), "evaluate-bge": lambda: evaluate_bge(paths), "report": lambda: report(paths), "overnight": lambda: overnight(paths),
     }
-    result = actions[args.command]()
+    try:
+        result = actions[args.command]()
+    except Exception as exc:
+        if args.command == "build-capsules-v2":
+            failure = {"schema_version": SCHEMA, "stage": "build-capsules-v2", "error_type": type(exc).__name__, "error": str(exc)}
+            failure_dir = paths["cache"] / "capsules-v2"
+            _write_json(failure_dir / "_FAILED.json", failure)
+            _state(paths["results"], "phase-c", "FAILED", completed=10, total=100, eta_seconds=0, phase_completion_percent=10, failure_reason=str(exc))
+        raise
     print(json.dumps(result, ensure_ascii=False, sort_keys=True))
     return 0
 

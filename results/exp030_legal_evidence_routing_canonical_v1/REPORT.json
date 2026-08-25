@@ -1,0 +1,43 @@
+{
+  "aggregate": {},
+  "completed_fine_tuned_folds": 0,
+  "failures": [],
+  "model_cards": {
+    "bge_m3": {
+      "url": "https://huggingface.co/BAAI/bge-reranker-v2-m3"
+    },
+    "gte": {
+      "url": "https://huggingface.co/Alibaba-NLP/gte-multilingual-reranker-base"
+    },
+    "jina": {
+      "citation_bibtex": "@misc{nasika2026jinarerankerv35,\n      title={jina-reranker-v3.5: Hybrid-Attention Listwise Reranking with Self-Distillation for Domain-Robust Retrieval},\n      author={Christina Nasika and Feng Wang and Antonis Minas Krasakis and Han Xiao},\n      year={2026},\n      eprint={2607.18152},\n      archivePrefix={arXiv},\n      primaryClass={cs.CL},\n      url={https://arxiv.org/abs/2607.18152},\n}",
+      "license": "CC BY-NC 4.0",
+      "url": "https://huggingface.co/jinaai/jina-reranker-v3.5"
+    },
+    "mmarco": {
+      "url": "https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
+    },
+    "qwen3": {
+      "url": "https://huggingface.co/Qwen/Qwen3-Reranker-0.6B"
+    },
+    "vietnamese": {
+      "url": "https://huggingface.co/AITeamVN/Vietnamese_Reranker"
+    }
+  },
+  "per_fold": {},
+  "promotion_gate": {
+    "aggregate_precision_delta": null,
+    "aggregate_recall_delta": null,
+    "complete_all_outer_folds": false,
+    "per_fold_recall_deltas": {},
+    "promotable": false,
+    "required_aggregate_recall_delta": 0.002,
+    "required_min_fold_recall_delta": -0.005,
+    "required_min_precision_delta": 0.0
+  },
+  "required_folds": 5,
+  "schema_version": "legalir.exp030_legal_evidence_routing.v1",
+  "selection": {},
+  "status": "REJECTED",
+  "target_recall@5": 0.97
+}

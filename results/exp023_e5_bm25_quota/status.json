@@ -1,0 +1,10 @@
+{
+  "completed": 7000,
+  "finished_at": 1787467287.3507679,
+  "pid": 23584,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "e5-bm25-quota-ablation",
+  "started_at": 1787467284.3094764,
+  "state": "COMPLETE",
+  "total": 7000
+}

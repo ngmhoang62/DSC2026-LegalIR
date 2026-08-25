@@ -1,0 +1,143 @@
+{
+  "capsule_configs": {
+    "both_base": {
+      "identity_variant": "both",
+      "relations": false,
+      "scope": false,
+      "structure": true,
+      "view_policy": "base"
+    },
+    "evidence_only": {
+      "identity_variant": "none",
+      "relations": false,
+      "scope": false,
+      "structure": false,
+      "view_policy": "base"
+    },
+    "multi_view": {
+      "identity_variant": "both",
+      "relations": true,
+      "scope": true,
+      "structure": true,
+      "view_policy": "routed"
+    },
+    "title_base": {
+      "identity_variant": "title",
+      "relations": false,
+      "scope": false,
+      "structure": true,
+      "view_policy": "base"
+    },
+    "typed_scope": {
+      "identity_variant": "both",
+      "relations": false,
+      "scope": true,
+      "structure": true,
+      "view_policy": "routed"
+    },
+    "unaccented_base": {
+      "identity_variant": "unaccented",
+      "relations": false,
+      "scope": false,
+      "structure": true,
+      "view_policy": "base"
+    }
+  },
+  "code_fingerprints": {
+    "exp012b_core.py": "71604a2162722a58e3030960ff384010cf4f78daa8871a745e0e9be7215e09bc",
+    "exp026_lambdamart_capsules.py": "1fe6f1e5e82e6d03202af19c0e572c9dd64a59f5dad280c07c7cc748b70062a3",
+    "exp027_lambdamart_shortlist.py": "7a90e3558ab612095c9057d08abc85dd012029ab05350473ae1bf160c7552f80",
+    "exp028_lambdamart_shortlist.py": "d5308b12c182972db5c963a265b824d0951512697aa7c4640a07d61c4a98c764",
+    "exp029_nested_lora_reranker.py": "33f899913c7a6525aec391144878997846376e0e5737cebb8c6dba6f15fe174d",
+    "exp030_legal_evidence_routing.py": "bfecee41d0a977555626a8d430252c0102205c67ccd5894cf42a7db5224a1b10"
+  },
+  "current_code_sha256": "26bbc8f7a399ba66437749226c9c21578eb66b55fb972b77e1b7fe90070f2030",
+  "fingerprint": "7fafa285a5456667c176d7d06ea4d55830d18ea713b82ab91416a4a06f7f4cd0",
+  "label_accounting": {
+    "affected_queries": 13,
+    "canonicalized_duplicate_occurrences": 2,
+    "dropped_empty_occurrences": 11,
+    "evaluable_queries": 6991,
+    "label_fingerprint": "9bdf9593b61fe3423d1f1a819ac9fb3e8d7225e6003da0afb840c1f5853fd4c9",
+    "non_evaluable_qids": [
+      "13426",
+      "163826",
+      "17708",
+      "28410",
+      "39790",
+      "49334",
+      "5728",
+      "60066",
+      "93066"
+    ],
+    "non_evaluable_queries": 9,
+    "policy": "canonical_duplicate_alias_drop_empty_passage_v1",
+    "queries": 7000
+  },
+  "label_fingerprint": "9bdf9593b61fe3423d1f1a819ac9fb3e8d7225e6003da0afb840c1f5853fd4c9",
+  "label_policy": "canonical_duplicate_alias_drop_empty_passage_v1",
+  "models": [
+    {
+      "key": "vietnamese",
+      "kind": "pair",
+      "lora_family": "xlmr",
+      "model_id": "AITeamVN/Vietnamese_Reranker",
+      "native_max_length": 2304,
+      "trust_remote_code": false
+    },
+    {
+      "key": "bge_m3",
+      "kind": "pair",
+      "lora_family": "xlmr",
+      "model_id": "BAAI/bge-reranker-v2-m3",
+      "native_max_length": 512,
+      "trust_remote_code": false
+    },
+    {
+      "key": "gte",
+      "kind": "pair",
+      "lora_family": "discover",
+      "model_id": "Alibaba-NLP/gte-multilingual-reranker-base",
+      "native_max_length": 8192,
+      "trust_remote_code": true
+    },
+    {
+      "key": "mmarco",
+      "kind": "pair",
+      "lora_family": "minilm",
+      "model_id": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+      "native_max_length": 512,
+      "trust_remote_code": false
+    },
+    {
+      "key": "qwen3",
+      "kind": "qwen",
+      "lora_family": "qwen",
+      "model_id": "Qwen/Qwen3-Reranker-0.6B",
+      "native_max_length": 32768,
+      "trust_remote_code": false
+    },
+    {
+      "key": "jina",
+      "kind": "jina",
+      "lora_family": null,
+      "model_id": "jinaai/jina-reranker-v3.5",
+      "native_max_length": 131072,
+      "trust_remote_code": true
+    }
+  ],
+  "paths": {
+    "bm25_db": "D:\\Study\\DSC2026\\LegalIR\\cache\\exp021_sparse\\passage_hierarchy\\fts5\\bm25_v3.sqlite",
+    "cache": "D:\\Study\\DSC2026\\LegalIR\\cache\\exp030_legal_evidence_routing_canonical_v1",
+    "candidates": "D:\\Study\\DSC2026\\LegalIR\\cache\\exp022_e5_bm25_union\\train_oof_candidates.jsonl",
+    "features": "D:\\Study\\DSC2026\\LegalIR\\cache\\exp027_lambdamart_shortlist\\features",
+    "folds": "D:\\Study\\DSC2026\\LegalIR\\cache\\cv_folds.json",
+    "preprocessing": "D:\\Study\\DSC2026\\LegalIR\\cache\\final_preprocessed_v2",
+    "results": "D:\\Study\\DSC2026\\LegalIR\\results\\exp030_legal_evidence_routing_canonical_v1",
+    "sidecar": "D:\\Study\\DSC2026\\LegalIR\\cache\\exp027_lambdamart_shortlist\\provenance\\provenance_sidecar.jsonl",
+    "train": "D:\\Study\\DSC2026\\LegalIR\\public_test_dataset\\train.json",
+    "v3": "D:\\Study\\DSC2026\\LegalIR\\cache\\structural_v3_e5_final_v1"
+  },
+  "resume_compatibility": "jina_dynamic_module_cache_v1",
+  "schema_version": "legalir.exp030_legal_evidence_routing.v1"
+}

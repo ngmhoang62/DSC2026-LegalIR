@@ -1,0 +1,10 @@
+{
+  "completed": 7000,
+  "finished_at": 1787481719.9314642,
+  "pid": 16880,
+  "schema_version": "legalir.exp012b_v3.v1",
+  "stage": "exp028-input-audit",
+  "started_at": 1787481719.9245842,
+  "state": "COMPLETE",
+  "total": 7000
+}

@@ -1,0 +1,7 @@
+{
+  "agent_spotcheck_sha256": "110f16cbea01854d132e1c87050e96c63ac4aa731ef338c376bb5afc3ac22a62",
+  "fingerprint": "6d146c8078ea4c67325a5887ce3230c243260e30044e72f2305127cfb118ebdc",
+  "report_sha256": "3fc4c129a8c374a898a1f5b8ac6fbf20d355d54f4aeadc596e4a4ada02cabde0",
+  "schema_version": "legalir.exp033_in_document_evidence_routing.v1",
+  "stage": "finalize-scope-phase-a"
+}
