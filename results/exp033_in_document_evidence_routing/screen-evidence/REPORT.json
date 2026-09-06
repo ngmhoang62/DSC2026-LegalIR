@@ -1,0 +1,76 @@
+{
+  "gate_passed": false,
+  "nested": true,
+  "phase": "D",
+  "schema_version": "legalir.exp033_in_document_evidence_routing.v1",
+  "selected": {
+    "exclude_320_recall_delta": -0.0009536070185476567,
+    "folds": [
+      {
+        "outer": "fold_0",
+        "precision_delta": 0.0002861230329041488,
+        "recall_delta": 0.001430615164520744
+      },
+      {
+        "outer": "fold_1",
+        "precision_delta": 0.0002863278453829635,
+        "recall_delta": 0.0014316392269148174
+      },
+      {
+        "outer": "fold_2",
+        "precision_delta": -0.0007142857142857143,
+        "recall_delta": -0.002857142857142857
+      },
+      {
+        "outer": "fold_3",
+        "precision_delta": -0.0008577555396711937,
+        "recall_delta": -0.0035739814152966403
+      },
+      {
+        "outer": "fold_4",
+        "precision_delta": -0.00014316392269148176,
+        "recall_delta": -0.0011930326890956812
+      }
+    ],
+    "nested_outer_policies": {
+      "fold_0": {
+        "alpha": 0.1,
+        "inner_precision_delta": 0.00017879492222420883,
+        "inner_recall_delta": 0.0006853805351928004,
+        "selector": "hybrid_rrf_dense_075",
+        "window": 16
+      },
+      "fold_1": {
+        "alpha": 0.1,
+        "inner_precision_delta": 0.0001072577761887737,
+        "inner_recall_delta": 0.0008640209748540104,
+        "selector": "in_parent_bm25_top2",
+        "window": 25
+      },
+      "fold_2": {
+        "alpha": 0.1,
+        "inner_precision_delta": 0.0002861742085494545,
+        "inner_recall_delta": 0.001520300482918977,
+        "selector": "hybrid_rrf_dense_050",
+        "window": 25
+      },
+      "fold_3": {
+        "alpha": 0.1,
+        "inner_precision_delta": 0.0005007153075822603,
+        "inner_recall_delta": 0.002384358607534573,
+        "selector": "hybrid_rrf_dense_050",
+        "window": 16
+      },
+      "fold_4": {
+        "alpha": 0.1,
+        "inner_precision_delta": 0.00039327851269217024,
+        "inner_recall_delta": 0.002204743177213681,
+        "selector": "in_parent_bm25_top2",
+        "window": 16
+      }
+    },
+    "precision_delta": -0.00022886568445143758,
+    "recall_delta": -0.0009536070185476567
+  },
+  "status": "REJECTED_EVIDENCE_GATE"
+}

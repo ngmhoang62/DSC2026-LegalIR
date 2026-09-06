@@ -1,0 +1,19 @@
+{
+  "evaluable_queries": 6991,
+  "forbidden_shortcut": "do_not_use_global_exp028_oof_rows_for_outer_train_policy_selection",
+  "global_oof_status": "outer-heldout rows are safe; outer-train rows cannot select Phase-D policy",
+  "non_evaluable_queries": 9,
+  "outer_folds": [
+    "fold_0",
+    "fold_1",
+    "fold_2",
+    "fold_3",
+    "fold_4"
+  ],
+  "phase": "D",
+  "phase_c_fingerprint": "6c9f1fa4179d860edd12e07a5545e7c27b9b22f397e2bf34a3c0e77ca948708c",
+  "phase_completion_percent": 5,
+  "required_next_stage": "rebuild LambdaMART K64 and in-document selector rows within each outer-train inner-crossfit",
+  "schema_version": "legalir.exp033_in_document_evidence_routing.v1",
+  "status": "NEEDS_INNER_CROSSFIT_REBUILD"
+}

@@ -1,0 +1,6 @@
+{
+  "competition_terms_source": "Record the exact competition rule or official clarification.",
+  "model_license_source": "Record the exact Jina model license source reviewed for this run.",
+  "approved_for_competition_use": false,
+  "notes": "Copy to exp109c_model_use_eligibility.json only after the compatibility decision is verified."
+}

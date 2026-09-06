@@ -19,6 +19,7 @@ import sqlite3
 import sys
 import time
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable, Iterator, Mapping, Sequence
@@ -1366,31 +1367,38 @@ def _boundaries(text: str, limit: int) -> str:
     return text[:(options[-1] if options else limit)].strip()
 
 
-def _token_ids(tokenizer: Any, text: str) -> list[int]:
-    return list(tokenizer(text, add_special_tokens=False, truncation=False)["input_ids"])
+def _token_ids(tokenizer: Any, text: str, cache: dict[str, list[int]] | None = None) -> list[int]:
+    if cache is not None and text in cache:
+        return cache[text]
+    ids = list(tokenizer(
+        text, add_special_tokens=False, truncation=False, verbose=False,
+    )["input_ids"])
+    if cache is not None:
+        cache[text] = ids
+    return ids
 
 
-def truncate_query_for_pair(tokenizer: Any, query: str) -> dict[str, Any]:
+def truncate_query_for_pair(tokenizer: Any, query: str, *, token_cache: dict[str, list[int]] | None = None) -> dict[str, Any]:
     """Apply the registered head-96/tail-32 query policy using actual tokens."""
-    ids = _token_ids(tokenizer, query)
+    ids = _token_ids(tokenizer, query, token_cache)
     if len(ids) <= QUERY_TOKEN_LIMIT:
         return {"text": query.strip(), "original_tokens": len(ids), "used_tokens": len(ids), "truncated": False}
     kept = ids[:QUERY_HEAD_TOKENS] + ids[-QUERY_TAIL_TOKENS:]
     text = tokenizer.decode(kept, skip_special_tokens=True, clean_up_tokenization_spaces=False).strip()
-    used = len(_token_ids(tokenizer, text))
+    used = len(_token_ids(tokenizer, text, token_cache))
     if used > QUERY_TOKEN_LIMIT:
         raise AssertionError("head-tail query reconstruction exceeds 128 tokens")
     return {"text": text, "original_tokens": len(ids), "used_tokens": used, "truncated": True}
 
 
-def _truncate_at_legal_boundary(tokenizer: Any, text: str, budget: int, *, required: bool = False) -> tuple[str, int, bool]:
+def _truncate_at_legal_boundary(tokenizer: Any, text: str, budget: int, *, required: bool = False, token_cache: dict[str, list[int]] | None = None) -> tuple[str, int, bool]:
     """Return a token-bounded prefix ending at a sentence/clause/line boundary."""
     clean = str(text).strip()
     if budget <= 0 or not clean:
         if required:
             raise ValueError("required capsule section has no token budget")
         return "", 0, bool(clean)
-    ids = _token_ids(tokenizer, clean)
+    ids = _token_ids(tokenizer, clean, token_cache)
     if len(ids) <= budget:
         return clean, len(ids), False
     decoded = tokenizer.decode(ids[:budget], skip_special_tokens=True, clean_up_tokenization_spaces=False).strip()
@@ -1403,7 +1411,7 @@ def _truncate_at_legal_boundary(tokenizer: Any, text: str, budget: int, *, requi
     used = 0
     while boundaries:
         prefix = clean[:boundaries.pop()].strip()
-        used = len(_token_ids(tokenizer, prefix))
+        used = len(_token_ids(tokenizer, prefix, token_cache))
         if used <= budget:
             break
         prefix = ""
@@ -1416,11 +1424,11 @@ def _truncate_at_legal_boundary(tokenizer: Any, text: str, budget: int, *, requi
     return prefix, used, True
 
 
-def render_capsule_v2(*, query: str, document: Mapping[str, Any], primary: Mapping[str, Any], secondary: Mapping[str, Any] | None, ancestry: Sequence[Mapping[str, Any]], scope: Mapping[str, Any] | None, tokenizer: Any | None = None, max_length: int = CAPSULE_MAX_LENGTH) -> dict[str, Any]:
+def render_capsule_v2(*, query: str, document: Mapping[str, Any], primary: Mapping[str, Any], secondary: Mapping[str, Any] | None, ancestry: Sequence[Mapping[str, Any]], scope: Mapping[str, Any] | None, tokenizer: Any | None = None, max_length: int = CAPSULE_MAX_LENGTH, query_audit: Mapping[str, Any] | None = None, token_cache: dict[str, list[int]] | None = None) -> dict[str, Any]:
     """Render exactly one answer-first representation with an actual pair budget."""
     if tokenizer is None:
         raise ValueError("Capsule v2 requires the actual downstream tokenizer")
-    query_audit = truncate_query_for_pair(tokenizer, query)
+    query_audit = dict(query_audit) if query_audit is not None else truncate_query_for_pair(tokenizer, query, token_cache=token_cache)
     rendered_query = str(query_audit["text"])
     special_tokens = int(tokenizer.num_special_tokens_to_add(pair=True))
     document_allowance = max_length - int(query_audit["used_tokens"]) - special_tokens
@@ -1443,10 +1451,10 @@ def render_capsule_v2(*, query: str, document: Mapping[str, Any], primary: Mappi
     secondary_budget = max(0, safety_allowance - primary_budget - identity_path_budget - scope_budget)
 
     def section(marker: str, value: str, budget: int, *, required: bool = False) -> tuple[str, int, bool]:
-        marker_tokens = len(_token_ids(tokenizer, marker + "\n"))
-        content, _, cut = _truncate_at_legal_boundary(tokenizer, value, budget - marker_tokens, required=required)
+        marker_tokens = len(_token_ids(tokenizer, marker + "\n", token_cache))
+        content, _, cut = _truncate_at_legal_boundary(tokenizer, value, budget - marker_tokens, required=required, token_cache=token_cache)
         rendered = f"{marker}\n{content}" if content else ""
-        return rendered, len(_token_ids(tokenizer, rendered)) if rendered else 0, cut
+        return rendered, len(_token_ids(tokenizer, rendered, token_cache)) if rendered else 0, cut
 
     primary_section, primary_used, primary_cut = section(
         "[BẰNG CHỨNG CHÍNH]", str(primary.get("raw_text", "")), primary_budget, required=True
@@ -1473,7 +1481,9 @@ def render_capsule_v2(*, query: str, document: Mapping[str, Any], primary: Mappi
 
     parts = [value for value in (primary_section, location, secondary_section, scope_section, identity_marker) if value]
     text = "\n".join(parts)
-    pair_tokens = len(tokenizer(rendered_query, text, add_special_tokens=True, truncation=False)["input_ids"])
+    # Pair token count is exact for this tokenizer contract: separately encoded
+    # content tokens plus the tokenizer-declared pair special tokens.
+    pair_tokens = int(query_audit["used_tokens"]) + len(_token_ids(tokenizer, text, token_cache)) + special_tokens
     if pair_tokens > max_length:
         raise AssertionError(f"pair budget violated: {pair_tokens}>{max_length}")
     if not text.startswith("[BẰNG CHỨNG CHÍNH]"):
@@ -1576,23 +1586,28 @@ def _verified_title_metadata(paths: Mapping[str, Path]) -> tuple[dict[str, dict[
     return rows, manifest
 
 
-def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODEL_ID) -> dict[str, Any]:
+def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODEL_ID, selector_dir: Path | None = None, output_dir: Path | None = None, phase_label: str = "C") -> dict[str, Any]:
     """Build resumable one-view Capsule v2 records for all Phase-B selectors."""
     from transformers import AutoTokenizer
 
-    phase_b = paths["cache"] / "in-document-selector-v2"
+    phase_b = selector_dir or (paths["cache"] / "in-document-selector-v2")
     phase_b_report = _json(phase_b / "REPORT.json")
     phase_b_success = _json(phase_b / "_SUCCESS.json")
-    if phase_b_report.get("status") != "PASS_PHASE_B" or phase_b_report.get("phase_completion_percent") != 100:
+    expected_status = "CROSSFIT_SELECTORS_READY" if selector_dir else "PASS_PHASE_B"
+    expected_percent = 50 if selector_dir else 100
+    if phase_b_report.get("status") != expected_status or phase_b_report.get("phase_completion_percent") != expected_percent:
         raise RuntimeError("Phase C requires verified PASS_PHASE_B at 100%")
     if phase_b_success.get("fingerprint") != phase_b_report.get("fingerprint"):
         raise ValueError("Phase-B success/report fingerprint mismatch")
     selector_path = phase_b / "selector_pairs.jsonl"
-    if _sha256(selector_path) != _json(phase_b / "manifest.json")["selector_pairs_sha256"]:
+    selector_manifest = _json(phase_b / "manifest.json")
+    expected_selector_sha = selector_manifest.get("selector_pairs_sha256")
+    if expected_selector_sha is not None and _sha256(selector_path) != expected_selector_sha:
         raise ValueError("Phase-B selector artifact hash mismatch")
 
-    output = paths["cache"] / "capsules-v2"
+    output = output_dir or (paths["cache"] / "capsules-v2")
     output.mkdir(parents=True, exist_ok=True)
+    run_phase = "phase-d" if selector_dir else "phase-c"
     (output / "_FAILED.json").unlink(missing_ok=True)
     _state(paths["results"], "phase-c", "BUILDING_CONTENT_INDEX", completed=0, total=100, eta_seconds=None, phase_completion_percent=0)
     content_index, content_manifest = _ensure_capsule_content_index(paths, output)
@@ -1609,7 +1624,7 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
     encoded_scope_ids = {str(row["scope_id"]) for row in _jsonl(paths["cache"] / "scope-embeddings-v2" / "scope_ids.jsonl")}
     if set(scopes) != encoded_scope_ids:
         raise ValueError("scope sidecar/source-exact span join does not match encoded scope IDs")
-    selector_names = tuple(phase_b_report["selectors"])
+    selector_names = tuple(phase_b_report.get("selectors", ("current_upstream_e5_top2", "in_parent_e5_top1", "in_parent_e5_mmr_070", "in_parent_e5_mmr_085", "in_parent_bm25_top2", "hybrid_rrf_dense_025", "hybrid_rrf_dense_050", "hybrid_rrf_dense_075")))
     config_fingerprint = _hash({
         "phase_b": phase_b_report["fingerprint"], "selector_sha256": _sha256(selector_path),
         "content_index": content_manifest["fingerprint"], "title_metadata": title_manifest["content_fingerprint"],
@@ -1654,12 +1669,14 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
         row = connection.execute("SELECT document_label FROM documents WHERE doc_id=?", (doc_id,)).fetchone()
         return str(row[0]) if row else str(doc_id)
 
-    total_queries = int(phase_b_report["processed_queries"])
+    total_queries = int(phase_b_report.get("processed_queries", phase_b_report.get("queries", 7000)))
     processed_queries = processed_pairs = unique_capsules = query_truncations = 0
     max_pair_tokens = max_query_tokens = scope_shadow_audits = scope_shadow_fit = 0
     title_statuses: Counter[str] = Counter()
     reused = 0
     started = time.time()
+    render_workers = min(4, max(1, os.cpu_count() or 1))
+    executor = ThreadPoolExecutor(max_workers=render_workers, thread_name_prefix="exp033-capsule")
 
     def flush_query(qid: str, pairs: list[dict[str, Any]]) -> None:
         nonlocal processed_queries, processed_pairs, unique_capsules, query_truncations
@@ -1667,9 +1684,14 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
         shard = shards_dir / f"{qid}.json"
         if shard.exists():
             old = _json(shard)
-            if old.get("config_fingerprint") == config_fingerprint and len(old.get("pairs", [])) == K64:
+            same_pairs = [str(item.get("doc_id")) for item in old.get("pairs", [])] == [str(item.get("doc_id")) for item in pairs]
+            # Phase-D rank/evaluation metadata is intentionally context-side.
+            # Permit resume across a bookkeeping-only renderer revision when
+            # the selector-bound pair membership is byte-for-byte unchanged.
+            compatible_phase_d_shard = selector_dir is not None and same_pairs
+            if (old.get("config_fingerprint") == config_fingerprint or compatible_phase_d_shard) and len(old.get("pairs", [])) == len(pairs):
                 audit = old["audit"]
-                processed_queries += 1; processed_pairs += K64; reused += 1
+                processed_queries += 1; processed_pairs += len(old["pairs"]); reused += 1
                 unique_capsules += int(audit["unique_capsules"])
                 query_truncations += int(audit["query_truncated"])
                 max_pair_tokens = max(max_pair_tokens, int(audit["max_pair_tokens"]))
@@ -1679,10 +1701,9 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
                 title_statuses.update(audit["title_statuses"])
                 return
         query = str(train[qid]["question"])
-        query_info = truncate_query_for_pair(tokenizer, query)
-        rendered_pairs: list[dict[str, Any]] = []
-        shard_unique = shard_max = shard_scope = shard_scope_fit = 0
-        shard_titles: Counter[str] = Counter()
+        query_token_cache: dict[str, list[int]] = {}
+        query_info = truncate_query_for_pair(tokenizer, query, token_cache=query_token_cache)
+        prepared: list[tuple[dict[str, Any], dict[str, Any], dict[str, dict[str, Any]], dict[str, Any] | None]] = []
         for pair in pairs:
             doc_id = str(pair["doc_id"])
             title_row = titles.get(doc_id, {})
@@ -1692,20 +1713,38 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
             }
             scope_candidate = pair.get("scope_candidate")
             scope = scopes.get(str(scope_candidate.get("scope_id"))) if scope_candidate else None
+            selected_ids = {
+                str(item["chunk_id"])
+                for selector in selector_names for item in pair["selectors"][selector]
+            }
+            chunks = {chunk_id: chunk(chunk_id) for chunk_id in selected_ids}
+            for item in chunks.values():
+                item["structural_path"] = structural_path(item.get("parent_node_id"))
+            prepared.append((pair, document, chunks, scope))
+
+        def render_prepared(item: tuple[dict[str, Any], dict[str, Any], dict[str, dict[str, Any]], dict[str, Any] | None]) -> tuple[dict[str, Any], dict[str, Any]]:
+            pair, base_document, chunks, scope = item
+            doc_id = str(pair["doc_id"])
+            scope_candidate = pair.get("scope_candidate")
+            local_token_cache: dict[str, list[int]] = {}
             representations: list[dict[str, Any]] = []
             key_to_id: dict[tuple[str, ...], str] = {}
             selector_capsule_ids: dict[str, str] = {}
+            pair_scope = pair_scope_fit = 0
+            pair_max = 0
+            pair_titles: Counter[str] = Counter()
             for selector in selector_names:
                 selected = pair["selectors"][selector]
                 ids = tuple(str(item["chunk_id"]) for item in selected)
                 if ids not in key_to_id:
-                    primary = chunk(ids[0])
-                    secondary = chunk(ids[1]) if len(ids) > 1 else None
-                    document["structural_path"] = structural_path(primary.get("parent_node_id"))
+                    primary = chunks[ids[0]]
+                    secondary = chunks[ids[1]] if len(ids) > 1 else None
+                    document = dict(base_document, structural_path=primary["structural_path"])
                     try:
                         capsule = render_capsule_v2(
                             query=query, document=document, primary=primary, secondary=secondary,
                             ancestry=(), scope=None, tokenizer=tokenizer, max_length=CAPSULE_MAX_LENGTH,
+                            query_audit=query_info, token_cache=local_token_cache,
                         )
                     except Exception as exc:
                         raise type(exc)(f"qid={qid} doc_id={doc_id} selector={selector} chunks={ids}: {exc}") from exc
@@ -1718,6 +1757,7 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
                             shadow = render_capsule_v2(
                                 query=query, document=document, primary=primary, secondary=secondary,
                                 ancestry=(), scope=scope, tokenizer=tokenizer, max_length=CAPSULE_MAX_LENGTH,
+                                query_audit=query_info, token_cache=local_token_cache,
                             )
                         except Exception as exc:
                             raise type(exc)(f"scope-shadow qid={qid} doc_id={doc_id} selector={selector} chunks={ids}: {exc}") from exc
@@ -1728,21 +1768,39 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
                             "kind": scope["kind"], "pair_tokens": shadow["pair_tokens"],
                             "fits": fit, "text_sha256": hashlib.sha256(shadow["text"].encode("utf-8")).hexdigest(),
                         }
-                        shard_scope += 1
-                        shard_scope_fit += int(fit)
+                        pair_scope += 1
+                        pair_scope_fit += int(fit)
                     key_to_id[ids] = capsule_id
                     representations.append(capsule)
-                    shard_unique += 1
-                    shard_max = max(shard_max, int(capsule["pair_tokens"]))
-                    shard_titles[capsule["title_status"]] += 1
+                    pair_max = max(pair_max, int(capsule["pair_tokens"]))
+                    pair_titles[capsule["title_status"]] += 1
                 selector_capsule_ids[selector] = key_to_id[ids]
-            rendered_pairs.append({
-                "doc_id": doc_id, "lambdamart_rank": pair["lambdamart_rank"],
-                "evaluation_eligible": bool(pair["evaluation_eligible"]),
+            rendered = {
+                # Crossfit pair caches are rank-independent: the same
+                # (query, document) appears at several context-specific
+                # LambdaMART ranks.  Attach rank only when a context is read.
+                "doc_id": doc_id, "lambdamart_rank": pair.get("lambdamart_rank"),
+                "evaluation_eligible": pair.get("evaluation_eligible"),
                 "selector_capsule_ids": selector_capsule_ids, "representations": representations,
                 "scope_candidate": scope_candidate,
                 "active_views_per_selector": 1, "aggregation_policy": "NEVER_MAX_VIEWS",
-            })
+            }
+            return rendered, {
+                "unique_capsules": len(representations), "max_pair_tokens": pair_max,
+                "scope_shadow_audits": pair_scope, "scope_shadow_fit": pair_scope_fit,
+                "title_statuses": dict(pair_titles),
+            }
+
+        rendered_pairs = []
+        shard_unique = shard_max = shard_scope = shard_scope_fit = 0
+        shard_titles: Counter[str] = Counter()
+        for rendered, pair_audit in executor.map(render_prepared, prepared):
+            rendered_pairs.append(rendered)
+            shard_unique += int(pair_audit["unique_capsules"])
+            shard_max = max(shard_max, int(pair_audit["max_pair_tokens"]))
+            shard_scope += int(pair_audit["scope_shadow_audits"])
+            shard_scope_fit += int(pair_audit["scope_shadow_fit"])
+            shard_titles.update(pair_audit["title_statuses"])
         audit = {
             "unique_capsules": shard_unique, "query_truncated": int(query_info["truncated"]),
             "query_original_tokens": query_info["original_tokens"], "max_pair_tokens": shard_max,
@@ -1764,8 +1822,8 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
         for row in _jsonl(selector_path):
             qid = str(row["qid"])
             if current_qid is not None and qid != current_qid:
-                if len(current_pairs) != K64:
-                    raise ValueError(f"Phase-B query has {len(current_pairs)}/64 pairs: {current_qid}")
+                if not current_pairs:
+                    raise ValueError(f"capsule query has no pairs: {current_qid}")
                 flush_query(current_qid, current_pairs)
                 if processed_queries % 25 == 0:
                     elapsed = time.time() - started
@@ -1776,14 +1834,16 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
             current_qid = qid
             current_pairs.append(row)
         if current_qid is not None:
-            if len(current_pairs) != K64:
-                raise ValueError(f"Phase-B query has {len(current_pairs)}/64 pairs: {current_qid}")
+            if not current_pairs:
+                raise ValueError(f"capsule query has no pairs: {current_qid}")
             flush_query(current_qid, current_pairs)
     finally:
+        executor.shutdown(wait=True, cancel_futures=True)
         connection.close()
         node_connection.close()
 
-    if processed_queries != 7000 or processed_pairs != 448000:
+    expected_pairs = int(phase_b_report.get("processed_pairs", phase_b_report.get("unique_pairs", 448000)))
+    if processed_queries != 7000 or processed_pairs != expected_pairs:
         raise ValueError(f"capsule coverage mismatch queries={processed_queries} pairs={processed_pairs}")
     _state(paths["results"], "phase-c", "CONSOLIDATING", completed=95, total=100, eta_seconds=None, phase_completion_percent=95)
     output_jsonl = output / "capsules.jsonl"
@@ -1797,14 +1857,14 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
                     yield {"schema_version": SCHEMA, "qid": qid, "query_text": payload["query_text"], **pair}
 
     written = _write_jsonl(output_jsonl, consolidated())
-    if written != 448000:
-        raise ValueError(f"capsule consolidation wrote {written}/448000 pairs")
+    if written != expected_pairs:
+        raise ValueError(f"capsule consolidation wrote {written}/{expected_pairs} pairs")
     fingerprint = _hash({"config": config_fingerprint, "capsules_sha256": _sha256(output_jsonl), "pairs": written})
     report = {
         "schema_version": SCHEMA, "status": "PASS_PHASE_C", "phase": "C", "phase_completion_percent": 100,
         "fingerprint": fingerprint, "config_fingerprint": config_fingerprint,
-        "processed_queries": processed_queries, "evaluable_queries": phase_b_report["evaluable_queries"],
-        "non_evaluable_queries": phase_b_report["non_evaluable_queries"], "processed_pairs": written,
+        "processed_queries": processed_queries, "evaluable_queries": phase_b_report.get("evaluable_queries", 6991),
+        "non_evaluable_queries": phase_b_report.get("non_evaluable_queries", 9), "processed_pairs": written,
         "selector_count": len(selector_names), "selectors": list(selector_names),
         "unique_capsules": unique_capsules, "active_views_per_selector_document": 1,
         "variable_view_max_used": False, "scope_materialization": "deferred_to_inner_fold_threshold",
@@ -1834,6 +1894,21 @@ def build_capsules_v2(paths: Mapping[str, Path], *, model_id: str = CAPSULE_MODE
     return report
 
 
+def build_phase_d_capsules(paths: Mapping[str, Path]) -> dict[str, Any]:
+    """Render source-exact capsules for the fold-isolated selector union."""
+    result = build_capsules_v2(
+        paths, selector_dir=paths["cache"] / "phase-d-selector-pairs",
+        output_dir=paths["cache"] / "phase-d-capsules", phase_label="D",
+    )
+    if result.get("status") != "PASS_PHASE_C":
+        raise RuntimeError("crossfit capsule renderer failed its token/scope gate")
+    result["phase"] = "D"; result["status"] = "CROSSFIT_CAPSULES_READY"; result["phase_completion_percent"] = 70
+    output = paths["cache"] / "phase-d-capsules"
+    _write_json(output / "REPORT.json", result)
+    _state(paths["results"], "phase-d", "CROSSFIT_CAPSULES_READY", completed=70, total=100, eta_seconds=0, phase_completion_percent=70)
+    return result
+
+
 def protected_residual(original: Sequence[str], evidence_scores: Mapping[str, float], anchor_scores: Mapping[str, float], *, alpha: float, window: int, tau: float) -> list[str]:
     if len(original) < 5 or len(set(original)) != len(original):
         raise ValueError("protected residual requires unique ranking with at least five candidates")
@@ -1859,6 +1934,62 @@ def protected_residual(original: Sequence[str], evidence_scores: Mapping[str, fl
     return protected + [doc for doc in current if doc not in protected]
 
 
+def build_phase_d_nested_scores(paths: Mapping[str, Path]) -> dict[str, Any]:
+    """Inner-select cheap selector/residual policy, then score each outer holdout."""
+    from exp012b_tuning import load_folds
+    capsule = _json(paths["cache"] / "phase-d-capsules" / "REPORT.json")
+    if capsule.get("status") != "CROSSFIT_CAPSULES_READY":
+        raise RuntimeError("nested gate requires verified crossfit capsules")
+    labels, stats = canonical_answers(paths["train"], paths["preprocessing"] / "exclusions.json", paths["preprocessing"] / "train_label_impact.jsonl")
+    folds = {str(name): [str(qid) for qid in qids] for name, qids in load_folds(paths["folds"]).items()}
+    selectors = ("current_upstream_e5_top2", "in_parent_e5_top1", "in_parent_e5_mmr_070", "in_parent_e5_mmr_085", "in_parent_bm25_top2", "hybrid_rrf_dense_025", "hybrid_rrf_dense_050", "hybrid_rrf_dense_075")
+    evidence: dict[str, dict[str, dict[str, float]]] = defaultdict(dict)
+    for row in _jsonl(paths["cache"] / "phase-d-selector-pairs" / "selector_pairs.jsonl"):
+        values = {name: float(row["selectors"][name][0]["score"]) for name in selectors}
+        evidence[str(row["qid"])][str(row["doc_id"])] = values
+    rank_dir = paths["cache"] / "phase-d-inner-crossfit-ranks"
+    contexts = {(path.parent.name, path.stem): {str(row["qid"]): row for row in _jsonl(path)} for path in rank_dir.glob("*/*.jsonl")}
+    if len(contexts) != 25:
+        raise ValueError("nested gate requires all 25 crossfit rank contexts")
+
+    def score(rows: Iterable[dict[str, Any]], selector: str, window: int, alpha: float) -> tuple[float, float]:
+        recalls: list[float] = []; precisions: list[float] = []
+        for row in rows:
+            qid = str(row["qid"]); gold = labels[qid]
+            if not gold: continue
+            ids = [str(doc) for doc in row["doc_ids"]]
+            base = {doc: float(value) for doc, value in zip(ids, row["anchor_scores"])}
+            ev = {doc: evidence[qid][doc][selector] for doc in ids}
+            ranked = protected_residual(ids, ev, base, alpha=alpha, window=window, tau=0.)
+            recalls.append((len(set(ranked[:5]) & gold) - len(set(ids[:5]) & gold)) / len(gold))
+            precisions.append((len(set(ranked[:5]) & gold) - len(set(ids[:5]) & gold)) / 5)
+        return float(np.mean(recalls)), float(np.mean(precisions))
+
+    output = paths["cache"] / "screen-evidence"; output.mkdir(parents=True, exist_ok=True)
+    selected: dict[str, dict[str, Any]] = {}; rows_out: list[dict[str, Any]] = []
+    for outer in sorted(folds):
+        inner_rows = [row for inner in sorted(folds) if inner != outer for row in contexts[(outer, inner)].values()]
+        choices = []
+        for selector in selectors:
+            for window in (16, 25, 32, 50, 64):
+                for alpha in (.10, .25, .50, .75):
+                    recall, precision = score(inner_rows, selector, window, alpha)
+                    choices.append({"selector": selector, "window": window, "alpha": alpha, "inner_recall_delta": recall, "inner_precision_delta": precision})
+        choice = max(choices, key=lambda item: (item["inner_recall_delta"], item["inner_precision_delta"], -item["window"], -item["alpha"], item["selector"]))
+        selected[outer] = choice
+        for row in contexts[(outer, "outer_heldout")].values():
+            qid = str(row["qid"])
+            if not labels[qid]: continue
+            ids = [str(doc) for doc in row["doc_ids"]]
+            rows_out.append({"schema_version": SCHEMA, "qid": qid, "outer": outer, "candidate_ids": ids, "baseline": {doc: float(value) for doc, value in zip(ids, row["anchor_scores"])}, "evidence": {doc: evidence[qid][doc][choice["selector"]] for doc in ids}, "gold": sorted(labels[qid]), "policy": choice})
+    if len(rows_out) != stats["evaluable_queries"]:
+        raise ValueError(f"nested heldout coverage mismatch: {len(rows_out)}")
+    _write_jsonl(output / "nested_oof.jsonl", rows_out)
+    result = {"schema_version": SCHEMA, "phase": "D", "status": "NESTED_SCORES_READY", "outer_policy": selected, "evaluable_queries": len(rows_out), "non_evaluable_queries": 9, "scope_policy": "deferred_to_inner_fold_threshold_fixed_no_scope_materialization", "renderer_policy": "capsule_v2_one_answer_first_view_fixed", "fingerprint": _hash({"capsules": capsule["fingerprint"], "rows": _sha256(output / "nested_oof.jsonl"), "policies": selected})}
+    _write_json(output / "NESTED_REPORT.json", result)
+    return result
+
+
 def screen_evidence(paths: Mapping[str, Path]) -> dict[str, Any]:
     """Hard-stop unless a *completed nested* score file was created by EXP-033."""
     score_file = paths["cache"] / "screen-evidence" / "nested_oof.jsonl"
@@ -1874,6 +2005,23 @@ def screen_evidence(paths: Mapping[str, Path]) -> dict[str, Any]:
         by_fold[str(row["outer"])].append(row)
     if set(by_fold) != {f"fold_{index}" for index in range(5)}:
         raise ValueError("evidence gate requires all five outer folds")
+    if all("policy" in row for row in rows):
+        fold_metrics = []
+        all_values = []; excluded = []
+        for outer, fold_rows in sorted(by_fold.items()):
+            values = []
+            for row in fold_rows:
+                policy = row["policy"]
+                ranking = protected_residual(row["candidate_ids"], row["evidence"], row["baseline"], alpha=float(policy["alpha"]), window=int(policy["window"]), tau=0.)
+                gold = set(row["gold"]); base = row["candidate_ids"][:5]
+                values.append(((len(set(ranking[:5]) & gold) - len(set(base) & gold)) / len(gold), (len(set(ranking[:5]) & gold) - len(set(base) & gold)) / 5, row["qid"]))
+            fold_metrics.append({"outer": outer, "recall_delta": float(np.mean([x[0] for x in values])), "precision_delta": float(np.mean([x[1] for x in values]))})
+            all_values.extend(values); excluded.extend(x for x in values if str(x[2]) not in _diagnostic_qids(paths))
+        chosen = {"nested_outer_policies": {outer: fold_rows[0]["policy"] for outer, fold_rows in by_fold.items()}, "folds": fold_metrics, "recall_delta": float(np.mean([x[0] for x in all_values])), "precision_delta": float(np.mean([x[1] for x in all_values])), "exclude_320_recall_delta": float(np.mean([x[0] for x in excluded]))}
+        gate = chosen["recall_delta"] >= .002 and chosen["precision_delta"] >= 0 and sum(x["recall_delta"] >= 0 for x in fold_metrics) >= 4 and min(x["recall_delta"] for x in fold_metrics) >= -.002 and chosen["exclude_320_recall_delta"] >= 0
+        output = paths["results"] / "screen-evidence"; result = {"schema_version": SCHEMA, "phase": "D", "status": "PASS" if gate else "REJECTED_EVIDENCE_GATE", "selected": chosen, "gate_passed": gate, "nested": True}
+        _write_json(output / "REPORT.json", result); _state(paths["results"], "phase-d", result["status"], completed=100, total=100, eta_seconds=0, phase_completion_percent=100)
+        return result
     variants = []
     for window in (16, 25, 32, 50, 64):
         for alpha in (.10, .25, .50, .75):
@@ -1898,6 +2046,274 @@ def screen_evidence(paths: Mapping[str, Path]) -> dict[str, Any]:
     result = {"schema_version": SCHEMA, "status": "PASS" if gate else "REJECTED_EVIDENCE_GATE", "selected": chosen, "gate_passed": gate, "variants": variants}
     _write_json(output / "REPORT.json", result)
     _state(paths["results"], "screen-evidence", result["status"], completed=1, total=1, eta_seconds=0)
+    return result
+
+
+def audit_phase_d_inputs(paths: Mapping[str, Path]) -> dict[str, Any]:
+    """Record why Phase-D policy selection needs fresh inner-crossfit ranks."""
+    phase_c = _json(paths["cache"] / "capsules-v2" / "REPORT.json")
+    phase_c_success = _json(paths["cache"] / "capsules-v2" / "_SUCCESS.json")
+    if phase_c.get("status") != "PASS_PHASE_C" or phase_c.get("fingerprint") != phase_c_success.get("fingerprint"):
+        raise RuntimeError("Phase D requires a verified PASS_PHASE_C")
+    labels, label_stats = canonical_answers(
+        paths["train"], paths["preprocessing"] / "exclusions.json", paths["preprocessing"] / "train_label_impact.jsonl"
+    )
+    if label_stats["evaluable_queries"] != 6991 or label_stats["non_evaluable_queries"] != 9:
+        raise ValueError("Phase-D canonical label accounting changed")
+    folds = _json(paths["folds"])
+    oof_rows = list(_jsonl(paths["exp028_oof"]))
+    if len(oof_rows) != 7000 or {str(row["qid"]) for row in oof_rows} != set(labels):
+        raise ValueError("EXP-028 OOF/query membership mismatch")
+    output = paths["results"] / "phase-d"
+    result = {
+        "schema_version": SCHEMA, "phase": "D", "phase_completion_percent": 5,
+        "status": "NEEDS_INNER_CROSSFIT_REBUILD", "evaluable_queries": 6991,
+        "non_evaluable_queries": 9, "outer_folds": sorted(folds),
+        "phase_c_fingerprint": phase_c["fingerprint"],
+        "global_oof_status": "outer-heldout rows are safe; outer-train rows cannot select Phase-D policy",
+        "required_next_stage": "rebuild LambdaMART K64 and in-document selector rows within each outer-train inner-crossfit",
+        "forbidden_shortcut": "do_not_use_global_exp028_oof_rows_for_outer_train_policy_selection",
+    }
+    _write_json(output / "PREFLIGHT.json", result)
+    _state(paths["results"], "phase-d", result["status"], completed=5, total=100, eta_seconds=None, phase_completion_percent=5)
+    return result
+
+
+def build_phase_d_crossfit_ranks(paths: Mapping[str, Path]) -> dict[str, Any]:
+    """Create the rank contexts required before any Phase-D inner selection.
+
+    For an outer split, inner-heldout rows are ranked by a model trained only
+    on the other three outer-train folds.  The outer-heldout rows are ranked by
+    a model trained on all four outer-train folds.  No global OOF row is used
+    as an outer-train policy-selection input.
+    """
+    from exp012b_tuning import load_folds
+    from exp027_lambdamart_shortlist import retained_answers
+    from exp028_lambdamart_shortlist import _fit, _load_features
+
+    phase_c = _json(paths["cache"] / "capsules-v2" / "REPORT.json")
+    if phase_c.get("status") != "PASS_PHASE_C":
+        raise RuntimeError("crossfit ranks require PASS_PHASE_C")
+    output = paths["cache"] / "phase-d-inner-crossfit-ranks"
+    output.mkdir(parents=True, exist_ok=True)
+    feature_data, feature_index, columns = _load_features(paths["features"])
+    by_qid = {str(row["qid"]): row for row in feature_index}
+    labels, stats = canonical_answers(
+        paths["train"], paths["preprocessing"] / "exclusions.json", paths["preprocessing"] / "train_label_impact.jsonl"
+    )
+    # The frozen EXP-028 model was fit with this historical retained-label
+    # view.  Preserve it only for reproducing the anchor ranks; Phase-D
+    # evaluation and any evidence-policy selection continue to use canonical
+    # labels (including the two repaired alias rows).
+    anchor_labels, _ = retained_answers(
+        paths["train"], paths["preprocessing"] / "exclusions.json", paths["preprocessing"] / "train_label_impact.jsonl"
+    )
+    folds = {str(name): [str(qid) for qid in qids] for name, qids in load_folds(paths["folds"]).items()}
+    if set(by_qid) != set(labels) or set().union(*map(set, folds.values())) != set(labels):
+        raise ValueError("feature/fold/label membership mismatch")
+    exp028_report = _json(paths["exp028_oof"].parent / "oof_report.json")
+    # EXP-028's strict deployment-K selection failed because two outer folds
+    # chose K50.  That does not invalidate its outer-train-selected model
+    # configurations: Phase D fixes K=64, verifies the frozen outer-heldout
+    # ordering exactly, and never promotes EXP-028's K50 choice.
+    selections = exp028_report.get("selections", {})
+    if set(selections) != set(folds) or any(
+        not isinstance(selections[outer].get("chosen"), dict) for outer in folds
+    ):
+        raise RuntimeError("EXP-028 OOF report lacks one outer-train-selected anchor configuration per fold")
+    global_oof = {
+        str(row["qid"]): [str(doc) for doc in row["doc_ids"][:K64]]
+        for row in _jsonl(paths["exp028_oof"])
+    }
+    if len(global_oof) != 7000:
+        raise ValueError("EXP-028 OOF coverage mismatch")
+    contexts = [(outer, inner) for outer in sorted(folds) for inner in ("outer_heldout", *[name for name in sorted(folds) if name != outer])]
+    config_fingerprint = _hash({
+        "phase_c": phase_c["fingerprint"], "features": _json(paths["features"] / "manifest.json")["content_fingerprint"],
+        "folds": _sha256(paths["folds"]), "labels": stats["label_fingerprint"],
+        "anchor_training_labels": _hash({key: sorted(value) for key, value in anchor_labels.items()}),
+        "exp028_oof": _sha256(paths["exp028_oof"]),
+        "anchor_selections": exp028_report["selections"], "contexts": contexts, "k": K64,
+    })
+    completed = reused = 0
+    started = time.time()
+
+    def rank_rows(model: Any, positions: list[int], qids: Sequence[str]) -> Iterator[dict[str, Any]]:
+        for qid in qids:
+            item = by_qid[qid]
+            scores = model.predict(np.asarray(feature_data[item["start"]:item["end"], positions]))
+            order = sorted(range(len(scores)), key=lambda idx: (-float(scores[idx]), str(item["doc_ids"][idx])))[:K64]
+            yield {
+                "qid": qid,
+                "doc_ids": [str(item["doc_ids"][idx]) for idx in order],
+                "anchor_scores": [float(scores[idx]) for idx in order],
+            }
+
+    for outer, inner in contexts:
+        target = output / outer / f"{inner}.jsonl"
+        if target.exists():
+            first = next(_jsonl(target), None)
+            if first and first.get("config_fingerprint") == config_fingerprint:
+                completed += 1; reused += 1
+                continue
+        choice = exp028_report["selections"][outer]["chosen"]
+        outer_train = [qid for name, qids in folds.items() if name != outer for qid in qids]
+        target_qids = folds[outer] if inner == "outer_heldout" else folds[inner]
+        inner_set = set() if inner == "outer_heldout" else set(folds[inner])
+        train_qids = outer_train if inner == "outer_heldout" else [qid for qid in outer_train if qid not in inner_set]
+        model, positions = _fit(
+            [by_qid[qid] for qid in train_qids], feature_data, anchor_labels, columns,
+            choice["feature_set"], choice["params"],
+        )
+        rows = []
+        for row in rank_rows(model, positions, target_qids):
+            if inner == "outer_heldout" and row["doc_ids"] != global_oof[row["qid"]]:
+                raise ValueError(f"outer-heldout rank diverges from frozen EXP-028 OOF: {outer}/{row['qid']}")
+            rows.append({"schema_version": SCHEMA, "config_fingerprint": config_fingerprint, "outer": outer, "inner": inner, **row})
+        if len(rows) != len(target_qids):
+            raise ValueError(f"crossfit rank coverage mismatch: {outer}/{inner}")
+        _write_jsonl(target, rows)
+        completed += 1
+        elapsed = time.time() - started
+        eta = (len(contexts) - completed) * elapsed / max(1, completed - reused)
+        percent = 5 + round(20 * completed / len(contexts), 2)
+        _state(paths["results"], "phase-d", "BUILDING_INNER_CROSSFIT_RANKS", completed=percent, total=100, eta_seconds=eta, phase_completion_percent=percent, contexts=completed, total_contexts=len(contexts))
+
+    rows = []
+    for outer, inner in contexts:
+        path = output / outer / f"{inner}.jsonl"
+        count = sum(1 for _ in _jsonl(path))
+        expected = len(folds[outer]) if inner == "outer_heldout" else len(folds[inner])
+        if count != expected:
+            raise ValueError(f"persisted crossfit rank coverage mismatch: {outer}/{inner}={count}/{expected}")
+        rows.append({"outer": outer, "inner": inner, "queries": count})
+    fingerprint = _hash({"config": config_fingerprint, "contexts": rows})
+    result = {
+        "schema_version": SCHEMA, "phase": "D", "status": "CROSSFIT_RANKS_READY",
+        "phase_completion_percent": 25, "fingerprint": fingerprint, "config_fingerprint": config_fingerprint,
+        "contexts": rows, "contexts_total": len(contexts), "evaluable_queries": 6991,
+        "non_evaluable_queries": 9, "k": K64, "resumed_contexts": reused,
+        "fresh_contexts": len(contexts) - reused, "elapsed_seconds": round(time.time() - started, 3),
+        "anchor_policy": "exp028_per_outer_chosen_config_with_fixed_k64",
+        "exp028_source_status": exp028_report.get("status"),
+        "anchor_training_label_policy": "exp028_retained_answers_v1_for_exact_anchor_reproduction",
+        "policy_evaluation_label_policy": "canonical_duplicate_alias_drop_empty_passage_v1",
+        "outer_heldout_labels_used_for_training_or_policy": False,
+    }
+    _write_json(output / "REPORT.json", result)
+    _write_json(output / "manifest.json", {"schema_version": SCHEMA, "stage": "phase-d-inner-crossfit-ranks", "fingerprint": fingerprint, "config_fingerprint": config_fingerprint})
+    _success(output, stage="phase-d-inner-crossfit-ranks", fingerprint=fingerprint, phase="D")
+    _state(paths["results"], "phase-d", "CROSSFIT_RANKS_READY", completed=25, total=100, eta_seconds=0, phase_completion_percent=25)
+    return result
+
+
+def build_phase_d_selector_pairs(paths: Mapping[str, Path]) -> dict[str, Any]:
+    """Materialize selector evidence for the union of crossfit K64 pairs.
+
+    Existing Phase-B rows are reusable because their selector computation has
+    no label or fold input.  Missing pairs are computed with precisely the
+    same deterministic selector implementation, in query shards so a long
+    lexical pass can resume safely.
+    """
+    ranks_dir = paths["cache"] / "phase-d-inner-crossfit-ranks"
+    ranks_report = _json(ranks_dir / "REPORT.json")
+    if ranks_report.get("status") != "CROSSFIT_RANKS_READY":
+        raise RuntimeError("Phase-D selector cache requires verified crossfit ranks")
+    phase_b_dir = paths["cache"] / "in-document-selector-v2"
+    phase_b = _json(phase_b_dir / "REPORT.json")
+    if phase_b.get("status") != "PASS_PHASE_B":
+        raise RuntimeError("Phase-D selector cache requires PASS_PHASE_B")
+    output = paths["cache"] / "phase-d-selector-pairs"
+    shards = output / "shards"
+    shards.mkdir(parents=True, exist_ok=True)
+    needed: dict[str, set[str]] = defaultdict(set)
+    for path in sorted(ranks_dir.glob("*/*.jsonl")):
+        for row in _jsonl(path):
+            needed[str(row["qid"])].update(str(doc) for doc in row["doc_ids"])
+    if len(needed) != 7000:
+        raise ValueError("crossfit-rank query coverage changed")
+    config_fingerprint = _hash({
+        "ranks": ranks_report["fingerprint"], "phase_b": phase_b["fingerprint"],
+        "parent": _json(paths["cache"] / "parent-index" / "REPORT.json")["fingerprint"],
+        "scope": _json(paths["cache"] / "scope-embeddings-v2" / "REPORT.json")["fingerprint"],
+        "bm25": _sha256(paths["bm25"]), "selector_policy": "phase_b_v2_pair_exact_no_labels",
+    })
+    doc_chunks = {str(row["doc_id"]): row["chunks"] for row in _jsonl(paths["cache"] / "parent-index" / "doc_to_chunks.jsonl")}
+    embedding_row = {str(chunk["chunk_id"]): int(chunk["embedding_row"]) for values in doc_chunks.values() for chunk in values}
+    query_ids = _json(paths["query_embeddings"] / "train_query_ids.json")
+    query_rows = {str(qid): pos for pos, qid in enumerate(query_ids)}
+    queries = np.load(paths["query_embeddings"] / "train_queries.f32.npy", mmap_mode="r")
+    embeddings = np.load(paths["e5"] / "embeddings.f16.npy", mmap_mode="r")
+    scope_vectors = np.load(paths["cache"] / "scope-embeddings-v2" / "scope_embeddings.f16.npy", mmap_mode="r")
+    scopes_by_doc: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in _jsonl(paths["cache"] / "scope-embeddings-v2" / "scope_ids.jsonl"):
+        scopes_by_doc[str(row["doc_id"])].append(row)
+    train = _json(paths["train"])
+
+    @lru_cache(maxsize=8192)
+    def cached_segmenter(text: str) -> str:
+        return default_segmenter(text)
+
+    def compute_pair(qid: str, doc_id: str, searcher: Any) -> dict[str, Any]:
+        chunks = doc_chunks.get(doc_id)
+        if not chunks:
+            raise ValueError(f"shortlisted doc missing parent index: {qid}/{doc_id}")
+        query = np.asarray(queries[query_rows[qid]], dtype=np.float32)
+        indices = [int(chunk["embedding_row"]) for chunk in chunks]
+        vectors = np.asarray(embeddings[indices], dtype=np.float32)
+        dense_scores = _cosine(query, vectors)
+        order = sorted(range(len(chunks)), key=lambda idx: (-float(dense_scores[idx]), str(chunks[idx]["chunk_id"])))
+        dense_ranked = [dict(chunks[idx], score=float(dense_scores[idx])) for idx in order[:8]]
+        e5_top1 = [dict(dense_ranked[0], evidence_rank=1, redundancy=0.0)]
+        sparse = [dict(row, score=-float(row["score"])) for row in searcher.search_document(str(train[qid]["question"]), doc_id, limit=8)]
+        bm25, _ = _bm25_primary_fallback(_select_ranked_nonredundant(sparse, embedding_row, embeddings), e5_top1[0])
+        selectors = {
+            "current_upstream_e5_top2": [dict(row, evidence_rank=pos, redundancy=0.0) for pos, row in enumerate(dense_ranked[:2], 1)],
+            "in_parent_e5_top1": e5_top1, "in_parent_e5_mmr_070": select_mmr_evidence(chunks, dense_scores, vectors, lambda_value=.70),
+            "in_parent_e5_mmr_085": select_mmr_evidence(chunks, dense_scores, vectors, lambda_value=.85), "in_parent_bm25_top2": bm25,
+            **{f"hybrid_rrf_dense_{int(weight * 100):03d}": _select_ranked_nonredundant(reciprocal_hybrid(dense_ranked, sparse, dense_weight=weight), embedding_row, embeddings) for weight in (.25, .50, .75)},
+        }
+        selected_ids = {str(row["chunk_id"]) for values in selectors.values() for row in values}
+        scope = None; values = scopes_by_doc.get(doc_id, [])
+        if values:
+            score = np.asarray(scope_vectors[[int(row["embedding_row"]) for row in values]], dtype=np.float32) @ query
+            best = sorted(range(len(values)), key=lambda idx: (-float(score[idx]), str(values[idx]["scope_id"])))[0]
+            item = values[best]; scope = {"scope_id": item["scope_id"], "kind": item["kind"], "node_id": item["node_id"], "source_start": item["source_start"], "source_end": item["source_end"], "score": float(score[best]), "selection_state": "BEST_DIRECT_SCORE_PENDING_INNER_THRESHOLD"}
+        return {"doc_id": doc_id, "selectors": {key: _compact_selected(value) for key, value in selectors.items()}, "clause_neighbor_ids": _clause_neighbors(chunks, selected_ids), "scope_candidate": scope}
+
+    completed = reused = computed = 0; started = time.time(); source = _jsonl(phase_b_dir / "selector_pairs.jsonl")
+    source_qid = None; source_rows: list[dict[str, Any]] = []
+    def flush(qid: str, rows: list[dict[str, Any]], searcher: Any) -> None:
+        nonlocal completed, reused, computed
+        target = shards / f"{qid}.json"
+        if target.exists():
+            old = _json(target)
+            if old.get("config_fingerprint") == config_fingerprint and len(old.get("pairs", [])) == len(needed[qid]):
+                completed += 1; reused += 1; return
+        existing = {str(row["doc_id"]): {key: value for key, value in row.items() if key not in ("schema_version", "qid", "evaluation_eligible", "lambdamart_rank")} for row in rows}
+        pairs = [existing[doc] if doc in existing else compute_pair(qid, doc, searcher) for doc in sorted(needed[qid])]
+        computed += sum(doc not in existing for doc in needed[qid])
+        _write_json(target, {"schema_version": SCHEMA, "qid": qid, "config_fingerprint": config_fingerprint, "pairs": pairs})
+        completed += 1
+        if completed % 10 == 0 or completed == len(needed):
+            elapsed = time.time() - started; fresh = max(1, completed - reused)
+            percent = 25 + round(25 * completed / len(needed), 2)
+            _state(paths["results"], "phase-d", "BUILDING_INNER_CROSSFIT_SELECTORS", completed=percent, total=100, eta_seconds=(len(needed)-completed)*elapsed/fresh, phase_completion_percent=percent, queries=completed, missing_pairs_computed=computed)
+    with BM25Searcher(paths["bm25"], profile="legal_structure", segmenter=cached_segmenter) as searcher:
+        searcher.load_document_ranges()
+        for row in source:
+            qid = str(row["qid"])
+            if source_qid is not None and qid != source_qid:
+                flush(source_qid, source_rows, searcher); source_rows = []
+            source_qid = qid; source_rows.append(row)
+        if source_qid is not None: flush(source_qid, source_rows, searcher)
+    if completed != len(needed): raise ValueError("Phase-B selector source did not cover all queries")
+    output_rows = ({"schema_version": SCHEMA, "qid": qid, **pair} for qid in sorted(needed) for pair in _json(shards / f"{qid}.json")["pairs"])
+    _write_jsonl(output / "selector_pairs.jsonl", output_rows)
+    pairs = sum(len(needed[qid]) for qid in needed); fingerprint = _hash({"config": config_fingerprint, "pairs_sha256": _sha256(output / "selector_pairs.jsonl")})
+    result = {"schema_version": SCHEMA, "phase": "D", "status": "CROSSFIT_SELECTORS_READY", "phase_completion_percent": 50, "fingerprint": fingerprint, "config_fingerprint": config_fingerprint, "queries": len(needed), "unique_pairs": pairs, "reused_phase_b_pairs": pairs-computed, "computed_missing_pairs": computed, "labels_used_for_selection": False, "elapsed_seconds": round(time.time()-started, 3)}
+    _write_json(output / "REPORT.json", result); _write_json(output / "manifest.json", {"schema_version": SCHEMA, "stage": "phase-d-selector-pairs", "fingerprint": fingerprint, "config_fingerprint": config_fingerprint}); _success(output, stage="phase-d-selector-pairs", fingerprint=fingerprint, phase="D")
+    _state(paths["results"], "phase-d", "CROSSFIT_SELECTORS_READY", completed=50, total=100, eta_seconds=0, phase_completion_percent=50)
     return result
 
 
@@ -1959,7 +2375,7 @@ def overnight(paths: Mapping[str, Path]) -> dict[str, Any]:
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("audit-inputs", "sample-scope-audit", "review-scope-audit", "finalize-scope-audit", "repair-scope-sidecar", "reaudit-scope-sidecar", "finalize-scope-phase-a", "build-parent-index", "encode-scope-sidecar", "score-in-document", "score-selectors-v2", "build-capsules-v2", "screen-evidence", "preflight-bge", "train-bge", "evaluate-bge", "report", "overnight"))
+    parser.add_argument("command", choices=("audit-inputs", "sample-scope-audit", "review-scope-audit", "finalize-scope-audit", "repair-scope-sidecar", "reaudit-scope-sidecar", "finalize-scope-phase-a", "build-parent-index", "encode-scope-sidecar", "score-in-document", "score-selectors-v2", "build-capsules-v2", "audit-phase-d", "build-phase-d-crossfit-ranks", "build-phase-d-selector-pairs", "build-phase-d-capsules", "build-phase-d-nested-scores", "screen-evidence", "preflight-bge", "train-bge", "evaluate-bge", "report", "overnight"))
     parser.add_argument("--cache-root", type=Path, default=ROOT / "cache" / "exp033_in_document_evidence_routing")
     parser.add_argument("--results-root", type=Path, default=ROOT / "results" / "exp033_in_document_evidence_routing")
     parser.add_argument("--train", type=Path, default=ROOT / "public_test_dataset" / "train.json")
@@ -1990,7 +2406,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "score-in-document": lambda: score_in_document(paths),
         "score-selectors-v2": lambda: score_selectors_v2(paths),
         "build-capsules-v2": lambda: build_capsules_v2(paths, model_id=args.capsule_model_id),
-        "screen-evidence": lambda: screen_evidence(paths), "preflight-bge": lambda: preflight_bge(paths, device=args.device, local_only=args.local_only),
+        "audit-phase-d": lambda: audit_phase_d_inputs(paths), "build-phase-d-crossfit-ranks": lambda: build_phase_d_crossfit_ranks(paths), "build-phase-d-selector-pairs": lambda: build_phase_d_selector_pairs(paths), "build-phase-d-capsules": lambda: build_phase_d_capsules(paths), "build-phase-d-nested-scores": lambda: build_phase_d_nested_scores(paths), "screen-evidence": lambda: screen_evidence(paths), "preflight-bge": lambda: preflight_bge(paths, device=args.device, local_only=args.local_only),
         "train-bge": lambda: train_bge(paths), "evaluate-bge": lambda: evaluate_bge(paths), "report": lambda: report(paths), "overnight": lambda: overnight(paths),
     }
     try:

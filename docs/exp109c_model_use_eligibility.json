@@ -1,0 +1,6 @@
+{
+  "competition_terms_source": "User attestation on 2026-08-30: BTC permits the intended pretrained-model use for this competition.",
+  "model_license_source": "https://huggingface.co/jinaai/jina-colbert-v2/blob/main/README.md (CC-BY-NC-4.0).",
+  "approved_for_competition_use": true,
+  "notes": "Recorded on the user's explicit instruction. This permits EXP-109C local research and competition workflow stages; it does not create a submission."
+}
