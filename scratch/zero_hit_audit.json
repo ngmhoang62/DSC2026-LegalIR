@@ -1,0 +1,3450 @@
+{
+  "rank_6_10_near_miss": [
+    {
+      "qid": "163810",
+      "query": "Hàm lượng chì cho phép trong sữa bột dành cho trẻ em dưới 12 tháng tuổi là bao nhiêu?",
+      "gold_id": "97249",
+      "gold_rank": 8,
+      "gold_label": "thong tu 20 2012 tt byt quy chuan ky thuat quoc gia doi voi san pham dinh duong 154180",
+      "top1_label": "thong tu 02 2011 tt byt quy chuan ky thuat quoc gia gioi han o nhiem hoa hoc 118442",
+      "top5_labels": [
+        "thong tu 02 2011 tt byt quy chuan ky thuat quoc gia gioi han",
+        "qcvn 11 1 2012 byt san pham dinh duong cong thuc cho tre den",
+        "thong tu 31 2010 tt byt quy chuan ky thuat quoc gia cac san ",
+        "thong tu 22 2012 tt byt quy chuan ky thuat quoc gia doi voi ",
+        "thong tu 29 2017 tt bnnptnt quy chuan ky thuat quoc gia doi "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "34748",
+      "query": "Mức lương của giáo viên tại các cơ sở giáo dục công lập sẽ là bao nhiêu khi tăng mức lương cơ sở?",
+      "gold_id": "239935",
+      "gold_rank": 8,
+      "gold_label": "thong tu lien tich 01 2006 ttlt bgd dt bnv btc phu cap uu dai nha giao dang giang day trong co so gi",
+      "top1_label": "nghi dinh 38 2019 nd cp muc luong co so doi voi can bo cong chuc vien chuc va luc luong vu trang 403",
+      "top5_labels": [
+        "nghi dinh 38 2019 nd cp muc luong co so doi voi can bo cong ",
+        "nghi dinh 77 2021 nd cp che do phu cap tham nien nha giao 48",
+        "nghi dinh 24 2023 nd cp muc luong co so can bo cong vien chu",
+        "nghi dinh 81 2021 nd cp quan ly hoc phi doi voi co so giao d",
+        "nghi quyet 69 2022 qh15 du toan ngan sach nha nuoc 2023 5418"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "8724",
+      "query": "Các bước tiến hành kiểm tra tổ chức Đảng, Đảng viên khi có dấu hiệu vi phạm?",
+      "gold_id": "274327",
+      "gold_rank": 8,
+      "gold_label": "quyet dinh 354 qd ubkttw 2021 quy trinh thuc hien giam sat va thi hanh ky luat dang 501055",
+      "top1_label": "quy dinh 22 qd tw 2021 cong tac kiem tra giam sat va ky luat cua dang 484311",
+      "top5_labels": [
+        "quy dinh 22 qd tw 2021 cong tac kiem tra giam sat va ky luat",
+        "quy dinh 01 qdi tw 2018 trach nhiem cua uy ban kiem tra tron",
+        "quyet dinh 109 qd tw 2018 cong tac kiem tra viec tu duong da",
+        "quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pha",
+        "quy dinh 179 qd tw 2019 che do kiem tra giam sat cong tac ca"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "114086",
+      "query": "Kinh phí làm Thẻ công chức thanh tra chuyên ngành được lấy từ nguồn nào?",
+      "gold_id": "110647",
+      "gold_rank": 7,
+      "gold_label": "quyet dinh 2456 qd btc nam 2014 quy che thanh tra kho bac nha nuoc 251157",
+      "top1_label": "thong tu 14 2015 tt bldtbxh thanh tra vien cong chuc thanh tra chuyen nganh cong tac vien thanh tra",
+      "top5_labels": [
+        "thong tu 14 2015 tt bldtbxh thanh tra vien cong chuc thanh t",
+        "thong tu 19 2014 tt btnmt tieu chuan the cong chuc thanh tra",
+        "thong tu 36 2017 tt btttt quy dinh bo phan tham muu va hoat ",
+        "thong tu 24 2015 tt bkhcn cong chuc thanh tra cong tac vien ",
+        "thong tu 34 2021 tt byt tieu chuan trang phuc nguoi duoc gia"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "131588",
+      "query": "Cơ quan nào có thẩm quyền công bố tuyến dẫn tàu trong vùng hoa tiêu hàng hải bắt buộc?",
+      "gold_id": "141707",
+      "gold_rank": 6,
+      "gold_label": "quyet dinh 2818 qd bgtvt 2017 chuc nang nhiem vu quyen han co cau to chuc cuc hang hai 363440",
+      "top1_label": "nghi dinh 58 2017 nd cp huong dan bo luat hang hai viet nam quan ly khai thac hoat dong hang hai 349",
+      "top5_labels": [
+        "nghi dinh 58 2017 nd cp huong dan bo luat hang hai viet nam ",
+        "thong tu 43 2018 tt bgtvt quy dinh ve vung hoa tieu hang hai",
+        "quyet dinh 319 qd bgtvt 2023 nhiem vu quyen han va co cau to",
+        "nghi dinh 70 2016 nd cp dieu kien cung cap dich vu bao dam a",
+        "bo luat hang hai viet nam 2015 298374"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "39328",
+      "query": "Mức đóng bảo hiểm y tế đối với con nuôi của người đang làm công tác cơ yếu là bao nhiêu?",
+      "gold_id": "211473",
+      "gold_rank": 7,
+      "gold_label": "thong tu 143 2020 tt bqp huong dan nghi dinh 146 2018 nd cp bao hiem y te thuoc bo quoc phong 459678",
+      "top1_label": "luat bao hiem y te 2008 25 2008 qh12 82196",
+      "top5_labels": [
+        "luat bao hiem y te 2008 25 2008 qh12 82196",
+        "nghi dinh 146 2018 nd cp huong dan luat bao hiem y te 357505",
+        "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie",
+        "thong tu 57 2019 tt bca thuc hien bao hiem y te doi voi nguo",
+        "luat bao hiem xa hoi 2014 259700"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "9432",
+      "query": "Đã bị áp dụng kỷ luật tạm đình chỉ công việc đang đảm nhận thì có bị áp dụng các hình thức xử lý kỷ luật lao động theo quy định của Bộ luật Lao động?",
+      "gold_id": "44900",
+      "gold_rank": 9,
+      "gold_label": "thong tu 46 2013 tt bgtvt che do ky luat lao dong nhan vien hang khong 214391",
+      "top1_label": "bo luat lao dong 2019 333670",
+      "top5_labels": [
+        "bo luat lao dong 2019 333670",
+        "nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu ",
+        "nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong ",
+        "luat vien chuc 2010 115271",
+        "nghi dinh 05 2015 nd cp huong dan bo luat lao dong 263294"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "156570",
+      "query": "Lãi suất vay vượt quá mức lãi suất giới hạn quy định bên cho vay bị xử phạt như thế nào?",
+      "gold_id": "98892",
+      "gold_rank": 7,
+      "gold_label": "nghi dinh 144 2021 nd cp xu phat vi pham hanh chinh linh vuc an ninh an toan xa hoi 425471",
+      "top1_label": "nghi quyet 01 2019 nq hdtp huong dan quy dinh cua phap luat ve lai lai suat phat vi pham 367130",
+      "top5_labels": [
+        "nghi quyet 01 2019 nq hdtp huong dan quy dinh cua phap luat ",
+        "bo luat dan su 2015 296215",
+        "thong tu 39 2016 tt nhnn hoat dong cho vay cua to chuc tin d",
+        "luat cac to chuc tin dung 2010 108079",
+        "nghi dinh 19 2019 nd cp quy dinh ve ho hui bieu phuong 38632"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "116964",
+      "query": "Có phải tất cả công dân trong độ tuổi sẽ được cấp số định danh cá nhân và thẻ căn cước công dân gắn chíp điện tử?",
+      "gold_id": "53190",
+      "gold_rank": 8,
+      "gold_label": "quyet dinh 06 qd ttg 2022 de an phat trien ung dung du lieu ve dan cu 2022 2025 499726",
+      "top1_label": "luat can cuoc cong dan 2014 259782",
+      "top5_labels": [
+        "luat can cuoc cong dan 2014 259782",
+        "quyet dinh 9039 qd bca c06 2022 cong bo thu tuc hanh chinh d",
+        "nghi dinh 59 2022 nd cp dinh danh va xac thuc dien tu 471629",
+        "thong tu 06 2021 tt bca quy dinh mau the can cuoc cong dan 4",
+        "nghi dinh 137 2015 nd cp huong dan luat can cuoc cong dan 28"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "71956",
+      "query": "Thủ tục đăng ký nhận con như thế nào?",
+      "gold_id": "134404",
+      "gold_rank": 10,
+      "gold_label": "luat hon nhan va gia dinh 2014 238640",
+      "top1_label": "luat ho tich 2014 259727",
+      "top5_labels": [
+        "luat ho tich 2014 259727",
+        "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+        "nghi dinh 126 2014 nd cp quy dinh chi tiet mot so dieu bien ",
+        "nghi dinh 19 2011 nd cp huong dan luat nuoi con nuoi 120635",
+        "thong tu 04 2020 tt btp huong dan luat ho tich va nghi dinh "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "7390",
+      "query": "Kiểm tra viên cao cấp có những nhiệm vụ gì?",
+      "gold_id": "163084",
+      "gold_rank": 9,
+      "gold_label": "luat to chuc vien kiem sat nhan dan 2014 259723",
+      "top1_label": "thong tu 29 2022 tt btc tieu chuan chuyen mon ngach cong chuc ke toan thue hai quan du tru 517146",
+      "top5_labels": [
+        "thong tu 29 2022 tt btc tieu chuan chuyen mon ngach cong chu",
+        "quyet dinh 73 2005 qd bnv chuc danh tieu chuan nghiep vu ma ",
+        "thong tu 77 2019 tt btc tieu chuan chuyen mon nghiep vu xep ",
+        "quyet dinh 1922 qd ktnn 2021 chuc danh cac ngach kiem toan v",
+        "quyet dinh 09 2010 qd ttg tieu chuan cac ngach thanh tra vie"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "73956",
+      "query": "Viên chức khi sinh con mà chưa đăng ký kết hôn có bị xử lý kỷ luật không?",
+      "gold_id": "134404",
+      "gold_rank": 6,
+      "gold_label": "luat hon nhan va gia dinh 2014 238640",
+      "top1_label": "quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pham 521174",
+      "top5_labels": [
+        "quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pha",
+        "nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien",
+        "quyet dinh 1531 qd btc quy che xu ly ky luat cong vien chuc ",
+        "luat vien chuc 2010 115271",
+        "quy dinh 102 qd tw 2017 xu ly ky luat dang vien vi pham 3687"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "63838",
+      "query": "Tiệm xăm sử dụng hình ảnh của khách để quảng cáo có bị xử lý vi phạm hành chính không?",
+      "gold_id": "65293",
+      "gold_rank": 8,
+      "gold_label": "nghi dinh 15 2020 nd cp xu phat vi pham hanh chinh linh vuc buu chinh vien thong tan so vo tuyen die",
+      "top1_label": "nghi dinh 38 2021 nd cp xu phat vi pham hanh chinh trong linh vuc van hoa quang cao 469165",
+      "top5_labels": [
+        "nghi dinh 38 2021 nd cp xu phat vi pham hanh chinh trong lin",
+        "nghi dinh 158 2013 nd cp xu phat vi pham hanh chinh van hoa ",
+        "nghi dinh 117 2020 nd cp quy dinh xu phat vi pham hanh chinh",
+        "luat quang cao 2012 142541",
+        "luat thuong mai 2005 36 2005 qh11 2633"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "15158",
+      "query": "Giảm thuế giá trị gia tăng đối với sản phẩm hóa chất như thế nào?",
+      "gold_id": "77456",
+      "gold_rank": 6,
+      "gold_label": "cong van 2252 tct cs 2022 thue gia tri gia tang tai nghi dinh 15 2022 nd cp 519804",
+      "top1_label": "cong van 2837 tchq txnk 2022 thue gia tri gia tang hang nhap khau 522721",
+      "top5_labels": [
+        "cong van 2837 tchq txnk 2022 thue gia tri gia tang hang nhap",
+        "nghi dinh 44 2023 nd cp chinh sach giam thue gia tri gia tan",
+        "nghi dinh 15 2022 nd cp mien giam thue theo nghi quyet 43 20",
+        "nghi dinh chinh sach giam thue gia tri gia tang 2 theo nghi ",
+        "cong van 22241 cthn ttht 2022 chinh sach thue theo nghi dinh"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "166756",
+      "query": "Trang thông tin điện tử là gì?",
+      "gold_id": "21526",
+      "gold_rank": 9,
+      "gold_label": "luat cong nghe thong tin 2006 67 2006 qh11 12987",
+      "top1_label": "thong tu 110 2014 tt bqp quan ly cung cap su dung internet quan doi nhan dan viet nam 251833",
+      "top5_labels": [
+        "thong tu 110 2014 tt bqp quan ly cung cap su dung internet q",
+        "quyet dinh 914 qd bkhcn nam 2012 quy che quan ly su dung tra",
+        "nghi dinh 43 2011 nd cp cung cap thong tin va dich vu cong t",
+        "quyet dinh 1173 qd ktnn 2015 quy ché quan ly su dung he tho",
+        "nghi dinh 72 2013 nd cp quan ly cung cap su dung dich vu int"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "134558",
+      "query": "Lãi suất cho vay của ngân hàng được quy định như thế nào? Ngân hàng có bị khống chế mức lãi suất cho vay hay không?",
+      "gold_id": "26667",
+      "gold_rank": 10,
+      "gold_label": "luat cac to chuc tin dung 2010 108079",
+      "top1_label": "thong tu 39 2016 tt nhnn hoat dong cho vay cua to chuc tin dung chi nhanh ngan hang nuoc ngoai 33887",
+      "top5_labels": [
+        "thong tu 39 2016 tt nhnn hoat dong cho vay cua to chuc tin d",
+        "quyet dinh 07 qd hdtv 2019 quy che cho vay gian tiep quy pha",
+        "quyet dinh 576 qd nhnn 2023 muc lai suat cho vay ngan han to",
+        "quyet dinh 1125 qd nhnn 2023 muc lai suat cho vay ngan han t",
+        "nghi dinh 39 2019 nd cp to chuc va hoat dong cua quy phat tr"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "91624",
+      "query": "Tài sản được định là di sản thừa kế có chuyển nhượng được không?",
+      "gold_id": "305455",
+      "gold_rank": 9,
+      "gold_label": "luat dat dai 2013 215836",
+      "top1_label": "bo luat dan su 2015 296215",
+      "top5_labels": [
+        "bo luat dan su 2015 296215",
+        "luat cong chung 2014 238638",
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "bo luat dan su 1995 44 l ctn 39391",
+        "nghi dinh 29 2018 nd cp trinh tu thu tuc xac lap quyen so hu"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "50608",
+      "query": "Quyền và nghĩa vụ của Chủ tịch Hội đồng quản lý đơn vị sự nghiệp công lập quy định ra sao?",
+      "gold_id": "105600",
+      "gold_rank": 8,
+      "gold_label": "thong tu 39 2018 tt nhnn to chuc cua hoi dong quan ly thuoc quan ly cua ngan hang nha nuoc 403799",
+      "top1_label": "thong tu 41 2018 tt bnnptnt to chuc hoi dong quan ly trong don vi su nghiep nganh nong nghiep 404677",
+      "top5_labels": [
+        "thong tu 41 2018 tt bnnptnt to chuc hoi dong quan ly trong d",
+        "thong tu 05 2018 tt bgtvt hoi dong quan ly don vi su nghiep ",
+        "thong tu 09 2022 tt btnmt hoi dong quan ly don vi su nghiep ",
+        "thong tu 11 2023 tt btc hoi dong quan ly don vi su nghiep co",
+        "thong tu 26 2021 tt btttt chuc nang nhiem vu hoi dong quan l"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "67292",
+      "query": "Có được luân chuyển công chức đối với những trường hợp có uy tín giảm sút hay không?",
+      "gold_id": "186235",
+      "gold_rank": 10,
+      "gold_label": "quy dinh 06 qd bcsd 2021 luan chuyen can bo co quan hanh chinh thuoc bo giao thong van tai 506297",
+      "top1_label": "nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong chuc 458542",
+      "top5_labels": [
+        "nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong ",
+        "quyet dinh 328 qd btp 2018 quy che bo nhiem bo nhiem lai tu ",
+        "luat can bo cong chuc 2008 22 2008 qh12 82202",
+        "quyet dinh 397 qd ttcp 2021 dieu dong luan chuyen cong chuc ",
+        "quyet dinh 3002 qd bct 2022 luan chuyen vien chuc lanh dao q"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "95556",
+      "query": "Tên hàng là gì?",
+      "gold_id": "150375",
+      "gold_rank": 10,
+      "gold_label": "quyet dinh 1371 2004 qd btm quy che sieu thi trung tam thuong mai 52441",
+      "top1_label": "nghi dinh 43 2017 nd cp nhan hang hoa 346310",
+      "top5_labels": [
+        "nghi dinh 43 2017 nd cp nhan hang hoa 346310",
+        "luat so huu tri tue 2005 50 2005 qh11 7022",
+        "luat thuong mai 2005 36 2005 qh11 2633",
+        "luat doanh nghiep so 59 2020 qh14 427301",
+        "nghi dinh 111 2021 nd cp sua doi nghi dinh 43 2017 nd cp 497"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "6216",
+      "query": "Ngày ký và ngày lập hóa đơn điện tử có giống nhau không?",
+      "gold_id": "109488",
+      "gold_rank": 9,
+      "gold_label": "nghi dinh 51 2010 nd cp hoa don ban hang hoa cung ung dich vu 105694",
+      "top1_label": "nghi dinh 123 2020 nd cp quy dinh hoa don chung tu 445980",
+      "top5_labels": [
+        "nghi dinh 123 2020 nd cp quy dinh hoa don chung tu 445980",
+        "thong tu 32 2011 tt btc huong dan ve khoi tao phat hanh su d",
+        "thong tu 78 2021 tt btc huong dan luat quan ly thue nghi din",
+        "luat quan ly thue 2019 387595",
+        "thong tu 68 2019 tt btc huong dan thuc hien nghi dinh 119 20"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "136518",
+      "query": "Xây dựng giá theo kết quả thẩm định giá của cơ quan nhà nước có thẩm quyền, doanh nghiệp thẩm định với các loại tài sản, hàng hóa, dịch vụ phải thẩm định giá theo quy định của pháp luật về giá ra sao?",
+      "gold_id": "145336",
+      "gold_rank": 6,
+      "gold_label": "thong tu 14 2023 tt byt trinh tu xay dung gia goi thau mua sam hang hoa trang thiet bi 562762",
+      "top1_label": "luat gia 2012 142540",
+      "top5_labels": [
+        "luat gia 2012 142540",
+        "nghi dinh 89 2013 nd cp huong dan luat gia ve tham dinh gia ",
+        "thong tu 38 2014 tt btc huong dan 89 2013 nd cp huong dan lu",
+        "nghi dinh 177 2013 nd cp huong dan luat gia 213650",
+        "thong tu 28 2015 tt btc tieu chuan tham dinh gia viet nam so"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "160494",
+      "query": "Công chức bị kỷ luật tính thời gian nâng lương thế nào?",
+      "gold_id": "91626",
+      "gold_rank": 8,
+      "gold_label": "thong tu 08 2013 tt bnv huong dan nang bac luong can bo cong vien chuc 204743",
+      "top1_label": "luat can bo cong chuc 2008 22 2008 qh12 82202",
+      "top5_labels": [
+        "luat can bo cong chuc 2008 22 2008 qh12 82202",
+        "nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien",
+        "quyet dinh 51 qd ldtbxh nam 2014 quy che nang bac luong thuo",
+        "quyet dinh 1966 qd chk quy che nang bac luong phu cap tham n",
+        "van ban hop nhat 25 vbhn vpqh 2019 luat can bo cong chuc 439"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "103132",
+      "query": "Người lao động đóng bảo hiểm xã hội trong 20 năm 7 tháng có được hưởng bảo hiểm xã hội một lần không?",
+      "gold_id": "199641",
+      "gold_rank": 7,
+      "gold_label": "nghi quyet 93 2015 qh13 thuc hien chinh sach huong bao hiem xa hoi mot lan doi voi nguoi lao dong 28",
+      "top1_label": "luat bao hiem xa hoi 2014 259700",
+      "top5_labels": [
+        "luat bao hiem xa hoi 2014 259700",
+        "nghi dinh 115 2015 nd cp huong dan luat bao hiem xa hoi bat ",
+        "nghi dinh 134 2015 nd cp huong dan luat bao hiem xa hoi ve b",
+        "luat bao hiem xa hoi 557190",
+        "thong tu 59 2015 tt bldtbxh huong dan luat bao hiem xa hoi v"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "87542",
+      "query": "Quy định về thẩm quyền ra quyết định thanh tra chuyên ngành đất đai theo kế hoạch như thế nào?",
+      "gold_id": "195962",
+      "gold_rank": 7,
+      "gold_label": "nghi dinh 07 2012 nd cp co quan duoc giao thuc hien chuc nang thanh tra 134598",
+      "top1_label": "luat thanh tra 2010 115311",
+      "top5_labels": [
+        "luat thanh tra 2010 115311",
+        "nghi dinh 216 2013 nd cp to chuc hoat dong thanh tra nganh k",
+        "nghi dinh 26 2013 nd cp to chuc va hoat dong cua thanh tra n",
+        "luat dat dai 2013 215836",
+        "luat dat dai 523642"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "49190",
+      "query": "Tổng hợp nội dung báo cáo tài chính của doanh nghiệp có vốn đầu tư nước ngoài như thế nào?",
+      "gold_id": "11122",
+      "gold_rank": 7,
+      "gold_label": "cong van 4363 btc tcdn 2016 tong hop phan tich bao cao tai chinh doanh nghiep fdi nam 2015 381830",
+      "top1_label": "thong tu 48 2017 tt bqp giam sat tai chinh danh gia hieu qua hoat dong doi doanh nghiep nha nuoc 343",
+      "top5_labels": [
+        "thong tu 48 2017 tt bqp giam sat tai chinh danh gia hieu qua",
+        "thong tu 200 2014 tt btc huong dan che do ke toan doanh nghi",
+        "thong tu 133 2016 tt btc huong dan che do ke toan doanh nghi",
+        "thong tu 200 2015 tt btc giam sat dau tu von cong khai thong",
+        "thong tu 99 2018 tt btc lap bao cao tai chinh tong hop cua d"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "74674",
+      "query": "Dự kiến tháng 06/2023 sẽ hoàn thành Nghị định hướng dẫn Luật sửa đổi Luật Tần số vô tuyến điện 2022 đúng không?",
+      "gold_id": "131942",
+      "gold_rank": 7,
+      "gold_label": "chi thi 01 ct btttt 2023 dinh huong phat trien nganh thong tin truyen thong 554939",
+      "top1_label": "luat sua doi luat tan so vo tuyen dien 2022 513345",
+      "top5_labels": [
+        "luat sua doi luat tan so vo tuyen dien 2022 513345",
+        "nghi quyet 37 nq cp 2022 phien hop ve xay dung phap luat tha",
+        "luat tan so vo tuyen dien nam 2009 98673",
+        "nghi dinh 88 2021 nd cp thu tien cap quyen su dung tan so vo",
+        "nghi quyet 01 nq cp 2023 nhiem vu giai phap chu yeu thuc hie"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "72246",
+      "query": "Trong thời gian mang tài liệu bí mật Nhà nước ra khỏi nơi lưu giữ nếu phát hiện bí mật Nhà nước bị lộ thì người mang tài liệu có trách nhiệm gì?",
+      "gold_id": "298075",
+      "gold_rank": 8,
+      "gold_label": "quyet dinh 1500 qd btc 2020 quy che bao ve bi mat nha nuoc cua bo tai chinh 455204",
+      "top1_label": "quyet dinh 1858 qd bvhttdl 2021 quy che bao ve bi mat nha nuoc cua bo van hoa 479878",
+      "top5_labels": [
+        "quyet dinh 1858 qd bvhttdl 2021 quy che bao ve bi mat nha nu",
+        "luat bao ve bi mat nha nuoc 2018 337064",
+        "thong tu 07 2020 tt bkhdt cong tac bao ve bi mat nha nuoc li",
+        "thong tu 104 2021 tt bca bao ve bi mat nha nuoc trong cong a",
+        "nghi dinh 26 2020 nd cp huong dan luat bao ve bi mat nha nuo"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "55694",
+      "query": "Cá nhân trực tiếp quyết toán thuế với cơ quan thuế thì phải nộp hồ sơ như thế nào?",
+      "gold_id": "18044",
+      "gold_rank": 7,
+      "gold_label": "cong van 883 tct dnncn 2022 quyet toan thue thu nhap ca nhan 508286",
+      "top1_label": "nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733",
+      "top5_labels": [
+        "nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733",
+        "thong tu 80 2021 tt btc huong dan luat quan ly thue nghi din",
+        "cong van 13762 cthn hkdcn 2023 quyet toan thue thu nhap ca n",
+        "luat quan ly thue 2019 387595",
+        "cong van 636 tct dnncn 2021 huong dan quyet toan thue thu nh"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "102902",
+      "query": "Làm và sử dụng Sổ đăng kiểm xe ô tô giả thì tổng hợp hình phạt ra sao?",
+      "gold_id": "245154",
+      "gold_rank": 7,
+      "gold_label": "bo luat hinh su 2015 296661",
+      "top1_label": "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc giao thong duong bo va duong sat 426369",
+      "top5_labels": [
+        "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc",
+        "nghi dinh 120 2013 nd cp xu phat vi pham hanh chinh quoc pho",
+        "nghi dinh 82 2020 nd cp xu phat hanh chinh linh vuc hon nhan",
+        "nghi dinh 46 2016 nd cp xu phat vi pham hanh chinh giao thon",
+        "nghi dinh 123 2021 nd cp sua doi nghi dinh xu phat vi pham h"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "79496",
+      "query": "Ai có trách nhiệm lập Biên bản kiểm toán doanh nghiệp?",
+      "gold_id": "117190",
+      "gold_rank": 8,
+      "gold_label": "quyet dinh 02 2020 qd ktnn quy trinh kiem toan cua kiem toan nha nuoc 455741",
+      "top1_label": "quyet dinh 811 qd ktnn 2023 thuc hien xu phat vi pham hanh chinh linh vuc kiem toan 568754",
+      "top5_labels": [
+        "quyet dinh 811 qd ktnn 2023 thuc hien xu phat vi pham hanh c",
+        "quyet dinh 22 qd ktnn 2021 kiem toan doanh nghiep nha nuoc v",
+        "quyet dinh 08 2023 qd ktnn quy trinh kiem toan cua kiem toan",
+        "quyet dinh 01 2023 qd ktnn he thong mau bieu ho so kiem toan",
+        "quyet dinh 03 2020 qd ktnn quy che to chuc doan kiem toan nh"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "111896",
+      "query": "Thời hạn bảo quản tài liệu là gì?",
+      "gold_id": "261621",
+      "gold_rank": 8,
+      "gold_label": "thong tu 10 2022 tt bnv thoi han bao quan tai lieu 546527",
+      "top1_label": "thong tu 155 2013 tt btc quy dinh thoi han bao quan ho so tai chinh 213779",
+      "top5_labels": [
+        "thong tu 155 2013 tt btc quy dinh thoi han bao quan ho so ta",
+        "luat luu tru 2011 132447",
+        "quyet dinh 1556 qd bhxh 2019 thoi han bao quan tai lieu hinh",
+        "thong tu 22 2021 tt nhnn thoi han bao quan ho so trong hoat ",
+        "quyet dinh 1139 qd bhxh nam 2013 quy dinh cong tac luu tru b"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "111418",
+      "query": "Hàng hóa cấm nhập khẩu theo quy định pháp luật",
+      "gold_id": "7683",
+      "gold_rank": 6,
+      "gold_label": "thong tu 28 2014 tt bvhttdl quan ly hoat dong mua ban hang hoa quoc te 267539",
+      "top1_label": "nghi dinh 69 2018 nd cp huong dan luat quan ly ngoai thuong 382305",
+      "top5_labels": [
+        "nghi dinh 69 2018 nd cp huong dan luat quan ly ngoai thuong ",
+        "nghi dinh 98 2020 nd cp xu phat vi pham hanh chinh hoat dong",
+        "luat thuong mai 2005 36 2005 qh11 2633",
+        "luat quan ly ngoai thuong 2017 322219",
+        "nghi dinh 08 2015 nd cp thi hanh luat hai quan ve thu tuc ki"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "90466",
+      "query": "Đề xuất Chủ tịch nước làm Chủ tịch Hội đồng Tư pháp quốc gia?",
+      "gold_id": "211090",
+      "gold_rank": 8,
+      "gold_label": "luat to chuc toa an nhan dan 2014 259724",
+      "top1_label": "luat to chuc quoc hoi 2014 259784",
+      "top5_labels": [
+        "luat to chuc quoc hoi 2014 259784",
+        "hien phap nam 2013 215627",
+        "quyet dinh 508 qd ttg 2014 hoi dong tu van tham dinh du an l",
+        "nghi quyet 929 2015 ubtvqh13 2015 quy che hoi dong tuyen cho",
+        "nghi quyet 102 2015 qh13 ban hanh noi quy ky hop quoc hoi 29"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "125764",
+      "query": "Tài sản công chứa đựng các bí mật nhà nước nếu được nhận quyết định tiêu hủy thì có nhất thiết phải đem chôn hay không?",
+      "gold_id": "128684",
+      "gold_rank": 10,
+      "gold_label": "luat quan ly su dung tai san cong 2017 322220",
+      "top1_label": "luat bao ve bi mat nha nuoc 2018 337064",
+      "top5_labels": [
+        "luat bao ve bi mat nha nuoc 2018 337064",
+        "quyet dinh 1858 qd bvhttdl 2021 quy che bao ve bi mat nha nu",
+        "quyet dinh 245 qd tct 2023 noi quy bao ve bi mat nha nuoc ng",
+        "nghi quyet 757 nq ubtvqh15 2023 quy che bao ve bi mat nha nu",
+        "nghi dinh 151 2017 nd cp huong dan luat quan ly su dung tai "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "164280",
+      "query": "Điều khiển xe ô tô chạy quá tốc độ bị phạt nguội thì có thể nộp phạt qua đường bưu điện được không?",
+      "gold_id": "219419",
+      "gold_rank": 6,
+      "gold_label": "nghi dinh 118 2021 nd cp huong dan luat xu ly vi pham hanh chinh 477969",
+      "top1_label": "nghi dinh 123 2021 nd cp sua doi nghi dinh xu phat vi pham hanh chinh linh vuc hang hai 477975",
+      "top5_labels": [
+        "nghi dinh 123 2021 nd cp sua doi nghi dinh xu phat vi pham h",
+        "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc",
+        "luat xu ly vi pham hanh chinh 2012 142766",
+        "nghi dinh 46 2016 nd cp xu phat vi pham hanh chinh giao thon",
+        "nghi dinh 142 2017 nd cp quy dinh xu phat vi pham hanh chinh"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "168286",
+      "query": "Nghị quyết của Quốc hội có hiệu lực thi hành từ khi nào?",
+      "gold_id": "261464",
+      "gold_rank": 9,
+      "gold_label": "luat ban hanh van ban quy pham phap luat 2015 282382",
+      "top1_label": "nghi quyet 71 2022 qh15 noi quy ky hop quoc hoi 295408",
+      "top5_labels": [
+        "nghi quyet 71 2022 qh15 noi quy ky hop quoc hoi 295408",
+        "nghi quyet 96 2023 qh15 lay phieu tin nhiem doi voi nguoi gi",
+        "luat to chuc quoc hoi 2014 259784",
+        "nghi quyet 80 2023 qh15 tiep tuc thuc hien chinh sach trong ",
+        "nghi quyet 102 2015 qh13 ban hanh noi quy ky hop quoc hoi 29"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "78440",
+      "query": "Công tác lấy ý kiến đánh giá của người dân về việc giải quyết thủ tục hành chính tại Bộ phận Một cửa được thực hiện bao lâu một lần?",
+      "gold_id": "225835",
+      "gold_rank": 6,
+      "gold_label": "thong tu 01 2018 tt vpcp co che mot cua mot cua lien thong trong giai quyet thu tuc hanh chinh 40073",
+      "top1_label": "quyet dinh 674 qd bkhcn 2019 quy che to chuc va hoat dong cua bo phan tiep nhan va tra ket qua 41161",
+      "top5_labels": [
+        "quyet dinh 674 qd bkhcn 2019 quy che to chuc va hoat dong cu",
+        "quyet dinh 125 qd bnv 2022 quy che to chuc hoat dong bo phan",
+        "quyet dinh 2412 qd nhnn 2019 quy che thuc hien co che mot cu",
+        "nghi dinh 61 2018 nd cp co che mot cua mot cua lien thong tr",
+        "quyet dinh 475 qd bhxh 2023 to chuc bo phan tiep nhan thu tu"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "98570",
+      "query": "Thực hiện nhiệm vụ được cơ quan quản lý nhà nước giao như thế nào?",
+      "gold_id": "298457",
+      "gold_rank": 7,
+      "gold_label": "luat bao ve quyen loi nguoi tieu dung 2010 115251",
+      "top1_label": "nghi dinh 32 2019 nd cp dau thau cung cap san pham dich vu cong su dung ngan sach nha nuoc 361768",
+      "top5_labels": [
+        "nghi dinh 32 2019 nd cp dau thau cung cap san pham dich vu c",
+        "bo luat dan su 2015 296215",
+        "luat thanh tra 2022 544688",
+        "luat khoa hoc va cong nghe nam 2013 197387",
+        "luat thanh tra 2010 115311"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "94936",
+      "query": "Nội dung Kế hoạch kiểm toán an ninh quốc phòng gồm những gì?",
+      "gold_id": "88080",
+      "gold_rank": 9,
+      "gold_label": "quyet dinh 01 2023 qd ktnn he thong mau bieu ho so kiem toan 550680",
+      "top1_label": "quyet dinh 1607 qd bqp 2022 quy che kiem toan noi bo cua bo quoc phong 512921",
+      "top5_labels": [
+        "quyet dinh 1607 qd bqp 2022 quy che kiem toan noi bo cua bo ",
+        "quyet dinh 02 2023 qd ktnn lap tham dinh ban hanh ke hoach k",
+        "quyet dinh 03 2021 qd ktnn xet duyet ke hoach kiem toan tong",
+        "quyet dinh 158 qd ktnn 2021 kiem toan chuong trinh muc tieu ",
+        "quyet dinh 47 qd ktnn 2021 huong dan kiem toan du an dau tu "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "92286",
+      "query": "Người vay vốn tại Ngân hàng Chính sách xã hội trong chính sách tín dụng ưu đãi đối với học sinh, sinh viên gồm những ai?",
+      "gold_id": "245419",
+      "gold_rank": 8,
+      "gold_label": "huong dan 2162a nhcs td cho vay hoc sinh sinh vien huong dan quyet dinh 157 2007 qd ttg 56527",
+      "top1_label": "quyet dinh 157 2007 qd ttg tin dung hoc sinh sinh vien 56252",
+      "top5_labels": [
+        "quyet dinh 157 2007 qd ttg tin dung hoc sinh sinh vien 56252",
+        "quyet dinh 09 2022 qd ttg tin dung hoc sinh sinh vien co hoa",
+        "nghi dinh 78 2002 nd cp tin dung nguoi ngheo doi tuong chinh",
+        "nghi dinh 28 2022 nd cp tin dung uu dai chuong trinh phat tr",
+        "quyet dinh 05 2022 qd ttg sua doi quyet dinh 157 2007 qd ttg"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "159836",
+      "query": "Danh hiệu “Lao động tiên tiến” được xét tặng cho đối tượng nào?",
+      "gold_id": "192255",
+      "gold_rank": 10,
+      "gold_label": "luat thi dua khen thuong sua doi 2013 215903",
+      "top1_label": "luat thi dua khen thuong 2003 15 2003 qh11 51686",
+      "top5_labels": [
+        "luat thi dua khen thuong 2003 15 2003 qh11 51686",
+        "nghi dinh 91 2017 nd cp huong dan luat thi dua khen thuong 3",
+        "thong tu 04 2020 tt bxd huong dan cong tac thi dua khen thuo",
+        "quyet dinh 1689 qd tld 2019 quy che khen thuong cua to chuc ",
+        "thong tu 01 2019 tt vkstc quy dinh ve cong tac thi dua khen "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "69266",
+      "query": "Ủy ban nhân dân có vai trò gì trong quá trình thành lập Quỹ tín dụng nhân dân?",
+      "gold_id": "199608",
+      "gold_rank": 8,
+      "gold_label": "thong tu 21 2019 tt nhnn sua doi thong tu ngan hang hop tac xa quy tin dung nhan dan 428626",
+      "top1_label": "thong tu 04 2015 tt nhnn quy tin dung nhan dan 270443",
+      "top5_labels": [
+        "thong tu 04 2015 tt nhnn quy tin dung nhan dan 270443",
+        "nghi dinh 34 2018 nd cp to chuc hoat dong quy bao lanh tin d",
+        "quyet dinh 258 qd nhnn 2023 cong bo thu tuc hanh chinh linh ",
+        "luat to chuc chinh quyen dia phuong 2015 282380",
+        "thong tu 23 2018 tt nhnn to chuc lai thu hoi giay phep thanh"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "147110",
+      "query": "Ký hợp đồng dịch vụ cung ứng lao động với cá nhân cho thuê lại lao động có được đưa vào chi phí hợp lý?",
+      "gold_id": "247495",
+      "gold_rank": 7,
+      "gold_label": "thong tu 96 2015 tt btc huong dan thue thu nhap doanh nghiep tai nghi dinh 12 2015 nd cp 279331",
+      "top1_label": "nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu kien lao dong quan he lao dong 459400",
+      "top5_labels": [
+        "nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu ",
+        "bo luat lao dong 2019 333670",
+        "nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong ",
+        "luat 69 2020 qh14 nguoi lao dong viet nam lam viec o nuoc ng",
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "62952",
+      "query": "Đơn vị thẩm định phải thỏa các yêu cầu nào?",
+      "gold_id": "294241",
+      "gold_rank": 10,
+      "gold_label": "nghi dinh 06 2022 nd cp giam nhe phat thai khi nha kinh va bao ve tang o don 500104",
+      "top1_label": "nghi dinh 63 2014 nd cp huong dan luat dau thau ve lua chon nha thau 237481",
+      "top5_labels": [
+        "nghi dinh 63 2014 nd cp huong dan luat dau thau ve lua chon ",
+        "thong tu 15 2019 tt byt quy dinh viec dau thau thuoc tai cac",
+        "nghi dinh 25 2020 nd cp huong dan luat dau thau lua chon nha",
+        "nghi dinh 35 2021 nd cp huong dan luat dau tu theo phuong th",
+        "thong tu 204 2014 tt btc dao tao boi duong nghiep vu chuyen "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "49276",
+      "query": "Mẫu văn bản đăng ký góp vốn, mua cổ phần, mua phần vốn góp của nhà đầu tư nước ngoài được quy định như thế nào?",
+      "gold_id": "269904",
+      "gold_rank": 7,
+      "gold_label": "thong tu 03 2021 tt bkhdt mau van ban bao cao lien quan den hoat dong dau tu tai viet nam 470603",
+      "top1_label": "cong van 8909 bkhdt pc 2020 trien khai thi hanh luat dau tu 461760",
+      "top5_labels": [
+        "cong van 8909 bkhdt pc 2020 trien khai thi hanh luat dau tu ",
+        "nghi dinh 01 2021 nd cp dang ky doanh nghiep 283247",
+        "luat dau tu so 61 2020 qh14 321051",
+        "nghi dinh 31 2021 nd cp huong dan luat dau tu 462291",
+        "thong tu 02 2017 tt bkhdt phoi hop giai quyet dang ky dau tu"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "12238",
+      "query": "Tạm hoãn thi ielts và nhiều chứng chỉ quốc tế?",
+      "gold_id": "180968",
+      "gold_rank": 10,
+      "gold_label": "thong tu 11 2022 tt bgddt lien ket to chuc thi cap chung chi nang luc ngoai ngu 493271",
+      "top1_label": "bo luat to tung hinh su 2015 296884",
+      "top5_labels": [
+        "bo luat to tung hinh su 2015 296884",
+        "luat nhap canh xuat canh qua canh cu tru cua nguoi nuoc ngoa",
+        "luat xuat canh nhap canh cua cong dan viet nam 2019 402073",
+        "quyet dinh 3730 qd bgddt 2022 lien ket to chuc thi cap chung",
+        "nghi dinh 86 2018 nd cp quy dinh ve hop tac dau tu cua nuoc "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "128348",
+      "query": "Chỉ huy trưởng có được quản lý đồng thời nhiều công trình?",
+      "gold_id": "89392",
+      "gold_rank": 7,
+      "gold_label": "luat xay dung 2014 238644",
+      "top1_label": "nghi dinh 15 2021 nd cp huong dan mot so noi dung quan ly du an dau tu xay dung 466771",
+      "top5_labels": [
+        "nghi dinh 15 2021 nd cp huong dan mot so noi dung quan ly du",
+        "nghi dinh 12 2009 nd cp quan ly du an dau tu xay dung cong t",
+        "thong tu 99 2019 tt bqp huong dan thi hanh nghi dinh 168 201",
+        "nghi dinh 58 2010 nd cp huong dan luat dan quan tu ve 106576",
+        "thong tu 29 2020 tt bqp moi quan he ban chi huy quan su xa v"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "62314",
+      "query": "Mục tiêu đào tạo, bồi dưỡng công chức trong cơ quan nhà nước được pháp luật quy định như thế nào?",
+      "gold_id": "278944",
+      "gold_rank": 7,
+      "gold_label": "nghi dinh 101 2017 nd cp dao tao boi duong can bo cong chuc vien chuc 319214",
+      "top1_label": "luat can bo cong chuc 2008 22 2008 qh12 82202",
+      "top5_labels": [
+        "luat can bo cong chuc 2008 22 2008 qh12 82202",
+        "quyet dinh 490 qd bnv quy che dao tao boi duong cong vien ch",
+        "van ban hop nhat 25 vbhn vpqh 2019 luat can bo cong chuc 439",
+        "quyet dinh 1280 qd ktnn 2022 quy che dao tao boi duong kiem ",
+        "quyet dinh 678 qd btc 2019 quy che dao tao boi duong cong ch"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "157640",
+      "query": "Cục Di sản văn hóa có quyền cấp phép thăm dò, khai quật khảo cổ không?",
+      "gold_id": "21962",
+      "gold_rank": 7,
+      "gold_label": "quyet dinh 3878 qd bvhttdl chuc nang nhiem vu quyen han co cau to chuc cuc di san van hoa 2013 29397",
+      "top1_label": "quyet dinh 86 2008 qd bvhttdl quy che tham do khai quat khao co 84481",
+      "top5_labels": [
+        "quyet dinh 86 2008 qd bvhttdl quy che tham do khai quat khao",
+        "luat di san van hoa 2001 28 2001 qh10 47926",
+        "nghi dinh 98 2010 nd cp huong dan luat di san van hoa 111991",
+        "luat di san van hoa 2009 sua doi 32 2009 qh12 90620",
+        "nghi dinh 79 2017 nd cp chuc nang nhiem vu quyen han co cau "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "85786",
+      "query": "Danh mục hàng thực phẩm đông lạnh kinh doanh tạm nhập tái xuất có điều kiện bao gồm những thực phẩm nào?",
+      "gold_id": "224250",
+      "gold_rank": 7,
+      "gold_label": "thong tu 12 2018 tt bct huong dan luat quan ly ngoai thuong va 69 2018 nd cp 369631",
+      "top1_label": "nghi dinh 69 2018 nd cp huong dan luat quan ly ngoai thuong 382305",
+      "top5_labels": [
+        "nghi dinh 69 2018 nd cp huong dan luat quan ly ngoai thuong ",
+        "nghi dinh 15 2018 nd cp huong dan luat an toan thuc pham 341",
+        "thong tu 27 2019 tt bct phe lieu tam ngung kinh doanh tam nh",
+        "luat an toan thuc pham 2010 108074",
+        "luat quan ly ngoai thuong 2017 322219"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "26558",
+      "query": "Hồ sơ hưởng chế độ ốm đau khi bị Covid-19 gồm những gì?",
+      "gold_id": "253824",
+      "gold_rank": 10,
+      "gold_label": "cong van 238 byt kcb 2022 ho so huong bao hiem xa hoi nguoi lao dong dieu tri covid19 500819",
+      "top1_label": "luat bao hiem xa hoi 2014 259700",
+      "top5_labels": [
+        "luat bao hiem xa hoi 2014 259700",
+        "thong tu 136 2020 tt bqp ho so quy trinh trach nhiem giai qu",
+        "quyet dinh 166 qd bhxh 2019 quy trinh giai quyet huong che d",
+        "luat bao hiem xa hoi 557190",
+        "thong tu 59 2015 tt bldtbxh huong dan luat bao hiem xa hoi v"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "61758",
+      "query": "Không ghi nhãn phụ vào hàng hóa nhập khẩu phục vụ mùa tết thương nhân bị xử lý như thế nào?",
+      "gold_id": "210490",
+      "gold_rank": 8,
+      "gold_label": "nghi dinh 119 2017 nd cp xu phat vi pham hanh chinh trong linh vuc tieu chuan do luong 343705",
+      "top1_label": "nghi dinh 43 2017 nd cp nhan hang hoa 346310",
+      "top5_labels": [
+        "nghi dinh 43 2017 nd cp nhan hang hoa 346310",
+        "nghi dinh 128 2020 nd cp xu phat vi pham hanh chinh trong li",
+        "nghi dinh 98 2020 nd cp xu phat vi pham hanh chinh hoat dong",
+        "thong tu 05 2019 tt bkhcn huong dan nghi dinh 43 2017 nd cp ",
+        "nghi dinh 111 2021 nd cp sua doi nghi dinh 43 2017 nd cp 497"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "152420",
+      "query": "Công chức không giữ chức vụ lãnh đạo bị bố trí vào vị trí việc làm có yêu cầu thấp hơn trong trường hợp nào?",
+      "gold_id": "132142",
+      "gold_rank": 7,
+      "gold_label": "quyet dinh 1206 qd btp 2021 danh gia xep loai chat luong cong chuc vien chuc 483506",
+      "top1_label": "luat can bo cong chuc 2008 22 2008 qh12 82202",
+      "top5_labels": [
+        "luat can bo cong chuc 2008 22 2008 qh12 82202",
+        "nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong ",
+        "nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien",
+        "van ban hop nhat 25 vbhn vpqh 2019 luat can bo cong chuc 439",
+        "luat can bo cong chuc va luat vien chuc sua doi 2019 405729"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "54140",
+      "query": "Tăng mức đóng bảo hiểm thất nghiệp cho người lao động",
+      "gold_id": "285041",
+      "gold_rank": 7,
+      "gold_label": "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hiem the bao hiem 2017 348047",
+      "top1_label": "luat viec lam nam 2013 215628",
+      "top5_labels": [
+        "luat viec lam nam 2013 215628",
+        "nghi dinh 28 2015 nd cp huong dan luat viec lam va bao hiem ",
+        "thong tu 28 2015 tt bldtbxh huong dan luat viec lam nghi din",
+        "nghi dinh 61 2020 nd cp sua doi 28 2015 nd cp huong dan luat",
+        "luat bao hiem xa hoi 2014 259700"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "29932",
+      "query": "Đất đai có thuộc quyền sở hữu toàn dân không?",
+      "gold_id": "266221",
+      "gold_rank": 7,
+      "gold_label": "nghi quyet 18 nq tw 2022 hoan thien the che su dung dat tao dong luc phat trien thu nhap cao 518813",
+      "top1_label": "luat dat dai 2013 215836",
+      "top5_labels": [
+        "luat dat dai 2013 215836",
+        "bo luat dan su 2015 296215",
+        "nghi dinh 43 2014 nd cp huong dan thi hanh luat dat dai 2306",
+        "luat dat dai 523642",
+        "nghi quyet 19 nq tw nam 2012 doi moi chinh sach phap luat ve"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "131802",
+      "query": "Các quy định về chính sách thuế, phí, lệ phí được ban hành năm 2022?",
+      "gold_id": "12180",
+      "gold_rank": 7,
+      "gold_label": "cong van 1912 tct dt 2022 xay dung du toan thu ngan sach nha nuoc 2023 516601",
+      "top1_label": "thong tu 47 2022 tt btc huong dan xay dung du toan ngan sach va ke hoach tai chinh 2023 524554",
+      "top5_labels": [
+        "thong tu 47 2022 tt btc huong dan xay dung du toan ngan sach",
+        "thong tu 74 2022 tt btc hinh thuc thoi han thu nop ke khai c",
+        "thong tu 75 2022 tt btc muc thu che do thu nop va quan ly le",
+        "thong tu 44 2023 tt btc muc thu mot so khoan phi le phi ho t",
+        "thong tu 32 2022 tt btc sua doi thong tu 273 2016 tt btc phi"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "95582",
+      "query": "Khi nghỉ hưu không làm Chủ tịch Hội cựu chiến binh xã nữa thì có được hưởng chính sách hỗ trợ gì không?",
+      "gold_id": "40635",
+      "gold_rank": 8,
+      "gold_label": "nghi dinh 76 2019 nd cp chinh sach doi voi can bo cong chuc cong tac o vung kinh te dac biet kho kha",
+      "top1_label": "nghi dinh 150 2006 nd cp huong dan phap lenh cuu chien binh 15970",
+      "top5_labels": [
+        "nghi dinh 150 2006 nd cp huong dan phap lenh cuu chien binh ",
+        "thong tu 03 2020 tt bldtbxh chinh sach doi voi cuu chien bin",
+        "phap lenh cuu chien binh hoi cuu chien binh viet nam 2005 27",
+        "nghi dinh 33 2023 nd cp can bo cong chuc cap xa va nguoi hoa",
+        "quyet dinh 128 qd tw che do tien luong can bo cong chuc 1151"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "137696",
+      "query": "Mục đích của việc thi công trám lấp giếng không sử dụng là gì?",
+      "gold_id": "14021",
+      "gold_rank": 7,
+      "gold_label": "luat tai nguyen nuoc 2012 142767",
+      "top1_label": "thong tu 72 2017 tt btnmt quy dinh viec xu ly tram lap gieng khong su dung 371927",
+      "top5_labels": [
+        "thong tu 72 2017 tt btnmt quy dinh viec xu ly tram lap gieng",
+        "cong van 2553 btnmt tnn 2022 tang cuong cong tac bao ve tai ",
+        "thong tu 75 2017 tt btnmt quy dinh bao ve nuoc duoi dat hoat",
+        "nghi dinh 36 2020 nd cp xu phat vi pham hanh chinh trong lin",
+        "nghi dinh 167 2018 nd cp quy dinh viec han che khai thac nuo"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "159364",
+      "query": "Nhân viên của tổ chức thử nghiệm cần đáp ứng điều kiện gì để tổ chức này được chỉ định thực hiện hoạt động thử nghiệm?",
+      "gold_id": "162849",
+      "gold_rank": 7,
+      "gold_label": "thong tu 24 2013 tt bkhcn kiem dinh hieu chuan thu nghiem phuong tien do chuan do luong 212186",
+      "top1_label": "nghi dinh 107 2016 nd cp quy dinh kinh doanh dich vu danh gia su phu hop 2016 315460",
+      "top5_labels": [
+        "nghi dinh 107 2016 nd cp quy dinh kinh doanh dich vu danh gi",
+        "luat do luong 2011 132449",
+        "thong tu 48 2011 tt bct quan ly chat luong san pham hang hoa",
+        "nghi dinh 105 2016 nd cp to chuc kiem dinh hieu chuan thu ng",
+        "nghi dinh 74 2018 nd cp sua doi nghi dinh 132 2008 nd cp cha"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "142528",
+      "query": "Trường hợp người lao động không thuộc đối tượng tham gia bảo hiểm xã hội bắt buộc thì xử lý như thế nào?",
+      "gold_id": "129823",
+      "gold_rank": 8,
+      "gold_label": "bo luat lao dong 2019 333670",
+      "top1_label": "luat bao hiem xa hoi 2014 259700",
+      "top5_labels": [
+        "luat bao hiem xa hoi 2014 259700",
+        "luat bao hiem xa hoi 557190",
+        "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie",
+        "luat an toan ve sinh lao dong 2015 281961",
+        "nghi dinh 143 2018 nd cp bao hiem xa hoi bat buoc nguoi lao "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "155408",
+      "query": "Thời hạn giải quyết thủ tục đăng ký nhận cha mẹ con bằng hình thức online là trong bao lâu?",
+      "gold_id": "189230",
+      "gold_rank": 10,
+      "gold_label": "quyet dinh 2228 qd btp 2022 cong bo thu tuc hanh chinh linh vuc ho tich tai co quan dang ky ho tich",
+      "top1_label": "luat ho tich 2014 259727",
+      "top5_labels": [
+        "luat ho tich 2014 259727",
+        "nghi dinh 126 2014 nd cp quy dinh chi tiet mot so dieu bien ",
+        "quyet dinh 1872 qd btp 2020 cong bo thu tuc hanh chinh linh ",
+        "quyet dinh 299 qd btp thu tuc hanh chinh ban hanh moi ho tic",
+        "luat hon nhan va gia dinh 2014 238640"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "159692",
+      "query": "Thang lương, bảng lương và phụ cấp lương là bao nhiêu?",
+      "gold_id": "12948",
+      "gold_rank": 6,
+      "gold_label": "thong tu 04 2019 tt bldtbxh quan ly lao dong tien luong quy bao lanh tin dung doanh nghiep nho 39222",
+      "top1_label": "nghi dinh 204 2004 nd cp che do tien luong doi voi can bo cong chuc vien chuc luc luong vu trang 52629",
+      "top5_labels": [
+        "nghi dinh 204 2004 nd cp che do tien luong doi voi can bo co",
+        "nghi dinh 38 2019 nd cp muc luong co so doi voi can bo cong ",
+        "thong tu 13 2022 tt bldtbxh quan ly lao dong tien luong quy ",
+        "nghi dinh 51 2016 nd cp tien luong tien thuong nguoi lao don",
+        "thong tu 17 2015 tt bldtbxh xay dung thang luong bang luong "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "165276",
+      "query": "Có bắt buộc phải cung cấp giấy xác nhận đối tượng và thực trạng nhà ở khi đăng ký thuê, thuê mua nhà ở xã hội không?",
+      "gold_id": "141634",
+      "gold_rank": 6,
+      "gold_label": "nghi dinh 99 2015 nd cp huong dan luat nha o 294439",
+      "top1_label": "thong tu 19 2016 tt bxd huong dan 99 2015 nd cp luat nha o 297607",
+      "top5_labels": [
+        "thong tu 19 2016 tt bxd huong dan 99 2015 nd cp luat nha o 2",
+        "nghi dinh 100 2015 nd cp phat trien quan ly nha o xa hoi 295",
+        "luat nha o 2014 259721",
+        "quyet dinh 705 qd bxd 2021 cong bo thu tuc hanh chinh linh v",
+        "nghi dinh 49 2021 nd cp sua doi nghi dinh 100 2015 nd cp pha"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "77740",
+      "query": "Công chức sinh con thứ ba trong trường hợp nào sẽ không bị xử lý kỷ luật?",
+      "gold_id": "190982",
+      "gold_rank": 10,
+      "gold_label": "nghi dinh 20 2010 nd cp huong dan phap lenh sua doi dieu 10 phap lenh dan so 102039",
+      "top1_label": "quyet dinh 1531 qd btc quy che xu ly ky luat cong vien chuc vi pham nam 2013 198094",
+      "top5_labels": [
+        "quyet dinh 1531 qd btc quy che xu ly ky luat cong vien chuc ",
+        "nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien",
+        "quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pha",
+        "quy dinh 102 qd tw 2017 xu ly ky luat dang vien vi pham 3687",
+        "luat can bo cong chuc 2008 22 2008 qh12 82202"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "86390",
+      "query": "Đối tượng chịu thuế theo quy định pháp luật",
+      "gold_id": "190965",
+      "gold_rank": 10,
+      "gold_label": "luat thue xuat khau thue nhap khau 2016 280693",
+      "top1_label": "thong tu 219 2013 tt btc huong dan luat thue gia tri gia tang va nghi dinh 209 2013 nd cp 220761",
+      "top5_labels": [
+        "thong tu 219 2013 tt btc huong dan luat thue gia tri gia tan",
+        "luat quan ly thue 2019 387595",
+        "luat thue bao ve moi truong 2010 115247",
+        "thong tu 78 2014 tt btc huong dan 218 2013 nd cp thi hanh lu",
+        "luat thue gia tri gia tang 2008 13 2008 qh12 66934"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "102638",
+      "query": "Thời hiệu xử phạt vi phạm hành chính đối với tổ chức khai thác vận chuyển hàng không không có quy trình phục vụ hành khách tại cảng hàng không là bao lâu?",
+      "gold_id": "258855",
+      "gold_rank": 8,
+      "gold_label": "nghi dinh 123 2021 nd cp sua doi nghi dinh xu phat vi pham hanh chinh linh vuc hang hai 477975",
+      "top1_label": "nghi dinh 162 2018 nd cp xu phat vi pham hanh chinh trong linh vuc hang khong dan dung 321856",
+      "top5_labels": [
+        "nghi dinh 162 2018 nd cp xu phat vi pham hanh chinh trong li",
+        "luat xu ly vi pham hanh chinh 2012 142766",
+        "thong tu 36 2014 tt bgtvt chat luong dich vu hanh khach tai ",
+        "nghi dinh 142 2017 nd cp quy dinh xu phat vi pham hanh chinh",
+        "nghi dinh 139 2021 nd cp xu phat vi pham hanh chinh giao tho"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "100298",
+      "query": "Giá bán xăng dầu sau khi thực hiện quỹ bình ổn giá xăng, dầu như thế nào?",
+      "gold_id": "268645",
+      "gold_rank": 10,
+      "gold_label": "cong van 2078 bct tttn 2022 dieu hanh kinh doanh xang dau 510931",
+      "top1_label": "nghi dinh 83 2014 nd cp kinh doanh xang dau 248283",
+      "top5_labels": [
+        "nghi dinh 83 2014 nd cp kinh doanh xang dau 248283",
+        "thong tu 103 2021 tt btc huong dan phuong thuc trich lap quy",
+        "cong van 2293 bct tttn 2022 dieu hanh kinh doanh xang dau 51",
+        "cong van 1846 bct tttn 2022 dieu hanh kinh doanh xang dau 50",
+        "nghi dinh 95 2021 nd cp sua doi nghi dinh 83 2014 nd cp 4658"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "69070",
+      "query": "Trách nhiệm của cơ quan thực hiện quy chế chi tiêu nội bộ được quy định như thế nào?",
+      "gold_id": "198275",
+      "gold_rank": 9,
+      "gold_label": "nghi dinh 117 2013 nd cp tu chu tu chiu trach nhiem bien che kinh phi quan ly hanh chinh 209502",
+      "top1_label": "thong tu lien tich 71 2014 ttlt btc bnv che do tu chu tu chiu trach nhiem su dung kinh phi nha nuoc",
+      "top5_labels": [
+        "thong tu lien tich 71 2014 ttlt btc bnv che do tu chu tu chi",
+        "thong tu 56 2022 tt btc huong dan co che tu chu tai chinh cu",
+        "quyet dinh 1795 qd btc 2017 che do cong tac phi che do chi h",
+        "quyet dinh 1692 qd btc quy trinh thanh tra tai chinh tai co ",
+        "luat thuc hanh tiet kiem chong lang phi 2013 215837"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "120084",
+      "query": "Đăng ký và sử dụng thông tin hóa đơn điện tử như thế nào?",
+      "gold_id": "289326",
+      "gold_rank": 6,
+      "gold_label": "cong van 1727 tct qlrr 2022 huong dan quy che mau trao doi thong tin hoa don dien tu 515130",
+      "top1_label": "nghi dinh 123 2020 nd cp quy dinh hoa don chung tu 445980",
+      "top5_labels": [
+        "nghi dinh 123 2020 nd cp quy dinh hoa don chung tu 445980",
+        "nghi dinh 119 2018 nd cp quy dinh ve hoa don dien tu khi ban",
+        "luat quan ly thue 2019 387595",
+        "thong tu 32 2011 tt btc huong dan ve khoi tao phat hanh su d",
+        "thong tu 78 2021 tt btc huong dan luat quan ly thue nghi din"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "156810",
+      "query": "Quyền và nghĩa vụ của bên cung cấp dịch vụ trong hợp đồng dịch vụ ra sao?",
+      "gold_id": "25650",
+      "gold_rank": 7,
+      "gold_label": "thong tu 5 2023 tt bnv huong dan mau hop dong dich vu cong viec trong co quan hanh chinh 565161",
+      "top1_label": "bo luat dan su 2015 296215",
+      "top5_labels": [
+        "bo luat dan su 2015 296215",
+        "luat thuong mai 2005 36 2005 qh11 2633",
+        "bo luat dan su 1995 44 l ctn 39391",
+        "nghi dinh 99 2011 nd cp huong dan luat bao ve quyen loi nguo",
+        "luat kinh doanh bat dong san 2014 259722"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "114688",
+      "query": "Thời điểm thực hiện ký quỹ là khi nào?",
+      "gold_id": "84570",
+      "gold_rank": 8,
+      "gold_label": "nghi dinh 31 2021 nd cp huong dan luat dau tu 462291",
+      "top1_label": "quyet dinh 12 2020 qd ttg thi diem ky quy doi voi nguoi lao dong di lam viec tai han quoc 438742",
+      "top5_labels": [
+        "quyet dinh 12 2020 qd ttg thi diem ky quy doi voi nguoi lao ",
+        "nghi dinh 112 2021 nd cp huong dan luat nguoi lao dong di la",
+        "thong tu 29 2018 tt nhnn xac nhan quan ly tien ky quy cua do",
+        "nghi dinh 40 2018 nd cp quan ly hoat dong kinh doanh theo ph",
+        "nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "6222",
+      "query": "Cách đăng ký người phụ thuộc để giảm trừ gia cảnh năm 2022?",
+      "gold_id": "135644",
+      "gold_rank": 9,
+      "gold_label": "thong tu 105 2020 tt btc huong dan dang ky thue 459433",
+      "top1_label": "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nhan va nghi dinh 65 2013 nd cp 205356",
+      "top5_labels": [
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "cong van 883 tct dnncn 2022 quyet toan thue thu nhap ca nhan",
+        "cong van 13762 cthn hkdcn 2023 quyet toan thue thu nhap ca n",
+        "nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan",
+        "cong van 18175 cthn ttht 2022 giam tru gia canh nguoi phu th"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "113912",
+      "query": "Có phải xác nhận số lượng sao chụp tài liệu bí mật nhà nước và văn bản ghi nhận việc sao chụp tài liệu hay không?",
+      "gold_id": "122987",
+      "gold_rank": 9,
+      "gold_label": "thong tu 24 2020 tt bca bieu mau su dung trong cong tac bao ve bi mat nha nuoc 437913",
+      "top1_label": "thong tu 07 2020 tt bkhdt cong tac bao ve bi mat nha nuoc linh vuc ke hoach dau tu va thong ke 45744",
+      "top5_labels": [
+        "thong tu 07 2020 tt bkhdt cong tac bao ve bi mat nha nuoc li",
+        "nghi dinh 26 2020 nd cp huong dan luat bao ve bi mat nha nuo",
+        "quyet dinh 1500 qd btc 2020 quy che bao ve bi mat nha nuoc c",
+        "quyet dinh 245 qd tct 2023 noi quy bao ve bi mat nha nuoc ng",
+        "luat bao ve bi mat nha nuoc 2018 337064"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "164524",
+      "query": "Mẫu Quyết định khởi tố vụ án hình sự mới nhất hiện nay như thế nào?",
+      "gold_id": "133773",
+      "gold_rank": 8,
+      "gold_label": "nghi quyet 05 2017 nq hdtp bieu mau van ban to tung ap dung xet xu luat to tung hinh su 320658",
+      "top1_label": "bo luat to tung hinh su 2015 296884",
+      "top5_labels": [
+        "bo luat to tung hinh su 2015 296884",
+        "thong tu 119 2021 tt bca bieu mau giay to so sach ve dieu tr",
+        "thong tu lien tich 04 2018 ttlt vksndtc bca bqp thuc hien qu",
+        "quyet dinh 111 qd vkstc 2020 quy che cong tac thuc hanh quye",
+        "thong tu 28 2020 tt bca trinh tu thu tuc tiep nhan to giac v"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "159112",
+      "query": "Mức tối đa giá xăng dầu sau khi thực hiện chi sử dụng Quỹ Bình ổn giá xăng dầu là bao nhiêu?",
+      "gold_id": "73607",
+      "gold_rank": 10,
+      "gold_label": "cong van 1214 bct tttn 2022 dieu hanh kinh doanh xang dau 506242",
+      "top1_label": "thong tu 103 2021 tt btc huong dan phuong thuc trich lap quy binh on gia xang dau 495500",
+      "top5_labels": [
+        "thong tu 103 2021 tt btc huong dan phuong thuc trich lap quy",
+        "nghi dinh 95 2021 nd cp sua doi nghi dinh 83 2014 nd cp 4658",
+        "nghi dinh 83 2014 nd cp kinh doanh xang dau 248283",
+        "cong van 1846 bct tttn 2022 dieu hanh kinh doanh xang dau 50",
+        "cong van 1674 bct tttn 2022 dieu hanh kinh doanh xang dau 50"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "121308",
+      "query": "Sở Giao dịch kho bạc Nhà nước có nằm trong hệ thống của cơ quan Kho bạc nhà nước hay không?",
+      "gold_id": "14927",
+      "gold_rank": 10,
+      "gold_label": "thong tu 84 2016 tt btc huong dan thu tuc thu nop ngan sach nha nuoc thue thu noi dia 301601",
+      "top1_label": "quyet dinh 26 2015 qd ttg chuc nang co cau to chuc kho bac nha nuoc truc thuoc bo tai chinh 281057",
+      "top5_labels": [
+        "quyet dinh 26 2015 qd ttg chuc nang co cau to chuc kho bac n",
+        "quyet dinh 1618 qd btc 2019 chuc nang nhiem vu quyen han co ",
+        "nghi dinh 11 2020 nd cp thu tuc hanh chinh thuoc linh vuc kh",
+        "thong tu 33 2017 tt btc quan ly tien mat giay to co gia tai ",
+        "quyet dinh 4526 qd kbnn 2019 chuc nang nhiem vu cua kho bac "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "66924",
+      "query": "Đối tượng phải được tập huấn kiến thức an toàn thực phẩm gồm những ai?",
+      "gold_id": "204875",
+      "gold_rank": 9,
+      "gold_label": "nghi dinh 155 2018 nd cp sua doi quy dinh lien quan den dieu kien kinh doanh thuoc bo y te 399829",
+      "top1_label": "thong tu 32 2022 tt bnnptnt sua doi thong tu tham dinh co so san xuat thuc pham nong lam san 549083",
+      "top5_labels": [
+        "thong tu 32 2022 tt bnnptnt sua doi thong tu tham dinh co so",
+        "cong van 244 attp ndtt 2020 cap giay chung nhan co so du die",
+        "quyet dinh 381 qd qlcl 2014 tai lieu tap huan kien thuc ve a",
+        "quyet dinh 1390 qd bct 2020 cau hoi kiem tra de xac nhan da ",
+        "luat an toan thuc pham 2010 108074"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "156440",
+      "query": "Nhiệm vụ trong xây dựng và phát triển Chính phủ điện tử, Chính phủ số?",
+      "gold_id": "110662",
+      "gold_rank": 7,
+      "gold_label": "nghi quyet 76 nq cp 2021 chuong trinh tong the cai cach hanh chinh nha nuoc 2021 2030 481235",
+      "top1_label": "quyet dinh 1925 qd btttt 2022 chuc nang nhiem vu quyen han cuc chuyen doi so quoc gia 533171",
+      "top5_labels": [
+        "quyet dinh 1925 qd btttt 2022 chuc nang nhiem vu quyen han c",
+        "nghi dinh 150 2016 nd cp chuc nang nhiem vu quyen han va co ",
+        "quyet dinh 421 qd bnv 2022 chuong trinh boi duong cong chuc ",
+        "quyet dinh 06 2013 qd ttg chuc nang nhiem vu co cau cong tho",
+        "quyet dinh 2868 qd btnmt 2022 chuc nang nhiem vu quyen han c"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "131354",
+      "query": "Hai bên nam nữ chưa đăng ký kết hôn thì một bên có được quyền đòi lại sính lễ đã trao cho bên kia trước đó hay không?",
+      "gold_id": "81598",
+      "gold_rank": 8,
+      "gold_label": "bo luat dan su 2015 296215",
+      "top1_label": "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+      "top5_labels": [
+        "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+        "luat hon nhan va gia dinh 2014 238640",
+        "luat ho tich 2014 259727",
+        "nghi dinh 126 2014 nd cp quy dinh chi tiet mot so dieu bien ",
+        "thong tu lien tich 02 2016 ttlt bng btp huong dan dang ky qu"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "63466",
+      "query": "Khai quyết toán thuế thu nhập cá nhân là gì?",
+      "gold_id": "161949",
+      "gold_rank": 9,
+      "gold_label": "luat quan ly thue 2019 387595",
+      "top1_label": "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nhan va nghi dinh 65 2013 nd cp 205356",
+      "top5_labels": [
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "cong van 883 tct dnncn 2022 quyet toan thue thu nhap ca nhan",
+        "nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733",
+        "thong tu 80 2021 tt btc huong dan luat quan ly thue nghi din",
+        "nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "143624",
+      "query": "Hộ gia đình, cá nhân khi được cấp quyền truy cập khai thác thông tin dữ liệu trên mạng có trách nhiệm như thế nào?",
+      "gold_id": "220279",
+      "gold_rank": 6,
+      "gold_label": "thong tu 34 2014 tt btnmt xay dung quan ly khai thac he thong thong tin dat dai 244305",
+      "top1_label": "nghi dinh 73 2017 nd cp quan ly khai thac su dung thong tin du lieu tai nguyen moi truong 320925",
+      "top5_labels": [
+        "nghi dinh 73 2017 nd cp quan ly khai thac su dung thong tin ",
+        "thong tu 27 2016 tt bxd huong dan 117 2015 nd cp he thong th",
+        "nghi dinh 03 2019 nd cp hoat dong vien tham 387694",
+        "thong tu 12 2019 tt bxd quan ly he thong co so du lieu dinh ",
+        "thong tu 13 2016 tt btp cap nhat thong tin su dung du lieu q"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "165140",
+      "query": "Trường hợp người nộp thuế phát sinh nghĩa vụ khai thuế thuộc trách nhiệm quản lý của cơ quan thuế khác thì xử lý như thế nào?",
+      "gold_id": "16227",
+      "gold_rank": 8,
+      "gold_label": "quyet dinh 2845 qd btc phan cong co quan thue quan ly nguoi nop thue 2016 338297",
+      "top1_label": "nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733",
+      "top5_labels": [
+        "nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733",
+        "luat quan ly thue 2019 387595",
+        "thong tu 80 2021 tt btc huong dan luat quan ly thue nghi din",
+        "thong tu 19 2021 tt btc huong dan giao dich dien tu trong li",
+        "nghi dinh 91 2022 nd cp sua doi nghi dinh 126 2020 nd cp huo"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "56750",
+      "query": "Thủ tục cấp giấy chứng nhận kiến thức về an toàn thực phẩm được quy định như thế nào?",
+      "gold_id": "299215",
+      "gold_rank": 9,
+      "gold_label": "cong van 244 attp ndtt 2020 cap giay chung nhan co so du dieu kien an toan thuc pham 452024",
+      "top1_label": "thong tu 38 2018 tt bnnptnt tham dinh co so san xuat thuc pham nong lam an toan thuc pham 406512",
+      "top5_labels": [
+        "thong tu 38 2018 tt bnnptnt tham dinh co so san xuat thuc ph",
+        "luat an toan thuc pham 2010 108074",
+        "nghi dinh 15 2018 nd cp huong dan luat an toan thuc pham 341",
+        "thong tu 32 2022 tt bnnptnt sua doi thong tu tham dinh co so",
+        "thong tu 43 2018 tt bct quan ly an toan thuc pham thuoc trac"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "85794",
+      "query": "Tuyển sinh lớp 10 theo các phương thức nào?",
+      "gold_id": "11284",
+      "gold_rank": 8,
+      "gold_label": "thong tu 11 2014 tt bgddt quy che tuyen sinh trung hoc co so trung hoc pho thong 227237",
+      "top1_label": "cong van 1682 sgddt ktkd 2023 to chuc ky thi tuyen sinh vao lop 10 so giao duc ho chi minh 563926",
+      "top5_labels": [
+        "cong van 1682 sgddt ktkd 2023 to chuc ky thi tuyen sinh vao ",
+        "quyet dinh 773 qd ubnd 2022 huy dong tre ra lop va tuyen sin",
+        "cong van 944 sgddt qlt 2022 tuyen sinh vao lop 10 trung hoc ",
+        "cong van 1121 sgddt ktkd 2022 thi tuyen sinh vao lop 10 so g",
+        "quyet dinh 1153 qd ubnd 2023 tuyen sinh vao cac lop dau cap "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "61940",
+      "query": "Chống thất thu đối với doanh nghiệp, cá nhân kinh doanh trong lĩnh vực thương mại, dịch vụ, nhất là chống thất thu thuế trong kinh doanh, chuyển nhượng bất động sản?",
+      "gold_id": "162235",
+      "gold_rank": 9,
+      "gold_label": "thong tu 47 2022 tt btc huong dan xay dung du toan ngan sach va ke hoach tai chinh 2023 524554",
+      "top1_label": "cong van 769 tct ttkt 2022 thuc hien chong that thu ngan sach nha nuoc 514239",
+      "top5_labels": [
+        "cong van 769 tct ttkt 2022 thuc hien chong that thu ngan sac",
+        "luat kinh doanh bat dong san 2014 259722",
+        "nghi quyet 62 2022 qh15 hoat dong chat van tai ky hop thu 3 ",
+        "thong tu 40 2021 tt btc huong dan thue gia tri gia tang thue",
+        "chi thi 22 ct ttg 2023 tang cuong ky luat chap hanh phap lua"
+      ],
+      "umbrella_blocking": true
+    }
+  ],
+  "not_in_candidate_pool": [
+    {
+      "qid": "124166",
+      "query": "Thế nào là lý lịch Đảng viên?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "huong dan 01 hd tw 2021 thi hanh dieu le dang 490529",
+      "top5_labels": [
+        "huong dan 01 hd tw 2021 thi hanh dieu le dang 490529",
+        "huong dan 12 hd btctw 2022 nghiep vu cong tac dang vien 5031",
+        "quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pha",
+        "dieu le dang cong san viet nam nam 2011 151840",
+        "luat ly lich tu phap 2009 28 2009 qh12 90615"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "71372",
+      "query": "Sau khi điều trị thì người bệnh phải đạt tiêu chuẩn gì thì mới được xem là khỏi bệnh?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat kham benh chua benh nam 2009 98714",
+      "top5_labels": [
+        "luat kham benh chua benh nam 2009 98714",
+        "luat 15 2023 qh15 kham benh chua benh 372143",
+        "luat kham benh chua benh 2023 so 15 2023 qh15 372143",
+        "quyet dinh 1832 qd byt 2022 tai lieu huong dan chan doan die",
+        "thong tu 18 2022 tt byt sua doi thong tu 56 2017 tt byt huon"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "85060",
+      "query": "Diện tích tối thiểu của thửa đất ở được phép tách thửa là bao nhiêu?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 22 2018 qd ubnd han muc cong nhan dat o dien tich toi thieu tach thua dat hai duong 39714",
+      "top5_labels": [
+        "quyet dinh 22 2018 qd ubnd han muc cong nhan dat o dien tich",
+        "quyet dinh 34 2019 qd ubnd han muc giao dat cong nhan quyen ",
+        "quyet dinh 42 2021 qd ubnd huong dan luat dat dai 2013 son l",
+        "quyet dinh 12 2022 qd ubnd han muc giao dat o cong nhan dat ",
+        "quyet dinh 03 2020 qd ubnd dien tich kich thuoc toi thieu du"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "62306",
+      "query": "Gây thương tích cho người khác trên 11% bị xử phạt như thế nào theo pháp luật hình sự?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "bo luat hinh su 2015 296661",
+      "top5_labels": [
+        "bo luat hinh su 2015 296661",
+        "luat sua doi bo luat hinh su 2017 354053",
+        "nghi dinh 144 2021 nd cp xu phat vi pham hanh chinh linh vuc",
+        "bo luat hinh su 1985 17 lct hdnn7 37003",
+        "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "108738",
+      "query": "Người dân có bắt buộc phải đóng góp tiền để làm đường liên ấp không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat dat dai 2013 215836",
+      "top5_labels": [
+        "luat dat dai 2013 215836",
+        "luat giao thong duong bo 2008 23 2008 qh12 82203",
+        "luat nha o 2014 259721",
+        "nghi dinh 93 2021 nd cp phan phoi su dung nguon dong gop tu ",
+        "quyet dinh 02 2020 qd ubnd quy dinh bang gia dat thanh pho h"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "113068",
+      "query": "Yêu cầu về điều kiện cơ sở vật chất, thiết bị được quy định như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 91 2016 nð cp quan ly hoa chat che pham diet con trung diet khuan dung gia dung y te 315454",
+      "top5_labels": [
+        "nghi dinh 91 2016 nð cp quan ly hoa chat che pham diet con t",
+        "nghi dinh 111 2016 nd cp quy dinh dieu kien kinh doanh dich ",
+        "nghi dinh 24 2022 nd cp sua doi nghi dinh dieu kien dau tu l",
+        "nghi dinh 46 2017 nd cp quy dinh dieu kien dau tu hoat dong ",
+        "thong tu 14 2013 tt byt huong dan kham suc khoe 185665"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "164198",
+      "query": "Huấn luyện viên, vận động viên không tập trung thi đấu thì có được hưởng lương không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 19 2015 tt bca che do huan luyen vien van dong vien hoat dong the duc the thao cong an nhan",
+      "top5_labels": [
+        "thong tu 19 2015 tt bca che do huan luyen vien van dong vien",
+        "nghi dinh 152 2018 nd cp che do doi voi huan luyen vien the ",
+        "thong tu 86 2020 tt btc che do dinh duong dac thu doi voi hu",
+        "nghi dinh 36 2019 nd cp huong dan luat the duc the thao sua ",
+        "luat the duc the thao 2006 77 2006 qh11 15870"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "57528",
+      "query": "Bảng tra cứu tuổi nhận lương hưu trong trường hợp về hưu sớm như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 135 2020 nd cp tuoi nghi huu 445512",
+      "top5_labels": [
+        "nghi dinh 135 2020 nd cp tuoi nghi huu 445512",
+        "luat bao hiem xa hoi 2014 259700",
+        "thong tu 59 2015 tt bldtbxh huong dan luat bao hiem xa hoi v",
+        "nghi dinh 115 2015 nd cp huong dan luat bao hiem xa hoi bat ",
+        "thong tu lien tich 105 2016 ttlt bqp bca bldtbxh huong dan l"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "35462",
+      "query": "Điện sinh hoạt có được giảm thuế GTGT không? Nếu được thì giảm thuế GTGT trong bao lâu và giảm bao nhiêu?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 219 2013 tt btc huong dan luat thue gia tri gia tang va nghi dinh 209 2013 nd cp 220761",
+      "top5_labels": [
+        "thong tu 219 2013 tt btc huong dan luat thue gia tri gia tan",
+        "nghi dinh 44 2023 nd cp chinh sach giam thue gia tri gia tan",
+        "cong van 2837 tchq txnk 2022 thue gia tri gia tang hang nhap",
+        "cong van 2688 btc tct 2022 thue gia tri gia tang tai nghi di",
+        "cong van 3522 tct cs 2022 chinh sach thue gia tri gia tang 5"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "86970",
+      "query": "Ai được xem là người phụ thuộc theo quy định của pháp luật?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nhan va nghi dinh 65 2013 nd cp 205356",
+      "top5_labels": [
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "luat hon nhan va gia dinh 2014 238640",
+        "bo luat dan su 2015 296215",
+        "thong tu 79 2022 tt btc sua doi van ban quy pham phap luat 5",
+        "nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "78874",
+      "query": "Có thể gửi hồ sơ đề nghị cấp Giấy chứng nhận cơ sở đủ điều kiện an toàn thực phẩm online được không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 15 2018 nd cp huong dan luat an toan thuc pham 341254",
+      "top5_labels": [
+        "nghi dinh 15 2018 nd cp huong dan luat an toan thuc pham 341",
+        "luat an toan thuc pham 2010 108074",
+        "thong tu 38 2018 tt bnnptnt tham dinh co so san xuat thuc ph",
+        "thong tu 48 2013 tt bnnptnt kiem tra chung nhan an toan thuy",
+        "nghi dinh 17 2020 nd cp sua doi nghi dinh lien quan dieu kie"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "119502",
+      "query": "Tôm sú giống mắc bệnh đầu vàng ở tôm thì sẽ có những triệu chứng lâm sàng như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "qcvn 02 34 1 2021 bnnptnt giong tom nuoc lo tom bien phan 1 919229",
+      "top5_labels": [
+        "qcvn 02 34 1 2021 bnnptnt giong tom nuoc lo tom bien phan 1 ",
+        "thong tu 04 2016 tt bnnptnt phong chong benh dong vat thuy s",
+        "thong tu 07 2016 tt bnnptnt phong chong dich benh dong vat t",
+        "thong tu 14 2021 tt bnnptnt quy chuan ky thuat quoc gia ve g",
+        "tcvn 8710 9 2012 benh thuy san benh hoai tu gan tuy o tom 90"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "129190",
+      "query": "Việc tổ chức thẩm định công trình xây dựng được cơ quan nhà nước phê duyệt do ai thực hiện?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat xay dung 2014 238644",
+      "top5_labels": [
+        "luat xay dung 2014 238644",
+        "nghi dinh 59 2015 nd cp quan ly du an dau tu xay dung 278744",
+        "nghi dinh 15 2021 nd cp huong dan mot so noi dung quan ly du",
+        "nghi dinh 06 2021 nd cp huong dan quan ly chat luong thi con",
+        "luat xay dung sua doi 2020 so 62 2020 qh14 418229"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "84502",
+      "query": "Việc nhận diện giới khác với giới tính sinh học hoàn thiện đang có được đề xuất thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat chuyen doi gioi tinh 500252",
+      "top5_labels": [
+        "luat chuyen doi gioi tinh 500252",
+        "bo luat dan su 2015 296215",
+        "nghi dinh 88 2008 nd cp xac dinh lai gioi tinh 69027",
+        "quyet dinh 2885 qd byt 2022 tai lieu truyen thong truc tiep ",
+        "luat binh dang gioi 2006 73 2006 qh11 15866"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "72128",
+      "query": "Hạn sử dụng của nước uống đóng chai tối đa là bao lâu?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 67 2016 nd cp dieu kien san xuat kinh doanh thuc pham quan ly chuyen nganh bo y te 316650",
+      "top5_labels": [
+        "nghi dinh 67 2016 nd cp dieu kien san xuat kinh doanh thuc p",
+        "qcvn 02 2017 bct an toan chai khi dau mo hoa long mini 91678",
+        "nghi dinh 201 2013 nd cp huong dan luat tai nguyen nuoc 2147",
+        "thong tu 02 2011 tt byt quy chuan ky thuat quoc gia gioi han",
+        "thong tu 17 2021 tt bldtbxh quy trinh kiem dinh ky thuat an "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "17994",
+      "query": "Vụ trưởng thuộc Bộ, cơ quan ngang Bộ là ai?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 123 2016 nd cp chuc nang nhiem vu quyen han co cau to chuc bo co quan ngang bo 321514",
+      "top5_labels": [
+        "nghi dinh 123 2016 nd cp chuc nang nhiem vu quyen han co cau",
+        "luat to chuc chinh phu 2015 282379",
+        "van ban hop nhat 2 vbhn bnv 2020 nghi dinh co cau to chuc cu",
+        "quyet dinh 901 qd bnv 2013 chuc nang to chuc vu to chuc bien",
+        "quyet dinh 67 qd bnv chuc nang nhiem vu quyen han va co cau "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "6528",
+      "query": "Quân nhân dự bị có được đăng ký mở thẻ ATM?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat luc luong du bi dong vien 2019 351558",
+      "top5_labels": [
+        "luat luc luong du bi dong vien 2019 351558",
+        "luat si quan quan doi nhan dan viet nam 1999 16 1999 qh10 46",
+        "thong tu 218 2016 tt bqp su dung giay chung minh si quan chu",
+        "nghi dinh 13 2016 nd cp dang ky che do cong dan kham kiem tr",
+        "nghi dinh 78 2020 nd cp si quan du bi quan doi nhan dan viet"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "45842",
+      "query": "Điều kiện về cơ sở vật chất, thiết bị trong quy trình giám định độ tuổi trên người sống là gì?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 53 2015 tt byt dieu kien co so vat to chuc giam dinh tu phap cong lap linh vuc phap y 29983",
+      "top5_labels": [
+        "thong tu 53 2015 tt byt dieu kien co so vat to chuc giam din",
+        "thong tu 07 2014 tt bvhttdl ho so mau van ban thuc hien giam",
+        "thong tu 23 2019 tt byt ve quy trinh giam dinh phap y tam th",
+        "thong tu 23 2022 tt bldtbxh giam dinh tu phap theo vu viec l",
+        "tcvn iso iec 17020 2012 danh gia su phu hop yeu cau hoat don"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "14950",
+      "query": "Điều kiện, trình tự cấp giấy phép nhập khẩu, giấy phép khảo nghiệm được quy định ra sao?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat bao ve kiem dich thuc vat 2013 215840",
+      "top5_labels": [
+        "luat bao ve kiem dich thuc vat 2013 215840",
+        "nghi dinh 69 2010 nd cp an toan sinh hoc sinh vat bien doi g",
+        "nghi dinh 69 2018 nd cp huong dan luat quan ly ngoai thuong ",
+        "nghi dinh 105 2021 nd cp huong dan luat phong chong ma tuy 4",
+        "nghi dinh 118 2020 nd cp sua doi nghi dinh 69 2010 nd cp an "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "65758",
+      "query": "Chưa có căn cước công dân gắn chip thì phải làm sao?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat can cuoc cong dan 2014 259782",
+      "top5_labels": [
+        "luat can cuoc cong dan 2014 259782",
+        "thong tu 59 2021 tt bca huong dan luat can cuoc cong dan 478",
+        "quyet dinh 9039 qd bca c06 2022 cong bo thu tuc hanh chinh d",
+        "thong tu 06 2021 tt bca quy dinh mau the can cuoc cong dan 4",
+        "cong van 1599 sgddt vp 2023 cap can cuoc cong dan gan chip t"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "81590",
+      "query": "Phân biệt tài khoản thanh toán của ngân hàng doanh nghiệp tư nhân và tài khoản ngân hàng của chủ doanh nghiệp tư nhân ra sao?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat doanh nghiep so 59 2020 qh14 427301",
+      "top5_labels": [
+        "luat doanh nghiep so 59 2020 qh14 427301",
+        "thong tu 23 2014 tt nhnn huong dan mo su dung tai khoan than",
+        "nghi dinh 101 2012 nd cp thanh toan khong dung tien mat 1521",
+        "luat cac to chuc tin dung 2010 108079",
+        "thong tu 16 2020 tt nhnn sua doi thong tu 23 2014 tt nhnn mo"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "31586",
+      "query": "Quy định về đối tượng, điều kiện dự tuyển ngoài ngành Công an nhân dân 2023 như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 55 2019 tt bca tuyen chon cong dan vao cong an nhan dan 456770",
+      "top5_labels": [
+        "thong tu 55 2019 tt bca tuyen chon cong dan vao cong an nhan",
+        "thong tu 15 2016 tt bca tuyen sinh vao cac truong cong an nh",
+        "nghi dinh 70 2019 nd cp quy dinh thuc hien nghia vu tham gia",
+        "thong tu 08 2022 tt bgddt quy che tuyen sinh dai hoc nganh g",
+        "thong tu 44 2021 tt bca thuc hien dan chu trong tuyen sinh v"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "162336",
+      "query": "Khoản kinh phí thực hiện cho việc mua sắm tài sản có được xuất hóa đơn vào ngày 15/1 hay không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 2673 qd nhnn 2019 quy che quan ly su dung tai san cua ngan hang nha nuoc 434835",
+      "top5_labels": [
+        "quyet dinh 2673 qd nhnn 2019 quy che quan ly su dung tai san",
+        "nghi dinh 151 2017 nd cp huong dan luat quan ly su dung tai ",
+        "nghi dinh 123 2020 nd cp quy dinh hoa don chung tu 445980",
+        "nghi dinh 165 2017 nd cp quan ly su dung tai san tai co quan",
+        "nghi dinh sua doi nghi dinh 151 2017 nd cp huong dan luat qu"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "163720",
+      "query": "Nghệ sĩ có hành vi quảng cáo sản phẩm không đúng sự thật, chất lượng kém có phải chịu trách nhiệm gì không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 38 2021 nd cp xu phat vi pham hanh chinh trong linh vuc van hoa quang cao 469165",
+      "top5_labels": [
+        "nghi dinh 38 2021 nd cp xu phat vi pham hanh chinh trong lin",
+        "nghi dinh 158 2013 nd cp xu phat vi pham hanh chinh van hoa ",
+        "luat quang cao 2012 142541",
+        "quyet dinh 3196 qd bvhttdl 2021 quy tac ung xu cua nguoi hoa",
+        "bo luat hinh su 2015 296661"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "53644",
+      "query": "Mức xử phạt bổ sung",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 41 2018 nd cp quy dinh xu phat vi pham hanh chinh trong linh vuc ke toan 363484",
+      "top5_labels": [
+        "nghi dinh 41 2018 nd cp quy dinh xu phat vi pham hanh chinh ",
+        "nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong ",
+        "nghi dinh 119 2020 nd cp xu phat vi pham hanh chinh trong ho",
+        "nghi dinh 117 2020 nd cp quy dinh xu phat vi pham hanh chinh",
+        "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "38266",
+      "query": "Thủ tục kết nạp hội viên là gì?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 81 qd bnv phe duyet dieu le sua doi bo sung hiep hoi doanh nhan 176368",
+      "top5_labels": [
+        "quyet dinh 81 qd bnv phe duyet dieu le sua doi bo sung hiep ",
+        "quyet dinh 616 qd bnv nam 2013 phe duyet dieu le hoi xa hoi ",
+        "quyet dinh 1016 qd bnv nam 2012 phe duyet dieu le hoi thong ",
+        "quyet dinh 840 qd bnv 2021 phe duyet dieu le hoi bao ve quye",
+        "quyet dinh 110 qd bnv 2021 phe duyet dieu le hoi nghien cuu "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "29706",
+      "query": "Số lượng mẫu tôm có triệu chứng nhiễm bệnh vi bào tử cần lấy để tiến hành chẩn đoán bằng phương pháp PCR là bao nhiêu?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "tieu chuan viet nam tcvn 8710 1 2011 benh thuy san quy trinh chan doan 901167",
+      "top5_labels": [
+        "tieu chuan viet nam tcvn 8710 1 2011 benh thuy san quy trinh",
+        "qcvn 02 34 1 2021 bnnptnt giong tom nuoc lo tom bien phan 1 ",
+        "thong tu 04 2016 tt bnnptnt phong chong benh dong vat thuy s",
+        "thong tu 14 2021 tt bnnptnt quy chuan ky thuat quoc gia ve g",
+        "tcvn 8710 8 2012 benh thuy san benh hoai tu co o tom 906809"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "25366",
+      "query": "Chủ tịch Ủy ban nhân dân xã có quyền xử phạt vi phạm hành chính hộ gia đình trong trường hợp này không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 144 2021 nd cp xu phat vi pham hanh chinh linh vuc an ninh an toan xa hoi 425471",
+      "top5_labels": [
+        "nghi dinh 144 2021 nd cp xu phat vi pham hanh chinh linh vuc",
+        "luat xu ly vi pham hanh chinh 2012 142766",
+        "nghi dinh 82 2020 nd cp xu phat hanh chinh linh vuc hon nhan",
+        "nghi dinh 117 2020 nd cp quy dinh xu phat vi pham hanh chinh",
+        "nghi dinh 16 2022 nd cp quy dinh xu phat vi pham hanh chinh "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "48006",
+      "query": "Có được đồng thời làm giám đốc dự án và làm giám sát công trình không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 12 2009 nd cp quan ly du an dau tu xay dung cong trinh 85068",
+      "top5_labels": [
+        "nghi dinh 12 2009 nd cp quan ly du an dau tu xay dung cong t",
+        "nghi dinh 59 2015 nd cp quan ly du an dau tu xay dung 278744",
+        "nghi dinh 100 2018 nd cp sua doi quy dinh ve dieu kien dau t",
+        "nghi dinh 15 2021 nd cp huong dan mot so noi dung quan ly du",
+        "nghi dinh 06 2021 nd cp huong dan quan ly chat luong thi con"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "161032",
+      "query": "Viên chức được bổ nhiệm chức danh nghiên cứu viên cao cấp có mức lương cụ thể là bao nhiêu?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu lien tich 24 2014 ttlt bkhcn bnv ma so tieu chuan chuc danh nghe nghiep vien chuc khoa hoc",
+      "top5_labels": [
+        "thong tu lien tich 24 2014 ttlt bkhcn bnv ma so tieu chuan c",
+        "thong tu lien tich 01 2016 ttlt bkhcn bnv bo nhiem xep luong",
+        "thong tu 05 2023 tt bkhcn thu hut su dung va trong dung ca n",
+        "nghi dinh 204 2004 nd cp che do tien luong doi voi can bo co",
+        "nghi dinh 27 2020 nd cp sua doi nghi dinh 40 2014 nd cp va n"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "33540",
+      "query": "Chánh án Tòa án nhân dân tối cao có tham dự phiên họp của Hội đồng Thẩm phán Tòa án nhân dân tối cao không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat to chuc toa an nhan dan 2014 259724",
+      "top5_labels": [
+        "luat to chuc toa an nhan dan 2014 259724",
+        "bo luat to tung hinh su 2015 296884",
+        "luat to tung hanh chinh 2015 298372",
+        "bo luat to tung dan su 2015 296861",
+        "quyet dinh 505 qd vkstc 2017 quy che cong tac thuc hanh quye"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "11474",
+      "query": "Thông tư quản lý Chương trình quốc gia hỗ trợ doanh nghiệp nâng cao năng suất và chất lượng sản phẩm giai đoạn 2021 - 2030 có hiệu lực từ ngày nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 15 2022 tt bkhcn quan ly chuong trinh ho tro doanh nghiep nang cao nang suat 532445",
+      "top5_labels": [
+        "thong tu 15 2022 tt bkhcn quan ly chuong trinh ho tro doanh ",
+        "quyet dinh 2198 qd bkhcn 2022 cong bo thu tuc hanh chinh lin",
+        "thong tu 19 2016 tt bkhcn quan ly chuong trinh ho tro phat t",
+        "thong tu 01 2021 tt bkhcn quyen han co quan chuyen mon ve kh",
+        "thong tu 06 2022 tt bkhdt huong dan nghi dinh 80 2021 nd cp "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "1524",
+      "query": "Đại biểu Quốc hội và đại biểu Hội đồng nhân dân có được bầu theo đơn vị bầu cử không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat bau cu dai bieu quoc hoi va dai bieu hoi dong nhan dan 2015 282376",
+      "top5_labels": [
+        "luat bau cu dai bieu quoc hoi va dai bieu hoi dong nhan dan ",
+        "luat to chuc chinh quyen dia phuong 2015 282380",
+        "thong tu 01 2021 tt bnv huong dan nghiep vu cong tac to chuc",
+        "nghi quyet 102 2015 qh13 ban hanh noi quy ky hop quoc hoi 29",
+        "luat to chuc quoc hoi 2014 259784"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "151910",
+      "query": "Hạn chót nộp hồ sơ dự tuyển là khi nào? Nộp hồ sơ dự tuyển tại đâu?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong bao tuyen dung cong chuc cho luc luong thuyen vien cua tong cuc hai quan 2023 563244",
+      "top5_labels": [
+        "thong bao tuyen dung cong chuc cho luc luong thuyen vien cua",
+        "nghi dinh 115 2020 nd cp tuyen dung su dung quan ly vien chu",
+        "nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong ",
+        "nghi dinh 140 2017 nd cp chinh sach thu hut tao nguon can bo",
+        "quyet dinh 2141 qd btc nam 2012 quy che thi xet tuyen cong c"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "29526",
+      "query": "Điều kiện thực hiện thủ tục bổ sung thông tin trong hồ sơ đăng ký doanh nghiệp?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 01 2021 nd cp dang ky doanh nghiep 283247",
+      "top5_labels": [
+        "nghi dinh 01 2021 nd cp dang ky doanh nghiep 283247",
+        "luat doanh nghiep so 59 2020 qh14 427301",
+        "nghi dinh 40 2018 nd cp quan ly hoat dong kinh doanh theo ph",
+        "thong tu 02 2023 tt bkhdt sua doi thong tu 01 2021 tt bkhdt ",
+        "thong tu 01 2021 tt bkhdt huong dan dang ky doanh nghiep 465"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "97344",
+      "query": "Có thể xin hộ nghèo theo diện mồ côi cha mẹ được không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 20 2021 nd cp chinh sach tro giup xa hoi doi voi doi tuong bao tro xa hoi 467723",
+      "top5_labels": [
+        "nghi dinh 20 2021 nd cp chinh sach tro giup xa hoi doi voi d",
+        "luat hon nhan va gia dinh 2014 238640",
+        "thong tu 14 2018 tt bldtbxh sua doi thong tu 17 2016 tt bldt",
+        "nghi dinh 81 2021 nd cp quan ly hoc phi doi voi co so giao d",
+        "nghi dinh 86 2015 nd cp co che thu quan ly hoc phi co so gia"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "118820",
+      "query": "Điều kiện, tiêu chuẩn chung về văn bằng công chức Văn phòng Quốc hội năm 2023 là gì?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quy dinh 214 qd tw 2020 tieu chuan chuc danh can bo thuoc dien ban chap hanh trung uong 433545",
+      "top5_labels": [
+        "quy dinh 214 qd tw 2020 tieu chuan chuc danh can bo thuoc di",
+        "thong bao 73 tb vkstc 2023 tuyen dung cong chuc chuyen mon n",
+        "thong tu 2 2021 tt bnv xep luong doi voi cac ngach cong chuc",
+        "nghi dinh 33 2023 nd cp can bo cong chuc cap xa va nguoi hoa",
+        "nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "43526",
+      "query": "Đối tượng áp dụng Mẫu bảng chấm công làm thêm giờ theo Thông tư 133 và Thông tư 200 khác gì nhau?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 18 2021 tt bldtbxh thoi gio lam viec doi voi cong viec san xuat co tinh thoi vu 497432",
+      "top5_labels": [
+        "thong tu 18 2021 tt bldtbxh thoi gio lam viec doi voi cong v",
+        "bo luat lao dong 2019 333670",
+        "nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu ",
+        "thong tu lien tich 07 2013 ttlt bgddt bnv btc huong dan che ",
+        "thong tu 12 2022 tt bct thoi gio lam viec van hanh he thong "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "134012",
+      "query": "Phạt nguội là gì?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat xu ly vi pham hanh chinh 2012 142766",
+      "top5_labels": [
+        "luat xu ly vi pham hanh chinh 2012 142766",
+        "bo luat dan su 2015 296215",
+        "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc",
+        "bo luat hinh su 2015 296661",
+        "nghi dinh 107 2013 nd cp xu phat vi pham hanh chinh nang luo"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "19100",
+      "query": "Chỉ tiêu tuyển dụng công chức Tổng cục Hải quan năm 2022 được quy định như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 1334 qd btc 2022 ke hoach tuyen dung cong chuc cuc hai quan ha noi 521046",
+      "top5_labels": [
+        "quyet dinh 1334 qd btc 2022 ke hoach tuyen dung cong chuc cu",
+        "cong van 1317 tchq tccb 2022 tuyen dung cong chuc cho luc lu",
+        "cong van 3880 tct tccb 2022 thong bao tuyen dung cong chuc t",
+        "thong bao tuyen dung cong chuc cho luc luong thuyen vien cua",
+        "thong bao 412 tb tct 2023 ke hoach tuyen dung cong chuc tong"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "69922",
+      "query": "Người phát ngôn và cung cấp thông tin cho báo chí có trách nhiệm phát ngôn và cung cấp thông tin trong các trường hợp đột xuất nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 388 qd bkhdt quy che phat ngon cung cap thong tin cho bao chi 2017 345556",
+      "top5_labels": [
+        "quyet dinh 388 qd bkhdt quy che phat ngon cung cap thong tin",
+        "quyet dinh 27 qd btp 2018 quy che phat ngon va cung cap thon",
+        "quyet dinh 836 qd tct 2018 cung cap thong tin cho bao chi cu",
+        "quyet dinh 1700 qd bhxh 2021 quy che phat ngon cua nganh bao",
+        "nghi dinh 09 2017 nd cp phat ngon cung cap thong tin cho bao"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "33278",
+      "query": "Hồ sơ xin thôi giữ chức vụ của Chủ tịch nước bao gồm những gì?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat quoc tich viet nam 2008 24 2008 qh12 82204",
+      "top5_labels": [
+        "luat quoc tich viet nam 2008 24 2008 qh12 82204",
+        "nghi dinh 16 2020 nd cp huong dan luat quoc tich viet nam 43",
+        "quyet dinh 866 qd tandtc trinh tu thu tuc mau ho so bo nhiem",
+        "nghi dinh 115 2020 nd cp tuyen dung su dung quan ly vien chu",
+        "quyet dinh 2055 qd bgddt 2021 quy che bo nhiem cong chuc vie"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "92078",
+      "query": "Trường hợp quân nhân đào ngũ khi đang thực hiện nghĩa vụ quân sự thì có bị gửi thông báo về địa phương cư trú không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat nghia vu quan su 2015 282383",
+      "top5_labels": [
+        "luat nghia vu quan su 2015 282383",
+        "thong tu 148 2018 tt bqp quy dinh tuyen chon va goi cong dan",
+        "nghi dinh 120 2013 nd cp xu phat vi pham hanh chinh quoc pho",
+        "nghi dinh 13 2016 nd cp dang ky che do cong dan kham kiem tr",
+        "bo luat dan su 2015 296215"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "65458",
+      "query": "Lợn mắc bệnh lở mồm long móng do tác nhân nào gây nên?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 07 2016 tt bnnptnt phong chong dich benh dong vat tren can 313499",
+      "top5_labels": [
+        "thong tu 07 2016 tt bnnptnt phong chong dich benh dong vat t",
+        "tcvn 8400 3 2010 benh dong vat quy trinh chan doan benh giun",
+        "tcvn 8400 28 2014 chan doan benh viem ruot hoai tu do vi khu",
+        "tcvn 8400 22 2014 benh dong vat quy trinh chan doan phan 22 ",
+        "tcvn 8400 25 2014 benh dong vat quy trinh chan doan phan 25 "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "158910",
+      "query": "Người đứng đầu Kho bạc Nhà nước là ai?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 26 2015 qd ttg chuc nang co cau to chuc kho bac nha nuoc truc thuoc bo tai chinh 281057",
+      "top5_labels": [
+        "quyet dinh 26 2015 qd ttg chuc nang co cau to chuc kho bac n",
+        "quyet dinh 4526 qd kbnn 2019 chuc nang nhiem vu cua kho bac ",
+        "quyet dinh 1618 qd btc 2019 chuc nang nhiem vu quyen han co ",
+        "thong tu 33 2017 tt btc quan ly tien mat giay to co gia tai ",
+        "quyet dinh so 1959 qd btc 2015 nhiem vu quyen han co cau to "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "70410",
+      "query": "Đăng ký khai sinh cho trẻ bị bỏ rơi được xác định như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+      "top5_labels": [
+        "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+        "luat ho tich 2014 259727",
+        "quyet dinh 1872 qd btp 2020 cong bo thu tuc hanh chinh linh ",
+        "luat nuoi con nuoi 2010 108082",
+        "cong van 745 htqtct ht huong dan nghiep vu ho tich 2016 3172"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "29272",
+      "query": "Những ai sẽ được tăng lương từ ngày 01/7/2023 khi mà tăng lương cơ sở?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 24 2023 nd cp muc luong co so can bo cong vien chuc luc luong vu trang 432518",
+      "top5_labels": [
+        "nghi dinh 24 2023 nd cp muc luong co so can bo cong vien chu",
+        "nghi quyet 69 2022 qh15 du toan ngan sach nha nuoc 2023 5418",
+        "nghi dinh 38 2019 nd cp muc luong co so doi voi can bo cong ",
+        "cong van 4082 byt bh 2023 ap dung muc luong co so tai nghi d",
+        "thong tu 41 2023 tt bqp huong dan muc luong co so co quan do"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "101938",
+      "query": "Chi Cục trưởng thuộc Bộ có quyền hạn cụ thể là gì?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 123 2016 nd cp chuc nang nhiem vu quyen han co cau to chuc bo co quan ngang bo 321514",
+      "top5_labels": [
+        "nghi dinh 123 2016 nd cp chuc nang nhiem vu quyen han co cau",
+        "quyet dinh 1705 qd bgtvt 2022 chuc nang nhiem vu chi cuc qua",
+        "quyet dinh 1303 qd bgtvt 2020 chuc nang nhiem vu cua chi cuc",
+        "quyet dinh 11 qd cktrvb quy che lam viec cuc kiem tra van ba",
+        "quyet dinh 6193 qd bct quy che to chuc va hoat dong cua cuc "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "110510",
+      "query": "Việc đánh giá từng tiêu chí an toàn thực phẩm đối với cơ sở kinh doanh muối được hướng dẫn ra sao?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 40 2017 nd cp quan ly san xuat kinh doanh muoi 345540",
+      "top5_labels": [
+        "nghi dinh 40 2017 nd cp quan ly san xuat kinh doanh muoi 345",
+        "tcvn 11856 2017 cho kinh doanh thuc pham 916783",
+        "luat an toan thuc pham 2010 108074",
+        "quyet dinh 1680 qd bnn vpdp 2022 huong dan tieu chi bo tieu ",
+        "thong tu 38 2018 tt bnnptnt tham dinh co so san xuat thuc ph"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "98142",
+      "query": "Chuyên viên chính về hành chính văn phòng trong cơ quan hành chính nhà nước phải thực hiện những công việc như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 777 qd chk 2023 phe duyet tam thoi ban mo ta cong viec cuc hang khong viet nam 563868",
+      "top5_labels": [
+        "quyet dinh 777 qd chk 2023 phe duyet tam thoi ban mo ta cong",
+        "thong tu 2 2021 tt bnv xep luong doi voi cac ngach cong chuc",
+        "quyet dinh 242 qd vpcp quy che lam viec van phong chinh phu ",
+        "quyet dinh 2758 qd btnmt 2017 ban mo ta cong viec khung nang",
+        "thong tu 06 2023 tt bct vi tri viec lam cong chuc nghiep vu "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "96716",
+      "query": "Kinh phí thực hiện đề án tuyên truyền nhằm hoàn thành các chỉ tiêu phát triển đối tượng tham gia BHXH như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi quyet 1971 nq hdql 2022 phien hop thuong ky quy i ii 523228",
+      "top5_labels": [
+        "nghi quyet 1971 nq hdql 2022 phien hop thuong ky quy i ii 52",
+        "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie",
+        "nghi quyet 102 nq cp 2018 giao chi tieu phat trien doi tuong",
+        "nghi quyet 69 nq cp 2022 giao chi tieu phat trien doi tuong ",
+        "quyet dinh 505 qd bhxh 2020 sua doi quy trinh thu bao hiem x"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "148506",
+      "query": "Bảo đảm thuốc, vật tư y tế và việc cán bộ y tế thôi việc, bỏ việc tại các cơ sở y tế công lập?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat dau thau 2013 215838",
+      "top5_labels": [
+        "luat dau thau 2013 215838",
+        "nghi dinh 146 2018 nd cp huong dan luat bao hiem y te 357505",
+        "chi thi 16 ct ttg 2022 nang cao cong tac cham soc suc khoe n",
+        "luat bao hiem y te 2008 25 2008 qh12 82196",
+        "cong van 1331 byt vpb1 2023 giai phap dam bao cung ung day d"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "167426",
+      "query": "Nếu thực hiện nhiều hành vi vi phạm thì xử phạt vi phạm hành chính như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat xu ly vi pham hanh chinh 2012 142766",
+      "top5_labels": [
+        "luat xu ly vi pham hanh chinh 2012 142766",
+        "nghi dinh 125 2020 nd cp xu phat vi pham hanh chinh ve thue ",
+        "nghi dinh 118 2021 nd cp huong dan luat xu ly vi pham hanh c",
+        "nghi dinh 128 2020 nd cp xu phat vi pham hanh chinh trong li",
+        "thong tu 78 2016 tt bqp quy trinh xu ly vi pham hanh chinh b"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "155072",
+      "query": "Mức thu phí thẩm định hồ sơ cấp giấy chứng nhận quyền sử dụng đất tại Ninh Bình hiện nay như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi quyet 253 2020 nq hdnd muc thu nop quan ly va su dung cac khoan phi le phi tinh ha tinh 480479",
+      "top5_labels": [
+        "nghi quyet 253 2020 nq hdnd muc thu nop quan ly va su dung c",
+        "nghi quyet 03 2020 nq hdnd quy dinh muc thu quan ly su dung ",
+        "nghi quyet 13 2020 nq hdnd phi tham dinh ho so cap giay chun",
+        "nghi quyet 47 2016 nq hdnd phi tham dinh ho so cap giay chun",
+        "nghi quyet 03 2021 nq hdnd muc thu nop phi le phi thuoc linh"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "74884",
+      "query": "Đối tượng được tăng lương cơ sở từ ngày 01/7/2023?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 24 2023 nd cp muc luong co so can bo cong vien chuc luc luong vu trang 432518",
+      "top5_labels": [
+        "nghi dinh 24 2023 nd cp muc luong co so can bo cong vien chu",
+        "thong tu 41 2023 tt bqp huong dan muc luong co so co quan do",
+        "cong van 1927 bhxh tst 2023 thu bao hiem xa hoi theo muc luo",
+        "nghi quyet 69 2022 qh15 du toan ngan sach nha nuoc 2023 5418",
+        "nghi dinh 38 2019 nd cp muc luong co so doi voi can bo cong "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "155258",
+      "query": "Đối tượng tham gia đóng bảo hiểm xã hội tự nguyện là ai?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 134 2015 nd cp huong dan luat bao hiem xa hoi ve bao hiem xa hoi tu nguyen 280020",
+      "top5_labels": [
+        "nghi dinh 134 2015 nd cp huong dan luat bao hiem xa hoi ve b",
+        "luat bao hiem xa hoi 2014 259700",
+        "thong tu 01 2016 tt bldtbxh huong dan thi hanh luat bao hiem",
+        "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie",
+        "luat bao hiem xa hoi 557190"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "102682",
+      "query": "Xin nghỉ nhưng công ty không đồng ý thì xử lý thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "bo luat lao dong 2019 333670",
+      "top5_labels": [
+        "bo luat lao dong 2019 333670",
+        "nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu ",
+        "nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong ",
+        "quyet dinh 188 qd tchq quy che hoat dong cong vu hai quan vi",
+        "luat can bo cong chuc 2008 22 2008 qh12 82202"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "157506",
+      "query": "Phó Trưởng ban Ban Chỉ đạo Đổi mới và Phát triển doanh nghiệp phải làm những công việc nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 51 qd bcdcchc 2022 quy che hoat dong cua ban chi dao cai cach hanh chinh 511728",
+      "top5_labels": [
+        "quyet dinh 51 qd bcdcchc 2022 quy che hoat dong cua ban chi ",
+        "quy dinh 32 qd tw 2021 quan he cong tac cua ban chi dao trun",
+        "quyet dinh 267 qd ttg 2018 ban chi dao quoc gia xay dung cac",
+        "quyet dinh 1785 qd ttg 2017 quy che hoat dong cua ban chi da",
+        "quyet dinh 1051 qd ttg 2022 quy che hoat dong ban chi dao ta"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "145036",
+      "query": "Sách báo đã mua, photo lại có vi phạm không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 119 2020 nd cp xu phat vi pham hanh chinh trong hoat dong bao chi hoat dong xuat ban 45462",
+      "top5_labels": [
+        "nghi dinh 119 2020 nd cp xu phat vi pham hanh chinh trong ho",
+        "luat bao chi 2016 280645",
+        "nghi dinh 38 2021 nd cp xu phat vi pham hanh chinh trong lin",
+        "bo luat hinh su 2015 296661",
+        "nghi dinh 51 2002 nd cp huong dan luat bao chi luat sua doi "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "13128",
+      "query": "Cơ quan có thẩm quyền tiếp nhận phản ánh ý kiến như thế nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 20 2008 nd cp tiep nhan xu ly phan anh kien nghi cua ca nhan to chuc ve quy dinh hanh chin",
+      "top5_labels": [
+        "nghi dinh 20 2008 nd cp tiep nhan xu ly phan anh kien nghi c",
+        "thong tu 18 2022 tt bgtvt tiep nhan xu ly phan anh cua ca nh",
+        "quyet dinh 852 qd bnv 2018 quy che tiep nhan xu ly va tra lo",
+        "quyet dinh 31 2021 qd ttg quy che quan ly van hanh cong dich",
+        "luat tiep cong dan 2013 215839"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "85530",
+      "query": "Hồ sơ xin cấp giấy phép xây dựng đối với công trình và nhà ở đô thị ở tỉnh Hà Giang bao gồm những gì?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat xay dung 2014 238644",
+      "top5_labels": [
+        "luat xay dung 2014 238644",
+        "nghi dinh 12 2009 nd cp quan ly du an dau tu xay dung cong t",
+        "nghi quyet 78 2017 nq hdnd quy dinh le phi cap giay phep xay",
+        "nghi dinh 15 2021 nd cp huong dan mot so noi dung quan ly du",
+        "quyet dinh 18 2021 qd ubnd quy dinh cap giay phep xay dung t"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "111188",
+      "query": "Mức phí cho việc thực hiện thủ tục thay đổi họ là bao nhiêu?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "bo luat dan su 2015 296215",
+      "top5_labels": [
+        "bo luat dan su 2015 296215",
+        "luat ho tich 2014 259727",
+        "thong tu 59 2019 tt btc muc thu che do thu nop va quan ly le",
+        "quyet dinh 299 qd btp thu tuc hanh chinh ban hanh moi ho tic",
+        "nghi quyet so 49 2016 nq hdnd ve phi va le phi tren dia ban "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "51092",
+      "query": "Quy trình giao nộp hồ sơ, tài liệu vào lưu trữ Bộ và khai thác sử dụng tài liệu lưu trữ của Bộ NN&PTNT ra sao?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 74 2014 tt bgtvt quy che cong tac luu tru bo giao thong van tai 262249",
+      "top5_labels": [
+        "thong tu 74 2014 tt bgtvt quy che cong tac luu tru bo giao t",
+        "quyet dinh 2696 qd bkhcn 2022 quy che cong tac van thu luu t",
+        "quyet dinh 1032 qd bnv 2020 quy che cong tac van thu luu tru",
+        "quyet dinh 2449 qd btc quy che cong tac luu tru 2016 330523",
+        "quyet dinh 2125 qd bgddt 2018 quy che cong tac van thu luu t"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "159820",
+      "query": "Người giữ chức vụ Thẩm phán Tòa án có được tư vấn pháp lý cho doanh nghiệp để nhận thù lao không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat to chuc toa an nhan dan 2014 259724",
+      "top5_labels": [
+        "luat to chuc toa an nhan dan 2014 259724",
+        "luat pha san 2014 238641",
+        "bo luat to tung dan su 2015 296861",
+        "luat to tung hanh chinh 2015 298372",
+        "quyet dinh 120 qd tandtc 2017 xu ly trach nhiem nguoi giu ch"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "31850",
+      "query": "Về hành vi nhà máy, cơ sở sản xuất có xây dựng phương án, kế hoạch sản xuất an toàn đã được UBND huyện phê duyệt nhưng không thực hiện đúng theo phương án, kế hoạch đã được duyệt",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong bao hiem nguoi lam viec nuoc ngoai 47931",
+      "top5_labels": [
+        "nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong ",
+        "nghi dinh 71 2019 nd cp xu phat vi pham hanh chinh trong lin",
+        "thong tu 43 2010 tt bct cong tac quan ly an toan trong nganh",
+        "nghi dinh 16 2022 nd cp quy dinh xu phat vi pham hanh chinh ",
+        "nghi dinh 36 2020 nd cp xu phat vi pham hanh chinh trong lin"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "15162",
+      "query": "Quản lý thuộc phạm vi của Ủy ban nhân dân cấp tỉnh?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat to chuc chinh quyen dia phuong 2015 282380",
+      "top5_labels": [
+        "luat to chuc chinh quyen dia phuong 2015 282380",
+        "luat quan ly su dung tai san cong 2017 322220",
+        "nghi dinh 24 2014 nd cp to chuc co quan chuyen mon thuoc ubn",
+        "luat do dac va ban do 354638",
+        "luat ban hanh van ban quy pham phap luat 2015 282382"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "51188",
+      "query": "Các hội có tính chất đặc thù ở xã được xác định dựa trên cơ sở nào?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "quyet dinh 68 2010 qd ttg hoi co tinh chat dac thu 113848",
+      "top5_labels": [
+        "quyet dinh 68 2010 qd ttg hoi co tinh chat dac thu 113848",
+        "nghi dinh 45 2010 nd cp to chuc hoat dong quan ly hoi 104561",
+        "thong tu 03 2013 tt bnv huong dan to chuc hoat dong va quan ",
+        "luat to chuc chinh quyen dia phuong 2015 282380",
+        "nghi dinh 258 ttg quyen lap hoi de quy dinh chi tiet thi han"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "17184",
+      "query": "Hướng dẫn soạn thảo và ghi thông tin vào giấy ủy quyền nhận tiền?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "huong dan 3579 nhcs khnv tien gui tiet kiem tai ngan hang chinh sach xa hoi 422680",
+      "top5_labels": [
+        "huong dan 3579 nhcs khnv tien gui tiet kiem tai ngan hang ch",
+        "thong tu 46 2014 tt nhnn huong dan dich vu thanh toan khong ",
+        "quyet dinh 44 2006 qd nhnn thu tuc nho thu hoi phieu qua ngu",
+        "thong tu 01 2016 tt btp huong dan thuc hien thu tuc ve quan ",
+        "thong tu 01 2014 tt nhnn giao nhan bao quan van chuyen tien "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "14900",
+      "query": "Cần thiết phải khai hải quan đối với trường hợp nhập khẩu trang thiết bị y tế nhằm mục đích viện trợ không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 98 2021 nd cp quan ly trang thiet bi y te 493940",
+      "top5_labels": [
+        "nghi dinh 98 2021 nd cp quan ly trang thiet bi y te 493940",
+        "thong tu 13 2021 tt byt cap so nhap khau thiet bi y te phong",
+        "thong tu 30 2015 tt byt nhap khau trang thiet bi y te 294603",
+        "nghi dinh 117 2020 nd cp quy dinh xu phat vi pham hanh chinh",
+        "nghi dinh 07 2023 nd cp sua doi nghi dinh 98 2021 nd cp quan"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "130144",
+      "query": "Quy định về đối tượng, tiêu chuẩn xét tặng giải thưởng",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 78 2014 nd cp giai thuong ho chi minh giai thuong nha nuoc khoa hoc cong nghe 241872",
+      "top5_labels": [
+        "nghi dinh 78 2014 nd cp giai thuong ho chi minh giai thuong ",
+        "quyet dinh 38 2008 qd bct quy che xet tang giai thuong sang ",
+        "quyet dinh 575 qd byt quy che xet tang giai thuong pham ngoc",
+        "thong tu 25 2020 tt byt xet tang giai thuong quoc gia chat l",
+        "nghi dinh 60 2019 nd cp sua doi nghi dinh 78 2014 nd cp ve g"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "24044",
+      "query": "Xuất khẩu hàng hóa từ Việt Nam sang Hàn Quốc khi nào được hưởng ưu đãi thuế quan?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 125 2022 nd cp bieu thue nhap khau uu dai dac biet hiep dinh thuong mai han quoc 548769",
+      "top5_labels": [
+        "nghi dinh 125 2022 nd cp bieu thue nhap khau uu dai dac biet",
+        "nghi dinh 31 2018 nd cp huong dan luat quan ly ngoai thuong ",
+        "nghi dinh 116 2022 nd cp bieu thue xuat khau uu dai hiep din",
+        "thong tu 05 2022 tt bct xuat xu hang hoa hiep dinh doi tac k",
+        "thong tu 02 2021 tt bct quy tac xuat xu hang hoa hiep dinh t"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "54158",
+      "query": "Về đối tượng được hưởng chính sách hỗ trợ tiền thuê nhà",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat nha o 2014 259721",
+      "top5_labels": [
+        "luat nha o 2014 259721",
+        "quyet dinh 08 2022 qd ttg chinh sach ho tro tien thue nha ch",
+        "quyet dinh 1426 qd ubnd 2022 chinh sach ho tro tien thue nha",
+        "quyet dinh 992 qd ubnd 2022 thu tuc hanh chinh ho tro tien t",
+        "quyet dinh 791 qd ttg 2022 nguyen tac ho tro ngan sach ho tr"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "152476",
+      "query": "Xuất khẩu hàng hóa sầu riêng ri 6 sang Hàn Quốc có được hưởng ưu đãi thuế quan hay không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 125 2022 nd cp bieu thue nhap khau uu dai dac biet hiep dinh thuong mai han quoc 548769",
+      "top5_labels": [
+        "nghi dinh 125 2022 nd cp bieu thue nhap khau uu dai dac biet",
+        "thong tu 11 2020 tt bct quy dinh quy tac xuat xu hang hoa tr",
+        "thong tu 12 2019 tt bct xuat xu hang hoa trong hiep dinh khu",
+        "nghi dinh 116 2022 nd cp bieu thue xuat khau uu dai hiep din",
+        "thong tu 05 2022 tt bct xuat xu hang hoa hiep dinh doi tac k"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "151476",
+      "query": "Liên đoàn Luật sư có trách nhiệm gì khi phát sinh các vấn đề liên quan đến việc tập sự hành nghề luật sư?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "thong tu 10 2021 tt btp huong dan tap su hanh nghe luat su 497767",
+      "top5_labels": [
+        "thong tu 10 2021 tt btp huong dan tap su hanh nghe luat su 4",
+        "luat luat su 2006 65 2006 qh11 12981",
+        "quyet dinh 856 qd ttg 2022 phe duyet dieu le lien doan luat ",
+        "luat luat su sua doi 2012 152713",
+        "nghi dinh 123 2013 nd cp huong dan va bien phap thi hanh lua"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "63100",
+      "query": "Tăng cường các biện pháp bảo đảm an ninh như thế nào để phát triển kinh tế xã hội?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi quyet 01 nq cp 2023 nhiem vu giai phap chu yeu thuc hien ke hoach phat trien kinh te xa hoi 549",
+      "top5_labels": [
+        "nghi quyet 01 nq cp 2023 nhiem vu giai phap chu yeu thuc hie",
+        "luat an ninh quoc gia 2004 32 2004 qh11 52656",
+        "nghi quyet 31 nq tw 2022 phuong huong nhiem vu phat trien ho",
+        "nghi quyet 96 nq cp 2022 thuc hien nghi quyet 11 nq tw phat ",
+        "luat cong an nhan dan 384487"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "117450",
+      "query": "Khi sử dụng đất trồng lúa để xây dựng nhà mồ cho cả dòng họ thì cần lưu ý những vấn đề gì?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "luat dat dai 2013 215836",
+      "top5_labels": [
+        "luat dat dai 2013 215836",
+        "nghi dinh 43 2014 nd cp huong dan thi hanh luat dat dai 2306",
+        "nghi dinh 35 2015 nd cp ve quan ly su dung dat trong lua 271",
+        "luat dat dai 523642",
+        "thong tu 17 2014 tt btnmt huong dan xac dinh ranh gioi dien "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "69214",
+      "query": "Đòi nợ thuê có chịu xử phạt hành chính không?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 82 2020 nd cp xu phat hanh chinh linh vuc hon nhan thi hanh an pha san doanh nghiep 392611",
+      "top5_labels": [
+        "nghi dinh 82 2020 nd cp xu phat hanh chinh linh vuc hon nhan",
+        "thong tu 30 2015 tt nhnn cap giay phep to chuc hoat dong cua",
+        "luat cac cong cu chuyen nhuong 2005 49 2005 qh11 7023",
+        "nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong ",
+        "luat xu ly vi pham hanh chinh 2012 142766"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "60842",
+      "query": "Quy định về mức phụ cấp cho nhân viên hiện nay ra sao?",
+      "gold_id": null,
+      "gold_rank": null,
+      "gold_label": "",
+      "top1_label": "nghi dinh 204 2004 nd cp che do tien luong doi voi can bo cong chuc vien chuc luc luong vu trang 52629",
+      "top5_labels": [
+        "nghi dinh 204 2004 nd cp che do tien luong doi voi can bo co",
+        "thong tu 05 2005 tt bnv huong dan che do phu cap trach nhiem",
+        "quyet dinh 75 2009 qd ttg che do phu cap nhan vien y te thon",
+        "quyet dinh 132 2006 qd ttg che do phu cap uu dai theo nghe c",
+        "nghi dinh 26 2016 nd cp tro phu cap cong vien chuc nguoi lao"
+      ],
+      "umbrella_blocking": false
+    }
+  ],
+  "rank_11_20_mid_miss": [
+    {
+      "qid": "160102",
+      "query": "Ai có thẩm quyền lập biên bản vi phạm hành chính?",
+      "gold_id": "50885",
+      "gold_rank": 20,
+      "gold_label": "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc giao thong duong bo va duong sat 426369",
+      "top1_label": "luat xu ly vi pham hanh chinh 2012 142766",
+      "top5_labels": [
+        "luat xu ly vi pham hanh chinh 2012 142766",
+        "nghi dinh 118 2021 nd cp huong dan luat xu ly vi pham hanh c",
+        "nghi dinh 162 2018 nd cp xu phat vi pham hanh chinh trong li",
+        "nghi dinh 119 2017 nd cp xu phat vi pham hanh chinh trong li",
+        "nghi dinh 95 2016 nd cp xu phat vi pham hanh chinh linh vuc "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "37344",
+      "query": "Phí công chứng học bạ THPT hết bao nhiêu tiền?",
+      "gold_id": "57221",
+      "gold_rank": 13,
+      "gold_label": "thong tu 226 2016 tt btc phi chung thuc 322363",
+      "top1_label": "thong tu 257 2016 tt btc phi cong chung thuc tham dinh hanh nghe cong chung the cong chung vien 3332",
+      "top5_labels": [
+        "thong tu 257 2016 tt btc phi cong chung thuc tham dinh hanh ",
+        "luat cong chung 2014 238638",
+        "nghi dinh 81 2021 nd cp quan ly hoc phi doi voi co so giao d",
+        "luat cong chung sua doi 524982",
+        "quyet dinh 1329 qd btp 2020 cong bo thu tuc hanh chinh linh "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "37542",
+      "query": "Phụ cấp trách nhiệm đối với lái xe phục vụ Viện trưởng Viện Kiểm sát nhân dân tối cao được chi trả khi nào?",
+      "gold_id": "107157",
+      "gold_rank": 11,
+      "gold_label": "thong tu 05 2005 tt bnv huong dan che do phu cap trach nhiem cong viec can bo cong chuc vien chuc 52",
+      "top1_label": "thong tu lien tich 01 2006 ttlt vkstc bnv btc huong dan qd138 2005 qd ttg che do phu cap trach nhiem",
+      "top5_labels": [
+        "thong tu lien tich 01 2006 ttlt vkstc bnv btc huong dan qd13",
+        "quyet dinh 138 2005 qd ttg che do phu cap trach nhiem kiem s",
+        "luat to chuc vien kiem sat nhan dan 2014 259723",
+        "quyet dinh 296 qd vkstc 2017 quy che tam thoi che do lam vie",
+        "nghi dinh 204 2004 nd cp che do tien luong doi voi can bo co"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "16526",
+      "query": "Người lao động đang nghỉ chế độ thai sản thì có được gia hạn thẻ bảo hiểm y tế không?",
+      "gold_id": "71551",
+      "gold_rank": 16,
+      "gold_label": "nghi dinh 28 2015 nd cp huong dan luat viec lam va bao hiem that nghiep 268405",
+      "top1_label": "nghi dinh 146 2018 nd cp huong dan luat bao hiem y te 357505",
+      "top5_labels": [
+        "nghi dinh 146 2018 nd cp huong dan luat bao hiem y te 357505",
+        "luat bao hiem xa hoi 2014 259700",
+        "luat bao hiem y te 2008 25 2008 qh12 82196",
+        "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie",
+        "thong tu 59 2015 tt bldtbxh huong dan luat bao hiem xa hoi v"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "10330",
+      "query": "Thủ tục xử lý hành vi gây rối trật tự tại trụ sở tiếp công dân, trụ sở ủy ban nhân dân như thế nào?",
+      "gold_id": "17545",
+      "gold_rank": 12,
+      "gold_label": "luat xu ly vi pham hanh chinh 2012 142766",
+      "top1_label": "luat tiep cong dan 2013 215839",
+      "top5_labels": [
+        "luat tiep cong dan 2013 215839",
+        "nghi dinh 38 2005 nd cp bien phap bao dam trat tu cong cong ",
+        "quyet dinh 3328 qd bvhttdl nam 2014 noi quy quy che to chuc ",
+        "nghi dinh 64 2014 nd cp huong dan luat tiep cong dan 237609",
+        "quyet dinh 308 qd tandtc 2020 noi quy tiep cong dan cua toa "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "21346",
+      "query": "Hoạt động nhập khẩu phim nhằm mục đích nghiên cứu đối với các tác phẩm có yếu tố bạo lực bị cấm nhập khẩu do cơ quan nào cấp phép?",
+      "gold_id": "208872",
+      "gold_rank": 12,
+      "gold_label": "nghi dinh 32 2012 nd cp xuat nhap khau van hoa pham khong nham muc dich kinh 138018",
+      "top1_label": "thong tu 28 2014 tt bvhttdl quan ly hoat dong mua ban hang hoa quoc te 267539",
+      "top5_labels": [
+        "thong tu 28 2014 tt bvhttdl quan ly hoat dong mua ban hang h",
+        "luat dien anh 2006 62 2006 qh11 12986",
+        "luat dien anh 2022 486445",
+        "nghi dinh 22 2022 nd cp sua doi nghi dinh 32 2012 nd cp quan",
+        "luat dien anh 2009 sua doi 31 2009 qh12 90618"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "56420",
+      "query": "Hiệu trưởng trường trung học cơ sở công lập có phải là viên chức quản lý không?",
+      "gold_id": "74494",
+      "gold_rank": 17,
+      "gold_label": "luat vien chuc 2010 115271",
+      "top1_label": "thong tu 03 2021 tt bgddt ma so tieu chuan vien chuc giang day truong trung hoc co so cong lap 46439",
+      "top5_labels": [
+        "thong tu 03 2021 tt bgddt ma so tieu chuan vien chuc giang d",
+        "thong tu 32 2020 tt bgddt dieu le truong trung hoc co so tru",
+        "thong tu 28 2009 tt bgddt quy dinh che do lam viec giao vien",
+        "thong tu 14 2021 tt bldtbxh dieu le truong trung cap 477996",
+        "thong tu 40 2021 tt bgddt quy che to chuc cua truong tieu ho"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "130796",
+      "query": "Hồ sơ nhập học lớp 10 gồm có những giấy tờ gì?",
+      "gold_id": "11284",
+      "gold_rank": 11,
+      "gold_label": "thong tu 11 2014 tt bgddt quy che tuyen sinh trung hoc co so trung hoc pho thong 227237",
+      "top1_label": "thong bao 1125 tb sgddt ktkd 2022 tuyen thang vao lop 10 trung hoc pho thong ho chi minh 510804",
+      "top5_labels": [
+        "thong bao 1125 tb sgddt ktkd 2022 tuyen thang vao lop 10 tru",
+        "cong van 1682 sgddt ktkd 2023 to chuc ky thi tuyen sinh vao ",
+        "cong van 922 sgddt qlt 2023 huong dan tuyen sinh vao lop 10 ",
+        "cong van 944 sgddt qlt 2022 tuyen sinh vao lop 10 trung hoc ",
+        "thong bao 1126 tb sgddt ktkd 2022 tuyen sinh vao lop 10 cac "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "8806",
+      "query": "Đối tượng nào áp dụng tính thuế thu nhập cá nhân?",
+      "gold_id": "177345",
+      "gold_rank": 13,
+      "gold_label": "thong tu 40 2021 tt btc huong dan thue gia tri gia tang thue thu nhap ca nhan 477635",
+      "top1_label": "luat thue thu nhap ca nhan 2007 04 2007 qh12 59652",
+      "top5_labels": [
+        "luat thue thu nhap ca nhan 2007 04 2007 qh12 59652",
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan",
+        "luat quan ly thue 2019 387595",
+        "thong tu 92 2015 tt btc huong dan thue gia tri gia tang thue"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "37692",
+      "query": "Hướng dẫn người mắc Covid-19 điều trị tại nhà phân loại rác",
+      "gold_id": "105081",
+      "gold_rank": 14,
+      "gold_label": "cong van 922 byt mt 2022 quan ly chat thai truong hop mac covid19 quan ly tai nha 504836",
+      "top1_label": "quyet dinh 604 qd byt 2022 quan ly tai nha doi voi nguoi mac covid19 506536",
+      "top5_labels": [
+        "quyet dinh 604 qd byt 2022 quan ly tai nha doi voi nguoi mac",
+        "cong van 8728 syt nvy 2021 goi cham soc suc khoe tai nha cho",
+        "quyet dinh 1226 qd byt 2022 dieu chinh sang loc xet nghiem n",
+        "quyet dinh 775 qd byt 2022 cham soc quan ly tai nha phu nu c",
+        "cong van 2143 syt nvy 2022 goi cham soc suc khoe tai nha cho"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "162466",
+      "query": "Hồ sơ hưởng bảo hiểm xã hội 1 lần đối với người nước ngoài được quy định như thế nào?",
+      "gold_id": "207040",
+      "gold_rank": 15,
+      "gold_label": "quyet dinh 166 qd bhxh 2019 quy trinh giai quyet huong che do bao hiem xa hoi 411816",
+      "top1_label": "luat bao hiem xa hoi 2014 259700",
+      "top5_labels": [
+        "luat bao hiem xa hoi 2014 259700",
+        "luat bao hiem xa hoi 557190",
+        "nghi dinh 115 2015 nd cp huong dan luat bao hiem xa hoi bat ",
+        "cong van 772 bhxh cd 2022 ho so huong bao hiem mot lan nguoi",
+        "nghi dinh 134 2015 nd cp huong dan luat bao hiem xa hoi ve b"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "9060",
+      "query": "Tốt nghiệp đại học chuyên ngành tin thì có cần chứng chỉ tin học theo yêu cầu của giáo viên THPT hạng III không?",
+      "gold_id": "154615",
+      "gold_rank": 14,
+      "gold_label": "thong tu 04 2021 tt bgddt ma so vien chuc giang day trong truong trung hoc pho thong cong lap 464400",
+      "top1_label": "thong tu 08 2017 tt bldtbxh chuan chuyen mon nghiep vu nha giao giao duc nghe nghiep 324210",
+      "top5_labels": [
+        "thong tu 08 2017 tt bldtbxh chuan chuyen mon nghiep vu nha g",
+        "thong tu 30 2017 tt bgddt quy dinh tieu chuan chuc danh nghe",
+        "thong tu lien tich 21 2015 ttlt bgddt bnv ma so tieu chuan c",
+        "thong tu 03 2018 tt bldtbxh tieu chuan chuc danh vien chuc c",
+        "quyet dinh 24 2017 qd ubnd dieu kien tieu chuan chuc danh hi"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "102066",
+      "query": "Chủ tịch ủy ban nhân dân phường có thẩm quyền để xử phạt đối với hành vi vứt rác bừa bãi hay không?",
+      "gold_id": "81400",
+      "gold_rank": 19,
+      "gold_label": "nghi dinh 155 2016 nd cp quy dinh xu phat vi pham hanh chinh trong linh vuc bao ve moi truong 331295",
+      "top1_label": "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc giao thong duong bo va duong sat 426369",
+      "top5_labels": [
+        "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc",
+        "luat to chuc chinh quyen dia phuong 2015 282380",
+        "nghi dinh 45 2022 nd cp xu phat vi pham hanh chinh linh vuc ",
+        "nghi quyet 131 2020 qh14 to chuc chinh quyen do thi tai than",
+        "nghi dinh 32 2021 nd cp huong dan nghi quyet 97 2019 qh14 ch"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "4580",
+      "query": "Bố chuyển nhượng cổ phần cho con thì chịu thuế thu nhập cá nhân như thế nào?",
+      "gold_id": "288898",
+      "gold_rank": 11,
+      "gold_label": "thong tu 92 2015 tt btc huong dan thue gia tri gia tang thue thu nhap ca nhan 282089",
+      "top1_label": "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nhan va nghi dinh 65 2013 nd cp 205356",
+      "top5_labels": [
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "luat thue thu nhap ca nhan 2007 04 2007 qh12 59652",
+        "nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan",
+        "thong tu 78 2014 tt btc huong dan 218 2013 nd cp thi hanh lu",
+        "cong van 6689 ct ttht 2013 thue thu nhap thuong co phieu cua"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "27322",
+      "query": "Hồ sơ đăng ký thi THPT quốc gia 2023 mới nhất?",
+      "gold_id": "249088",
+      "gold_rank": 11,
+      "gold_label": "thong tu 06 2023 tt bgddt sua doi quy che thi tot nghiep trung hoc pho thong 560877",
+      "top1_label": "quyet dinh 1160 qd bgddt 2023 cong bo thu tuc hanh chinh linh vuc tuyen sinh thuoc bo giao duc 56503",
+      "top5_labels": [
+        "quyet dinh 1160 qd bgddt 2023 cong bo thu tuc hanh chinh lin",
+        "cong van 1515 bgddt qlcl 2023 to chuc ky thi tot nghiep trun",
+        "thong tu 15 2020 tt bgddt quy che thi tot nghiep trung hoc p",
+        "cong van 922 sgddt qlt 2023 huong dan tuyen sinh vao lop 10 ",
+        "cong van 1919 bgddt gddh 2023 tuyen sinh dai hoc tuyen sinh "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "102220",
+      "query": "Cha mẹ có hành vi bạo hành con trai của mình được hiểu như thế nào?",
+      "gold_id": "121603",
+      "gold_rank": 15,
+      "gold_label": "luat tre em 2016 303313",
+      "top1_label": "luat hon nhan va gia dinh 2014 238640",
+      "top5_labels": [
+        "luat hon nhan va gia dinh 2014 238640",
+        "bo luat hinh su 2015 296661",
+        "luat phong chong bao luc gia dinh 2022 490095",
+        "nghi dinh huong dan luat phong chong bao luc gia dinh 557470",
+        "nghi quyet 01 nq hdtp huong dan ap dung quy dinh cua luat ho"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "107146",
+      "query": "Pháp luật Việt Nam quy định như thế nào?",
+      "gold_id": "305455",
+      "gold_rank": 15,
+      "gold_label": "luat dat dai 2013 215836",
+      "top1_label": "bo luat dan su 2015 296215",
+      "top5_labels": [
+        "bo luat dan su 2015 296215",
+        "luat ban hanh van ban quy pham phap luat 2015 282382",
+        "luat thuong mai 2005 36 2005 qh11 2633",
+        "luat bien viet nam 2012 143494",
+        "luat so huu tri tue 2005 50 2005 qh11 7022"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "134746",
+      "query": "Hình thức xử lý nào nên áp dụng nếu vẫn còn thời hiệu xử lý?",
+      "gold_id": "129823",
+      "gold_rank": 11,
+      "gold_label": "bo luat lao dong 2019 333670",
+      "top1_label": "luat xu ly vi pham hanh chinh 2012 142766",
+      "top5_labels": [
+        "luat xu ly vi pham hanh chinh 2012 142766",
+        "nghi dinh 118 2021 nd cp huong dan luat xu ly vi pham hanh c",
+        "nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien",
+        "bo luat dan su 2015 296215",
+        "quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pha"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "46304",
+      "query": "Trọng tải xe là gì? Trọng tải thiết kế và trọng tải được phép chở của xe ô tô là bao nhiêu?",
+      "gold_id": "272261",
+      "gold_rank": 15,
+      "gold_label": "thong tu 31 2019 tt bgtvt quy dinh ve toc do va khoang cach an toan cua xe co gioi 423005",
+      "top1_label": "nghi dinh 86 2014 nd cp kinh doanh dieu kien kinh doanh van tai bang xe o to 248987",
+      "top5_labels": [
+        "nghi dinh 86 2014 nd cp kinh doanh dieu kien kinh doanh van ",
+        "nghi dinh 10 2020 nd cp kinh doanh va dieu kien kinh doanh v",
+        "thong tu 46 2015 tt bgtvt tai trong kho gioi han luu hanh xe",
+        "nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc",
+        "luat giao thong duong bo 2008 23 2008 qh12 82203"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "5742",
+      "query": "Thế nào là gian lận trong thi cử? Hành vi gian lận thi cử có bị cấm không?",
+      "gold_id": "199759",
+      "gold_rank": 12,
+      "gold_label": "luat giao duc 2019 367665",
+      "top1_label": "cong van 2742 bgddt qlcl 2023 to chuc ky thi tot nghiep trung hoc pho thong 568726",
+      "top5_labels": [
+        "cong van 2742 bgddt qlcl 2023 to chuc ky thi tot nghiep trun",
+        "thong tu quy che tuyen sinh dai hoc cao dang nganh giao duc ",
+        "nghi dinh 04 2021 nd cp xu phat vi pham hanh chinh trong lin",
+        "thong tu 15 2020 tt bgddt quy che thi tot nghiep trung hoc p",
+        "thong tu 08 2022 tt bgddt quy che tuyen sinh dai hoc nganh g"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "28660",
+      "query": "Bí mật kinh doanh là gì?",
+      "gold_id": "128423",
+      "gold_rank": 18,
+      "gold_label": "luat so huu tri tue 2009 sua doi 36 2009 qh12 90634",
+      "top1_label": "luat so huu tri tue 2005 50 2005 qh11 7022",
+      "top5_labels": [
+        "luat so huu tri tue 2005 50 2005 qh11 7022",
+        "luat canh tranh 345182",
+        "luat thuong mai 2005 36 2005 qh11 2633",
+        "luat bao ve bi mat nha nuoc 2018 337064",
+        "luat dau tu so 61 2020 qh14 321051"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "164800",
+      "query": "Tổ chức phát hành trong quá trình đăng ký trái phiếu doanh nghiệp có những trách nhiệm gì?",
+      "gold_id": "88170",
+      "gold_rank": 12,
+      "gold_label": "quyet dinh 108 qd vsd 2021 quy che dang ky chung khoan tai trung tam luu ky chung khoan 487915",
+      "top1_label": "nghi dinh 65 2022 nd cp sua doi nghi dinh 153 2020 nd cp chao ban giao dich trai phieu doanh nghiep",
+      "top5_labels": [
+        "nghi dinh 65 2022 nd cp sua doi nghi dinh 153 2020 nd cp cha",
+        "nghi dinh 53 2009 nd cp phat hanh trai phieu quoc te 89335",
+        "nghi dinh 155 2020 nd cp huong dan luat chung khoan 461323",
+        "nghi dinh 153 2020 nd cp chao ban giao dich trai phieu doanh",
+        "thong tu 30 2023 tt btc huong dan viec dang ky giao dich tra"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "79794",
+      "query": "Ai có trách nhiệm thực hiện thủ tục chuyển quyền sở hữu cho người mua?",
+      "gold_id": "208314",
+      "gold_rank": 15,
+      "gold_label": "nghi dinh 166 2013 nd cp cuong che thi hanh quyet dinh xu phat vi pham hanh chinh 213687",
+      "top1_label": "nghi dinh 44 2020 nd cp quy dinh cuong che thi hanh an doi voi phap nhan thuong mai 427244",
+      "top5_labels": [
+        "nghi dinh 44 2020 nd cp quy dinh cuong che thi hanh an doi v",
+        "bo luat dan su 2015 296215",
+        "luat thuong mai 2005 36 2005 qh11 2633",
+        "nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733",
+        "nghi dinh 43 2014 nd cp huong dan thi hanh luat dat dai 2306"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "87950",
+      "query": "Đối với công chức lãnh đạo, quản lý thì phải thực hiện chức trách, nhiệm vụ được giao như thế nào?",
+      "gold_id": "79553",
+      "gold_rank": 11,
+      "gold_label": "nghi dinh 90 2020 nd cp danh gia xep loai chat luong can bo cong chuc vien chuc 450113",
+      "top1_label": "nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong chuc 458542",
+      "top5_labels": [
+        "nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong ",
+        "luat can bo cong chuc 2008 22 2008 qh12 82202",
+        "thong tu 18 2019 tt bct hoat dong cong vu cua luc luong quan",
+        "quyet dinh 1294 qd ktnn bỏ nhiem bỏ nhiem lại tù chúc m",
+        "quyet dinh 1206 qd btp 2021 danh gia xep loai chat luong con"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "16348",
+      "query": "Doanh nghiệp quyết toán thuế thu nhập cá nhân giúp nhân viên trong trường hợp nào?",
+      "gold_id": "181088",
+      "gold_rank": 11,
+      "gold_label": "nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733",
+      "top1_label": "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nhan va nghi dinh 65 2013 nd cp 205356",
+      "top5_labels": [
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "cong van 636 tct dnncn 2021 huong dan quyet toan thue thu nh",
+        "thong tu 92 2015 tt btc huong dan thue gia tri gia tang thue",
+        "thong tu 80 2021 tt btc huong dan luat quan ly thue nghi din",
+        "cong van 5749 ct tncn 2018 quyet toan thue thu nhap ca nhan "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "50634",
+      "query": "Túi zip đựng thực phẩm từ nhựa PE thì cần đáp ứng yêu cầu kỹ thuật gì?",
+      "gold_id": "207425",
+      "gold_rank": 15,
+      "gold_label": "thong tu 34 2011 tt byt quy chuan ky thuat quoc gia an toan ve sinh 135002",
+      "top1_label": "luat an toan thuc pham 2010 108074",
+      "top5_labels": [
+        "luat an toan thuc pham 2010 108074",
+        "nghi dinh 66 2016 nd cp dieu kien dau tu kinh doanh bao ve k",
+        "tcvn 12354 2018 asean stan 9 2008 quyt qua tuoi 918311",
+        "tcvn 10740 2015 dua hau qua tuoi 915166",
+        "tcvn 12096 2017 codex stan 310 2013 luu qua tuoi 917172"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "113384",
+      "query": "Đối tượng phải quyết toán thuế thu nhập cá nhân",
+      "gold_id": "174178",
+      "gold_rank": 13,
+      "gold_label": "cong van 9188 cthn hkdcn 2022 quyet toan thue thu nhap ca nhan cuc thue ha noi 2021 507568",
+      "top1_label": "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nhan va nghi dinh 65 2013 nd cp 205356",
+      "top5_labels": [
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733",
+        "luat quan ly thue 2019 387595",
+        "luat thue thu nhap ca nhan 2007 04 2007 qh12 59652",
+        "nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "155402",
+      "query": "Khuyến nông viên muốn xét thăng hạng chức danh nghề nghiệp khuyến nông viên chính có cần chứng chỉ ngoại ngữ Bậc 3 hay không?",
+      "gold_id": "176005",
+      "gold_rank": 12,
+      "gold_label": "thong tu 07 2022 tt bnnptnt sua doi ma so tieu chuan chuc danh nghe nghiep nganh nong nghiep 525647",
+      "top1_label": "thong tu 18 2020 tt bnnptnt ma so va xep luong vien chuc chuyen nganh khuyen nong 461321",
+      "top5_labels": [
+        "thong tu 18 2020 tt bnnptnt ma so va xep luong vien chuc chu",
+        "nghi dinh 115 2020 nd cp tuyen dung su dung quan ly vien chu",
+        "thong tu 25 2017 tt bldtbxh dieu kien noi dung thi hoac xet ",
+        "thong tu 34 2016 tt bnnptnt tieu chuan hinh thuc thi xet tha",
+        "thong tu 02 2023 tt bnnptnt dieu kien thi thang hang vien ch"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "158260",
+      "query": "Lệ phí thi là bao nhiêu?",
+      "gold_id": "103580",
+      "gold_rank": 20,
+      "gold_label": "thong tu 188 2016 tt btc phi sat hach lai xe le phi cap giay phep lai xe dang ky cap bien xe may chu",
+      "top1_label": "quyet dinh 316 qd btc quy che thi cap chung chi hanh nghe dich vu lam thu tuc thue 85877",
+      "top5_labels": [
+        "quyet dinh 316 qd btc quy che thi cap chung chi hanh nghe di",
+        "thong tu 92 2021 tt btc muc thu nop su dung phí tuyen dung ",
+        "nghi quyet 326 2016 ubtvqh14 muc thu mien giam thu nop quan ",
+        "thong tu 59 2019 tt btc muc thu che do thu nop va quan ly le",
+        "luat phi va le phi 2015 298376"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "148360",
+      "query": "Công trình xây dựng là gì?",
+      "gold_id": "300301",
+      "gold_rank": 16,
+      "gold_label": "luat xay dung sua doi 2020 so 62 2020 qh14 418229",
+      "top1_label": "luat xay dung 2014 238644",
+      "top5_labels": [
+        "luat xay dung 2014 238644",
+        "nghi dinh 06 2021 nd cp huong dan quan ly chat luong thi con",
+        "nghi dinh 15 2021 nd cp huong dan mot so noi dung quan ly du",
+        "nghi dinh 37 2015 nd cp hop dong xay dung 272352",
+        "luat nha o 2014 259721"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "23760",
+      "query": "Tăng mức đóng bảo hiểm xã hội bắt buộc của người lao động khi tăng lương cơ sở lên 1.800.000 đồng/tháng từ ngày 01/7/2023?",
+      "gold_id": "23402",
+      "gold_rank": 12,
+      "gold_label": "luat bao hiem xa hoi 2014 259700",
+      "top1_label": "cong van 1927 bhxh tst 2023 thu bao hiem xa hoi theo muc luong co so 1800000 dong thang 571171",
+      "top5_labels": [
+        "cong van 1927 bhxh tst 2023 thu bao hiem xa hoi theo muc luo",
+        "thong tu 41 2023 tt bqp huong dan muc luong co so co quan do",
+        "nghi dinh 24 2023 nd cp muc luong co so can bo cong vien chu",
+        "thong tu 01 2023 tt bldtbxh muc dieu chinh tien luong thu nh",
+        "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "78820",
+      "query": "Việc sửa chữa, cải tạo nhà chung cư có thuộc trường hợp được miễn giấy phép xây dựng hay không?",
+      "gold_id": "300301",
+      "gold_rank": 12,
+      "gold_label": "luat xay dung sua doi 2020 so 62 2020 qh14 418229",
+      "top1_label": "luat xay dung 2014 238644",
+      "top5_labels": [
+        "luat xay dung 2014 238644",
+        "luat nha o 2014 259721",
+        "nghi dinh 15 2021 nd cp huong dan mot so noi dung quan ly du",
+        "quyet dinh 43 2021 qd ubnd cap giay phep xay dung va quan ly",
+        "quyet dinh 18 2021 qd ubnd quy dinh cap giay phep xay dung t"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "99622",
+      "query": "Việc kê khai, thu, nộp, quyết toán phí thẩm định cấp, cấp lại, điều chỉnh Giấy phép môi trường trên địa bàn Thành phố Hồ Chí Minh được thực hiện như thế nào?",
+      "gold_id": "241574",
+      "gold_rank": 11,
+      "gold_label": "nghi dinh 120 2016 nd cp huong dan luat phi le phi 320506",
+      "top1_label": "nghi quyet 01 2023 nq hdnd muc thu phi dang ky giao dich bao dam quyen su dung dat ho chi minh 56800",
+      "top5_labels": [
+        "nghi quyet 01 2023 nq hdnd muc thu phi dang ky giao dich bao",
+        "luat so 72 2020 qh14 bao ve moi truong 2020 431147",
+        "nghi quyet 07 2017 nq hdnd muc thu le phi dang ky cu tru ho ",
+        "nghi quyet 02 2023 nq hdnd muc thu phi tham dinh ho so cap g",
+        "nghi dinh 53 2020 nd cp quy dinh phi bao ve moi truong doi v"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "11032",
+      "query": "Những vấn đề cần lưu ý khi nộp hồ sơ làm thủ tục chấm dứt giám hộ?",
+      "gold_id": "146687",
+      "gold_rank": 17,
+      "gold_label": "quyet dinh 528 qd btp 2023 cong bo thu tuc hanh chinh linh vuc ho tich thuoc bo tu phap 563719",
+      "top1_label": "quyet dinh 1872 qd btp 2020 cong bo thu tuc hanh chinh linh vuc ho tich tai co quan dang ky ho tich",
+      "top5_labels": [
+        "quyet dinh 1872 qd btp 2020 cong bo thu tuc hanh chinh linh ",
+        "bo luat dan su 2015 296215",
+        "quyet dinh 299 qd btp thu tuc hanh chinh ban hanh moi ho tic",
+        "luat ho tich 2014 259727",
+        "thong tu 01 2022 tt btp huong dan nghi dinh 87 2020 nd cp 50"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "80700",
+      "query": "Bảo hiểm xã hội huyện có trách nhiệm như thế nào?",
+      "gold_id": "54518",
+      "gold_rank": 16,
+      "gold_label": "quyet dinh 1155 qd bhxh 2022 quy che quan ly hoat dong to chuc dich vu thu bao hiem xa hoi 513390",
+      "top1_label": "quyet dinh 2355 qd bhxh 2022 chuc nang nhiem vu quyen han bao hiem xa hoi tai dia phuong 530300",
+      "top5_labels": [
+        "quyet dinh 2355 qd bhxh 2022 chuc nang nhiem vu quyen han ba",
+        "quyet dinh 3660 qd bhxh 2022 chuc nang to nghiep vu thuoc ba",
+        "nghi dinh 89 2020 nd cp quy dinh nhiem vu quyen han va co ca",
+        "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie",
+        "luat bao hiem xa hoi 2014 259700"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "1808",
+      "query": "Hồ sơ đăng ký khai sinh có yếu tố nước ngoài tại Ủy ban nhân dân bao gồm những gì?",
+      "gold_id": "189230",
+      "gold_rank": 20,
+      "gold_label": "quyet dinh 2228 qd btp 2022 cong bo thu tuc hanh chinh linh vuc ho tich tai co quan dang ky ho tich",
+      "top1_label": "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+      "top5_labels": [
+        "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+        "luat ho tich 2014 259727",
+        "quyet dinh 299 qd btp thu tuc hanh chinh ban hanh moi ho tic",
+        "thong tu 04 2020 tt btp huong dan luat ho tich va nghi dinh ",
+        "quyet dinh 1872 qd btp 2020 cong bo thu tuc hanh chinh linh "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "148022",
+      "query": "Có được thanh toán hợp đồng qua tài khoản Văn phòng đại diện không?",
+      "gold_id": "187218",
+      "gold_rank": 12,
+      "gold_label": "nghi dinh 07 2016 nd cp quy dinh chi tiet van phong dai dien chi nhanh thuong nhan nuoc ngoai 301477",
+      "top1_label": "nghi dinh 63 2014 nd cp huong dan luat dau thau ve lua chon nha thau 237481",
+      "top5_labels": [
+        "nghi dinh 63 2014 nd cp huong dan luat dau thau ve lua chon ",
+        "quyet dinh 83 2004 qd btc quy che thanh lap hoat dong van ph",
+        "luat thuong mai 2005 36 2005 qh11 2633",
+        "nghi dinh 28 2018 nd cp huong dan luat quan ly ngoai thuong ",
+        "nghi dinh 06 2005 nd cp lap hoat dong van phong dai dien cua"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "18082",
+      "query": "Phạm vi xác định thu nhập chịu thuế của người nộp thuế thu nhập cá nhân",
+      "gold_id": "243954",
+      "gold_rank": 11,
+      "gold_label": "thong tu 119 2014 tt btc sua doi cac thong tu de cai cach don gian thu tuc hanh chinh ve thue 246608",
+      "top1_label": "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nhan va nghi dinh 65 2013 nd cp 205356",
+      "top5_labels": [
+        "thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha",
+        "nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan",
+        "luat thue thu nhap ca nhan 2007 04 2007 qh12 59652",
+        "thong tu 78 2014 tt btc huong dan 218 2013 nd cp thi hanh lu",
+        "nghi dinh 218 2013 nd cp huong dan thi hanh luat thue thu nh"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "22292",
+      "query": "Đối tượng nào cần phải nộp phí thẩm định hồ sơ cấp giấy chứng nhận quyền sử dụng đất tại Thanh Hóa?",
+      "gold_id": "213319",
+      "gold_rank": 18,
+      "gold_label": "nghi quyet 02 2020 nq hdnd su dung khoan phi le phi thuoc tham quyen hoi dong tinh vinh phuc 450190",
+      "top1_label": "nghi quyet 27 2016 nq hdnd muc thu mien giam thu nop quan ly su dung cac khoan phi le phi thanh hoa",
+      "top5_labels": [
+        "nghi quyet 27 2016 nq hdnd muc thu mien giam thu nop quan ly",
+        "nghi quyet 03 2020 nq hdnd quy dinh muc thu quan ly su dung ",
+        "nghi quyet 47 2016 nq hdnd phi tham dinh ho so cap giay chun",
+        "nghi quyet 18 2021 nq hdnd phi tham dinh ho so chung nhan qu",
+        "nghi quyet 18 2020 nq hdnd quy dinh thu phi le phi tinh ha n"
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "131798",
+      "query": "Khám sức khỏe định kỳ cho nhân viên tiếp xúc trực tiếp với thực phẩm được pháp luật quy định như thế nào?",
+      "gold_id": "105608",
+      "gold_rank": 16,
+      "gold_label": "nghi dinh 67 2016 nd cp dieu kien san xuat kinh doanh thuc pham quan ly chuyen nganh bo y te 316650",
+      "top1_label": "luat an toan thuc pham 2010 108074",
+      "top5_labels": [
+        "luat an toan thuc pham 2010 108074",
+        "tcvn 5603 2008 nguyen tac chung doi voi ve sinh thuc pham 90",
+        "quyet dinh 21 2007 qd byt quy dinh dieu kien suc khoe nguoi ",
+        "luat an toan ve sinh lao dong 2015 281961",
+        "thong tu 28 2016 tt byt huong dan quan ly benh nghe nghiep 3"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "123496",
+      "query": "Trường Mầm non trực thuộc trường đại học thì cơ quan nào có thẩm quyền cho phép thành lập?",
+      "gold_id": "266100",
+      "gold_rank": 11,
+      "gold_label": "nghi dinh 127 2018 nd cp quy dinh trach nhiem quan ly nha nuoc ve giao duc 335845",
+      "top1_label": "nghi dinh 46 2017 nd cp quy dinh dieu kien dau tu hoat dong trong linh vuc giao duc 336219",
+      "top5_labels": [
+        "nghi dinh 46 2017 nd cp quy dinh dieu kien dau tu hoat dong ",
+        "luat giao duc 2019 367665",
+        "nghi dinh 86 2018 nd cp quy dinh ve hop tac dau tu cua nuoc ",
+        "luat giao duc dai hoc 2012 142762",
+        "nghi dinh 135 2018 nd cp sua doi nghi dinh 46 2017 nd cp dau"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "156904",
+      "query": "Hồ sơ cấp lại sổ bảo hiểm xã hội do thay đổi thông tin bao gồm những gì?",
+      "gold_id": "37580",
+      "gold_rank": 11,
+      "gold_label": "quyet dinh 896 qd bhxh 2021 danh muc dich vu cong truc tuyen thu tuc hanh chinh 506998",
+      "top1_label": "luat bao hiem xa hoi 2014 259700",
+      "top5_labels": [
+        "luat bao hiem xa hoi 2014 259700",
+        "quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie",
+        "quyet dinh 62 qd byt 2023 cong bo thu tuc hanh chinh linh vu",
+        "nghi dinh bao hiem tai nan lao dong hinh thuc tu nguyen khon",
+        "quyet dinh 505 qd bhxh 2020 sua doi quy trinh thu bao hiem x"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "123690",
+      "query": "Giải quyết kiến nghị trong đấu thầu được quy định như thế nào?",
+      "gold_id": "131769",
+      "gold_rank": 12,
+      "gold_label": "thong tu 15 2022 tt bkhdt lap ho so moi thau xay lap thuoc hiep dinh toan dien thai binh duong 52115",
+      "top1_label": "luat dau thau 2013 215838",
+      "top5_labels": [
+        "luat dau thau 2013 215838",
+        "nghi dinh 63 2014 nd cp huong dan luat dau thau ve lua chon ",
+        "luat dau tu theo hinh thuc doi tac cong tu so 64 2020 qh14 3",
+        "nghi dinh 25 2020 nd cp huong dan luat dau thau lua chon nha",
+        "nghi dinh 95 2020 nd cp thuc hien dau thau mua sam theo hiep"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "14294",
+      "query": "Học sinh bị nhiễm Covid-19 cần thực hiện những biện pháp nào để phòng, chống lây nhiễm?",
+      "gold_id": "164827",
+      "gold_rank": 13,
+      "gold_label": "quyet dinh 604 qd byt 2022 quan ly tai nha doi voi nguoi mac covid19 506536",
+      "top1_label": "quyet dinh 250 qd byt 2022 huong dan chan doan dieu tri covid19 502064",
+      "top5_labels": [
+        "quyet dinh 250 qd byt 2022 huong dan chan doan dieu tri covi",
+        "quyet dinh 2609 qd byt 2023 phong va kiem soat lay nhiem cov",
+        "cong van 1909 byt dp 2022 dieu chinh dinh nghia ca benh covi",
+        "cong van 3168 byt dp 2022 du thao de xuat bien phap phong co",
+        "quyet dinh 838 qd byt 2022 an toan lao dong cho nhan vien y "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "132594",
+      "query": "Trình tự thực hiện thủ tục gia hạn nộp thuế như thế nào?",
+      "gold_id": "303485",
+      "gold_rank": 14,
+      "gold_label": "quyet dinh 115 qd btc 2023 cong bo thu tuc hanh chinh linh vuc thue 554178",
+      "top1_label": "nghi dinh 12 2023 nd cp gia han thoi han nop thue thu nhap doanh nghiep ca nhan tien thue dat 563407",
+      "top5_labels": [
+        "nghi dinh 12 2023 nd cp gia han thoi han nop thue thu nhap d",
+        "luat quan ly thue 2019 387595",
+        "thong tu 80 2021 tt btc huong dan luat quan ly thue nghi din",
+        "nghi dinh 36 2023 nd cp gia han thoi han nop thue tieu thu d",
+        "nghi dinh 41 2020 nd cp gia han thoi han nop thue va tien th"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "115886",
+      "query": "Yêu cầu ghi vào Sổ hộ tịch việc ly hôn thực hiện ở nước ngoài bằng những hình thức nào?",
+      "gold_id": "189230",
+      "gold_rank": 15,
+      "gold_label": "quyet dinh 2228 qd btp 2022 cong bo thu tuc hanh chinh linh vuc ho tich tai co quan dang ky ho tich",
+      "top1_label": "nghi dinh 126 2014 nd cp quy dinh chi tiet mot so dieu bien phap thi hanh luat hon nhan gia dinh 262",
+      "top5_labels": [
+        "nghi dinh 126 2014 nd cp quy dinh chi tiet mot so dieu bien ",
+        "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+        "thong tu lien tich 02 2016 ttlt bng btp huong dan dang ky qu",
+        "luat ho tich 2014 259727",
+        "quyet dinh 299 qd btp thu tuc hanh chinh ban hanh moi ho tic"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "139046",
+      "query": "Tiền lương, tiền thưởng và điều kiện làm việc của Kiểm soát viên công ty trách nhiệm hữu hạn một thành viên do Nhà nước nắm giữ 100% vốn điều lệ do ai quyết định?",
+      "gold_id": "24559",
+      "gold_rank": 20,
+      "gold_label": "nghi dinh 47 2021 nd cp huong dan luat doanh nghiep 470561",
+      "top1_label": "luat doanh nghiep so 59 2020 qh14 427301",
+      "top5_labels": [
+        "luat doanh nghiep so 59 2020 qh14 427301",
+        "nghi dinh 51 2016 nd cp tien luong tien thuong nguoi lao don",
+        "quyet dinh 2906 qd btnmt 2014 kiem soat vien cong ty tnhh mo",
+        "nghi dinh 52 2016 nd cp tien luong thu lao tien thuong nguoi",
+        "nghi dinh 26 2018 nd cp dieu le to chuc va hoat dong cua tap"
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "112448",
+      "query": "Phấn đấu đến năm 2023, GRDP bình quân đầu người đạt khoảng 14.500 USD?",
+      "gold_id": "128021",
+      "gold_rank": 12,
+      "gold_label": "nghi quyet 87 nq cp 2023 thuc hien nghi quyet 31 nq tw phat trien ho chi minh den 2030 568322",
+      "top1_label": "nghi quyet 152 nq cp 2022 chuong trinh hanh dong thuc hien nghi quyet 23 nq tw 538868",
+      "top5_labels": [
+        "nghi quyet 152 nq cp 2022 chuong trinh hanh dong thuc hien n",
+        "nghi quyet 154 nq cp 2022 thuc hien nghi quyet 24 nq tw phat",
+        "nghi quyet 90 nq cp 2023 thuc hien nghi quyet 81 2023 qh15 q",
+        "nghi quyet 30 nq tw 2022 phat trien kinh te xa hoi vung dong",
+        "nghi quyet 96 nq cp 2022 thuc hien nghi quyet 11 nq tw phat "
+      ],
+      "umbrella_blocking": false
+    },
+    {
+      "qid": "66444",
+      "query": "Mẫu đơn đề nghị gia hạn sử dụng đất ngoài khu công nghệ cao, khu kinh tế là mẫu nào?",
+      "gold_id": "280335",
+      "gold_rank": 17,
+      "gold_label": "thong tu 33 2017 tt btnmt huong dan nghi dinh 01 2017 nd cp luat dat dai 340179",
+      "top1_label": "thong tu 24 2014 tt btnmt ho so dia chinh 236560",
+      "top5_labels": [
+        "thong tu 24 2014 tt btnmt ho so dia chinh 236560",
+        "thong tu 09 2021 tt btnmt sua doi thong tu huong dan luat da",
+        "nghi dinh 43 2014 nd cp huong dan thi hanh luat dat dai 2306",
+        "nghi dinh 181 2004 nd cp thi hanh luat dat dai 52514",
+        "luat dat dai 2013 215836"
+      ],
+      "umbrella_blocking": true
+    }
+  ],
+  "rank_21_plus_deep_miss": [
+    {
+      "qid": "87852",
+      "query": "Đăng ký khai tử phải chuẩn bị giấy tờ gì?",
+      "gold_id": "189230",
+      "gold_rank": 21,
+      "gold_label": "quyet dinh 2228 qd btp 2022 cong bo thu tuc hanh chinh linh vuc ho tich tai co quan dang ky ho tich",
+      "top1_label": "luat ho tich 2014 259727",
+      "top5_labels": [
+        "luat ho tich 2014 259727",
+        "nghi dinh 123 2015 nd cp huong dan luat ho tich 282304",
+        "quyet dinh 1872 qd btp 2020 cong bo thu tuc hanh chinh linh ",
+        "quyet dinh 299 qd btp thu tuc hanh chinh ban hanh moi ho tic",
+        "thong tu 04 2020 tt btp huong dan luat ho tich va nghi dinh "
+      ],
+      "umbrella_blocking": true
+    },
+    {
+      "qid": "50808",
+      "query": "Thời điểm để tính thời hiệu xử phạt vi phạm hành chính ra sao?",
+      "gold_id": "86502",
+      "gold_rank": 21,
+      "gold_label": "nghi dinh 139 2021 nd cp xu phat vi pham hanh chinh giao thong duong thuy noi dia 499527",
+      "top1_label": "luat xu ly vi pham hanh chinh 2012 142766",
+      "top5_labels": [
+        "luat xu ly vi pham hanh chinh 2012 142766",
+        "nghi dinh 144 2021 nd cp xu phat vi pham hanh chinh linh vuc",
+        "nghi dinh 91 2019 nd cp xu phat vi pham hanh chinh trong lin",
+        "nghi dinh 156 2020 nd cp quy dinh xu phat vi pham hanh chinh",
+        "nghi dinh 41 2018 nd cp quy dinh xu phat vi pham hanh chinh "
+      ],
+      "umbrella_blocking": true
+    }
+  ]
+}

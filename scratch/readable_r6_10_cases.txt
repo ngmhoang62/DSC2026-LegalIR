@@ -1,0 +1,862 @@
+TOTAL RANK 6-10 NEAR MISSES: 86
+================================================================================
+
+--- Case 1/86: QID 163810 (Gold @ Rank 8) ---
+Query: Hàm lượng chì cho phép trong sữa bột dành cho trẻ em dưới 12 tháng tuổi là bao nhiêu?
+Gold [97249]: thong tu 20 2012 tt byt quy chuan ky thuat quoc gia doi voi san pham dinh duong 154180
+Top 5 Predictions:
+  1. thong tu 02 2011 tt byt quy chuan ky thuat quoc gia gioi han
+  2. qcvn 11 1 2012 byt san pham dinh duong cong thuc cho tre den
+  3. thong tu 31 2010 tt byt quy chuan ky thuat quoc gia cac san 
+  4. thong tu 22 2012 tt byt quy chuan ky thuat quoc gia doi voi 
+  5. thong tu 29 2017 tt bnnptnt quy chuan ky thuat quoc gia doi 
+
+--- Case 2/86: QID 34748 (Gold @ Rank 8) ---
+Query: Mức lương của giáo viên tại các cơ sở giáo dục công lập sẽ là bao nhiêu khi tăng mức lương cơ sở?
+Gold [239935]: thong tu lien tich 01 2006 ttlt bgd dt bnv btc phu cap uu dai nha giao dang giang day trong co so gi
+Top 5 Predictions:
+  1. nghi dinh 38 2019 nd cp muc luong co so doi voi can bo cong 
+  2. nghi dinh 77 2021 nd cp che do phu cap tham nien nha giao 48
+  3. nghi dinh 24 2023 nd cp muc luong co so can bo cong vien chu
+  4. nghi dinh 81 2021 nd cp quan ly hoc phi doi voi co so giao d
+  5. nghi quyet 69 2022 qh15 du toan ngan sach nha nuoc 2023 5418
+
+--- Case 3/86: QID 8724 (Gold @ Rank 8) ---
+Query: Các bước tiến hành kiểm tra tổ chức Đảng, Đảng viên khi có dấu hiệu vi phạm?
+Gold [274327]: quyet dinh 354 qd ubkttw 2021 quy trinh thuc hien giam sat va thi hanh ky luat dang 501055
+Top 5 Predictions:
+  1. quy dinh 22 qd tw 2021 cong tac kiem tra giam sat va ky luat
+  2. quy dinh 01 qdi tw 2018 trach nhiem cua uy ban kiem tra tron
+  3. quyet dinh 109 qd tw 2018 cong tac kiem tra viec tu duong da
+  4. quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pha
+  5. quy dinh 179 qd tw 2019 che do kiem tra giam sat cong tac ca
+
+--- Case 4/86: QID 114086 (Gold @ Rank 7) ---
+Query: Kinh phí làm Thẻ công chức thanh tra chuyên ngành được lấy từ nguồn nào?
+Gold [110647]: quyet dinh 2456 qd btc nam 2014 quy che thanh tra kho bac nha nuoc 251157
+Top 5 Predictions:
+  1. thong tu 14 2015 tt bldtbxh thanh tra vien cong chuc thanh t
+  2. thong tu 19 2014 tt btnmt tieu chuan the cong chuc thanh tra
+  3. thong tu 36 2017 tt btttt quy dinh bo phan tham muu va hoat 
+  4. thong tu 24 2015 tt bkhcn cong chuc thanh tra cong tac vien 
+  5. thong tu 34 2021 tt byt tieu chuan trang phuc nguoi duoc gia
+
+--- Case 5/86: QID 131588 (Gold @ Rank 6) ---
+Query: Cơ quan nào có thẩm quyền công bố tuyến dẫn tàu trong vùng hoa tiêu hàng hải bắt buộc?
+Gold [141707]: quyet dinh 2818 qd bgtvt 2017 chuc nang nhiem vu quyen han co cau to chuc cuc hang hai 363440
+Top 5 Predictions:
+  1. nghi dinh 58 2017 nd cp huong dan bo luat hang hai viet nam 
+  2. thong tu 43 2018 tt bgtvt quy dinh ve vung hoa tieu hang hai
+  3. quyet dinh 319 qd bgtvt 2023 nhiem vu quyen han va co cau to
+  4. nghi dinh 70 2016 nd cp dieu kien cung cap dich vu bao dam a
+  5. bo luat hang hai viet nam 2015 298374
+
+--- Case 6/86: QID 39328 (Gold @ Rank 7) ---
+Query: Mức đóng bảo hiểm y tế đối với con nuôi của người đang làm công tác cơ yếu là bao nhiêu?
+Gold [211473]: thong tu 143 2020 tt bqp huong dan nghi dinh 146 2018 nd cp bao hiem y te thuoc bo quoc phong 459678
+Top 5 Predictions:
+  1. luat bao hiem y te 2008 25 2008 qh12 82196
+  2. nghi dinh 146 2018 nd cp huong dan luat bao hiem y te 357505
+  3. quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie
+  4. thong tu 57 2019 tt bca thuc hien bao hiem y te doi voi nguo
+  5. luat bao hiem xa hoi 2014 259700
+
+--- Case 7/86: QID 9432 (Gold @ Rank 9) ---
+Query: Đã bị áp dụng kỷ luật tạm đình chỉ công việc đang đảm nhận thì có bị áp dụng các hình thức xử lý kỷ luật lao động theo quy định của Bộ luật Lao động?
+Gold [44900]: thong tu 46 2013 tt bgtvt che do ky luat lao dong nhan vien hang khong 214391
+Top 5 Predictions:
+  1. bo luat lao dong 2019 333670
+  2. nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu 
+  3. nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong 
+  4. luat vien chuc 2010 115271
+  5. nghi dinh 05 2015 nd cp huong dan bo luat lao dong 263294
+
+--- Case 8/86: QID 156570 (Gold @ Rank 7) ---
+Query: Lãi suất vay vượt quá mức lãi suất giới hạn quy định bên cho vay bị xử phạt như thế nào?
+Gold [98892]: nghi dinh 144 2021 nd cp xu phat vi pham hanh chinh linh vuc an ninh an toan xa hoi 425471
+Top 5 Predictions:
+  1. nghi quyet 01 2019 nq hdtp huong dan quy dinh cua phap luat 
+  2. bo luat dan su 2015 296215
+  3. thong tu 39 2016 tt nhnn hoat dong cho vay cua to chuc tin d
+  4. luat cac to chuc tin dung 2010 108079
+  5. nghi dinh 19 2019 nd cp quy dinh ve ho hui bieu phuong 38632
+
+--- Case 9/86: QID 116964 (Gold @ Rank 8) ---
+Query: Có phải tất cả công dân trong độ tuổi sẽ được cấp số định danh cá nhân và thẻ căn cước công dân gắn chíp điện tử?
+Gold [53190]: quyet dinh 06 qd ttg 2022 de an phat trien ung dung du lieu ve dan cu 2022 2025 499726
+Top 5 Predictions:
+  1. luat can cuoc cong dan 2014 259782
+  2. quyet dinh 9039 qd bca c06 2022 cong bo thu tuc hanh chinh d
+  3. nghi dinh 59 2022 nd cp dinh danh va xac thuc dien tu 471629
+  4. thong tu 06 2021 tt bca quy dinh mau the can cuoc cong dan 4
+  5. nghi dinh 137 2015 nd cp huong dan luat can cuoc cong dan 28
+
+--- Case 10/86: QID 71956 (Gold @ Rank 10) ---
+Query: Thủ tục đăng ký nhận con như thế nào?
+Gold [134404]: luat hon nhan va gia dinh 2014 238640
+Top 5 Predictions:
+  1. luat ho tich 2014 259727
+  2. nghi dinh 123 2015 nd cp huong dan luat ho tich 282304
+  3. nghi dinh 126 2014 nd cp quy dinh chi tiet mot so dieu bien 
+  4. nghi dinh 19 2011 nd cp huong dan luat nuoi con nuoi 120635
+  5. thong tu 04 2020 tt btp huong dan luat ho tich va nghi dinh 
+
+--- Case 11/86: QID 7390 (Gold @ Rank 9) ---
+Query: Kiểm tra viên cao cấp có những nhiệm vụ gì?
+Gold [163084]: luat to chuc vien kiem sat nhan dan 2014 259723
+Top 5 Predictions:
+  1. thong tu 29 2022 tt btc tieu chuan chuyen mon ngach cong chu
+  2. quyet dinh 73 2005 qd bnv chuc danh tieu chuan nghiep vu ma 
+  3. thong tu 77 2019 tt btc tieu chuan chuyen mon nghiep vu xep 
+  4. quyet dinh 1922 qd ktnn 2021 chuc danh cac ngach kiem toan v
+  5. quyet dinh 09 2010 qd ttg tieu chuan cac ngach thanh tra vie
+
+--- Case 12/86: QID 73956 (Gold @ Rank 6) ---
+Query: Viên chức khi sinh con mà chưa đăng ký kết hôn có bị xử lý kỷ luật không?
+Gold [134404]: luat hon nhan va gia dinh 2014 238640
+Top 5 Predictions:
+  1. quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pha
+  2. nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien
+  3. quyet dinh 1531 qd btc quy che xu ly ky luat cong vien chuc 
+  4. luat vien chuc 2010 115271
+  5. quy dinh 102 qd tw 2017 xu ly ky luat dang vien vi pham 3687
+
+--- Case 13/86: QID 63838 (Gold @ Rank 8) ---
+Query: Tiệm xăm sử dụng hình ảnh của khách để quảng cáo có bị xử lý vi phạm hành chính không?
+Gold [65293]: nghi dinh 15 2020 nd cp xu phat vi pham hanh chinh linh vuc buu chinh vien thong tan so vo tuyen die
+Top 5 Predictions:
+  1. nghi dinh 38 2021 nd cp xu phat vi pham hanh chinh trong lin
+  2. nghi dinh 158 2013 nd cp xu phat vi pham hanh chinh van hoa 
+  3. nghi dinh 117 2020 nd cp quy dinh xu phat vi pham hanh chinh
+  4. luat quang cao 2012 142541
+  5. luat thuong mai 2005 36 2005 qh11 2633
+
+--- Case 14/86: QID 15158 (Gold @ Rank 6) ---
+Query: Giảm thuế giá trị gia tăng đối với sản phẩm hóa chất như thế nào?
+Gold [77456]: cong van 2252 tct cs 2022 thue gia tri gia tang tai nghi dinh 15 2022 nd cp 519804
+Top 5 Predictions:
+  1. cong van 2837 tchq txnk 2022 thue gia tri gia tang hang nhap
+  2. nghi dinh 44 2023 nd cp chinh sach giam thue gia tri gia tan
+  3. nghi dinh 15 2022 nd cp mien giam thue theo nghi quyet 43 20
+  4. nghi dinh chinh sach giam thue gia tri gia tang 2 theo nghi 
+  5. cong van 22241 cthn ttht 2022 chinh sach thue theo nghi dinh
+
+--- Case 15/86: QID 166756 (Gold @ Rank 9) ---
+Query: Trang thông tin điện tử là gì?
+Gold [21526]: luat cong nghe thong tin 2006 67 2006 qh11 12987
+Top 5 Predictions:
+  1. thong tu 110 2014 tt bqp quan ly cung cap su dung internet q
+  2. quyet dinh 914 qd bkhcn nam 2012 quy che quan ly su dung tra
+  3. nghi dinh 43 2011 nd cp cung cap thong tin va dich vu cong t
+  4. quyet dinh 1173 qd ktnn 2015 quy ché quan ly su dung he tho
+  5. nghi dinh 72 2013 nd cp quan ly cung cap su dung dich vu int
+
+--- Case 16/86: QID 134558 (Gold @ Rank 10) ---
+Query: Lãi suất cho vay của ngân hàng được quy định như thế nào? Ngân hàng có bị khống chế mức lãi suất cho vay hay không?
+Gold [26667]: luat cac to chuc tin dung 2010 108079
+Top 5 Predictions:
+  1. thong tu 39 2016 tt nhnn hoat dong cho vay cua to chuc tin d
+  2. quyet dinh 07 qd hdtv 2019 quy che cho vay gian tiep quy pha
+  3. quyet dinh 576 qd nhnn 2023 muc lai suat cho vay ngan han to
+  4. quyet dinh 1125 qd nhnn 2023 muc lai suat cho vay ngan han t
+  5. nghi dinh 39 2019 nd cp to chuc va hoat dong cua quy phat tr
+
+--- Case 17/86: QID 91624 (Gold @ Rank 9) ---
+Query: Tài sản được định là di sản thừa kế có chuyển nhượng được không?
+Gold [305455]: luat dat dai 2013 215836
+Top 5 Predictions:
+  1. bo luat dan su 2015 296215
+  2. luat cong chung 2014 238638
+  3. thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha
+  4. bo luat dan su 1995 44 l ctn 39391
+  5. nghi dinh 29 2018 nd cp trinh tu thu tuc xac lap quyen so hu
+
+--- Case 18/86: QID 50608 (Gold @ Rank 8) ---
+Query: Quyền và nghĩa vụ của Chủ tịch Hội đồng quản lý đơn vị sự nghiệp công lập quy định ra sao?
+Gold [105600]: thong tu 39 2018 tt nhnn to chuc cua hoi dong quan ly thuoc quan ly cua ngan hang nha nuoc 403799
+Top 5 Predictions:
+  1. thong tu 41 2018 tt bnnptnt to chuc hoi dong quan ly trong d
+  2. thong tu 05 2018 tt bgtvt hoi dong quan ly don vi su nghiep 
+  3. thong tu 09 2022 tt btnmt hoi dong quan ly don vi su nghiep 
+  4. thong tu 11 2023 tt btc hoi dong quan ly don vi su nghiep co
+  5. thong tu 26 2021 tt btttt chuc nang nhiem vu hoi dong quan l
+
+--- Case 19/86: QID 67292 (Gold @ Rank 10) ---
+Query: Có được luân chuyển công chức đối với những trường hợp có uy tín giảm sút hay không?
+Gold [186235]: quy dinh 06 qd bcsd 2021 luan chuyen can bo co quan hanh chinh thuoc bo giao thong van tai 506297
+Top 5 Predictions:
+  1. nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong 
+  2. quyet dinh 328 qd btp 2018 quy che bo nhiem bo nhiem lai tu 
+  3. luat can bo cong chuc 2008 22 2008 qh12 82202
+  4. quyet dinh 397 qd ttcp 2021 dieu dong luan chuyen cong chuc 
+  5. quyet dinh 3002 qd bct 2022 luan chuyen vien chuc lanh dao q
+
+--- Case 20/86: QID 95556 (Gold @ Rank 10) ---
+Query: Tên hàng là gì?
+Gold [150375]: quyet dinh 1371 2004 qd btm quy che sieu thi trung tam thuong mai 52441
+Top 5 Predictions:
+  1. nghi dinh 43 2017 nd cp nhan hang hoa 346310
+  2. luat so huu tri tue 2005 50 2005 qh11 7022
+  3. luat thuong mai 2005 36 2005 qh11 2633
+  4. luat doanh nghiep so 59 2020 qh14 427301
+  5. nghi dinh 111 2021 nd cp sua doi nghi dinh 43 2017 nd cp 497
+
+--- Case 21/86: QID 6216 (Gold @ Rank 9) ---
+Query: Ngày ký và ngày lập hóa đơn điện tử có giống nhau không?
+Gold [109488]: nghi dinh 51 2010 nd cp hoa don ban hang hoa cung ung dich vu 105694
+Top 5 Predictions:
+  1. nghi dinh 123 2020 nd cp quy dinh hoa don chung tu 445980
+  2. thong tu 32 2011 tt btc huong dan ve khoi tao phat hanh su d
+  3. thong tu 78 2021 tt btc huong dan luat quan ly thue nghi din
+  4. luat quan ly thue 2019 387595
+  5. thong tu 68 2019 tt btc huong dan thuc hien nghi dinh 119 20
+
+--- Case 22/86: QID 136518 (Gold @ Rank 6) ---
+Query: Xây dựng giá theo kết quả thẩm định giá của cơ quan nhà nước có thẩm quyền, doanh nghiệp thẩm định với các loại tài sản, hàng hóa, dịch vụ phải thẩm định giá theo quy định của pháp luật về giá ra sao?
+Gold [145336]: thong tu 14 2023 tt byt trinh tu xay dung gia goi thau mua sam hang hoa trang thiet bi 562762
+Top 5 Predictions:
+  1. luat gia 2012 142540
+  2. nghi dinh 89 2013 nd cp huong dan luat gia ve tham dinh gia 
+  3. thong tu 38 2014 tt btc huong dan 89 2013 nd cp huong dan lu
+  4. nghi dinh 177 2013 nd cp huong dan luat gia 213650
+  5. thong tu 28 2015 tt btc tieu chuan tham dinh gia viet nam so
+
+--- Case 23/86: QID 160494 (Gold @ Rank 8) ---
+Query: Công chức bị kỷ luật tính thời gian nâng lương thế nào?
+Gold [91626]: thong tu 08 2013 tt bnv huong dan nang bac luong can bo cong vien chuc 204743
+Top 5 Predictions:
+  1. luat can bo cong chuc 2008 22 2008 qh12 82202
+  2. nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien
+  3. quyet dinh 51 qd ldtbxh nam 2014 quy che nang bac luong thuo
+  4. quyet dinh 1966 qd chk quy che nang bac luong phu cap tham n
+  5. van ban hop nhat 25 vbhn vpqh 2019 luat can bo cong chuc 439
+
+--- Case 24/86: QID 103132 (Gold @ Rank 7) ---
+Query: Người lao động đóng bảo hiểm xã hội trong 20 năm 7 tháng có được hưởng bảo hiểm xã hội một lần không?
+Gold [199641]: nghi quyet 93 2015 qh13 thuc hien chinh sach huong bao hiem xa hoi mot lan doi voi nguoi lao dong 28
+Top 5 Predictions:
+  1. luat bao hiem xa hoi 2014 259700
+  2. nghi dinh 115 2015 nd cp huong dan luat bao hiem xa hoi bat 
+  3. nghi dinh 134 2015 nd cp huong dan luat bao hiem xa hoi ve b
+  4. luat bao hiem xa hoi 557190
+  5. thong tu 59 2015 tt bldtbxh huong dan luat bao hiem xa hoi v
+
+--- Case 25/86: QID 87542 (Gold @ Rank 7) ---
+Query: Quy định về thẩm quyền ra quyết định thanh tra chuyên ngành đất đai theo kế hoạch như thế nào?
+Gold [195962]: nghi dinh 07 2012 nd cp co quan duoc giao thuc hien chuc nang thanh tra 134598
+Top 5 Predictions:
+  1. luat thanh tra 2010 115311
+  2. nghi dinh 216 2013 nd cp to chuc hoat dong thanh tra nganh k
+  3. nghi dinh 26 2013 nd cp to chuc va hoat dong cua thanh tra n
+  4. luat dat dai 2013 215836
+  5. luat dat dai 523642
+
+--- Case 26/86: QID 49190 (Gold @ Rank 7) ---
+Query: Tổng hợp nội dung báo cáo tài chính của doanh nghiệp có vốn đầu tư nước ngoài như thế nào?
+Gold [11122]: cong van 4363 btc tcdn 2016 tong hop phan tich bao cao tai chinh doanh nghiep fdi nam 2015 381830
+Top 5 Predictions:
+  1. thong tu 48 2017 tt bqp giam sat tai chinh danh gia hieu qua
+  2. thong tu 200 2014 tt btc huong dan che do ke toan doanh nghi
+  3. thong tu 133 2016 tt btc huong dan che do ke toan doanh nghi
+  4. thong tu 200 2015 tt btc giam sat dau tu von cong khai thong
+  5. thong tu 99 2018 tt btc lap bao cao tai chinh tong hop cua d
+
+--- Case 27/86: QID 74674 (Gold @ Rank 7) ---
+Query: Dự kiến tháng 06/2023 sẽ hoàn thành Nghị định hướng dẫn Luật sửa đổi Luật Tần số vô tuyến điện 2022 đúng không?
+Gold [131942]: chi thi 01 ct btttt 2023 dinh huong phat trien nganh thong tin truyen thong 554939
+Top 5 Predictions:
+  1. luat sua doi luat tan so vo tuyen dien 2022 513345
+  2. nghi quyet 37 nq cp 2022 phien hop ve xay dung phap luat tha
+  3. luat tan so vo tuyen dien nam 2009 98673
+  4. nghi dinh 88 2021 nd cp thu tien cap quyen su dung tan so vo
+  5. nghi quyet 01 nq cp 2023 nhiem vu giai phap chu yeu thuc hie
+
+--- Case 28/86: QID 72246 (Gold @ Rank 8) ---
+Query: Trong thời gian mang tài liệu bí mật Nhà nước ra khỏi nơi lưu giữ nếu phát hiện bí mật Nhà nước bị lộ thì người mang tài liệu có trách nhiệm gì?
+Gold [298075]: quyet dinh 1500 qd btc 2020 quy che bao ve bi mat nha nuoc cua bo tai chinh 455204
+Top 5 Predictions:
+  1. quyet dinh 1858 qd bvhttdl 2021 quy che bao ve bi mat nha nu
+  2. luat bao ve bi mat nha nuoc 2018 337064
+  3. thong tu 07 2020 tt bkhdt cong tac bao ve bi mat nha nuoc li
+  4. thong tu 104 2021 tt bca bao ve bi mat nha nuoc trong cong a
+  5. nghi dinh 26 2020 nd cp huong dan luat bao ve bi mat nha nuo
+
+--- Case 29/86: QID 55694 (Gold @ Rank 7) ---
+Query: Cá nhân trực tiếp quyết toán thuế với cơ quan thuế thì phải nộp hồ sơ như thế nào?
+Gold [18044]: cong van 883 tct dnncn 2022 quyet toan thue thu nhap ca nhan 508286
+Top 5 Predictions:
+  1. nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733
+  2. thong tu 80 2021 tt btc huong dan luat quan ly thue nghi din
+  3. cong van 13762 cthn hkdcn 2023 quyet toan thue thu nhap ca n
+  4. luat quan ly thue 2019 387595
+  5. cong van 636 tct dnncn 2021 huong dan quyet toan thue thu nh
+
+--- Case 30/86: QID 102902 (Gold @ Rank 7) ---
+Query: Làm và sử dụng Sổ đăng kiểm xe ô tô giả thì tổng hợp hình phạt ra sao?
+Gold [245154]: bo luat hinh su 2015 296661
+Top 5 Predictions:
+  1. nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc
+  2. nghi dinh 120 2013 nd cp xu phat vi pham hanh chinh quoc pho
+  3. nghi dinh 82 2020 nd cp xu phat hanh chinh linh vuc hon nhan
+  4. nghi dinh 46 2016 nd cp xu phat vi pham hanh chinh giao thon
+  5. nghi dinh 123 2021 nd cp sua doi nghi dinh xu phat vi pham h
+
+--- Case 31/86: QID 79496 (Gold @ Rank 8) ---
+Query: Ai có trách nhiệm lập Biên bản kiểm toán doanh nghiệp?
+Gold [117190]: quyet dinh 02 2020 qd ktnn quy trinh kiem toan cua kiem toan nha nuoc 455741
+Top 5 Predictions:
+  1. quyet dinh 811 qd ktnn 2023 thuc hien xu phat vi pham hanh c
+  2. quyet dinh 22 qd ktnn 2021 kiem toan doanh nghiep nha nuoc v
+  3. quyet dinh 08 2023 qd ktnn quy trinh kiem toan cua kiem toan
+  4. quyet dinh 01 2023 qd ktnn he thong mau bieu ho so kiem toan
+  5. quyet dinh 03 2020 qd ktnn quy che to chuc doan kiem toan nh
+
+--- Case 32/86: QID 111896 (Gold @ Rank 8) ---
+Query: Thời hạn bảo quản tài liệu là gì?
+Gold [261621]: thong tu 10 2022 tt bnv thoi han bao quan tai lieu 546527
+Top 5 Predictions:
+  1. thong tu 155 2013 tt btc quy dinh thoi han bao quan ho so ta
+  2. luat luu tru 2011 132447
+  3. quyet dinh 1556 qd bhxh 2019 thoi han bao quan tai lieu hinh
+  4. thong tu 22 2021 tt nhnn thoi han bao quan ho so trong hoat 
+  5. quyet dinh 1139 qd bhxh nam 2013 quy dinh cong tac luu tru b
+
+--- Case 33/86: QID 111418 (Gold @ Rank 6) ---
+Query: Hàng hóa cấm nhập khẩu theo quy định pháp luật
+Gold [7683]: thong tu 28 2014 tt bvhttdl quan ly hoat dong mua ban hang hoa quoc te 267539
+Top 5 Predictions:
+  1. nghi dinh 69 2018 nd cp huong dan luat quan ly ngoai thuong 
+  2. nghi dinh 98 2020 nd cp xu phat vi pham hanh chinh hoat dong
+  3. luat thuong mai 2005 36 2005 qh11 2633
+  4. luat quan ly ngoai thuong 2017 322219
+  5. nghi dinh 08 2015 nd cp thi hanh luat hai quan ve thu tuc ki
+
+--- Case 34/86: QID 90466 (Gold @ Rank 8) ---
+Query: Đề xuất Chủ tịch nước làm Chủ tịch Hội đồng Tư pháp quốc gia?
+Gold [211090]: luat to chuc toa an nhan dan 2014 259724
+Top 5 Predictions:
+  1. luat to chuc quoc hoi 2014 259784
+  2. hien phap nam 2013 215627
+  3. quyet dinh 508 qd ttg 2014 hoi dong tu van tham dinh du an l
+  4. nghi quyet 929 2015 ubtvqh13 2015 quy che hoi dong tuyen cho
+  5. nghi quyet 102 2015 qh13 ban hanh noi quy ky hop quoc hoi 29
+
+--- Case 35/86: QID 125764 (Gold @ Rank 10) ---
+Query: Tài sản công chứa đựng các bí mật nhà nước nếu được nhận quyết định tiêu hủy thì có nhất thiết phải đem chôn hay không?
+Gold [128684]: luat quan ly su dung tai san cong 2017 322220
+Top 5 Predictions:
+  1. luat bao ve bi mat nha nuoc 2018 337064
+  2. quyet dinh 1858 qd bvhttdl 2021 quy che bao ve bi mat nha nu
+  3. quyet dinh 245 qd tct 2023 noi quy bao ve bi mat nha nuoc ng
+  4. nghi quyet 757 nq ubtvqh15 2023 quy che bao ve bi mat nha nu
+  5. nghi dinh 151 2017 nd cp huong dan luat quan ly su dung tai 
+
+--- Case 36/86: QID 164280 (Gold @ Rank 6) ---
+Query: Điều khiển xe ô tô chạy quá tốc độ bị phạt nguội thì có thể nộp phạt qua đường bưu điện được không?
+Gold [219419]: nghi dinh 118 2021 nd cp huong dan luat xu ly vi pham hanh chinh 477969
+Top 5 Predictions:
+  1. nghi dinh 123 2021 nd cp sua doi nghi dinh xu phat vi pham h
+  2. nghi dinh 100 2019 nd cp xu phat vi pham hanh chinh linh vuc
+  3. luat xu ly vi pham hanh chinh 2012 142766
+  4. nghi dinh 46 2016 nd cp xu phat vi pham hanh chinh giao thon
+  5. nghi dinh 142 2017 nd cp quy dinh xu phat vi pham hanh chinh
+
+--- Case 37/86: QID 168286 (Gold @ Rank 9) ---
+Query: Nghị quyết của Quốc hội có hiệu lực thi hành từ khi nào?
+Gold [261464]: luat ban hanh van ban quy pham phap luat 2015 282382
+Top 5 Predictions:
+  1. nghi quyet 71 2022 qh15 noi quy ky hop quoc hoi 295408
+  2. nghi quyet 96 2023 qh15 lay phieu tin nhiem doi voi nguoi gi
+  3. luat to chuc quoc hoi 2014 259784
+  4. nghi quyet 80 2023 qh15 tiep tuc thuc hien chinh sach trong 
+  5. nghi quyet 102 2015 qh13 ban hanh noi quy ky hop quoc hoi 29
+
+--- Case 38/86: QID 78440 (Gold @ Rank 6) ---
+Query: Công tác lấy ý kiến đánh giá của người dân về việc giải quyết thủ tục hành chính tại Bộ phận Một cửa được thực hiện bao lâu một lần?
+Gold [225835]: thong tu 01 2018 tt vpcp co che mot cua mot cua lien thong trong giai quyet thu tuc hanh chinh 40073
+Top 5 Predictions:
+  1. quyet dinh 674 qd bkhcn 2019 quy che to chuc va hoat dong cu
+  2. quyet dinh 125 qd bnv 2022 quy che to chuc hoat dong bo phan
+  3. quyet dinh 2412 qd nhnn 2019 quy che thuc hien co che mot cu
+  4. nghi dinh 61 2018 nd cp co che mot cua mot cua lien thong tr
+  5. quyet dinh 475 qd bhxh 2023 to chuc bo phan tiep nhan thu tu
+
+--- Case 39/86: QID 98570 (Gold @ Rank 7) ---
+Query: Thực hiện nhiệm vụ được cơ quan quản lý nhà nước giao như thế nào?
+Gold [298457]: luat bao ve quyen loi nguoi tieu dung 2010 115251
+Top 5 Predictions:
+  1. nghi dinh 32 2019 nd cp dau thau cung cap san pham dich vu c
+  2. bo luat dan su 2015 296215
+  3. luat thanh tra 2022 544688
+  4. luat khoa hoc va cong nghe nam 2013 197387
+  5. luat thanh tra 2010 115311
+
+--- Case 40/86: QID 94936 (Gold @ Rank 9) ---
+Query: Nội dung Kế hoạch kiểm toán an ninh quốc phòng gồm những gì?
+Gold [88080]: quyet dinh 01 2023 qd ktnn he thong mau bieu ho so kiem toan 550680
+Top 5 Predictions:
+  1. quyet dinh 1607 qd bqp 2022 quy che kiem toan noi bo cua bo 
+  2. quyet dinh 02 2023 qd ktnn lap tham dinh ban hanh ke hoach k
+  3. quyet dinh 03 2021 qd ktnn xet duyet ke hoach kiem toan tong
+  4. quyet dinh 158 qd ktnn 2021 kiem toan chuong trinh muc tieu 
+  5. quyet dinh 47 qd ktnn 2021 huong dan kiem toan du an dau tu 
+
+--- Case 41/86: QID 92286 (Gold @ Rank 8) ---
+Query: Người vay vốn tại Ngân hàng Chính sách xã hội trong chính sách tín dụng ưu đãi đối với học sinh, sinh viên gồm những ai?
+Gold [245419]: huong dan 2162a nhcs td cho vay hoc sinh sinh vien huong dan quyet dinh 157 2007 qd ttg 56527
+Top 5 Predictions:
+  1. quyet dinh 157 2007 qd ttg tin dung hoc sinh sinh vien 56252
+  2. quyet dinh 09 2022 qd ttg tin dung hoc sinh sinh vien co hoa
+  3. nghi dinh 78 2002 nd cp tin dung nguoi ngheo doi tuong chinh
+  4. nghi dinh 28 2022 nd cp tin dung uu dai chuong trinh phat tr
+  5. quyet dinh 05 2022 qd ttg sua doi quyet dinh 157 2007 qd ttg
+
+--- Case 42/86: QID 159836 (Gold @ Rank 10) ---
+Query: Danh hiệu “Lao động tiên tiến” được xét tặng cho đối tượng nào?
+Gold [192255]: luat thi dua khen thuong sua doi 2013 215903
+Top 5 Predictions:
+  1. luat thi dua khen thuong 2003 15 2003 qh11 51686
+  2. nghi dinh 91 2017 nd cp huong dan luat thi dua khen thuong 3
+  3. thong tu 04 2020 tt bxd huong dan cong tac thi dua khen thuo
+  4. quyet dinh 1689 qd tld 2019 quy che khen thuong cua to chuc 
+  5. thong tu 01 2019 tt vkstc quy dinh ve cong tac thi dua khen 
+
+--- Case 43/86: QID 69266 (Gold @ Rank 8) ---
+Query: Ủy ban nhân dân có vai trò gì trong quá trình thành lập Quỹ tín dụng nhân dân?
+Gold [199608]: thong tu 21 2019 tt nhnn sua doi thong tu ngan hang hop tac xa quy tin dung nhan dan 428626
+Top 5 Predictions:
+  1. thong tu 04 2015 tt nhnn quy tin dung nhan dan 270443
+  2. nghi dinh 34 2018 nd cp to chuc hoat dong quy bao lanh tin d
+  3. quyet dinh 258 qd nhnn 2023 cong bo thu tuc hanh chinh linh 
+  4. luat to chuc chinh quyen dia phuong 2015 282380
+  5. thong tu 23 2018 tt nhnn to chuc lai thu hoi giay phep thanh
+
+--- Case 44/86: QID 147110 (Gold @ Rank 7) ---
+Query: Ký hợp đồng dịch vụ cung ứng lao động với cá nhân cho thuê lại lao động có được đưa vào chi phí hợp lý?
+Gold [247495]: thong tu 96 2015 tt btc huong dan thue thu nhap doanh nghiep tai nghi dinh 12 2015 nd cp 279331
+Top 5 Predictions:
+  1. nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu 
+  2. bo luat lao dong 2019 333670
+  3. nghi dinh 12 2022 nd cp xu phat vi pham hanh chinh lao dong 
+  4. luat 69 2020 qh14 nguoi lao dong viet nam lam viec o nuoc ng
+  5. thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha
+
+--- Case 45/86: QID 62952 (Gold @ Rank 10) ---
+Query: Đơn vị thẩm định phải thỏa các yêu cầu nào?
+Gold [294241]: nghi dinh 06 2022 nd cp giam nhe phat thai khi nha kinh va bao ve tang o don 500104
+Top 5 Predictions:
+  1. nghi dinh 63 2014 nd cp huong dan luat dau thau ve lua chon 
+  2. thong tu 15 2019 tt byt quy dinh viec dau thau thuoc tai cac
+  3. nghi dinh 25 2020 nd cp huong dan luat dau thau lua chon nha
+  4. nghi dinh 35 2021 nd cp huong dan luat dau tu theo phuong th
+  5. thong tu 204 2014 tt btc dao tao boi duong nghiep vu chuyen 
+
+--- Case 46/86: QID 49276 (Gold @ Rank 7) ---
+Query: Mẫu văn bản đăng ký góp vốn, mua cổ phần, mua phần vốn góp của nhà đầu tư nước ngoài được quy định như thế nào?
+Gold [269904]: thong tu 03 2021 tt bkhdt mau van ban bao cao lien quan den hoat dong dau tu tai viet nam 470603
+Top 5 Predictions:
+  1. cong van 8909 bkhdt pc 2020 trien khai thi hanh luat dau tu 
+  2. nghi dinh 01 2021 nd cp dang ky doanh nghiep 283247
+  3. luat dau tu so 61 2020 qh14 321051
+  4. nghi dinh 31 2021 nd cp huong dan luat dau tu 462291
+  5. thong tu 02 2017 tt bkhdt phoi hop giai quyet dang ky dau tu
+
+--- Case 47/86: QID 12238 (Gold @ Rank 10) ---
+Query: Tạm hoãn thi ielts và nhiều chứng chỉ quốc tế?
+Gold [180968]: thong tu 11 2022 tt bgddt lien ket to chuc thi cap chung chi nang luc ngoai ngu 493271
+Top 5 Predictions:
+  1. bo luat to tung hinh su 2015 296884
+  2. luat nhap canh xuat canh qua canh cu tru cua nguoi nuoc ngoa
+  3. luat xuat canh nhap canh cua cong dan viet nam 2019 402073
+  4. quyet dinh 3730 qd bgddt 2022 lien ket to chuc thi cap chung
+  5. nghi dinh 86 2018 nd cp quy dinh ve hop tac dau tu cua nuoc 
+
+--- Case 48/86: QID 128348 (Gold @ Rank 7) ---
+Query: Chỉ huy trưởng có được quản lý đồng thời nhiều công trình?
+Gold [89392]: luat xay dung 2014 238644
+Top 5 Predictions:
+  1. nghi dinh 15 2021 nd cp huong dan mot so noi dung quan ly du
+  2. nghi dinh 12 2009 nd cp quan ly du an dau tu xay dung cong t
+  3. thong tu 99 2019 tt bqp huong dan thi hanh nghi dinh 168 201
+  4. nghi dinh 58 2010 nd cp huong dan luat dan quan tu ve 106576
+  5. thong tu 29 2020 tt bqp moi quan he ban chi huy quan su xa v
+
+--- Case 49/86: QID 62314 (Gold @ Rank 7) ---
+Query: Mục tiêu đào tạo, bồi dưỡng công chức trong cơ quan nhà nước được pháp luật quy định như thế nào?
+Gold [278944]: nghi dinh 101 2017 nd cp dao tao boi duong can bo cong chuc vien chuc 319214
+Top 5 Predictions:
+  1. luat can bo cong chuc 2008 22 2008 qh12 82202
+  2. quyet dinh 490 qd bnv quy che dao tao boi duong cong vien ch
+  3. van ban hop nhat 25 vbhn vpqh 2019 luat can bo cong chuc 439
+  4. quyet dinh 1280 qd ktnn 2022 quy che dao tao boi duong kiem 
+  5. quyet dinh 678 qd btc 2019 quy che dao tao boi duong cong ch
+
+--- Case 50/86: QID 157640 (Gold @ Rank 7) ---
+Query: Cục Di sản văn hóa có quyền cấp phép thăm dò, khai quật khảo cổ không?
+Gold [21962]: quyet dinh 3878 qd bvhttdl chuc nang nhiem vu quyen han co cau to chuc cuc di san van hoa 2013 29397
+Top 5 Predictions:
+  1. quyet dinh 86 2008 qd bvhttdl quy che tham do khai quat khao
+  2. luat di san van hoa 2001 28 2001 qh10 47926
+  3. nghi dinh 98 2010 nd cp huong dan luat di san van hoa 111991
+  4. luat di san van hoa 2009 sua doi 32 2009 qh12 90620
+  5. nghi dinh 79 2017 nd cp chuc nang nhiem vu quyen han co cau 
+
+--- Case 51/86: QID 85786 (Gold @ Rank 7) ---
+Query: Danh mục hàng thực phẩm đông lạnh kinh doanh tạm nhập tái xuất có điều kiện bao gồm những thực phẩm nào?
+Gold [224250]: thong tu 12 2018 tt bct huong dan luat quan ly ngoai thuong va 69 2018 nd cp 369631
+Top 5 Predictions:
+  1. nghi dinh 69 2018 nd cp huong dan luat quan ly ngoai thuong 
+  2. nghi dinh 15 2018 nd cp huong dan luat an toan thuc pham 341
+  3. thong tu 27 2019 tt bct phe lieu tam ngung kinh doanh tam nh
+  4. luat an toan thuc pham 2010 108074
+  5. luat quan ly ngoai thuong 2017 322219
+
+--- Case 52/86: QID 26558 (Gold @ Rank 10) ---
+Query: Hồ sơ hưởng chế độ ốm đau khi bị Covid-19 gồm những gì?
+Gold [253824]: cong van 238 byt kcb 2022 ho so huong bao hiem xa hoi nguoi lao dong dieu tri covid19 500819
+Top 5 Predictions:
+  1. luat bao hiem xa hoi 2014 259700
+  2. thong tu 136 2020 tt bqp ho so quy trinh trach nhiem giai qu
+  3. quyet dinh 166 qd bhxh 2019 quy trinh giai quyet huong che d
+  4. luat bao hiem xa hoi 557190
+  5. thong tu 59 2015 tt bldtbxh huong dan luat bao hiem xa hoi v
+
+--- Case 53/86: QID 61758 (Gold @ Rank 8) ---
+Query: Không ghi nhãn phụ vào hàng hóa nhập khẩu phục vụ mùa tết thương nhân bị xử lý như thế nào?
+Gold [210490]: nghi dinh 119 2017 nd cp xu phat vi pham hanh chinh trong linh vuc tieu chuan do luong 343705
+Top 5 Predictions:
+  1. nghi dinh 43 2017 nd cp nhan hang hoa 346310
+  2. nghi dinh 128 2020 nd cp xu phat vi pham hanh chinh trong li
+  3. nghi dinh 98 2020 nd cp xu phat vi pham hanh chinh hoat dong
+  4. thong tu 05 2019 tt bkhcn huong dan nghi dinh 43 2017 nd cp 
+  5. nghi dinh 111 2021 nd cp sua doi nghi dinh 43 2017 nd cp 497
+
+--- Case 54/86: QID 152420 (Gold @ Rank 7) ---
+Query: Công chức không giữ chức vụ lãnh đạo bị bố trí vào vị trí việc làm có yêu cầu thấp hơn trong trường hợp nào?
+Gold [132142]: quyet dinh 1206 qd btp 2021 danh gia xep loai chat luong cong chuc vien chuc 483506
+Top 5 Predictions:
+  1. luat can bo cong chuc 2008 22 2008 qh12 82202
+  2. nghi dinh 138 2020 nd cp tuyen dung su dung va quan ly cong 
+  3. nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien
+  4. van ban hop nhat 25 vbhn vpqh 2019 luat can bo cong chuc 439
+  5. luat can bo cong chuc va luat vien chuc sua doi 2019 405729
+
+--- Case 55/86: QID 54140 (Gold @ Rank 7) ---
+Query: Tăng mức đóng bảo hiểm thất nghiệp cho người lao động
+Gold [285041]: quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hiem the bao hiem 2017 348047
+Top 5 Predictions:
+  1. luat viec lam nam 2013 215628
+  2. nghi dinh 28 2015 nd cp huong dan luat viec lam va bao hiem 
+  3. thong tu 28 2015 tt bldtbxh huong dan luat viec lam nghi din
+  4. nghi dinh 61 2020 nd cp sua doi 28 2015 nd cp huong dan luat
+  5. luat bao hiem xa hoi 2014 259700
+
+--- Case 56/86: QID 29932 (Gold @ Rank 7) ---
+Query: Đất đai có thuộc quyền sở hữu toàn dân không?
+Gold [266221]: nghi quyet 18 nq tw 2022 hoan thien the che su dung dat tao dong luc phat trien thu nhap cao 518813
+Top 5 Predictions:
+  1. luat dat dai 2013 215836
+  2. bo luat dan su 2015 296215
+  3. nghi dinh 43 2014 nd cp huong dan thi hanh luat dat dai 2306
+  4. luat dat dai 523642
+  5. nghi quyet 19 nq tw nam 2012 doi moi chinh sach phap luat ve
+
+--- Case 57/86: QID 131802 (Gold @ Rank 7) ---
+Query: Các quy định về chính sách thuế, phí, lệ phí được ban hành năm 2022?
+Gold [12180]: cong van 1912 tct dt 2022 xay dung du toan thu ngan sach nha nuoc 2023 516601
+Top 5 Predictions:
+  1. thong tu 47 2022 tt btc huong dan xay dung du toan ngan sach
+  2. thong tu 74 2022 tt btc hinh thuc thoi han thu nop ke khai c
+  3. thong tu 75 2022 tt btc muc thu che do thu nop va quan ly le
+  4. thong tu 44 2023 tt btc muc thu mot so khoan phi le phi ho t
+  5. thong tu 32 2022 tt btc sua doi thong tu 273 2016 tt btc phi
+
+--- Case 58/86: QID 95582 (Gold @ Rank 8) ---
+Query: Khi nghỉ hưu không làm Chủ tịch Hội cựu chiến binh xã nữa thì có được hưởng chính sách hỗ trợ gì không?
+Gold [40635]: nghi dinh 76 2019 nd cp chinh sach doi voi can bo cong chuc cong tac o vung kinh te dac biet kho kha
+Top 5 Predictions:
+  1. nghi dinh 150 2006 nd cp huong dan phap lenh cuu chien binh 
+  2. thong tu 03 2020 tt bldtbxh chinh sach doi voi cuu chien bin
+  3. phap lenh cuu chien binh hoi cuu chien binh viet nam 2005 27
+  4. nghi dinh 33 2023 nd cp can bo cong chuc cap xa va nguoi hoa
+  5. quyet dinh 128 qd tw che do tien luong can bo cong chuc 1151
+
+--- Case 59/86: QID 137696 (Gold @ Rank 7) ---
+Query: Mục đích của việc thi công trám lấp giếng không sử dụng là gì?
+Gold [14021]: luat tai nguyen nuoc 2012 142767
+Top 5 Predictions:
+  1. thong tu 72 2017 tt btnmt quy dinh viec xu ly tram lap gieng
+  2. cong van 2553 btnmt tnn 2022 tang cuong cong tac bao ve tai 
+  3. thong tu 75 2017 tt btnmt quy dinh bao ve nuoc duoi dat hoat
+  4. nghi dinh 36 2020 nd cp xu phat vi pham hanh chinh trong lin
+  5. nghi dinh 167 2018 nd cp quy dinh viec han che khai thac nuo
+
+--- Case 60/86: QID 159364 (Gold @ Rank 7) ---
+Query: Nhân viên của tổ chức thử nghiệm cần đáp ứng điều kiện gì để tổ chức này được chỉ định thực hiện hoạt động thử nghiệm?
+Gold [162849]: thong tu 24 2013 tt bkhcn kiem dinh hieu chuan thu nghiem phuong tien do chuan do luong 212186
+Top 5 Predictions:
+  1. nghi dinh 107 2016 nd cp quy dinh kinh doanh dich vu danh gi
+  2. luat do luong 2011 132449
+  3. thong tu 48 2011 tt bct quan ly chat luong san pham hang hoa
+  4. nghi dinh 105 2016 nd cp to chuc kiem dinh hieu chuan thu ng
+  5. nghi dinh 74 2018 nd cp sua doi nghi dinh 132 2008 nd cp cha
+
+--- Case 61/86: QID 142528 (Gold @ Rank 8) ---
+Query: Trường hợp người lao động không thuộc đối tượng tham gia bảo hiểm xã hội bắt buộc thì xử lý như thế nào?
+Gold [129823]: bo luat lao dong 2019 333670
+Top 5 Predictions:
+  1. luat bao hiem xa hoi 2014 259700
+  2. luat bao hiem xa hoi 557190
+  3. quyet dinh 595 qd bhxh quy trinh thu bao hiem cap so bao hie
+  4. luat an toan ve sinh lao dong 2015 281961
+  5. nghi dinh 143 2018 nd cp bao hiem xa hoi bat buoc nguoi lao 
+
+--- Case 62/86: QID 155408 (Gold @ Rank 10) ---
+Query: Thời hạn giải quyết thủ tục đăng ký nhận cha mẹ con bằng hình thức online là trong bao lâu?
+Gold [189230]: quyet dinh 2228 qd btp 2022 cong bo thu tuc hanh chinh linh vuc ho tich tai co quan dang ky ho tich
+Top 5 Predictions:
+  1. luat ho tich 2014 259727
+  2. nghi dinh 126 2014 nd cp quy dinh chi tiet mot so dieu bien 
+  3. quyet dinh 1872 qd btp 2020 cong bo thu tuc hanh chinh linh 
+  4. quyet dinh 299 qd btp thu tuc hanh chinh ban hanh moi ho tic
+  5. luat hon nhan va gia dinh 2014 238640
+
+--- Case 63/86: QID 159692 (Gold @ Rank 6) ---
+Query: Thang lương, bảng lương và phụ cấp lương là bao nhiêu?
+Gold [12948]: thong tu 04 2019 tt bldtbxh quan ly lao dong tien luong quy bao lanh tin dung doanh nghiep nho 39222
+Top 5 Predictions:
+  1. nghi dinh 204 2004 nd cp che do tien luong doi voi can bo co
+  2. nghi dinh 38 2019 nd cp muc luong co so doi voi can bo cong 
+  3. thong tu 13 2022 tt bldtbxh quan ly lao dong tien luong quy 
+  4. nghi dinh 51 2016 nd cp tien luong tien thuong nguoi lao don
+  5. thong tu 17 2015 tt bldtbxh xay dung thang luong bang luong 
+
+--- Case 64/86: QID 165276 (Gold @ Rank 6) ---
+Query: Có bắt buộc phải cung cấp giấy xác nhận đối tượng và thực trạng nhà ở khi đăng ký thuê, thuê mua nhà ở xã hội không?
+Gold [141634]: nghi dinh 99 2015 nd cp huong dan luat nha o 294439
+Top 5 Predictions:
+  1. thong tu 19 2016 tt bxd huong dan 99 2015 nd cp luat nha o 2
+  2. nghi dinh 100 2015 nd cp phat trien quan ly nha o xa hoi 295
+  3. luat nha o 2014 259721
+  4. quyet dinh 705 qd bxd 2021 cong bo thu tuc hanh chinh linh v
+  5. nghi dinh 49 2021 nd cp sua doi nghi dinh 100 2015 nd cp pha
+
+--- Case 65/86: QID 77740 (Gold @ Rank 10) ---
+Query: Công chức sinh con thứ ba trong trường hợp nào sẽ không bị xử lý kỷ luật?
+Gold [190982]: nghi dinh 20 2010 nd cp huong dan phap lenh sua doi dieu 10 phap lenh dan so 102039
+Top 5 Predictions:
+  1. quyet dinh 1531 qd btc quy che xu ly ky luat cong vien chuc 
+  2. nghi dinh 112 2020 nd cp xu ly ky luat can bo cong chuc vien
+  3. quy dinh 69 qd tw 2022 ky luat to chuc dang dang vien vi pha
+  4. quy dinh 102 qd tw 2017 xu ly ky luat dang vien vi pham 3687
+  5. luat can bo cong chuc 2008 22 2008 qh12 82202
+
+--- Case 66/86: QID 86390 (Gold @ Rank 10) ---
+Query: Đối tượng chịu thuế theo quy định pháp luật
+Gold [190965]: luat thue xuat khau thue nhap khau 2016 280693
+Top 5 Predictions:
+  1. thong tu 219 2013 tt btc huong dan luat thue gia tri gia tan
+  2. luat quan ly thue 2019 387595
+  3. luat thue bao ve moi truong 2010 115247
+  4. thong tu 78 2014 tt btc huong dan 218 2013 nd cp thi hanh lu
+  5. luat thue gia tri gia tang 2008 13 2008 qh12 66934
+
+--- Case 67/86: QID 102638 (Gold @ Rank 8) ---
+Query: Thời hiệu xử phạt vi phạm hành chính đối với tổ chức khai thác vận chuyển hàng không không có quy trình phục vụ hành khách tại cảng hàng không là bao lâu?
+Gold [258855]: nghi dinh 123 2021 nd cp sua doi nghi dinh xu phat vi pham hanh chinh linh vuc hang hai 477975
+Top 5 Predictions:
+  1. nghi dinh 162 2018 nd cp xu phat vi pham hanh chinh trong li
+  2. luat xu ly vi pham hanh chinh 2012 142766
+  3. thong tu 36 2014 tt bgtvt chat luong dich vu hanh khach tai 
+  4. nghi dinh 142 2017 nd cp quy dinh xu phat vi pham hanh chinh
+  5. nghi dinh 139 2021 nd cp xu phat vi pham hanh chinh giao tho
+
+--- Case 68/86: QID 100298 (Gold @ Rank 10) ---
+Query: Giá bán xăng dầu sau khi thực hiện quỹ bình ổn giá xăng, dầu như thế nào?
+Gold [268645]: cong van 2078 bct tttn 2022 dieu hanh kinh doanh xang dau 510931
+Top 5 Predictions:
+  1. nghi dinh 83 2014 nd cp kinh doanh xang dau 248283
+  2. thong tu 103 2021 tt btc huong dan phuong thuc trich lap quy
+  3. cong van 2293 bct tttn 2022 dieu hanh kinh doanh xang dau 51
+  4. cong van 1846 bct tttn 2022 dieu hanh kinh doanh xang dau 50
+  5. nghi dinh 95 2021 nd cp sua doi nghi dinh 83 2014 nd cp 4658
+
+--- Case 69/86: QID 69070 (Gold @ Rank 9) ---
+Query: Trách nhiệm của cơ quan thực hiện quy chế chi tiêu nội bộ được quy định như thế nào?
+Gold [198275]: nghi dinh 117 2013 nd cp tu chu tu chiu trach nhiem bien che kinh phi quan ly hanh chinh 209502
+Top 5 Predictions:
+  1. thong tu lien tich 71 2014 ttlt btc bnv che do tu chu tu chi
+  2. thong tu 56 2022 tt btc huong dan co che tu chu tai chinh cu
+  3. quyet dinh 1795 qd btc 2017 che do cong tac phi che do chi h
+  4. quyet dinh 1692 qd btc quy trinh thanh tra tai chinh tai co 
+  5. luat thuc hanh tiet kiem chong lang phi 2013 215837
+
+--- Case 70/86: QID 120084 (Gold @ Rank 6) ---
+Query: Đăng ký và sử dụng thông tin hóa đơn điện tử như thế nào?
+Gold [289326]: cong van 1727 tct qlrr 2022 huong dan quy che mau trao doi thong tin hoa don dien tu 515130
+Top 5 Predictions:
+  1. nghi dinh 123 2020 nd cp quy dinh hoa don chung tu 445980
+  2. nghi dinh 119 2018 nd cp quy dinh ve hoa don dien tu khi ban
+  3. luat quan ly thue 2019 387595
+  4. thong tu 32 2011 tt btc huong dan ve khoi tao phat hanh su d
+  5. thong tu 78 2021 tt btc huong dan luat quan ly thue nghi din
+
+--- Case 71/86: QID 156810 (Gold @ Rank 7) ---
+Query: Quyền và nghĩa vụ của bên cung cấp dịch vụ trong hợp đồng dịch vụ ra sao?
+Gold [25650]: thong tu 5 2023 tt bnv huong dan mau hop dong dich vu cong viec trong co quan hanh chinh 565161
+Top 5 Predictions:
+  1. bo luat dan su 2015 296215
+  2. luat thuong mai 2005 36 2005 qh11 2633
+  3. bo luat dan su 1995 44 l ctn 39391
+  4. nghi dinh 99 2011 nd cp huong dan luat bao ve quyen loi nguo
+  5. luat kinh doanh bat dong san 2014 259722
+
+--- Case 72/86: QID 114688 (Gold @ Rank 8) ---
+Query: Thời điểm thực hiện ký quỹ là khi nào?
+Gold [84570]: nghi dinh 31 2021 nd cp huong dan luat dau tu 462291
+Top 5 Predictions:
+  1. quyet dinh 12 2020 qd ttg thi diem ky quy doi voi nguoi lao 
+  2. nghi dinh 112 2021 nd cp huong dan luat nguoi lao dong di la
+  3. thong tu 29 2018 tt nhnn xac nhan quan ly tien ky quy cua do
+  4. nghi dinh 40 2018 nd cp quan ly hoat dong kinh doanh theo ph
+  5. nghi dinh 145 2020 nd cp huong dan bo luat lao dong ve dieu 
+
+--- Case 73/86: QID 6222 (Gold @ Rank 9) ---
+Query: Cách đăng ký người phụ thuộc để giảm trừ gia cảnh năm 2022?
+Gold [135644]: thong tu 105 2020 tt btc huong dan dang ky thue 459433
+Top 5 Predictions:
+  1. thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha
+  2. cong van 883 tct dnncn 2022 quyet toan thue thu nhap ca nhan
+  3. cong van 13762 cthn hkdcn 2023 quyet toan thue thu nhap ca n
+  4. nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan
+  5. cong van 18175 cthn ttht 2022 giam tru gia canh nguoi phu th
+
+--- Case 74/86: QID 113912 (Gold @ Rank 9) ---
+Query: Có phải xác nhận số lượng sao chụp tài liệu bí mật nhà nước và văn bản ghi nhận việc sao chụp tài liệu hay không?
+Gold [122987]: thong tu 24 2020 tt bca bieu mau su dung trong cong tac bao ve bi mat nha nuoc 437913
+Top 5 Predictions:
+  1. thong tu 07 2020 tt bkhdt cong tac bao ve bi mat nha nuoc li
+  2. nghi dinh 26 2020 nd cp huong dan luat bao ve bi mat nha nuo
+  3. quyet dinh 1500 qd btc 2020 quy che bao ve bi mat nha nuoc c
+  4. quyet dinh 245 qd tct 2023 noi quy bao ve bi mat nha nuoc ng
+  5. luat bao ve bi mat nha nuoc 2018 337064
+
+--- Case 75/86: QID 164524 (Gold @ Rank 8) ---
+Query: Mẫu Quyết định khởi tố vụ án hình sự mới nhất hiện nay như thế nào?
+Gold [133773]: nghi quyet 05 2017 nq hdtp bieu mau van ban to tung ap dung xet xu luat to tung hinh su 320658
+Top 5 Predictions:
+  1. bo luat to tung hinh su 2015 296884
+  2. thong tu 119 2021 tt bca bieu mau giay to so sach ve dieu tr
+  3. thong tu lien tich 04 2018 ttlt vksndtc bca bqp thuc hien qu
+  4. quyet dinh 111 qd vkstc 2020 quy che cong tac thuc hanh quye
+  5. thong tu 28 2020 tt bca trinh tu thu tuc tiep nhan to giac v
+
+--- Case 76/86: QID 159112 (Gold @ Rank 10) ---
+Query: Mức tối đa giá xăng dầu sau khi thực hiện chi sử dụng Quỹ Bình ổn giá xăng dầu là bao nhiêu?
+Gold [73607]: cong van 1214 bct tttn 2022 dieu hanh kinh doanh xang dau 506242
+Top 5 Predictions:
+  1. thong tu 103 2021 tt btc huong dan phuong thuc trich lap quy
+  2. nghi dinh 95 2021 nd cp sua doi nghi dinh 83 2014 nd cp 4658
+  3. nghi dinh 83 2014 nd cp kinh doanh xang dau 248283
+  4. cong van 1846 bct tttn 2022 dieu hanh kinh doanh xang dau 50
+  5. cong van 1674 bct tttn 2022 dieu hanh kinh doanh xang dau 50
+
+--- Case 77/86: QID 121308 (Gold @ Rank 10) ---
+Query: Sở Giao dịch kho bạc Nhà nước có nằm trong hệ thống của cơ quan Kho bạc nhà nước hay không?
+Gold [14927]: thong tu 84 2016 tt btc huong dan thu tuc thu nop ngan sach nha nuoc thue thu noi dia 301601
+Top 5 Predictions:
+  1. quyet dinh 26 2015 qd ttg chuc nang co cau to chuc kho bac n
+  2. quyet dinh 1618 qd btc 2019 chuc nang nhiem vu quyen han co 
+  3. nghi dinh 11 2020 nd cp thu tuc hanh chinh thuoc linh vuc kh
+  4. thong tu 33 2017 tt btc quan ly tien mat giay to co gia tai 
+  5. quyet dinh 4526 qd kbnn 2019 chuc nang nhiem vu cua kho bac 
+
+--- Case 78/86: QID 66924 (Gold @ Rank 9) ---
+Query: Đối tượng phải được tập huấn kiến thức an toàn thực phẩm gồm những ai?
+Gold [204875]: nghi dinh 155 2018 nd cp sua doi quy dinh lien quan den dieu kien kinh doanh thuoc bo y te 399829
+Top 5 Predictions:
+  1. thong tu 32 2022 tt bnnptnt sua doi thong tu tham dinh co so
+  2. cong van 244 attp ndtt 2020 cap giay chung nhan co so du die
+  3. quyet dinh 381 qd qlcl 2014 tai lieu tap huan kien thuc ve a
+  4. quyet dinh 1390 qd bct 2020 cau hoi kiem tra de xac nhan da 
+  5. luat an toan thuc pham 2010 108074
+
+--- Case 79/86: QID 156440 (Gold @ Rank 7) ---
+Query: Nhiệm vụ trong xây dựng và phát triển Chính phủ điện tử, Chính phủ số?
+Gold [110662]: nghi quyet 76 nq cp 2021 chuong trinh tong the cai cach hanh chinh nha nuoc 2021 2030 481235
+Top 5 Predictions:
+  1. quyet dinh 1925 qd btttt 2022 chuc nang nhiem vu quyen han c
+  2. nghi dinh 150 2016 nd cp chuc nang nhiem vu quyen han va co 
+  3. quyet dinh 421 qd bnv 2022 chuong trinh boi duong cong chuc 
+  4. quyet dinh 06 2013 qd ttg chuc nang nhiem vu co cau cong tho
+  5. quyet dinh 2868 qd btnmt 2022 chuc nang nhiem vu quyen han c
+
+--- Case 80/86: QID 131354 (Gold @ Rank 8) ---
+Query: Hai bên nam nữ chưa đăng ký kết hôn thì một bên có được quyền đòi lại sính lễ đã trao cho bên kia trước đó hay không?
+Gold [81598]: bo luat dan su 2015 296215
+Top 5 Predictions:
+  1. nghi dinh 123 2015 nd cp huong dan luat ho tich 282304
+  2. luat hon nhan va gia dinh 2014 238640
+  3. luat ho tich 2014 259727
+  4. nghi dinh 126 2014 nd cp quy dinh chi tiet mot so dieu bien 
+  5. thong tu lien tich 02 2016 ttlt bng btp huong dan dang ky qu
+
+--- Case 81/86: QID 63466 (Gold @ Rank 9) ---
+Query: Khai quyết toán thuế thu nhập cá nhân là gì?
+Gold [161949]: luat quan ly thue 2019 387595
+Top 5 Predictions:
+  1. thong tu 111 2013 tt btc huong dan luat thue thu nhap ca nha
+  2. cong van 883 tct dnncn 2022 quyet toan thue thu nhap ca nhan
+  3. nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733
+  4. thong tu 80 2021 tt btc huong dan luat quan ly thue nghi din
+  5. nghi dinh 65 2013 nd cp huong dan luat thue thu nhap ca nhan
+
+--- Case 82/86: QID 143624 (Gold @ Rank 6) ---
+Query: Hộ gia đình, cá nhân khi được cấp quyền truy cập khai thác thông tin dữ liệu trên mạng có trách nhiệm như thế nào?
+Gold [220279]: thong tu 34 2014 tt btnmt xay dung quan ly khai thac he thong thong tin dat dai 244305
+Top 5 Predictions:
+  1. nghi dinh 73 2017 nd cp quan ly khai thac su dung thong tin 
+  2. thong tu 27 2016 tt bxd huong dan 117 2015 nd cp he thong th
+  3. nghi dinh 03 2019 nd cp hoat dong vien tham 387694
+  4. thong tu 12 2019 tt bxd quan ly he thong co so du lieu dinh 
+  5. thong tu 13 2016 tt btp cap nhat thong tin su dung du lieu q
+
+--- Case 83/86: QID 165140 (Gold @ Rank 8) ---
+Query: Trường hợp người nộp thuế phát sinh nghĩa vụ khai thuế thuộc trách nhiệm quản lý của cơ quan thuế khác thì xử lý như thế nào?
+Gold [16227]: quyet dinh 2845 qd btc phan cong co quan thue quan ly nguoi nop thue 2016 338297
+Top 5 Predictions:
+  1. nghi dinh 126 2020 nd cp huong dan luat quan ly thue 455733
+  2. luat quan ly thue 2019 387595
+  3. thong tu 80 2021 tt btc huong dan luat quan ly thue nghi din
+  4. thong tu 19 2021 tt btc huong dan giao dich dien tu trong li
+  5. nghi dinh 91 2022 nd cp sua doi nghi dinh 126 2020 nd cp huo
+
+--- Case 84/86: QID 56750 (Gold @ Rank 9) ---
+Query: Thủ tục cấp giấy chứng nhận kiến thức về an toàn thực phẩm được quy định như thế nào?
+Gold [299215]: cong van 244 attp ndtt 2020 cap giay chung nhan co so du dieu kien an toan thuc pham 452024
+Top 5 Predictions:
+  1. thong tu 38 2018 tt bnnptnt tham dinh co so san xuat thuc ph
+  2. luat an toan thuc pham 2010 108074
+  3. nghi dinh 15 2018 nd cp huong dan luat an toan thuc pham 341
+  4. thong tu 32 2022 tt bnnptnt sua doi thong tu tham dinh co so
+  5. thong tu 43 2018 tt bct quan ly an toan thuc pham thuoc trac
+
+--- Case 85/86: QID 85794 (Gold @ Rank 8) ---
+Query: Tuyển sinh lớp 10 theo các phương thức nào?
+Gold [11284]: thong tu 11 2014 tt bgddt quy che tuyen sinh trung hoc co so trung hoc pho thong 227237
+Top 5 Predictions:
+  1. cong van 1682 sgddt ktkd 2023 to chuc ky thi tuyen sinh vao 
+  2. quyet dinh 773 qd ubnd 2022 huy dong tre ra lop va tuyen sin
+  3. cong van 944 sgddt qlt 2022 tuyen sinh vao lop 10 trung hoc 
+  4. cong van 1121 sgddt ktkd 2022 thi tuyen sinh vao lop 10 so g
+  5. quyet dinh 1153 qd ubnd 2023 tuyen sinh vao cac lop dau cap 
+
+--- Case 86/86: QID 61940 (Gold @ Rank 9) ---
+Query: Chống thất thu đối với doanh nghiệp, cá nhân kinh doanh trong lĩnh vực thương mại, dịch vụ, nhất là chống thất thu thuế trong kinh doanh, chuyển nhượng bất động sản?
+Gold [162235]: thong tu 47 2022 tt btc huong dan xay dung du toan ngan sach va ke hoach tai chinh 2023 524554
+Top 5 Predictions:
+  1. cong van 769 tct ttkt 2022 thuc hien chong that thu ngan sac
+  2. luat kinh doanh bat dong san 2014 259722
+  3. nghi quyet 62 2022 qh15 hoat dong chat van tai ky hop thu 3 
+  4. thong tu 40 2021 tt btc huong dan thue gia tri gia tang thue
+  5. chi thi 22 ct ttg 2023 tang cuong ky luat chap hanh phap lua

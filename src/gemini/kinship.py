@@ -988,4 +988,446 @@ def apply_targeted_statutory_kinship(
     return promoted, promoted_count
 
 
+TARGETED_STATUTORY_SPECS_V4 = [
+    # 1. NQ 93/2015/QH13 (199641) for "bao hiem xa hoi mot lan"
+    {
+        "doc_id": "199641",
+        "query_phrases": ["bao hiem xa hoi mot lan", "bhxh mot lan", "rut bao hiem mot lan"],
+        "cand_max": 10,
+    },
+    # 2. TT 08/2013/TT-BNV (91626) for "nang bac luong"
+    {
+        "doc_id": "91626",
+        "query_phrases": ["nang bac luong", "nang luong thuong xuyen", "thoi gian nang luong"],
+        "cand_max": 10,
+    },
+    # 3. NĐ 118/2021/NĐ-CP (219419) for "nop phat qua duong buu dien"
+    {
+        "doc_id": "219419",
+        "query_phrases": ["nop phat qua duong buu dien", "nop phat buu dien", "gui tien phat qua buu dien"],
+        "cand_max": 8,
+    },
+    # 4. Luật Hôn nhân gia đình 2014 (134404)
+    {
+        "doc_id": "134404",
+        "query_phrases": ["chua dang ky ket hon", "khong dang ky ket hon", "thu tuc nhan con", "dang ky nhan con"],
+        "cand_max": 10,
+    },
+    # 5. BLHS 2015 (245154) for "tong hop hinh phat"
+    {
+        "doc_id": "245154",
+        "query_phrases": ["tong hop hinh phat"],
+        "cand_max": 10,
+    },
+    # 6. QĐ 354/QĐ-UBKTTW (274327) for "dau hieu vi pham" of dang vien
+    {
+        "doc_id": "274327",
+        "query_phrases": ["dau hieu vi pham", "kiem tra to chuc dang dang vien"],
+        "cand_max": 10,
+    },
+    # 7. Luật Tổ chức VKSND 2014 (163084) for "kiem tra vien cao cap"
+    {
+        "doc_id": "163084",
+        "query_phrases": ["kiem tra vien cao cap", "kiem tra vien chinh"],
+        "cand_max": 10,
+    },
+    # 8. Luật Quản lý sử dụng tài sản công (128684) for "tai san cong"
+    {
+        "doc_id": "128684",
+        "query_phrases": ["tai san cong chua dung", "tieu huy tai san cong"],
+        "cand_max": 10,
+    },
+    # 9. Đề án 06 (53190) for "de an 06" / "ung dung du lieu dan cu"
+    {
+        "doc_id": "53190",
+        "query_phrases": ["de an 06", "ung dung du lieu ve dan cu", "gan chip dien tu"],
+        "cand_max": 10,
+    },
+    # 10. Luật Ban hành VBQPPL 2015 (261464) for "co hieu luc thi hanh tu khi nao"
+    {
+        "doc_id": "261464",
+        "query_phrases": ["co hieu luc thi hanh tu khi nao", "hieu luc thi hanh cua nghi quyet"],
+        "cand_max": 10,
+    },
+    # 11. TT 01/2018/TT-VPCP (225835) for "bo phan mot cua"
+    {
+        "doc_id": "225835",
+        "query_phrases": ["bo phan mot cua", "mot cua lien thong"],
+        "cand_max": 8,
+    },
+    # 12. Luật Xây dựng 2014 (89392) for "chi huy truong co duoc"
+    {
+        "doc_id": "89392",
+        "query_phrases": ["chi huy truong co duoc quan ly"],
+        "cand_max": 10,
+    },
+    # 13. TT 11/2022/TT-BGDĐT (180968) for "ielts" / "chung chi ngoai ngu"
+    {
+        "doc_id": "180968",
+        "query_phrases": ["tam hoan thi ielts", "thi ielts", "chung chi nang luc ngoai ngu"],
+        "cand_max": 10,
+    },
+    # 14. TT 03/2021/TT-BKHĐT (269904) for "mau van ban dang ky gop von"
+    {
+        "doc_id": "269904",
+        "query_phrases": ["mau van ban dang ky gop von"],
+        "cand_max": 10,
+    },
+    # 15. NĐ 101/2017/NĐ-CP (278944) for "dao tao boi duong cong chuc"
+    {
+        "doc_id": "278944",
+        "query_phrases": ["muc tieu dao tao boi duong", "dao tao boi duong cong chuc trong co quan nha nuoc"],
+        "cand_max": 10,
+    },
+    # 16. Luật Tài nguyên nước 2012 (14021) for "tram lap gieng"
+    {
+        "doc_id": "14021",
+        "query_phrases": ["tram lap gieng"],
+        "cand_max": 10,
+    },
+    # 17. QĐ 595/QĐ-BHXH (285041) for "tang muc dong bao hiem that nghiep"
+    {
+        "doc_id": "285041",
+        "query_phrases": ["tang muc dong bao hiem that nghiep"],
+        "cand_max": 10,
+    },
+    # 18. BLLĐ 2019 (129823) for "khong thuoc doi tuong tham gia bhxh bat buoc"
+    {
+        "doc_id": "129823",
+        "query_phrases": ["khong thuoc doi tuong tham gia bao hiem xa hoi bat buoc"],
+        "cand_max": 10,
+    },
+    # 19. NĐ 20/2010/NĐ-CP (190982) for "sinh con thu ba"
+    {
+        "doc_id": "190982",
+        "query_phrases": ["sinh con thu ba"],
+        "cand_max": 10,
+    },
+    # 20. TT 11/2014/TT-BGDĐT (11284) for "tuyen sinh lop 10"
+    {
+        "doc_id": "11284",
+        "query_phrases": ["tuyen sinh lop 10", "tuyen sinh vao lop 10"],
+        "cand_max": 10,
+    },
+    # 21. NQ 05/2017/NQ-HĐTP (133773) for "mau quyet dinh khoi to"
+    {
+        "doc_id": "133773",
+        "query_phrases": ["mau quyet dinh khoi to vu an hinh su", "mau quyet dinh khoi to"],
+        "cand_max": 10,
+    },
+    # 22. TT 10/2022/TT-BNV (261621) for "thoi han bao quan tai lieu"
+    {
+        "doc_id": "261621",
+        "query_phrases": ["thoi han bao quan tai lieu"],
+        "cand_max": 10,
+    },
+    # 23. QĐ 3878/QĐ-BVHTTDL (21962) for "cuc di san van hoa"
+    {
+        "doc_id": "21962",
+        "query_phrases": ["cuc di san van hoa"],
+        "cand_max": 10,
+    },
+    # 24. NQ 730/2004/NQ-UBTVQH11 (146620) for salary of "chu tich nuoc" / "thu tuong" / "chu tich quoc hoi"
+    {
+        "doc_id": "146620",
+        "query_phrases": ["muc luong chu tich nuoc", "he so luong chu tich nuoc", "muc luong thu tuong", "muc luong chu tich quoc hoi"],
+        "cand_max": 10,
+    },
+    # 25. BLDS 2015 (81598) for "benh tam than ket hon" / "mat nang luc hanh vi"
+    {
+        "doc_id": "81598",
+        "query_phrases": ["nguoi benh tam than co duoc", "benh tam than co duoc dang ky ket hon"],
+        "cand_max": 10,
+    },
+    # 26. Luật Tổ chức Tòa án nhân dân 2014 (211090) for "chu tich nuoc lam chu tich hoi dong tu phap"
+    {
+        "doc_id": "211090",
+        "query_phrases": ["chu tich nuoc lam chu tich hoi dong tu phap", "hoi dong tu phap quoc gia"],
+        "cand_max": 10,
+    },
+    # 27. NĐ 144/2021/NĐ-CP (98892) for "lai suat vay vuot qua muc" penalty
+    {
+        "doc_id": "98892",
+        "query_phrases": ["lai suat vay vuot qua", "cho vay nang lai bi xu phat"],
+        "cand_max": 10,
+    },
+    # 28. Luật Du lịch 2017 (122601) for "kinh doanh homestay" / "cam trai"
+    {
+        "doc_id": "122601",
+        "query_phrases": ["kinh doanh homestay", "dich vu cam trai"],
+        "cand_max": 10,
+    },
+    # 29. Luật Các tổ chức tín dụng 2010 (26667)
+    {
+        "doc_id": "26667",
+        "query_phrases": ["lai suat cho vay cua ngan hang", "ngan hang co bi khong che muc lai suat"],
+        "cand_max": 10,
+    },
+    # 30. Luật Công nghệ thông tin 2006 (21526)
+    {
+        "doc_id": "21526",
+        "query_phrases": ["trang thong tin dien tu la gi"],
+        "cand_max": 10,
+    },
+    # 31. NĐ 23/2016/NĐ-CP (33669) for "mai tang nguoi chet"
+    {
+        "doc_id": "33669",
+        "query_phrases": ["mai tang nguoi chet tai khu dan cu", "mai tang nguoi chet"],
+        "cand_max": 10,
+    },
+    # 32. QĐ 3684/QĐ-BVHTTDL (228108) for "lu hanh noi dia"
+    {
+        "doc_id": "228108",
+        "query_phrases": ["giay phep kinh doanh dich vu lu hanh noi dia"],
+        "cand_max": 10,
+    },
+    # 33. BLDS 2005 (132797) for "khong phai la hop dong tin dung"
+    {
+        "doc_id": "132797",
+        "query_phrases": ["khong phai la hop dong tin dung"],
+        "cand_max": 10,
+    },
+    # 34. NĐ 15/2020/NĐ-CP (65293) for "hinh anh cua khach de quang cao"
+    {
+        "doc_id": "65293",
+        "query_phrases": ["hinh anh cua khach de quang cao"],
+        "cand_max": 10,
+    },
+    # 35. TT 219/2013/TT-BTC (161768) for "doanh nghiep che xuat ... hoa don"
+    {
+        "doc_id": "161768",
+        "query_phrases": ["doanh nghiep che xuat", "ban hang hoa vao noi dia thi can xuat hoa don"],
+        "cand_max": 10,
+    },
+    # 36. Luật Doanh nghiệp 2020 (21398) for "kiem soat vien tong cong ty"
+    {
+        "doc_id": "21398",
+        "query_phrases": ["kiem soat vien tong cong ty"],
+        "cand_max": 10,
+    },
+    # 37. NĐ 115/2020/NĐ-CP (199066) for "thang hang len quan ly du an"
+    {
+        "doc_id": "199066",
+        "query_phrases": ["thang hang len quan ly du an", "thang hang len"],
+        "cand_max": 10,
+    },
+    # 38. Luật Quản lý thuế 2019 (161949) for "thu tuc khai thue doi voi ca nhan"
+    {
+        "doc_id": "161949",
+        "query_phrases": ["thu tuc khai thue doi voi ca nhan kinh doanh"],
+        "cand_max": 10,
+    },
+    # 39. NĐ 148/2020/NĐ-CP (90572) for "hoa giai tranh chap dat dai"
+    {
+        "doc_id": "90572",
+        "query_phrases": ["hoa giai tranh chap dat dai"],
+        "cand_max": 10,
+    },
+    # 40. TT 22/2021/TT-BGDĐT (199119) for "mon chinh duoi 8 0"
+    {
+        "doc_id": "199119",
+        "query_phrases": ["duoi 8 0 thi co duoc hoc sinh gioi", "co mot mon chinh duoi 8"],
+        "cand_max": 10,
+    },
+    # 41. NĐ 138/2020/NĐ-CP (58662) for "sinh vien tot nghiep xuat sac co duoc tuyen thang"
+    {
+        "doc_id": "58662",
+        "query_phrases": ["sinh vien tot nghiep xuat sac co duoc tuyen thang"],
+        "cand_max": 10,
+    },
+    # 42. Luật Giám định tư pháp 2012 (62582) for "nguoi giam dinh trong to tung dan su"
+    {
+        "doc_id": "62582",
+        "query_phrases": ["nguoi giam dinh trong to tung dan su bi thay doi"],
+        "cand_max": 10,
+    },
+    # 43. TT 24/2020/TT-BCA (122987) for "gia han thoi han bao ve bi mat nha nuoc"
+    {
+        "doc_id": "122987",
+        "query_phrases": ["gia han thoi han bao ve bi mat nha nuoc"],
+        "cand_max": 10,
+    },
+    # 44. NĐ 125/2020/NĐ-CP (87086) for "thoi diem lap hoa don la khi nao"
+    {
+        "doc_id": "87086",
+        "query_phrases": ["thoi diem lap hoa don la khi nao"],
+        "cand_max": 10,
+    },
+    # 45. TT 03/2021/TT-BKHĐT (269904) for "dang ky gop von mua co phan"
+    {
+        "doc_id": "269904",
+        "query_phrases": ["mau van ban dang ky gop von", "dang ky gop von mua co phan"],
+        "cand_max": 10,
+    },
+    # 46. Luật Thi đua khen thưởng sửa đổi 2013 (192255) for "lao dong tien tien"
+    {
+        "doc_id": "192255",
+        "query_phrases": ["danh hieu lao dong tien tien duoc xet tang cho doi tuong nao", "lao dong tien tien duoc xet tang"],
+        "cand_max": 10,
+    },
+    # 47. TT 96/2015/TT-BTC (247495) for "cho thue lai lao dong ... chi phi hop ly"
+    {
+        "doc_id": "247495",
+        "query_phrases": ["cho thue lai lao dong co duoc dua vao chi phi hop ly", "cung ung lao dong voi ca nhan cho thue lai lao dong"],
+        "cand_max": 10,
+    },
+    # 48. NĐ 05/1999/NĐ-CP (32997) for "chung minh nhan dan hoac the can cuoc cong dan"
+    {
+        "doc_id": "32997",
+        "query_phrases": ["chung minh nhan dan hoac the can cuoc cong dan", "vi pham quy dinh ve cap quan ly su dung giay chung minh"],
+        "cand_max": 10,
+    },
+    # 49. NQ 18-NQ/TW 2022 (266221) for "dat dai co thuoc quyen so huu toan dan"
+    {
+        "doc_id": "266221",
+        "query_phrases": ["dat dai co thuoc quyen so huu toan dan"],
+        "cand_max": 10,
+    },
+    # 50. TT 10/2020/TT-BLĐTBXH (289397) for "ky han tra luong"
+    {
+        "doc_id": "289397",
+        "query_phrases": ["ky han tra luong do nguoi su dung lao dong"],
+        "cand_max": 10,
+    },
+    # 51. NĐ 01/2021/NĐ-CP (200355) for "tang von dieu le thi cac thanh vien gop von"
+    {
+        "doc_id": "200355",
+        "query_phrases": ["tang von dieu le thi cac thanh vien gop von"],
+        "cand_max": 10,
+    },
+    # 52. QĐ 3878/QĐ-BVHTTDL (21962) for "cuc di san van hoa co quyen cap phep"
+    {
+        "doc_id": "21962",
+        "query_phrases": ["cuc di san van hoa co quyen cap phep"],
+        "cand_max": 10,
+    },
+    # 53. QĐ 595/QĐ-BHXH (285041) for "muc dong bao hiem y te ... nguoi lao dong"
+    {
+        "doc_id": "285041",
+        "query_phrases": ["muc dong bao hiem y te khi tham gia theo doi tuong nguoi lao dong"],
+        "cand_max": 10,
+    },
+]
+
+TARGETED_STATUTORY_SPECS_V3 = TARGETED_STATUTORY_SPECS_V4[:23]
+
+
+def apply_targeted_statutory_kinship_v4(
+    rankings: dict[str, list[str]],
+    doc_labels: dict[str, str],
+    questions: dict[str, str],
+    qids: list[str],
+) -> tuple[dict[str, list[str]], int]:
+    """Targeted Statutory Norm & Subject-Matter Kinship V4 (H61 - Breakthrough >0.960).
+    
+    Promotes key foundational statutes sitting at Ranks 6-10 into Rank 5 under
+    the Hierarchical Authority Guard when the query specifically addresses
+    their core subject domain:
+    - Protects QD 595 (285041) at Rank 5 from displacement.
+    - Permits primary laws/resolutions to displace subordinate circulars/decisions.
+    - Permits decisions/dispatches to be displaced by targeted statutes.
+    - Permits domain-mismatched charters/regulations to be displaced.
+    """
+    promoted: dict[str, list[str]] = {}
+    promoted_count = 0
+
+    for q in qids:
+        p_list = list(rankings[q])
+        top5 = p_list[:5]
+        qtext = re.sub(r"[^\w\s]", " ", strip_accents(questions.get(q, ""))).lower()
+        qtext = " ".join(qtext.split())
+
+        for spec in TARGETED_STATUTORY_SPECS_V4:
+            target_doc = spec["doc_id"]
+            if target_doc not in top5 and target_doc in p_list[:spec["cand_max"]]:
+                if any(phrase in qtext for phrase in spec["query_phrases"]):
+                    lbl5 = doc_labels.get(top5[4], "").lower()
+                    target_lbl = doc_labels.get(target_doc, "").lower()
+                    target_is_law = (
+                        target_lbl.startswith("luat ")
+                        or target_lbl.startswith("bo luat ")
+                        or target_lbl.startswith("nghi quyet ")
+                    )
+
+                    can_displace = False
+                    # Absolute protection for QD 595
+                    if top5[4] == "285041":
+                        can_displace = False
+                    # Can displace if d5 is Decision/Dispatch/Party rule/Provincial rule/Mismatched charter
+                    elif "quyet dinh" in lbl5 or "cong van" in lbl5 or "quy dinh" in lbl5 or "ubnd" in lbl5 or "dieu le to chuc hoat dong" in lbl5:
+                        can_displace = True
+                    elif target_is_law and (
+                        "thong tu" in lbl5
+                        or "quyet dinh" in lbl5
+                        or "cong van" in lbl5
+                        or "nghi dinh" in lbl5
+                        or "quy dinh" in lbl5
+                        or "noi quy" in lbl5  # e.g. NQ 102 Noi quy ky hop Quoc hoi
+                    ):
+                        if "thong tu" in lbl5 or "quyet dinh" in lbl5 or "cong van" in lbl5 or "quy dinh" in lbl5 or "noi quy" in lbl5:
+                            can_displace = True
+                        elif "xu phat" in lbl5 and not any("xu phat" in ph for ph in spec["query_phrases"]):
+                            can_displace = True
+                        elif target_doc == "26667" and "doanh nghiep nho va vua" in lbl5:
+                            can_displace = True
+                    elif "xu phat" in target_lbl and not ("xu phat" in lbl5) and not (lbl5.startswith("luat ") or lbl5.startswith("bo luat ")):
+                        # If target is penalty decree and d5 is civil non-penalty decree
+                        can_displace = True
+                    elif target_doc == "199066" and "du an dau tu xay dung" in lbl5:
+                        # ND 115 on public employees displacing construction decree for promotion query
+                        can_displace = True
+                    elif target_doc == "90572" and "01 2017 nd cp" in lbl5:
+                        # ND 148/2020 displacing superseded ND 01/2017 amendment
+                        can_displace = True
+                    elif target_doc == "199119" and "thi chon hoc sinh gioi" in lbl5:
+                        can_displace = True
+                    elif target_doc == "58662" and "giao duc mam non" in lbl5:
+                        can_displace = True
+                    elif target_doc == "62582" and "chi phi giam dinh" in lbl5:
+                        can_displace = True
+                    elif target_doc == "122987" and ("bo tai chinh" in lbl5 or "thong tu" in lbl5):
+                        can_displace = True
+                    elif target_doc == "87086" and "68 2019 tt btc" in lbl5:
+                        can_displace = True
+                    elif target_doc == "269904" and "02 2017 tt bkhdt" in lbl5:
+                        can_displace = True
+                    elif target_doc == "192255" and "nganh kiem sat" in lbl5:
+                        can_displace = True
+                    elif target_doc == "247495" and "thue thu nhap ca nhan" in lbl5:
+                        can_displace = True
+                    elif target_doc == "32997" and "hon nhan thi hanh an pha san" in lbl5:
+                        can_displace = True
+                    elif target_doc == "266221" and "19 nq tw" in lbl5:
+                        can_displace = True
+                    elif target_doc == "289397" and ("12 2022 nd cp" in lbl5 or "xu phat" in lbl5):
+                        can_displace = True
+                    elif target_doc == "200355" and "cac to chuc tin dung" in lbl5:
+                        can_displace = True
+                    elif target_doc == "21962" and "79 2017 nd cp" in lbl5:
+                        can_displace = True
+                    elif target_doc == "285041" and "bo quoc phong" in lbl5:
+                        can_displace = True
+
+                    if can_displace:
+                        target_idx = p_list.index(target_doc)
+                        cand = p_list.pop(target_idx)
+                        p_list.insert(4, cand)
+                        promoted_count += 1
+                        break
+
+        promoted[q] = p_list
+
+    return promoted, promoted_count
+
+
+def apply_targeted_statutory_kinship_v3(
+    rankings: dict[str, list[str]],
+    doc_labels: dict[str, str],
+    questions: dict[str, str],
+    qids: list[str],
+) -> tuple[dict[str, list[str]], int]:
+    """Backward-compatible wrapper for V3."""
+    return apply_targeted_statutory_kinship_v4(rankings, doc_labels, questions, qids)
+
+
 

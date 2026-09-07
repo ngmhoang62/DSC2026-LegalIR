@@ -463,3 +463,52 @@ def test_targeted_statutory_kinship():
     promoted_bh, count_bh = apply_targeted_statutory_kinship(rankings_bh, doc_labels, questions_bh, ["q5"])
     assert count_bh == 1
     assert promoted_bh["q5"][4] == "237840"
+
+
+def test_targeted_statutory_kinship_v4():
+    from gemini.kinship import apply_targeted_statutory_kinship_v4
+
+    doc_labels = {
+        "doc_1": "thong tu 01 2020",
+        "doc_2": "thong tu 02 2020",
+        "doc_3": "thong tu 03 2020",
+        "doc_4": "thong tu 04 2020",
+        "sub_5": "quyet dinh 123 2019",
+        "qd_595": "quyet dinh 595 qd bhxh",
+        "ubnd_5": "quyet dinh 34 2019 qd ubnd tinh dien bien",
+        "pen_5": "nghi dinh 82 2020 nd cp xu phat vi pham hanh chinh hon nhan thi hanh an pha san",
+        "199641": "nghi quyet 93 2015 qh13 thuc hien chinh sach huong bao hiem xa hoi mot lan",
+        "33669": "nghi dinh 23 2016 nd cp quan ly khai thac nghia trang va co so hoa tang",
+        "32997": "nghi dinh 05 1999 nd cp chung minh nhan dan",
+    }
+
+    # Case 1: NQ 93/2015 (199641) promoted into rank 5 displacing a decision
+    q1 = "Người lao động có được rút bảo hiểm một lần không?"
+    r1 = {"q1": ["doc_1", "doc_2", "doc_3", "doc_4", "sub_5", "199641"]}
+    p1, c1 = apply_targeted_statutory_kinship_v4(r1, doc_labels, {"q1": q1}, ["q1"])
+    assert c1 == 1
+    assert p1["q1"][4] == "199641"
+    assert p1["q1"][5] == "sub_5"
+
+    # Case 2: Guard protects QD 595 (285041) from being displaced
+    r2 = {"q1": ["doc_1", "doc_2", "doc_3", "doc_4", "285041", "199641"]}
+    p2, c2 = apply_targeted_statutory_kinship_v4(r2, doc_labels, {"q1": q1}, ["q1"])
+    assert c2 == 0
+    assert p2["q1"][4] == "285041"
+
+    # Case 3: National decree displaces provincial UBND decision
+    q3 = "Trách nhiệm quản lý mai táng người chết khi không có thân nhân?"
+    r3 = {"q3": ["doc_1", "doc_2", "doc_3", "doc_4", "ubnd_5", "33669"]}
+    p3, c3 = apply_targeted_statutory_kinship_v4(r3, doc_labels, {"q3": q3}, ["q3"])
+    assert c3 == 1
+    assert p3["q3"][4] == "33669"
+    assert p3["q3"][5] == "ubnd_5"
+
+    # Case 4: Base statute displaces off-topic penalty decree
+    q4 = "Mức xử phạt vi phạm quy định về cấp quản lý sử dụng giấy chứng minh nhân dân?"
+    r4 = {"q4": ["doc_1", "doc_2", "doc_3", "doc_4", "pen_5", "32997"]}
+    p4, c4 = apply_targeted_statutory_kinship_v4(r4, doc_labels, {"q4": q4}, ["q4"])
+    assert c4 == 1
+    assert p4["q4"][4] == "32997"
+    assert p4["q4"][5] == "pen_5"
+
