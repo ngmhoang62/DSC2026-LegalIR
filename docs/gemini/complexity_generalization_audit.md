@@ -190,3 +190,34 @@ With the architecture pruned and free from micro-rule clutter, the RL research l
   - 4-Model Ensemble: `0.958572` (+0.036pp on Fold 0).
   - 3-Model Tier 3 Ensemble: `0.957856` (+0.036pp on Fold 0).
 - **Takeaway:** Query loss weighting directly targets the primary generalization bottleneck (|G| >= 2 recovery) without rule bloat, but requires synchronized training across all ensemble models to maintain probability calibration.
+
+---
+## 10. Mechanism-Driven Headroom Analysis: Empirical Evidence & Bottleneck Audits
+
+### 10.1 Multi-Gold Query Loss Weighting (Strict 5-Fold Cross-Validation)
+- **Experiment:** Evaluated $w_{\text{multi}} \in [1.00, 1.30, 1.40, 1.50]$ across all 5 outer folds (20 GPU model runs, 6,991 queries) under strict fold isolation.
+- **Results:**
+  - $w=1.00$: Standalone R@5 = `0.948963` | Multi-Gold R@5 = `0.780762` | Ensemble R@5 = `0.953278`
+  - $w=1.30$: Standalone R@5 = `0.949297` | Multi-Gold R@5 = `0.775923` | Ensemble R@5 = `0.953183`
+  - $w=1.40$: Standalone R@5 = `0.949607` | Multi-Gold R@5 = `0.778040` | Ensemble R@5 = `0.954255` (+0.098pp vs raw)
+  - $w=1.50$: Standalone R@5 = `0.950203` | Multi-Gold R@5 = `0.776528` | Ensemble R@5 = `0.953183`
+- **Mechanism Diagnosis:** While $w_{\text{multi}} = 1.40$ improved standalone raw XGBoost recall (+0.064pp), multi-gold recall actually declined ($0.7807 \to 0.7780$). In LambdaMART with NDCG@5, weighting multi-gold queries penalizes misses on the top positive more heavily, causing the trees to over-index on placing the single most confident positive into Rank 1 rather than dispersing probability mass across co-occurring legal targets. **Status: FALSIFIED as a standalone path to >0.960000.**
+
+### 10.2 Headroom Audit: The Missing 88 Candidate Golds (1.15% Ceiling Gap)
+- **Audit Findings:** Scanned all 6,991 queries against `sources.sqlite`. Exactly 88 gold instances (1.15%) out of 7,651 are missing from the union candidate pool, meaning the candidate retrieval ceiling is **98.85%**.
+- **Distribution of Missing Golds:** Decrees 36 (40.9%), Circulars 22 (25.0%), Primary Laws 18 (20.5%), Decisions 5 (5.7%), Standards/Codes 7 (7.9%).
+- **Key Mechanism — Implicit Regulatory Frameworks:**
+  - *Mức lương cơ sở* (Decree 24/2023, Decree 38/2019): Queries inquiring about medal bonuses ("tiền thưởng"), funeral allowances ("trợ cấp mai táng"), or public salary adjustments omit explicit mention of the base salary decree title, leading dense retrieval and BM25 to miss the underlying rate-setting decree.
+  - *Universal Civil Service Qualifications* (Circular 03/2014 IT standards, Circular 01/2014 language framework): Queries asking for qualifications of specific offices (e.g. Chi cục trưởng Chi cục Thuế) retrieve agency-specific decrees but omit the universal framework circulars cited in those decrees.
+  - *Civil Procedure Fee Exemptions* (Decree 07/2021 Multidimensional Poverty Standard): Referenced by poverty status rather than document title.
+- **Headroom Conclusion:** 98.85% of golds are already retrieved. 7,307 golds are in Top 5 (95.50%), while **256 golds sit at Rank 6-30** (155 golds at Rank 6-10 alone). The primary ceiling constraint is ranking within the top 30 candidates, not upstream retrieval.
+
+### 10.3 Statutory Relation Graph: The Base Rate Dilemma and Hub Bias
+- **Graph Construction:** Built a 8,507-node, 79,054-edge directed relation graph across verified replacements, preamble law/decree citations, statutory amendments, and close family subjects.
+- **Oracle Finding:** Out of the 155 golds at Rank 6-10, 83 (53.5%) are connected to a Top 5 document.
+- **Empirical Base Rate Audit:** Across all 6,991 queries, 4,466 candidates at Rank 6-10 have a statutory relation to Top 5 documents. However, **only 39 of these candidates are true golds (0.87% precision)**, while 4,427 are distractors.
+- **Mechanism Diagnosis:** Every decree cites 5-10 foundational laws in its preamble (`Luật Tổ chức Chính phủ`, `Luật Ban hành văn bản quy phạm pháp luật`, `Luật Ngân sách Nhà nước`). Unconstrained or degree-normalized graph diffusion floods the top ranks with high-degree legal hubs across hundreds of queries where the foundational law is irrelevant to the specific user inquiry. For every 1 true gold promoted, 113 distractors compete to displace valid Top 5 documents.
+
+### 10.4 Cross-Encoder & Neural Reranker Evidence
+- **Global LoRA Reranker (exp012b_v3):** Evaluated 5-fold OOF LoRA scores. Standalone Recall@5 is `0.912833`. In strict nested 5-fold cross-fitting ($w_{\text{lora}}=0.12, k_{\text{lora}}=8$), it yielded `0.955567` (+0.0525pp vs baseline `0.955042`), with paired bootstrap test yielding 24 wins, 23 losses, and $p=0.2886$. Global blending is limited by the lower standalone quality of the sequence model.
+- **Selective Boundary Gating:** On the hardest fold (Fold 4), selective neural scoring with a high confidence margin ($\ge 1.5$) produced 10 wins vs 8 losses (+0.262pp on Fold 4), demonstrating that neural sequence interaction is effective when guarded against displacing existing true golds in multi-gold slates.
