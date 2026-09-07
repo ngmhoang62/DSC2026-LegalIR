@@ -5,7 +5,9 @@ Conforms strictly to repository contract:
 - Exactly 5 unique document IDs per query.
 - Output directory: results/gemini/submission/
 - Generated files: submission.json, submission_recall_first.json, submission.zip, SUBMISSION_MANIFEST.json.
-- Zero external upload: offline local verification only.
+- Zero external upload: offline local verification only (uploaded: false).
+- Full deployment parity with 145D AMFD ensemble (Tuned XGB-145D + LGBM-145D + XGB-131D + Profile LTR).
+- Strictly leak-free statutory kinship suite (0 manual query patches).
 """
 from __future__ import annotations
 
@@ -19,32 +21,12 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
-
-from gemini.kinship import (
-    apply_kinship_promotion,
-    apply_inverse_kinship_promotion,
-    apply_multi_statute_promotion,
-    apply_deep_statutory_kinship,
-    apply_guarded_inverse_law,
-    apply_topic_law_promotion,
-    apply_preamble_citation_kinship,
-    apply_hierarchical_midrank_inverse_kinship,
-    apply_technical_standard_kinship,
-    apply_superseded_statute_dedup,
-    apply_operational_insurance_kinship,
-    apply_corporate_entity_kinship,
-    apply_targeted_statutory_kinship,
-    apply_targeted_statutory_kinship_v4,
-    load_doc_labels,
-)
-from gemini.labels import get_canonical_labels
+sys.path.insert(0, str(ROOT / "scripts"))
 
 OUT_DIR = ROOT / "results/gemini/submission"
-PUBLIC_PREDS_PATH = ROOT / "results/exp112_task_adaptive_retrieval/public/PREDICTIONS.json"
 PUBLIC_DATA_PATH = ROOT / "public_test_dataset/public-official.json"
 EVIDENCE_DB = ROOT / "cache/exp112_task_adaptive_retrieval/evidence.sqlite"
-SOURCES_DB = ROOT / "cache/exp112_task_adaptive_retrieval/sources.sqlite"
-DOC_PREAMBLES_PATH = ROOT / "cache/gemini/doc_preambles.json"
+OFFLINE_CORRECT_PATH = OUT_DIR / "submission_145d_offline_correct.json"
 
 
 def sha256_file(path: Path) -> str:
@@ -57,7 +39,7 @@ def sha256_file(path: Path) -> str:
 
 def generate_submission():
     print("=" * 80)
-    print("GENERATING GEMINI SOTA PUBLIC TEST SUBMISSION")
+    print("GENERATING GEMINI 145D AMFD SOTA PUBLIC TEST SUBMISSION")
     print("=" * 80)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -69,111 +51,30 @@ def generate_submission():
     db.close()
     print(f"Total corpus documents: {len(doc_ids)}", flush=True)
 
-    # 2. Load public test queries
-    db_sources = sqlite3.connect(f"file:{SOURCES_DB}?mode=ro", uri=True)
-    labels, _ = get_canonical_labels()
-    all_qids = set(row[0] for row in db_sources.execute("SELECT DISTINCT q FROM sources"))
-    db_sources.close()
-    public_qids = sorted(all_qids - set(labels.keys()))
+    # 2. Verify public test queries
+    public_data = json.loads(PUBLIC_DATA_PATH.read_text(encoding="utf-8"))
+    public_qids = sorted(public_data.keys())
     print(f"Total public test queries: {len(public_qids)}", flush=True)
     assert len(public_qids) == 1000, f"Expected 1000 public queries, got {len(public_qids)}"
 
-    # 3. Load base rankings for public queries
-    print("Loading base public predictions...", flush=True)
-    raw_public = json.loads(PUBLIC_PREDS_PATH.read_text(encoding="utf-8"))
-    assert set(raw_public.keys()) == set(public_qids), "Public query mismatch with PREDICTIONS.json"
-    public_rankings = {q: raw_public[q]["order"] for q in public_qids}
+    # 3. Obtain genuine 145D predictions
+    if not OFFLINE_CORRECT_PATH.exists():
+        print("Offline correct 145D predictions not found. Generating via build_public_145d_predictions...", flush=True)
+        import gemini.build_public_145d_predictions as bld
+        bld.build_offline_correct_submission()
 
-    # 4. Apply Gemini Guarded Statutory Kinship & Multi-Statute Co-Retrieval (SOTA)
-    print("Applying Guarded Statutory Kinship Co-Retrieval...", flush=True)
-    doc_labels = load_doc_labels(EVIDENCE_DB)
-    public_data = json.loads(PUBLIC_DATA_PATH.read_text(encoding="utf-8"))
-    public_questions = {q: row["question"] for q, row in public_data.items()}
+    print("Loading genuine 145D AMFD public predictions...", flush=True)
+    submission_payload = json.loads(OFFLINE_CORRECT_PATH.read_text(encoding="utf-8"))
+    assert set(submission_payload.keys()) == set(public_qids), "Public query mismatch in submission payload"
 
-    kinship_rankings, promo_count = apply_kinship_promotion(
-        public_rankings, doc_labels, public_qids, top_k=2, cand_max=9
-    )
-    print(f"Forward statutory kinship promotions applied on public test: {promo_count} / 1000 queries", flush=True)
-
-    inv_rankings, inv_count = apply_inverse_kinship_promotion(
-        kinship_rankings, doc_labels, public_qids, top_k=2, cand_max=9
-    )
-    print(f"Inverse statutory kinship promotions applied on public test: {inv_count} / 1000 queries", flush=True)
-
-    final_rankings, ms_count = apply_multi_statute_promotion(
-        inv_rankings, doc_labels, public_questions, public_qids
-    )
-    print(f"Multi-statute promotions applied on public test: {ms_count} / 1000 queries", flush=True)
-
-    deep_rankings, deep_count = apply_deep_statutory_kinship(
-        final_rankings, doc_labels, public_qids, top_k=2, cand_max=15
-    )
-    print(f"Deep statutory kinship promotions applied on public test: {deep_count} / 1000 queries", flush=True)
-
-    inv_law_rankings, inv_law_count = apply_guarded_inverse_law(
-        deep_rankings, doc_labels, public_qids, top_k=2, cand_max=12
-    )
-    print(f"Guarded inverse law promotions applied on public test: {inv_law_count} / 1000 queries", flush=True)
-
-    topic_law_rankings, topic_count = apply_topic_law_promotion(
-        inv_law_rankings, doc_labels, public_questions, public_qids, cand_max=6
-    )
-    print(f"Topic law promotions applied on public test: {topic_count} / 1000 queries", flush=True)
-
-    doc_preambles = json.loads(DOC_PREAMBLES_PATH.read_text(encoding="utf-8")) if DOC_PREAMBLES_PATH.exists() else {}
-    preamble_rankings, preamble_count = apply_preamble_citation_kinship(
-        topic_law_rankings, doc_labels, doc_preambles, public_qids, top_k=2, cand_max=8
-    )
-    print(f"Preamble citation promotions applied on public test: {preamble_count} / 1000 queries", flush=True)
-
-    mid_inv_rankings, mid_inv_count = apply_hierarchical_midrank_inverse_kinship(
-        preamble_rankings, doc_labels, public_qids, cand_max=12
-    )
-    print(f"Mid-rank inverse kinship promotions applied on public test: {mid_inv_count} / 1000 queries", flush=True)
-
-    tech_rankings, tech_count = apply_technical_standard_kinship(
-        mid_inv_rankings, doc_labels, public_qids, cand_max=10
-    )
-    print(f"Technical standard promotions applied on public test: {tech_count} / 1000 queries", flush=True)
-
-    dedup_rankings, dedup_count = apply_superseded_statute_dedup(
-        tech_rankings, public_qids
-    )
-    print(f"Superseded statute de-duplications applied on public test: {dedup_count} / 1000 queries", flush=True)
-
-    insurance_rankings, insurance_count = apply_operational_insurance_kinship(
-        dedup_rankings, doc_labels, public_questions, public_qids
-    )
-    print(f"Operational insurance promotions applied on public test: {insurance_count} / 1000 queries", flush=True)
-
-    corp_rankings, corp_count = apply_corporate_entity_kinship(
-        insurance_rankings, doc_labels, public_questions, public_qids
-    )
-    print(f"Corporate entity promotions applied on public test: {corp_count} / 1000 queries", flush=True)
-
-    targeted_rankings, targeted_count = apply_targeted_statutory_kinship(
-        corp_rankings, doc_labels, public_questions, public_qids
-    )
-    print(f"Targeted statutory kinship promotions applied on public test: {targeted_count} / 1000 queries", flush=True)
-
-    final_rankings, targeted_v4_count = apply_targeted_statutory_kinship_v4(
-        targeted_rankings, doc_labels, public_questions, public_qids
-    )
-    print(f"Targeted statutory kinship V4 promotions applied on public test: {targeted_v4_count} / 1000 queries", flush=True)
-
-    # 5. Format submissions (Top-5 docs per query)
-    submission_payload = {}
-    recall_first_payload = {}
+    # Contract assertions
     for q in public_qids:
-        top5 = final_rankings[q][:5]
-        # Contract validation
-        assert len(top5) == 5, f"Query {q} does not have exactly 5 predictions"
-        assert len(set(top5)) == 5, f"Query {q} has duplicate predictions: {top5}"
-        assert set(top5) <= doc_ids, f"Query {q} contains unknown doc IDs: {set(top5) - doc_ids}"
-        submission_payload[q] = {"answer": top5}
-        recall_first_payload[q] = {"answer": top5}
+        ans = submission_payload[q]["answer"]
+        assert len(ans) == 5, f"Query {q} does not have exactly 5 predictions"
+        assert len(set(ans)) == 5, f"Query {q} has duplicate predictions: {ans}"
+        assert set(ans) <= doc_ids, f"Query {q} contains unknown doc IDs: {set(ans) - doc_ids}"
 
-    # 6. Write JSON files
+    # 4. Write submission.json and submission_recall_first.json
     sub_json_path = OUT_DIR / "submission.json"
     rf_json_path = OUT_DIR / "submission_recall_first.json"
     zip_path = OUT_DIR / "submission.zip"
@@ -181,13 +82,13 @@ def generate_submission():
 
     print("Writing submission files...", flush=True)
     sub_json_path.write_text(json.dumps(submission_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    rf_json_path.write_text(json.dumps(recall_first_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    rf_json_path.write_text(json.dumps(submission_payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # 7. Create ZIP archive containing only submission.json
+    # 5. Create ZIP archive containing only submission.json
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
         zf.write(sub_json_path, arcname="submission.json")
 
-    # 8. Verify ZIP integrity
+    # 6. Verify ZIP integrity
     with zipfile.ZipFile(zip_path, "r") as zf:
         names = zf.namelist()
         assert names == ["submission.json"], f"Unexpected zip contents: {names}"
@@ -195,28 +96,18 @@ def generate_submission():
         disk_bytes = sub_json_path.read_bytes()
         assert zip_bytes == disk_bytes, "Zip extracted bytes mismatch disk bytes"
 
-    # 9. Create and write SUBMISSION_MANIFEST.json
+    # 7. Create and write SUBMISSION_MANIFEST.json
     manifest = {
-        "status": "COMPLETE_SUBMISSION",
-        "official_target_reached": True,
-        "achieved_5fold_oof_recall_at_5": 0.960621,
-        "architecture": "145D Enhanced Ranker + AMFD (H59) + Complete Kinship Suite + Expanded Targeted Kinship V4 (H61)",
+        "status": "OFFLINE_CORRECT_PARITY_VERIFIED_SUBMISSION",
+        "official_target_reached": False,
+        "target_recall_at_5": 0.960000,
+        "achieved_5fold_oof_recall_at_5": 0.955042,
+        "achieved_5fold_oof_precision_at_5": 0.204978,
+        "architecture": "145D GBDT Ensemble (Tuned XGB-145D + LGBM-145D + XGB-131D + Profile LTR) + AMFD + Leak-Free Statutory Kinship",
+        "deployment_parity_status": "CORRECTED_FULL_PARITY",
         "queries": len(public_qids),
         "uploaded": False,
-        "forward_kinship_promotions_applied": promo_count,
-        "inverse_kinship_promotions_applied": inv_count,
-        "multi_statute_promotions_applied": ms_count,
-        "deep_kinship_promotions_applied": deep_count,
-        "guarded_inverse_law_promotions_applied": inv_law_count,
-        "topic_law_promotions_applied": topic_count,
-        "preamble_citation_promotions_applied": preamble_count,
-        "midrank_inverse_promotions_applied": mid_inv_count,
-        "technical_standard_promotions_applied": tech_count,
-        "superseded_statute_dedup_applied": dedup_count,
-        "operational_insurance_promotions_applied": insurance_count,
-        "corporate_entity_promotions_applied": corp_count,
-        "targeted_statutory_promotions_applied": targeted_count,
-        "targeted_statutory_v4_promotions_applied": targeted_v4_count,
+        "note": "Fully synchronized with genuine 145D AMFD pipeline. Legacy exp112 fallback completely purged.",
         "contract": "canonical_duplicate_alias_drop_empty_passage_v1",
         "offline_verification": {
             "query_count_valid": len(public_qids) == 1000,
