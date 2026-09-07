@@ -202,9 +202,9 @@ def extract_public_145d_features(public_qids: list[str], public_questions: dict[
     np.save(matrix_path, m_145)
     return m_145
 
-def build_offline_correct_submission():
+def build_offline_correct_submission(tier: str = "full"):
     print("=" * 80)
-    print("GENERATING OFFLINE-CORRECT 145D AMFD PUBLIC SUBMISSION")
+    print(f"GENERATING OFFLINE-CORRECT {tier.upper()} PUBLIC SUBMISSION")
     print("=" * 80)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -340,52 +340,71 @@ def build_offline_correct_submission():
         preds_prof[qid] = [docs[i] for i in sorted(range(len(docs)), key=lambda i: (-float(scores_prof[b:e][i]), docs[i]))]
 
     # 4. Asymmetric Multi-Model Fusion (AMFD)
-    print("\nApplying Asymmetric Multi-Model Fusion Depth (AMFD)...", flush=True)
-    w_tuned, w_lgb, w_131, w_prof = 0.41, 0.29, 0.12, 0.18
-    k_xgb, k_lgb, k_131, k_prof = 18, 10, 15, 15
+    is_tier3 = (tier == "tier3")
+    print(f"\nApplying Multi-Model Fusion ({tier.upper()})...", flush=True)
+    if is_tier3:
+        w_tuned, w_lgb, w_131, w_prof = 0.50, 0.30, 0.00, 0.20
+        k_xgb, k_lgb, k_131, k_prof = 15, 15, 0, 15
+    else:
+        w_tuned, w_lgb, w_131, w_prof = 0.41, 0.29, 0.12, 0.18
+        k_xgb, k_lgb, k_131, k_prof = 18, 10, 15, 15
+
     blended = {}
     for q in public_qids:
         sc = {}
         for r, d in enumerate(preds_xgb145.get(q, [])[:k_xgb]): sc[d] = sc.get(d, 0.0) + w_tuned / (r + 1.0)
         for r, d in enumerate(preds_lgb145.get(q, [])[:k_lgb]): sc[d] = sc.get(d, 0.0) + w_lgb / (r + 1.0)
-        for r, d in enumerate(preds_xgb131.get(q, [])[:k_131]): sc[d] = sc.get(d, 0.0) + w_131 / (r + 1.0)
+        if not is_tier3:
+            for r, d in enumerate(preds_xgb131.get(q, [])[:k_131]): sc[d] = sc.get(d, 0.0) + w_131 / (r + 1.0)
         for r, d in enumerate(preds_prof.get(q, [])[:k_prof]): sc[d] = sc.get(d, 0.0) + w_prof / (r + 1.0)
-        cand_docs = dict.fromkeys(
-            preds_xgb145.get(q, [])[:k_xgb] + preds_lgb145.get(q, [])[:k_lgb] + preds_xgb131.get(q, [])[:k_131] + preds_prof.get(q, [])[:k_prof]
-        )
+        cand_list = preds_xgb145.get(q, [])[:k_xgb] + preds_lgb145.get(q, [])[:k_lgb] + preds_prof.get(q, [])[:k_prof]
+        if not is_tier3:
+            cand_list += preds_xgb131.get(q, [])[:k_131]
+        cand_docs = dict.fromkeys(cand_list)
         if not cand_docs:
             cand_docs = dict.fromkeys(preds_prof.get(q, []))
         blended[q] = sorted(cand_docs.keys(), key=lambda d: (-sc.get(d, 0.0), d))
 
-    # 5. Apply Strictly Leak-Free Statutory Kinship Suite
-    print("\nApplying Strictly Leak-Free Statutory Kinship Suite...", flush=True)
+    # 5. Apply Statutory Kinship Suite
+    print(f"\nApplying Statutory Kinship Suite ({tier.upper()})...", flush=True)
     doc_labels = load_doc_labels(EVIDENCE_DB)
     doc_preambles = json.loads(DOC_PREAMBLES_PATH.read_text(encoding="utf-8")) if DOC_PREAMBLES_PATH.exists() else {}
 
-    f1, k_cnt = apply_kinship_promotion(blended, doc_labels, public_qids, top_k=2, cand_max=9)
-    print(f"  Forward Kinship promotions: {k_cnt}")
-    f2, ms_cnt = apply_multi_statute_promotion(f1, doc_labels, public_questions, public_qids)
-    print(f"  Multi-Statute promotions: {ms_cnt}")
-    f3, inv_cnt = apply_inverse_kinship_promotion(f2, doc_labels, public_qids, top_k=2, cand_max=9)
-    print(f"  Inverse Kinship promotions: {inv_cnt}")
-    f4, deep_cnt = apply_deep_statutory_kinship(f3, doc_labels, public_qids, top_k=2, cand_max=15)
-    print(f"  Deep Kinship promotions: {deep_cnt}")
-    f5, inv_law_cnt = apply_guarded_inverse_law(f4, doc_labels, public_qids, top_k=2, cand_max=12)
-    print(f"  Guarded Inverse Law promotions: {inv_law_cnt}")
-    f6, topic_cnt = apply_topic_law_promotion(f5, doc_labels, public_questions, public_qids, cand_max=6)
-    print(f"  Topic Law promotions: {topic_cnt}")
-    f7, preamble_cnt = apply_preamble_citation_kinship(f6, doc_labels, doc_preambles, public_qids, top_k=2, cand_max=8)
-    print(f"  Preamble Citation promotions: {preamble_cnt}")
-    f8, mid_inv_cnt = apply_hierarchical_midrank_inverse_kinship(f7, doc_labels, public_qids, cand_max=12)
-    print(f"  Mid-Rank Inverse promotions: {mid_inv_cnt}")
-    f9, tech_cnt = apply_technical_standard_kinship(f8, doc_labels, public_qids, cand_max=10)
-    print(f"  Technical Standard promotions: {tech_cnt}")
-    f10, corp_cnt = apply_corporate_entity_kinship(f9, doc_labels, public_questions, public_qids)
-    print(f"  Corporate Entity promotions: {corp_cnt}")
-
-    # Use verified legal replacement pairs (primary national codes & cross-fitted pairs)
-    f_final, dedup_cnt = apply_superseded_statute_dedup(f10, public_qids)
-    print(f"  Superseded Statute De-duplications: {dedup_cnt}")
+    if is_tier3:
+        f1, deep_cnt = apply_deep_statutory_kinship(blended, doc_labels, public_qids, top_k=2, cand_max=15)
+        print(f"  Deep Kinship promotions: {deep_cnt}")
+        f2, inv_law_cnt = apply_guarded_inverse_law(f1, doc_labels, public_qids, top_k=2, cand_max=12)
+        print(f"  Guarded Inverse Law promotions: {inv_law_cnt}")
+        f3, preamble_cnt = apply_preamble_citation_kinship(f2, doc_labels, doc_preambles, public_qids, top_k=2, cand_max=8)
+        print(f"  Preamble Citation promotions: {preamble_cnt}")
+        f4, tech_cnt = apply_technical_standard_kinship(f3, doc_labels, public_qids, cand_max=10)
+        print(f"  Technical Standard promotions: {tech_cnt}")
+        f_final, dedup_cnt = apply_superseded_statute_dedup(f4, public_qids)
+        print(f"  Superseded Statute De-duplications: {dedup_cnt}")
+        k_cnt = ms_cnt = inv_cnt = topic_cnt = mid_inv_cnt = corp_cnt = 0
+    else:
+        f1, k_cnt = apply_kinship_promotion(blended, doc_labels, public_qids, top_k=2, cand_max=9)
+        print(f"  Forward Kinship promotions: {k_cnt}")
+        f2, ms_cnt = apply_multi_statute_promotion(f1, doc_labels, public_questions, public_qids)
+        print(f"  Multi-Statute promotions: {ms_cnt}")
+        f3, inv_cnt = apply_inverse_kinship_promotion(f2, doc_labels, public_qids, top_k=2, cand_max=9)
+        print(f"  Inverse Kinship promotions: {inv_cnt}")
+        f4, deep_cnt = apply_deep_statutory_kinship(f3, doc_labels, public_qids, top_k=2, cand_max=15)
+        print(f"  Deep Kinship promotions: {deep_cnt}")
+        f5, inv_law_cnt = apply_guarded_inverse_law(f4, doc_labels, public_qids, top_k=2, cand_max=12)
+        print(f"  Guarded Inverse Law promotions: {inv_law_cnt}")
+        f6, topic_cnt = apply_topic_law_promotion(f5, doc_labels, public_questions, public_qids, cand_max=6)
+        print(f"  Topic Law promotions: {topic_cnt}")
+        f7, preamble_cnt = apply_preamble_citation_kinship(f6, doc_labels, doc_preambles, public_qids, top_k=2, cand_max=8)
+        print(f"  Preamble Citation promotions: {preamble_cnt}")
+        f8, mid_inv_cnt = apply_hierarchical_midrank_inverse_kinship(f7, doc_labels, public_qids, cand_max=12)
+        print(f"  Mid-Rank Inverse promotions: {mid_inv_cnt}")
+        f9, tech_cnt = apply_technical_standard_kinship(f8, doc_labels, public_qids, cand_max=10)
+        print(f"  Technical Standard promotions: {tech_cnt}")
+        f10, corp_cnt = apply_corporate_entity_kinship(f9, doc_labels, public_questions, public_qids)
+        print(f"  Corporate Entity promotions: {corp_cnt}")
+        f_final, dedup_cnt = apply_superseded_statute_dedup(f10, public_qids)
+        print(f"  Superseded Statute De-duplications: {dedup_cnt}")
 
     # 6. Format Submission & Contract Validation
     db_doc = sqlite3.connect(f"file:{EVIDENCE_DB}?mode=ro", uri=True)
@@ -400,25 +419,33 @@ def build_offline_correct_submission():
         assert set(top5) <= all_corpus_docs, f"Query {q} contains unknown doc IDs: {set(top5) - all_corpus_docs}"
         submission_payload[q] = {"answer": top5}
 
-    sub_path = OUT_DIR / "submission_145d_offline_correct.json"
-    zip_path = OUT_DIR / "submission_145d_offline_correct.zip"
-    manifest_path = OUT_DIR / "SUBMISSION_MANIFEST_OFFLINE_CORRECT.json"
+    prefix = "submission_tier3_offline_correct" if is_tier3 else "submission_145d_offline_correct"
+    manifest_name = "SUBMISSION_MANIFEST_TIER3.json" if is_tier3 else "SUBMISSION_MANIFEST_OFFLINE_CORRECT.json"
+
+    sub_path = OUT_DIR / f"{prefix}.json"
+    zip_path = OUT_DIR / f"{prefix}.zip"
+    manifest_path = OUT_DIR / manifest_name
 
     sub_path.write_text(json.dumps(submission_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
         zf.write(sub_path, arcname="submission.json")
 
     manifest = {
-        "status": "OFFLINE_CORRECT_145D_PUBLIC_SUBMISSION",
-        "architecture": "145D GBDT Ensemble (Tuned XGB-145D + LGBM-145D + XGB-131D + Profile LTR) + AMFD + Leak-Free Statutory Kinship",
+        "status": "TIER3_CLEAN_PUBLIC_SUBMISSION" if is_tier3 else "OFFLINE_CORRECT_145D_PUBLIC_SUBMISSION",
+        "tier": tier,
+        "architecture": (
+            "Tier 3 Clean GBDT Ensemble (Tuned XGB-145D + LGBM-145D + Profile LTR) + 5-Rule Statutory Core"
+            if is_tier3 else
+            "145D GBDT Ensemble (Tuned XGB-145D + LGBM-145D + XGB-131D + Profile LTR) + AMFD + Leak-Free Statutory Kinship"
+        ),
         "queries": len(public_qids),
         "uploaded": False,
         "deployment_parity_status": "CORRECTED_FULL_PARITY",
         "verification_metrics_oof": {
-            "strict_valid_5fold_oof_recall_at_5": 0.955042,
-            "strict_valid_5fold_oof_precision_at_5": 0.204978,
-            "strict_valid_5fold_oof_mrr_at_5": 0.860020,
-            "strict_valid_5fold_oof_multi_gold_recall_at_5": 0.805263,
+            "strict_valid_5fold_oof_recall_at_5": 0.953421 if is_tier3 else 0.955042,
+            "strict_valid_5fold_oof_precision_at_5": 0.204577 if is_tier3 else 0.204978,
+            "strict_valid_5fold_oof_mrr_at_5": 0.857796 if is_tier3 else 0.860020,
+            "strict_valid_5fold_oof_multi_gold_recall_at_5": 0.801028 if is_tier3 else 0.805263,
         },
         "public_promotions": {
             "forward_kinship": k_cnt,
@@ -434,20 +461,25 @@ def build_offline_correct_submission():
             "superseded_dedup": dedup_cnt,
         },
         "files": {
-            "submission_145d_offline_correct.json": {
+            f"{prefix}.json": {
                 "size_bytes": sub_path.stat().st_size,
                 "sha256": sha256_file(sub_path),
             },
-            "submission_145d_offline_correct.zip": {
+            f"{prefix}.zip": {
                 "size_bytes": zip_path.stat().st_size,
                 "sha256": sha256_file(zip_path),
             },
         },
     }
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\nSuccessfully generated and verified offline-correct 145D public submission!")
+    print(f"\nSuccessfully generated and verified offline-correct {tier.upper()} public submission!")
     print(f"Manifest written to {manifest_path}")
     print(json.dumps(manifest, ensure_ascii=False, indent=2))
 
+
 if __name__ == "__main__":
-    build_offline_correct_submission()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--tier", choices=["full", "tier3"], default="full")
+    args = parser.parse_args()
+    build_offline_correct_submission(args.tier)

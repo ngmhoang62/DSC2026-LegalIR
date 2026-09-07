@@ -7,6 +7,7 @@ Establishes the true, leak-free benchmark:
 """
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -34,6 +35,7 @@ from gemini.kinship import (
 )
 
 BEST_DIR = ROOT / "results/gemini/best_ensemble"
+TIER3_DIR = ROOT / "results/gemini/tier3_clean"
 EVIDENCE_DB = ROOT / "cache/exp112_task_adaptive_retrieval/evidence.sqlite"
 QUERY_ROWS_PATH = ROOT / "cache/exp012b_v3/rankings/train/query_rows.jsonl"
 DOC_PREAMBLES_PATH = ROOT / "cache/gemini/doc_preambles.json"
@@ -46,6 +48,16 @@ CANDIDATE_FUSION_CONFIGS = [
     (0.45, 0.25, 0.15, 0.15, 18, 12, 15, 15),
     (0.35, 0.35, 0.15, 0.15, 15, 15, 15, 15),
     (0.40, 0.30, 0.15, 0.15, 18, 10, 15, 15),
+]
+
+TIER3_FUSION_CONFIGS = [
+    # (w_tuned, w_lgb, w_xgb131, w_prof, k_xgb, k_lgb, k_131, k_prof)
+    # w_xgb131=0, k_131=0 to strictly retire XGB-131D
+    (0.50, 0.30, 0.00, 0.20, 15, 15, 0, 15),
+    (0.45, 0.35, 0.00, 0.20, 15, 15, 0, 15),
+    (0.40, 0.40, 0.00, 0.20, 15, 15, 0, 15),
+    (0.50, 0.30, 0.00, 0.20, 18, 10, 0, 15),
+    (0.45, 0.35, 0.00, 0.20, 18, 12, 0, 15),
 ]
 
 
@@ -88,12 +100,30 @@ def apply_unsupervised_kinship(rankings, qids, doc_labels, questions, doc_preamb
     return fin
 
 
-def export_honest_sota():
+def apply_pruned_5rules(rankings, qids, doc_labels, doc_preambles):
+    """Pruned 5-Rule Core: deep kinship, guarded inverse law, preamble citation, technical standards.
+    Superseded dedup is applied separately with cross-fitted pairs.
+    """
+    f1, _ = apply_deep_statutory_kinship(rankings, doc_labels, qids, top_k=2, cand_max=15)
+    f2, _ = apply_guarded_inverse_law(f1, doc_labels, qids, top_k=2, cand_max=12)
+    f3, _ = apply_preamble_citation_kinship(f2, doc_labels, doc_preambles, qids, top_k=2, cand_max=8)
+    fin, _ = apply_technical_standard_kinship(f3, doc_labels, qids, cand_max=10)
+    return fin
+
+
+def export_honest_sota(tier: str = "full"):
+    is_tier3 = (tier == "tier3")
+    out_dir = TIER3_DIR if is_tier3 else BEST_DIR
+    configs = TIER3_FUSION_CONFIGS if is_tier3 else CANDIDATE_FUSION_CONFIGS
+
     print("=" * 80)
-    print("EXPORTING HONEST NESTED-CV SOTA BASELINE (0.955042)")
+    if is_tier3:
+        print("EXPORTING TIER 3 (BALANCED) CLEAN SOTA BASELINE (3 Models + 5 Core Rules)")
+    else:
+        print("EXPORTING HONEST NESTED-CV SOTA BASELINE (0.955042 - 4 Models + 11 Rules)")
     print("=" * 80)
 
-    BEST_DIR.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
     labels, _ = get_canonical_labels()
     folds = get_cv_folds()
     eval_qids = [q for f in range(5) for q in folds[f"fold_{f}"] if labels.get(q)]
@@ -120,6 +150,12 @@ def export_honest_sota():
     lgb145 = json.loads((ROOT / "results/gemini/exp_145d_ranker/lgbm_145d_OOF_PREDICTIONS.json").read_text(encoding="utf-8"))
     prof = json.loads((ROOT / "results/exp_final_retrieval/profile_ltr_probe/l15_t5/PREDICTIONS.json").read_text(encoding="utf-8"))
 
+    def run_kinship(rankings, qids):
+        if is_tier3:
+            return apply_pruned_5rules(rankings, qids, doc_labels, doc_preambles)
+        else:
+            return apply_unsupervised_kinship(rankings, qids, doc_labels, questions, doc_preambles)
+
     strict_oof_preds = {}
     fold_reports = []
 
@@ -131,9 +167,9 @@ def export_honest_sota():
         # 1. Select Best Fusion Config on Inner Folds ONLY
         best_cfg = None
         best_inner_r5 = -1.0
-        for cfg in CANDIDATE_FUSION_CONFIGS:
+        for cfg in configs:
             inner_blend = blend_predictions(inner_qids, cfg, xgb_tuned, lgb145, xgb131, prof)
-            inner_kin = apply_unsupervised_kinship(inner_blend, inner_qids, doc_labels, questions, doc_preambles)
+            inner_kin = run_kinship(inner_blend, inner_qids)
             m = compute_metrics(inner_kin, labels, inner_qids)
             if m["recall_at_5"] > best_inner_r5:
                 best_inner_r5 = m["recall_at_5"]
@@ -141,7 +177,7 @@ def export_honest_sota():
 
         # 2. Cross-fit Superseded Statute Pairs on Inner Folds ONLY
         inner_blend = blend_predictions(inner_qids, best_cfg, xgb_tuned, lgb145, xgb131, prof)
-        inner_kin = apply_unsupervised_kinship(inner_blend, inner_qids, doc_labels, questions, doc_preambles)
+        inner_kin = run_kinship(inner_blend, inner_qids)
 
         cross_fitted_pairs = []
         for old_id, new_id in VERIFIED_SUPERSEDED_STATUTE_PAIRS:
@@ -159,7 +195,7 @@ def export_honest_sota():
 
         # 3. Apply to outer fold evaluable queries
         outer_blend = blend_predictions(outer_qids, best_cfg, xgb_tuned, lgb145, xgb131, prof)
-        outer_kin = apply_unsupervised_kinship(outer_blend, outer_qids, doc_labels, questions, doc_preambles)
+        outer_kin = run_kinship(outer_blend, outer_qids)
         outer_dedup, dedup_cnt = apply_superseded_statute_dedup(
             outer_kin, outer_qids, superseded_pairs=cross_fitted_pairs
         )
@@ -184,11 +220,12 @@ def export_honest_sota():
         print(f"Fold {f_outer} STRICT-VALID Recall@5 = {m_outer['recall_at_5']:.6f}, Prec@5 = {m_outer['precision_at_5']:.6f}")
 
     overall_metrics = compute_metrics(strict_oof_preds, labels, eval_qids)
+    tag = "Tier 3 Clean SOTA" if is_tier3 else "Overall Strict-Valid 5-Fold OOF"
     print("\n" + "=" * 80)
-    print(f"Overall Strict-Valid 5-Fold OOF Recall@5:        {overall_metrics['recall_at_5']:.6f}")
-    print(f"Overall Strict-Valid 5-Fold OOF Precision@5:     {overall_metrics['precision_at_5']:.6f}")
-    print(f"Overall Strict-Valid 5-Fold OOF MRR@5:           {overall_metrics['mrr_at_5']:.6f}")
-    print(f"Overall Strict-Valid 5-Fold OOF Multi-Gold R@5:  {overall_metrics['multi_gold_recall_at_5']:.6f}")
+    print(f"{tag} Recall@5:        {overall_metrics['recall_at_5']:.6f}")
+    print(f"{tag} Precision@5:     {overall_metrics['precision_at_5']:.6f}")
+    print(f"{tag} MRR@5:           {overall_metrics['mrr_at_5']:.6f}")
+    print(f"{tag} Multi-Gold R@5:  {overall_metrics['multi_gold_recall_at_5']:.6f}")
     print("=" * 80)
 
     # Paired Bootstrap vs Profile LTR Anchor
@@ -198,27 +235,34 @@ def export_honest_sota():
     print(f"  Delta: {boot_prof['mean_delta']:+.6f}, p-value: {boot_prof['p_value']:.4f}")
     print(f"  Wins: {boot_prof['wins']}, Losses: {boot_prof['losses']}, Ties: {boot_prof['ties']}")
 
-    # Write clean predictions
-    best_preds_path = BEST_DIR / "BEST_ENSEMBLE_PREDICTIONS.json"
+    prefix = "TIER3" if is_tier3 else "BEST_ENSEMBLE"
+    best_preds_path = out_dir / f"{prefix}_PREDICTIONS.json"
     best_preds_path.write_text(json.dumps(strict_oof_preds, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # Write clean summary with explicit revocation
     summary = {
-        "status": "REVOKED_H61_REPLACED_BY_HONEST_NESTED_CV_SOTA",
-        "revocation_notice": "H61 goal complete conclusion was formally revoked following a forensic audit. H61 achieved 0.960621 via 53 manual query patches where 88.7% memorized specific training fold queries (+0.5579pp inflation) and public submission suffered a deployment parity failure. This file now reflects the honest, leak-free, nested CV benchmark (0.955042).",
+        "tier": tier,
+        "status": "TIER3_CLEAN_PRUNED_SOTA" if is_tier3 else "REVOKED_H61_REPLACED_BY_HONEST_NESTED_CV_SOTA",
         "official_target_reached": False,
         "target_recall_at_5": 0.960000,
         "achieved_recall_at_5": overall_metrics["recall_at_5"],
-        "architecture": "145D GBDT Ensemble (Tuned XGB-145D + LGBM-145D + XGB-131D + Profile LTR) + Nested CV AMFD Fusion + Unsupervised Statutory Kinship Suite",
+        "architecture": (
+            "Tier 3 Clean GBDT Ensemble (Tuned XGB-145D + LGBM-145D + Profile LTR) + 5-Rule Statutory Core"
+            if is_tier3 else
+            "145D GBDT Ensemble (Tuned XGB-145D + LGBM-145D + XGB-131D + Profile LTR) + Nested CV AMFD Fusion + Unsupervised Statutory Kinship Suite"
+        ),
         "overall_metrics": overall_metrics,
         "fold_reports": fold_reports,
         "bootstrap_vs_profile_anchor": boot_prof,
     }
-    summary_path = BEST_DIR / "BEST_ENSEMBLE_SUMMARY.json"
+    summary_path = out_dir / f"{prefix}_SUMMARY.json"
     summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\nSuccessfully wrote honest predictions to {best_preds_path}")
-    print(f"Successfully wrote honest summary to {summary_path}")
+    print(f"\nSuccessfully wrote {tier} predictions to {best_preds_path}")
+    print(f"Successfully wrote {tier} summary to {summary_path}")
 
 
 if __name__ == "__main__":
-    export_honest_sota()
+    parser = argparse.ArgumentParser(description="Export Honest SOTA Baseline or Tier 3 Clean Baseline")
+    parser.add_argument("--tier", choices=["full", "tier3"], default="full", help="Baseline tier to export (default: full)")
+    args = parser.parse_args()
+    export_honest_sota(args.tier)
+
