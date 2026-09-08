@@ -406,6 +406,12 @@ def build_offline_correct_submission(tier: str = "full"):
         f_final, dedup_cnt = apply_superseded_statute_dedup(f10, public_qids)
         print(f"  Superseded Statute De-duplications: {dedup_cnt}")
 
+    # Save full ranked candidate lists for subsequent reranking milestones
+    out_full = ROOT / "cache/gemini/public_145d_full_candidates.json"
+    out_full.parent.mkdir(parents=True, exist_ok=True)
+    out_full.write_text(json.dumps(f_final, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  Saved full ranked candidates ({len(f_final)} queries) to {out_full}", flush=True)
+
     # 6. Format Submission & Contract Validation
     db_doc = sqlite3.connect(f"file:{EVIDENCE_DB}?mode=ro", uri=True)
     all_corpus_docs = set(str(row[0]) for row in db_doc.execute("SELECT doc FROM documents"))
