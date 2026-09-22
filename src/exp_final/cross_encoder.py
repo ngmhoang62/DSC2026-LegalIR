@@ -24,7 +24,7 @@ class CrossEncoder(nn.Module):
         base = AutoModelForSequenceClassification.from_pretrained(str(self.snapshot), local_files_only=True, torch_dtype=torch.float32)
         self.model = get_peft_model(base, LoraConfig(r=16, lora_alpha=32, lora_dropout=.05,
                                                    target_modules=["query", "value"], modules_to_save=["classifier"], bias="none"))
-        self.model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+        # self.model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
         self.model.enable_input_require_grads()
         self.to("cuda")
         if checkpoint_path:
