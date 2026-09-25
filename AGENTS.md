@@ -1,5 +1,10 @@
 # LegalIR — Project Instructions and Stable Context
 
+Current checkout state (2026-09-25): source only. `cache/`, `results/` and
+`public_test_dataset/` were removed. Historical artifact paths and metrics
+below are research context, not locally present files. See
+`../FINAL_SOURCE_ONLY_CLEANUP.md` before attempting a rerun.
+
 ## Mission
 
 LegalIR retrieves the Vietnamese legal documents that answer a user question.

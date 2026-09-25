@@ -1,5 +1,10 @@
 # LegalIR
 
+**Source-only state (2026-09-25):** `cache/`, `results/` and
+`public_test_dataset/` were removed after the endgame official data snapshot
+was verified. Historical paths and scores below are not current artifacts.
+See [`../FINAL_SOURCE_ONLY_CLEANUP.md`](../FINAL_SOURCE_ONLY_CLEANUP.md).
+
 ## Working context
 
 Read [AGENTS.md](AGENTS.md) before making project changes. For a fresh Codex
